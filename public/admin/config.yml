@@ -3,13 +3,9 @@
 # De velden hieronder komen exact overeen met het schema in src/content.config.ts.
 # Wijkt er iets af, dan faalt de build met een schemafout — dat is de bedoeling.
 #
-# NOG IN TE VULLEN: `repo` hieronder verwijst naar een repository die nog niet
-# bestaat. Vul die in zodra de GitHub-repo is aangemaakt (Fase 1 in TAKEN.md).
-# Zonder geldige repo kan er niet ingelogd worden.
-
 backend:
   name: github
-  repo: GEBRUIKERSNAAM/mochi-glow # <-- aanpassen
+  repo: nmerzaya/mochi-glow.com
   branch: main
 
 publish_mode: editorial_workflow
