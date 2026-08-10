@@ -1,0 +1,26 @@
+{
+  "name": "mochi-glow",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Mochi Glow — Nederlandstalige contentsite over K-beauty-ingrediënten en de darm-huid-connectie",
+  "license": "MIT",
+  "scripts": {
+    "predev": "node scripts/kopieer-klaro.mjs",
+    "dev": "astro dev",
+    "prebuild": "node scripts/kopieer-klaro.mjs",
+    "build": "npm run check && astro build",
+    "preview": "astro preview",
+    "check": "node scripts/check-compliance.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.0",
+    "klaro": "^0.7.21"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}

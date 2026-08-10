@@ -1,0 +1,15 @@
+# Regeleindes normaliseren.
+#
+# Deze map staat op Windows, maar Cloudflare Pages bouwt op Linux. Door alles in
+# de repo als LF op te slaan, geeft een wisseling van machine geen verschillen
+# die als wijziging worden gezien.
+* text=auto eol=lf
+
+# Binaire bestanden nooit converteren.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ico binary

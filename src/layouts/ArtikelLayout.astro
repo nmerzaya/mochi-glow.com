@@ -1,0 +1,161 @@
+---
+import BasisLayout from './BasisLayout.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import MedischeDisclaimer from '../components/MedischeDisclaimer.astro';
+import Bronnenlijst from '../components/Bronnenlijst.astro';
+import ArtikelBeeld from '../components/ArtikelBeeld.astro';
+import type { Motief } from '../components/ArtikelBeeld.astro';
+import { site, datumOpmaak } from '../config';
+
+interface Bron {
+  titel: string;
+  url: string;
+  type: 'A' | 'B' | 'C';
+}
+
+interface Props {
+  titel: string;
+  beschrijving: string;
+  publicatiedatum: Date;
+  bijgewerkt?: Date;
+  auteur: string;
+  affiliate: boolean;
+  productType: 'cosmetica' | 'voeding-supplement' | 'geen';
+  gezondheidsclaims: boolean;
+  bronnen: Bron[];
+  tags: string[];
+  accent: 'roze' | 'paars' | 'perzik' | 'mint';
+  inci?: string;
+  pijler: 'ingredienten' | 'gut-skin';
+  /** Slug van het artikel; bepaalt welke illustratie het krijgt. */
+  zaad: string;
+  motief?: Motief;
+}
+
+const {
+  titel,
+  beschrijving,
+  publicatiedatum,
+  bijgewerkt,
+  auteur,
+  affiliate,
+  productType,
+  gezondheidsclaims,
+  bronnen,
+  tags,
+  accent,
+  inci,
+  pijler,
+  zaad,
+  motief,
+} = Astro.props;
+
+/*
+  Bij voeding en supplementen mogen de bronnen niet klikbaar zijn: de NVWA
+  beschouwt een link naar medische of wetenschappelijke informatie op een pagina
+  die zo'n product aanprijst zelf als een ontoelaatbare medische claim.
+  Zie onderzoek/04-vormgeving-en-eisen.md, par. 4.3.
+*/
+const bronLinksToegestaan = productType !== 'voeding-supplement';
+
+const pijlerNaam = pijler === 'ingredienten' ? 'Ingrediënten' : 'Darm & huid';
+const pijlerPad = pijler === 'ingredienten' ? '/ingredienten' : '/gut-skin';
+
+const gestructureerdeData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: titel,
+  description: beschrijving,
+  datePublished: publicatiedatum.toISOString(),
+  dateModified: (bijgewerkt ?? publicatiedatum).toISOString(),
+  inLanguage: 'nl-NL',
+  author: {
+    '@type': 'Person',
+    name: auteur,
+    url: new URL('/over', site.url).href,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: site.naam,
+    url: site.url,
+  },
+  isAccessibleForFree: true,
+};
+---
+
+<BasisLayout
+  titel={titel}
+  beschrijving={beschrijving}
+  soort="article"
+  publicatiedatum={publicatiedatum}
+  bijgewerkt={bijgewerkt}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(gestructureerdeData)} slot="hoofd" />
+
+  <article class="artikel">
+    <nav aria-label="Kruimelpad" class="artikel__meta" style="margin-bottom: var(--ruimte-5)">
+      <a href={pijlerPad}>{pijlerNaam}</a>
+    </nav>
+
+    {/*
+      Decoratief, en bewust bóven de kop: zo blijft de reclame-disclosure direct
+      tegen de eerste alinea van het artikel aan staan, zoals de RSM vereist.
+    */}
+    <div class="artikel__beeld" style={`background: var(--kleur-${accent}-zacht)`}>
+      <ArtikelBeeld motief={motief} accent={accent} zaad={zaad} variant="kop" />
+    </div>
+
+    <header class="artikel__kop">
+      <h1>{titel}</h1>
+      <p class="hero__intro">{beschrijving}</p>
+
+      <div class="artikel__meta">
+        <span>
+          Door <a href="/over">{auteur}</a>
+        </span>
+        <span aria-hidden="true">·</span>
+        <time datetime={publicatiedatum.toISOString()}>{datumOpmaak.format(publicatiedatum)}</time>
+        {
+          bijgewerkt && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>bijgewerkt {datumOpmaak.format(bijgewerkt)}</span>
+            </>
+          )
+        }
+        {inci && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span>INCI: {inci}</span>
+          </>
+        )}
+      </div>
+    </header>
+
+    {/* Automatisch, niet handmatig: zo kan de disclosure niet vergeten worden. */}
+    {affiliate && <AffiliateDisclosure />}
+    {gezondheidsclaims && <MedischeDisclaimer />}
+
+    <div class={`artikel__inhoud accent-${accent}`}>
+      <slot />
+    </div>
+
+    {
+      tags.length > 0 && (
+        <p style="margin-top: var(--ruimte-7)">
+          {tags.map((tag) => (
+            <span class="etiket" style="margin-right: .4rem">
+              {tag}
+            </span>
+          ))}
+        </p>
+      )
+    }
+
+    <Bronnenlijst bronnen={bronnen} linksToegestaan={bronLinksToegestaan} />
+
+    <p style="margin-top: var(--ruimte-7)">
+      <a class="knop knop--stil" href={pijlerPad}>Meer over {pijlerNaam.toLowerCase()}</a>
+    </p>
+  </article>
+</BasisLayout>

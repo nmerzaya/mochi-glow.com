@@ -1,0 +1,10 @@
+# ads.txt — Authorized Digital Sellers
+#
+# Dit bestand staat hier bewust leeg klaar. Zodra AdSense is goedgekeurd
+# (Fase 4 in TAKEN.md) moet hier één regel komen met de eigen publisher-ID:
+#
+#   google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+#
+# Vervang pub-0000000000000000 door de eigen ID uit het AdSense-account.
+# Zolang die regel er niet staat, doet dit bestand niets — dat is correct;
+# een verkeerde of verzonnen ID is schadelijker dan geen bestand.

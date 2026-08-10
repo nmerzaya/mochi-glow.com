@@ -1,0 +1,155 @@
+# Sveltia CMS — beheerinterface voor Mochi Glow
+#
+# De velden hieronder komen exact overeen met het schema in src/content.config.ts.
+# Wijkt er iets af, dan faalt de build met een schemafout — dat is de bedoeling.
+#
+# NOG IN TE VULLEN: `repo` hieronder verwijst naar een repository die nog niet
+# bestaat. Vul die in zodra de GitHub-repo is aangemaakt (Fase 1 in TAKEN.md).
+# Zonder geldige repo kan er niet ingelogd worden.
+
+backend:
+  name: github
+  repo: GEBRUIKERSNAAM/mochi-glow # <-- aanpassen
+  branch: main
+
+publish_mode: editorial_workflow
+media_folder: public/images
+public_folder: /images
+
+locale: nl
+
+collections:
+  - name: ingredienten
+    label: Ingrediënten
+    label_singular: Ingrediëntartikel
+    description: >-
+      Pijler 1. Hier mogen affiliate-links staan. Let op het veld "Soort product":
+      bij voeding of supplement gelden strengere regels en mag er niet naar
+      wetenschappelijke bronnen gelinkt worden.
+    folder: src/content/ingredienten
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: titel, label: Titel, widget: string, pattern: ['^.{10,80}$', 'Tussen 10 en 80 tekens.'] }
+      - name: beschrijving
+        label: Korte beschrijving
+        widget: text
+        hint: Wordt gebruikt als meta-omschrijving en op de kaarten. 50 tot 200 tekens.
+        pattern: ['^[\s\S]{50,200}$', 'Tussen 50 en 200 tekens.']
+      - { name: publicatiedatum, label: Publicatiedatum, widget: datetime, format: 'YYYY-MM-DD', time_format: false }
+      - { name: bijgewerkt, label: Bijgewerkt op, widget: datetime, format: 'YYYY-MM-DD', time_format: false, required: false }
+      - { name: auteur, label: Auteur, widget: string, default: Noor }
+      - name: affiliate
+        label: Bevat affiliate-links
+        widget: boolean
+        default: false
+        hint: Zet dit aan en de reclame-disclosure verschijnt automatisch als eerste blok van het artikel.
+      - name: productType
+        label: Soort product
+        widget: select
+        default: geen
+        options:
+          - { label: 'Cosmetica (Verordening 1223/2009)', value: cosmetica }
+          - { label: 'Voeding of supplement (Verordening 1924/2006 — strenger)', value: voeding-supplement }
+          - { label: 'Niet van toepassing', value: geen }
+      - { name: gezondheidsclaims, label: Raakt gezondheidsonderwerpen, widget: boolean, default: false, hint: 'Zet de medische disclaimer aan. Vereist minimaal 2 bronnen.' }
+      - { name: inci, label: INCI-naam, widget: string, required: false }
+      - name: accent
+        label: Accentkleur
+        widget: select
+        default: roze
+        options: [roze, paars, perzik, mint]
+      - name: motief
+        label: Illustratie
+        widget: select
+        required: false
+        hint: Laat leeg om er automatisch een te laten kiezen op basis van de slug.
+        options: [druppel, blad, korrels, golven, bloem, ringen, vlecht, kiem]
+      - { name: uitgelicht, label: Uitgelicht, widget: boolean, default: false, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - name: bronnen
+        label: Bronnen
+        widget: list
+        required: false
+        summary: '{{fields.titel}} ({{fields.type}})'
+        fields:
+          - { name: titel, label: Titel van de bron, widget: string }
+          - { name: url, label: Link, widget: string }
+          - name: type
+            label: Soort bron
+            widget: select
+            options:
+              - { label: 'A — primair of officieel', value: A }
+              - { label: 'B — secundair, vakmedia of onderzoek', value: B }
+              - { label: 'C — tertiair', value: C }
+      - name: taalUitzonderingen
+        label: Uitzonderingen op de taalcontrole
+        widget: list
+        required: false
+        summary: '{{fields.term}}'
+        hint: Alleen gebruiken als het artikel een verboden term beschrijvend uitlegt. Een reden is verplicht.
+        fields:
+          - { name: term, label: Term, widget: string }
+          - { name: reden, label: Waarom is dit hier geen claim, widget: text }
+      - { name: body, label: Artikel, widget: markdown }
+
+  - name: gut-skin
+    label: Darm & huid
+    label_singular: Darm-huid-artikel
+    description: >-
+      Pijler 2. Bewust niet commercieel: hier mogen géén affiliate-links staan, zodat
+      deze artikelen wél naar wetenschappelijk onderzoek mogen verwijzen.
+    folder: src/content/gut-skin
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: titel, label: Titel, widget: string, pattern: ['^.{10,80}$', 'Tussen 10 en 80 tekens.'] }
+      - name: beschrijving
+        label: Korte beschrijving
+        widget: text
+        pattern: ['^[\s\S]{50,200}$', 'Tussen 50 en 200 tekens.']
+      - { name: publicatiedatum, label: Publicatiedatum, widget: datetime, format: 'YYYY-MM-DD', time_format: false }
+      - { name: bijgewerkt, label: Bijgewerkt op, widget: datetime, format: 'YYYY-MM-DD', time_format: false, required: false }
+      - { name: auteur, label: Auteur, widget: string, default: Noor }
+      - { name: gezondheidsclaims, label: Raakt gezondheidsonderwerpen, widget: boolean, default: true }
+      - name: accent
+        label: Accentkleur
+        widget: select
+        default: mint
+        options: [roze, paars, perzik, mint]
+      - name: motief
+        label: Illustratie
+        widget: select
+        required: false
+        hint: Laat leeg om er automatisch een te laten kiezen op basis van de slug.
+        options: [druppel, blad, korrels, golven, bloem, ringen, vlecht, kiem]
+      - { name: uitgelicht, label: Uitgelicht, widget: boolean, default: false, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - name: bronnen
+        label: Bronnen
+        widget: list
+        summary: '{{fields.titel}} ({{fields.type}})'
+        hint: Minimaal twee bronnen zijn verplicht in deze categorie.
+        fields:
+          - { name: titel, label: Titel van de bron, widget: string }
+          - { name: url, label: Link, widget: string }
+          - name: type
+            label: Soort bron
+            widget: select
+            options:
+              - { label: 'A — primair of officieel', value: A }
+              - { label: 'B — secundair, vakmedia of onderzoek', value: B }
+              - { label: 'C — tertiair', value: C }
+      - name: taalUitzonderingen
+        label: Uitzonderingen op de taalcontrole
+        widget: list
+        required: false
+        summary: '{{fields.term}}'
+        fields:
+          - { name: term, label: Term, widget: string }
+          - { name: reden, label: Waarom is dit hier geen claim, widget: text }
+      - { name: body, label: Artikel, widget: markdown }

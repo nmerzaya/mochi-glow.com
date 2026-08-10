@@ -1,0 +1,85 @@
+---
+import { advertentiesActief } from '../config';
+
+/**
+ * Cookietoestemming via Klaro (BSD-3-Clause, zelfgehost — geen CDN, geen externe
+ * verbinding).
+ *
+ * Twee bewuste keuzes:
+ *
+ * 1. Zolang `advertentiesActief` in `src/config.ts` op `false` staat, laadt deze
+ *    site geen enkel script dat toestemming vereist, en verschijnt er dus ook geen
+ *    toestemmingsvenster. Een banner tonen voor cookies die niet geplaatst worden
+ *    wekt ten onrechte de indruk dat er getrackt wordt.
+ *
+ * 2. De scripts staan op `is:inline` en worden vanaf `/klaro/` geserveerd in plaats
+ *    van geïmporteerd, omdat Astro geïmporteerde scripts ook bundelt wanneer het
+ *    component niet gerenderd wordt. Zo staat er nu werkelijk nul JavaScript op de
+ *    site. `scripts/kopieer-klaro.mjs` zet de bestanden klaar.
+ *
+ * Aanzetten na goedkeuring van AdSense (Fase 4 in TAKEN.md): `advertentiesActief`
+ * op `true`. Het advertentiescript hoort dan als `type="text/plain"` met
+ * `data-name="adsense"` in de pagina te staan; de browser voert het dan niet uit
+ * tot Klaro het vrijgeeft.
+ */
+---
+
+{
+  advertentiesActief && (
+    <>
+      <link rel="stylesheet" href="/klaro/klaro.css" />
+      <div id="klaro" />
+
+      <script is:inline>
+        window.klaroConfig = {
+          version: 1,
+          elementID: 'klaro',
+          storageMethod: 'cookie',
+          cookieName: 'mochiglow-toestemming',
+          cookieExpiresAfterDays: 180,
+          privacyPolicy: '/cookiebeleid',
+          default: false,
+          mustConsent: false,
+          acceptAll: true,
+          hideDeclineAll: false,
+          lang: 'nl',
+          translations: {
+            nl: {
+              consentNotice: {
+                description:
+                  'Mochi Glow wil advertentiecookies plaatsen om de kosten te dekken. Weigeren kan, zonder gevolgen voor het lezen.',
+                learnMore: 'Zelf kiezen',
+              },
+              consentModal: {
+                title: 'Cookies op Mochi Glow',
+                description:
+                  'Deze site draait op advertenties. Daar horen cookies bij. Je mag ze weigeren; de artikelen blijven gewoon leesbaar.',
+              },
+              purposes: { advertenties: 'Advertenties' },
+              ok: 'Accepteren',
+              decline: 'Weigeren',
+              acceptAll: 'Alles accepteren',
+              acceptSelected: 'Selectie opslaan',
+              save: 'Opslaan',
+              close: 'Sluiten',
+              privacyPolicy: { name: 'cookiebeleid', text: 'Meer hierover staat in het {privacyPolicy}.' },
+            },
+          },
+          services: [
+            {
+              name: 'adsense',
+              title: 'Google AdSense',
+              purposes: ['advertenties'],
+              description:
+                'Toont advertenties. Google kan hiervoor cookies plaatsen en gegevens over je bezoek verwerken.',
+              default: false,
+              required: false,
+            },
+          ],
+        };
+      </script>
+
+      <script is:inline defer src="/klaro/klaro-no-translations.js" />
+    </>
+  )
+}

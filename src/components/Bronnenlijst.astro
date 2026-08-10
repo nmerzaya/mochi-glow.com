@@ -1,0 +1,62 @@
+---
+interface Bron {
+  titel: string;
+  url: string;
+  type: 'A' | 'B' | 'C';
+}
+
+interface Props {
+  bronnen: Bron[];
+  /**
+   * Bij artikelen over voeding of supplementen mag niet naar externe medische
+   * informatie gelinkt worden (NVWA — zie onderzoek/04, par. 4.3). De bronnen
+   * worden dan wel getoond, maar zonder klikbare link.
+   */
+  linksToegestaan?: boolean;
+}
+
+const { bronnen, linksToegestaan = true } = Astro.props;
+
+const uitleg: Record<Bron['type'], string> = {
+  A: 'primaire of officiële bron',
+  B: 'secundaire bron, vakmedia of onderzoek',
+  C: 'tertiaire bron',
+};
+---
+
+{
+  bronnen.length > 0 && (
+    <section class="bronnen" aria-labelledby="bronnen-kop">
+      <h2 id="bronnen-kop">Bronnen</h2>
+      <p>
+        Elke bron hieronder is geopend en gecontroleerd op het moment van schrijven. Klopt er iets
+        niet meer, of mis je een bron? <a href="/contact">Laat het weten</a>.
+      </p>
+      <ol>
+        {bronnen.map((bron) => (
+          <li>
+            {linksToegestaan ? (
+              <a href={bron.url} rel="noopener nofollow" target="_blank">
+                {bron.titel}
+              </a>
+            ) : (
+              <span>{bron.titel}</span>
+            )}
+            <span class="bronnen__type" title={uitleg[bron.type]}>
+              {bron.type}
+            </span>
+          </li>
+        ))}
+      </ol>
+      {!linksToegestaan && (
+        <p>
+          <small>
+            De bronnen bij dit artikel staan zonder link. Dat is geen slordigheid: voor pagina's
+            waarop voedingsmiddelen of supplementen worden aangeprezen, rekent de NVWA een verwijzing
+            naar medische of wetenschappelijke publicaties zelf tot een ontoelaatbare medische claim.
+          </small>
+        </p>
+      )}
+    </section>
+  )
+}

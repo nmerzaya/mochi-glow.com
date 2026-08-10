@@ -1,0 +1,36 @@
+---
+import { site, voetnavigatie } from '../config';
+
+const jaar = new Date().getFullYear();
+---
+
+<footer class="voet">
+  <div class="omhulsel">
+    <div class="voet__raster">
+      {
+        Object.entries(voetnavigatie).map(([kop, items]) => (
+          <div>
+            <h2>{kop}</h2>
+            <ul>
+              {items.map((item) => (
+                <li>
+                  <a href={item.pad}>{item.tekst}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="voet__onder">
+      <p>
+        {site.naam} schrijft uitleg op basis van bronnen. Er worden geen producten getest en er
+        wordt geen medisch advies gegeven — lees de <a href="/redactionele-richtlijnen"
+          >redactionele richtlijnen</a
+        > als je wilt weten hoe deze artikelen tot stand komen.
+      </p>
+      <p>&copy; {jaar} {site.naam}</p>
+    </div>
+  </div>
+</footer>

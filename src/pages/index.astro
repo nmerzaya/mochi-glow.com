@@ -1,0 +1,92 @@
+---
+import { getCollection } from 'astro:content';
+import BasisLayout from '../layouts/BasisLayout.astro';
+import ArtikelKaart from '../components/ArtikelKaart.astro';
+import { site } from '../config';
+
+const opDatum = (a: { data: { publicatiedatum: Date } }, b: { data: { publicatiedatum: Date } }) =>
+  b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime();
+
+const ingredienten = (await getCollection('ingredienten')).sort(opDatum).slice(0, 6);
+const gutSkin = (await getCollection('gut-skin')).sort(opDatum).slice(0, 3);
+---
+
+<BasisLayout titel={site.naam} beschrijving={site.beschrijving}>
+  <div class="hero">
+    <h1>zachte huid, echte uitleg</h1>
+    <p class="hero__intro">
+      Over K-beauty-ingrediënten en de verbinding tussen darm en huid. Geen beloftes en geen
+      wondermiddelen — gewoon uitleg over wat een ingrediënt is, wat onderzoek erover zegt, en waar
+      dat onderzoek ophoudt.
+    </p>
+    <p>
+      <a class="knop" href="/ingredienten">Begin bij de ingrediënten</a>
+    </p>
+  </div>
+
+  <section class="sectie">
+    <div class="sectie__kop">
+      <h2>Ingrediënten</h2>
+      <a href="/ingredienten">Alles bekijken</a>
+    </div>
+    {
+      ingredienten.length === 0 ? (
+        <p>Binnenkort meer.</p>
+      ) : (
+        <ul class="kaartenraster">
+          {ingredienten.map((artikel) => (
+            <ArtikelKaart
+              titel={artikel.data.titel}
+              beschrijving={artikel.data.beschrijving}
+              url={`/ingredienten/${artikel.id}`}
+              publicatiedatum={artikel.data.publicatiedatum}
+              accent={artikel.data.accent}
+              affiliate={artikel.data.affiliate}
+            />
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <section class="sectie">
+    <div class="sectie__kop">
+      <h2>Darm &amp; huid</h2>
+      <a href="/gut-skin">Alles bekijken</a>
+    </div>
+    {
+      gutSkin.length === 0 ? (
+        <p>Binnenkort meer.</p>
+      ) : (
+        <ul class="kaartenraster">
+          {gutSkin.map((artikel) => (
+            <ArtikelKaart
+              titel={artikel.data.titel}
+              beschrijving={artikel.data.beschrijving}
+              url={`/gut-skin/${artikel.id}`}
+              publicatiedatum={artikel.data.publicatiedatum}
+              accent={artikel.data.accent}
+            />
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <section class="sectie">
+    <div class="prozapagina">
+      <h2>Hoe deze site werkt</h2>
+      <p>
+        Er worden hier geen producten gekocht, getest of beoordeeld. Dat scheelt je een hoop
+        enthousiasme dat nergens op gebaseerd is, maar het betekent ook dat je hier geen "dit werkte
+        bij mij" zult lezen. Wat je wél krijgt: uitleg van wat een ingrediënt is, een samenvatting
+        van wat er over onderzocht is, en een bronnenlijst onderaan elk artikel zodat je het zelf kunt
+        nakijken.
+      </p>
+      <p>
+        Ik ben geen arts, diëtist of huidtherapeut. Waar het onderzoek dun is, staat dat er gewoon
+        bij. <a href="/redactionele-richtlijnen">Zo komen deze artikelen tot stand</a>.
+      </p>
+    </div>
+  </section>
+</BasisLayout>

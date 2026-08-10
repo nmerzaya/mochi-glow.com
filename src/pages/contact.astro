@@ -1,0 +1,54 @@
+---
+import BasisLayout from '../layouts/BasisLayout.astro';
+import { site } from '../config';
+---
+
+<BasisLayout
+  titel="Contact"
+  beschrijving="Vragen, correcties of suggesties voor Mochi Glow? Zo neem je contact op."
+>
+  <div class="prozapagina">
+    <h1>Contact</h1>
+    <p>
+      Vragen, correcties, of een bron die volgens jou ontbreekt of niet klopt: ik lees alles.
+    </p>
+
+    <h2>E-mail</h2>
+    <p>
+      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+    </p>
+    <p>
+      Ik antwoord meestal binnen een paar dagen. Er staat bewust geen contactformulier op deze site:
+      een formulier vereist een externe dienst die gegevens van bezoekers verwerkt, en dat leek me
+      onnodig voor iets wat een e-mail ook kan.
+    </p>
+
+    <h2>Waar ik graag over hoor</h2>
+    <ul>
+      <li>Feitelijke fouten of verouderde informatie in een artikel.</li>
+      <li>Een bron die niet meer bestaat of iets anders zegt dan ik beweer.</li>
+      <li>Onderwerpen die je mist.</li>
+      <li>Onduidelijke uitleg — als iets niet te volgen is, is dat mijn fout, niet die van jou.</li>
+    </ul>
+
+    <h2>Waar ik niet op kan ingaan</h2>
+    <ul>
+      <li>
+        <strong>Persoonlijk advies over jouw huid of gezondheid.</strong> Ik ben geen arts of
+        huidtherapeut en kan niet beoordelen wat bij jou past. Daarvoor moet je bij iemand zijn die
+        je persoonlijk kan zien.
+      </li>
+      <li>
+        <strong>Verzoeken om betaalde artikelen, gastblogs of linkplaatsingen.</strong> Die worden
+        niet geplaatst, ook niet als ze als "samenwerking" worden aangeboden.
+      </li>
+    </ul>
+
+    <h2>Voor merken en persbureaus</h2>
+    <p>
+      Er worden geen producten aangenomen ter beoordeling. Deze site test niet en schrijft geen
+      reviews op basis van eigen gebruik; toegestuurde producten zouden daar niets aan veranderen en
+      worden niet geaccepteerd.
+    </p>
+  </div>
+</BasisLayout>

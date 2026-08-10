@@ -1,0 +1,24 @@
+---
+import BasisLayout from '../layouts/BasisLayout.astro';
+---
+
+<BasisLayout
+  titel="Pagina niet gevonden"
+  beschrijving="Deze pagina bestaat niet (meer)."
+  verbergVoorZoekmachines={true}
+>
+  <div class="hero">
+    <h1>deze pagina bestaat niet</h1>
+    <p class="hero__intro">
+      Misschien is de link verouderd, of is er een typefout in het adres geslopen.
+    </p>
+    <p>
+      <a class="knop" href="/">Terug naar de startpagina</a>
+    </p>
+    <p style="margin-top: var(--ruimte-6)">
+      Of ga direct naar de <a href="/ingredienten">ingrediënten</a> of naar
+      <a href="/gut-skin">darm &amp; huid</a>. Denk je dat hier wél iets hoorde te staan?
+      <a href="/contact">Laat het weten</a>.
+    </p>
+  </div>
+</BasisLayout>

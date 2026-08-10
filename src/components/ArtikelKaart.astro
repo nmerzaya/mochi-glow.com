@@ -1,0 +1,44 @@
+---
+import { datumOpmaak } from '../config';
+import ArtikelBeeld from './ArtikelBeeld.astro';
+import type { Motief } from './ArtikelBeeld.astro';
+
+interface Props {
+  titel: string;
+  beschrijving: string;
+  url: string;
+  publicatiedatum: Date;
+  accent?: 'roze' | 'paars' | 'perzik' | 'mint';
+  affiliate?: boolean;
+  /** Overschrijft de illustratie; standaard wordt die uit de slug afgeleid. */
+  motief?: Motief;
+}
+
+const { titel, beschrijving, url, publicatiedatum, accent = 'roze', affiliate = false, motief } =
+  Astro.props;
+
+/*
+  Dit project heeft geen productfotografie (zie CLAUDE.md). In plaats van een
+  generieke stockfoto krijgt elke kaart een eigen illustratie in de accentkleur.
+  Dat is eerlijker dan een plaatje dat suggereert dat er een product in handen is
+  geweest, en het houdt de site snel.
+
+  Het zaad is de slug en niet de URL, zodat de kaart en het artikel zelf dezelfde
+  tekening krijgen — anders ziet een lezer die doorklikt ineens iets anders.
+*/
+const slug = url.split('/').filter(Boolean).pop() ?? titel;
+---
+
+<li>
+  <article class={`kaart accent-${accent}`}>
+    <div class="kaart__vlak">
+      <ArtikelBeeld motief={motief} accent={accent} zaad={slug} variant="kaart" />
+    </div>
+    <h3 class="kaart__titel"><a href={url}>{titel}</a></h3>
+    <p class="kaart__tekst">{beschrijving}</p>
+    <div class="kaart__voet">
+      <time datetime={publicatiedatum.toISOString()}>{datumOpmaak.format(publicatiedatum)}</time>
+      {affiliate && <span class="etiket">bevat affiliate-links</span>}
+    </div>
+  </article>
+</li>

@@ -1,0 +1,27 @@
+---
+import { site, hoofdnavigatie } from '../config';
+
+const huidigPad = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="kop">
+  <div class="omhulsel kop__binnen">
+    <a class="merk" href="/">
+      <span class="merk__stip" aria-hidden="true"></span>
+      <span class="merk__naam">{site.naam}</span>
+    </a>
+
+    <nav class="nav" aria-label="Hoofdnavigatie">
+      {
+        hoofdnavigatie.map((item) => (
+          <a
+            href={item.pad}
+            aria-current={huidigPad === item.pad || huidigPad.startsWith(item.pad + '/') ? 'page' : undefined}
+          >
+            {item.tekst}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

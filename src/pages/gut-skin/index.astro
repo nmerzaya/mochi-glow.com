@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BasisLayout from '../../layouts/BasisLayout.astro';
+import ArtikelKaart from '../../components/ArtikelKaart.astro';
+
+const artikelen = (await getCollection('gut-skin')).sort(
+  (a, b) => b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime(),
+);
+---
+
+<BasisLayout
+  titel="Darm & huid"
+  beschrijving="Wat er wél en niet bekend is over de verbinding tussen darm en huid, samengevat uit gepubliceerd onderzoek — inclusief wat het onderzoek nog niet kan onderbouwen."
+>
+  <div class="hero">
+    <h1>darm &amp; huid</h1>
+    <p class="hero__intro">
+      Over de darm-huid-as wordt veel beweerd en weinig bewezen. Deze artikelen vatten samen wat er
+      in gepubliceerd onderzoek staat, en zijn even expliciet over wat er nog níet uit blijkt.
+    </p>
+  </div>
+
+  <aside class="melding melding--medisch" style="max-width: var(--breedte-tekst); margin-inline: auto">
+    <p>
+      In deze categorie staan geen affiliate-links. Dat is een bewuste keuze: zodra een pagina een
+      voedingsmiddel of supplement aanprijst, mag er volgens de NVWA geen medische informatie op
+      staan en mag er niet naar wetenschappelijke publicaties verwezen worden. Door hier niets te
+      verkopen, kunnen deze artikelen wél gewoon naar het onderzoek linken.
+    </p>
+  </aside>
+
+  {
+    artikelen.length === 0 ? (
+      <p>Er staan nog geen artikelen in deze categorie.</p>
+    ) : (
+      <ul class="kaartenraster" style="margin-top: var(--ruimte-7)">
+        {artikelen.map((artikel) => (
+          <ArtikelKaart
+            titel={artikel.data.titel}
+            beschrijving={artikel.data.beschrijving}
+            url={`/gut-skin/${artikel.id}`}
+            publicatiedatum={artikel.data.publicatiedatum}
+            accent={artikel.data.accent}
+          />
+        ))}
+      </ul>
+    )
+  }
+</BasisLayout>

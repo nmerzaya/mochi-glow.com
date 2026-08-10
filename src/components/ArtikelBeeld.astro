@@ -1,0 +1,187 @@
+---
+/**
+ * Decoratieve illustratie bij een artikel.
+ *
+ * Waarom eigen SVG en geen foto's: dit project koopt geen producten en heeft dus
+ * geen eigen fotografie (CLAUDE.md). Stockbeeld van een willekeurig potje suggereert
+ * bezit dat er niet is, en generieke AI-beelden presteren slecht in een visuele
+ * niche. Deze illustraties zijn abstract, herkenbaar per onderwerp, en gebruiken de
+ * accentkleuren uit `tokens.css` — precies de rol die fotografie hier normaal zou
+ * spelen (zie onderzoek/04-vormgeving-en-eisen.md, par. 4.1).
+ *
+ * Ze staan inline in de HTML in plaats van als bestand: geen extra HTTP-verzoek,
+ * geen externe host, en de kleuren volgen automatisch het ontwerpsysteem.
+ *
+ * Kleurverdeling: de illustratie ligt altijd op een vlak in `--kleur-<accent>-zacht`
+ * (de kaart of de artikelkop). De gevulde vormen zijn daarom wit en niet zacht-accent
+ * — anders vallen ze weg tegen hun eigen achtergrond. Het accent zelf komt terug in
+ * de dunne lijnen en de doorschijnende vormen.
+ *
+ * De illustraties zijn zuiver decoratief en dragen geen informatie die niet ook in
+ * de kop staat. Daarom `aria-hidden` en geen alt-tekst: een schermlezer die
+ * "abstracte druppels" voorleest voegt niets toe en kost de lezer alleen tijd.
+ */
+
+export type Motief =
+  | 'druppel'
+  | 'blad'
+  | 'korrels'
+  | 'golven'
+  | 'bloem'
+  | 'ringen'
+  | 'vlecht'
+  | 'kiem';
+
+export const motieven: Motief[] = [
+  'druppel',
+  'blad',
+  'korrels',
+  'golven',
+  'bloem',
+  'ringen',
+  'vlecht',
+  'kiem',
+];
+
+interface Props {
+  motief?: Motief;
+  accent?: 'roze' | 'paars' | 'perzik' | 'mint';
+  /** Bepaalt het motief als er geen is opgegeven, zodat elk artikel altijd beeld heeft. */
+  zaad?: string;
+  variant?: 'kaart' | 'kop';
+}
+
+const { motief, accent = 'roze', zaad = '', variant = 'kaart' } = Astro.props;
+
+/* Stabiele keuze: hetzelfde artikel houdt bij elke build dezelfde illustratie. */
+function kiesMotief(tekst: string): Motief {
+  let som = 0;
+  for (let i = 0; i < tekst.length; i++) som = (som + tekst.charCodeAt(i) * (i + 1)) % 9973;
+  return motieven[som % motieven.length];
+}
+
+const gekozen = motief ?? kiesMotief(zaad);
+
+/** Een druppel met de punt naar boven. */
+const druppel = (cx: number, top: number, hoogte: number, breedte: number) => {
+  const onder = top + hoogte;
+  return `M${cx} ${top} C${cx + breedte} ${top + hoogte * 0.55}, ${cx + breedte} ${onder - 4}, ${cx} ${onder} C${cx - breedte} ${onder - 4}, ${cx - breedte} ${top + hoogte * 0.55}, ${cx} ${top} Z`;
+};
+
+const golf = (y: number) =>
+  `M0 ${y} C50 ${y - 22}, 90 ${y + 22}, 140 ${y} S230 ${y - 22}, 280 ${y} S370 ${y + 22}, 400 ${y - 8}`;
+
+const korrelPunten = [
+  [90, 70, 13], [140, 128, 8], [186, 62, 18], [232, 118, 11],
+  [278, 78, 15], [318, 134, 7], [352, 84, 10], [122, 96, 5],
+  [252, 46, 6], [206, 148, 9],
+];
+
+const kiemVormen = [
+  [126, 96, 62, 30, -22], [186, 74, 48, 26, 14], [232, 120, 56, 28, -8], [284, 84, 40, 22, 26],
+];
+---
+
+<svg
+  class={`beeld beeld--${variant}`}
+  viewBox="0 0 400 200"
+  preserveAspectRatio="xMidYMid slice"
+  role="presentation"
+  aria-hidden="true"
+  focusable="false"
+  style={`--beeld-vlak: var(--kleur-oppervlak); --beeld-lijn: var(--kleur-${accent});`}
+>
+  {gekozen === 'druppel' && (
+    <>
+      <path d={druppel(150, 44, 96, 34)} fill="var(--beeld-vlak)" />
+      <path d={druppel(232, 66, 74, 26)} fill="var(--beeld-lijn)" opacity="0.22" />
+      <path d={druppel(292, 92, 52, 18)} fill="var(--beeld-vlak)" />
+      <circle cx="150" cy="126" r="9" fill="var(--beeld-lijn)" opacity="0.35" />
+    </>
+  )}
+
+  {gekozen === 'blad' && (
+    <>
+      <ellipse cx="168" cy="104" rx="66" ry="30" transform="rotate(-24 168 104)" fill="var(--beeld-vlak)" />
+      <ellipse cx="246" cy="88" rx="50" ry="23" transform="rotate(18 246 88)" fill="var(--beeld-lijn)" opacity="0.2" />
+      <path d="M104 140 C150 118, 196 96, 244 66" fill="none" stroke="var(--beeld-lijn)" stroke-width="3" stroke-linecap="round" opacity="0.5" />
+      <path d="M150 118 L138 100 M176 106 L168 86 M202 94 L196 74" fill="none" stroke="var(--beeld-lijn)" stroke-width="2" stroke-linecap="round" opacity="0.35" />
+    </>
+  )}
+
+  {gekozen === 'korrels' && (
+    <>
+      {korrelPunten.map(([cx, cy, r], i) => (
+        <circle
+          cx={cx}
+          cy={cy}
+          r={r}
+          fill={i % 3 === 0 ? 'var(--beeld-lijn)' : 'var(--beeld-vlak)'}
+          opacity={i % 3 === 0 ? '0.28' : '1'}
+        />
+      ))}
+    </>
+  )}
+
+  {gekozen === 'golven' && (
+    <>
+      <path d={golf(78)} fill="none" stroke="var(--beeld-vlak)" stroke-width="18" stroke-linecap="round" />
+      <path d={golf(112)} fill="none" stroke="var(--beeld-lijn)" stroke-width="7" stroke-linecap="round" opacity="0.3" />
+      <path d={golf(146)} fill="none" stroke="var(--beeld-vlak)" stroke-width="12" stroke-linecap="round" />
+    </>
+  )}
+
+  {gekozen === 'bloem' && (
+    <>
+      {[0, 60, 120, 180, 240, 300].map((hoek, i) => (
+        <ellipse
+          cx="200"
+          cy="100"
+          rx="58"
+          ry="22"
+          transform={`rotate(${hoek} 200 100)`}
+          fill={i % 2 === 0 ? 'var(--beeld-vlak)' : 'var(--beeld-lijn)'}
+          opacity={i % 2 === 0 ? '0.9' : '0.16'}
+        />
+      ))}
+      <circle cx="200" cy="100" r="16" fill="var(--beeld-lijn)" opacity="0.4" />
+    </>
+  )}
+
+  {gekozen === 'ringen' && (
+    <>
+      <circle cx="200" cy="100" r="72" fill="none" stroke="var(--beeld-vlak)" stroke-width="16" />
+      <circle cx="200" cy="100" r="48" fill="none" stroke="var(--beeld-lijn)" stroke-width="4" opacity="0.32" />
+      <circle cx="200" cy="100" r="24" fill="var(--beeld-vlak)" />
+      <circle cx="286" cy="58" r="14" fill="var(--beeld-lijn)" opacity="0.25" />
+      <circle cx="116" cy="146" r="9" fill="var(--beeld-lijn)" opacity="0.25" />
+    </>
+  )}
+
+  {gekozen === 'vlecht' && (
+    <>
+      <path d="M-10 148 C90 148, 110 52, 200 52 C290 52, 310 148, 410 148" fill="none" stroke="var(--beeld-vlak)" stroke-width="20" stroke-linecap="round" />
+      <path d="M-10 52 C90 52, 110 148, 200 148 C290 148, 310 52, 410 52" fill="none" stroke="var(--beeld-lijn)" stroke-width="6" stroke-linecap="round" opacity="0.35" />
+      <circle cx="200" cy="100" r="10" fill="var(--beeld-lijn)" opacity="0.45" />
+    </>
+  )}
+
+  {gekozen === 'kiem' && (
+    <>
+      {kiemVormen.map(([x, y, b, h, hoek], i) => (
+        <rect
+          x={x}
+          y={y}
+          width={b}
+          height={h}
+          rx={h / 2}
+          transform={`rotate(${hoek} ${x + b / 2} ${y + h / 2})`}
+          fill={i % 2 === 0 ? 'var(--beeld-vlak)' : 'var(--beeld-lijn)'}
+          opacity={i % 2 === 0 ? '1' : '0.22'}
+        />
+      ))}
+      <circle cx="330" cy="70" r="8" fill="var(--beeld-lijn)" opacity="0.3" />
+      <circle cx="92" cy="140" r="6" fill="var(--beeld-lijn)" opacity="0.3" />
+    </>
+  )}
+</svg>

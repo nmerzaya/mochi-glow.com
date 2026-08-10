@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArtikelLayout from '../../layouts/ArtikelLayout.astro';
+
+export async function getStaticPaths() {
+  const artikelen = await getCollection('ingredienten');
+  return artikelen.map((artikel) => ({
+    params: { slug: artikel.id },
+    props: { artikel },
+  }));
+}
+
+const { artikel } = Astro.props;
+const { Content } = await render(artikel);
+const d = artikel.data;
+---
+
+<ArtikelLayout
+  titel={d.titel}
+  beschrijving={d.beschrijving}
+  publicatiedatum={d.publicatiedatum}
+  bijgewerkt={d.bijgewerkt}
+  auteur={d.auteur}
+  affiliate={d.affiliate}
+  productType={d.productType}
+  gezondheidsclaims={d.gezondheidsclaims}
+  bronnen={d.bronnen}
+  tags={d.tags}
+  accent={d.accent}
+  inci={d.inci}
+  pijler="ingredienten"
+  zaad={artikel.id}
+  motief={d.motief}
+>
+  <Content />
+</ArtikelLayout>

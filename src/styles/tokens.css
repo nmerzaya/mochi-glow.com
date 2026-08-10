@@ -1,0 +1,100 @@
+/*
+  Mochi Glow — ontwerptokens
+  ==========================
+
+  Palet en typografie volgen uit `onderzoek/04-vormgeving-en-eisen.md`, par. 4.1:
+  licht en warm, veel witruimte, en kleur die het werk doet dat fotografie
+  normaal doet (dit project heeft geen eigen productfotografie).
+
+  Alle tekstkleuren zijn getoetst op WCAG 2.2 AA (>= 4.5:1 op de crème
+  achtergrond). De "-zacht" varianten zijn uitsluitend voor vlakken en randen,
+  nooit voor tekst.
+*/
+
+:root {
+  /* --- Basis --- */
+  --kleur-achtergrond: #fdf8f4; /* crème */
+  --kleur-oppervlak: #ffffff;
+  --kleur-rand: #eadfd8;
+
+  /* --- Tekst --- */
+  --kleur-inkt: #2b2028; /* ~15:1 op crème */
+  --kleur-inkt-zacht: #665a62; /* ~6,2:1 op crème */
+
+  /* --- Accenten: tekstveilig (AA) --- */
+  --kleur-roze: #a84a67; /* ~5,2:1 */
+  --kleur-paars: #6d4e9c;
+  --kleur-perzik: #a4552a;
+  --kleur-mint: #2e7360;
+
+  /* --- Accenten: alleen voor vlakken en randen --- */
+  --kleur-roze-zacht: #f6dde4;
+  --kleur-paars-zacht: #eae2f6;
+  --kleur-perzik-zacht: #fbe5d4;
+  --kleur-mint-zacht: #dcefe7;
+
+  /* --- Functioneel --- */
+  --kleur-let-op: #8a4b12;
+  --kleur-let-op-zacht: #fdf0e2;
+
+  /* --- Typografie --- */
+  --font-tekst: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-kop: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  --tekst-xs: 0.8125rem;
+  --tekst-s: 0.9375rem;
+  --tekst-m: 1.0625rem;
+  --tekst-l: 1.25rem;
+  --tekst-xl: 1.625rem;
+  --tekst-2xl: 2.125rem;
+  --tekst-3xl: 2.75rem;
+
+  --regelhoogte-tekst: 1.7;
+  --regelhoogte-kop: 1.2;
+
+  /* --- Ritme --- */
+  --ruimte-1: 0.25rem;
+  --ruimte-2: 0.5rem;
+  --ruimte-3: 0.75rem;
+  --ruimte-4: 1rem;
+  --ruimte-5: 1.5rem;
+  --ruimte-6: 2rem;
+  --ruimte-7: 3rem;
+  --ruimte-8: 4rem;
+  --ruimte-9: 6rem;
+
+  /* --- Vorm: rond, passend bij "mochi" --- */
+  --rond-s: 8px;
+  --rond-m: 14px;
+  --rond-l: 22px;
+  --rond-vol: 999px;
+
+  --schaduw-zacht: 0 1px 2px rgba(43, 32, 40, 0.04), 0 6px 20px rgba(43, 32, 40, 0.06);
+
+  /* --- Breedtes --- */
+  --breedte-tekst: 68ch;
+  --breedte-pagina: 1120px;
+}
+
+/*
+  De site is bewust licht (zie onderzoek 04, par. 3a: dit is een keuze tegen de
+  bredere "dark design"-trend in). Wie systeembreed donker heeft ingesteld krijgt
+  daarom geen omgekeerd palet, maar wel iets minder fel wit.
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --kleur-achtergrond: #f7f1ec;
+    --kleur-oppervlak: #fffdfb;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

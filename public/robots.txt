@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# De beheeromgeving hoort niet in zoekresultaten.
+Disallow: /admin/
+
+Sitemap: https://mochi-glow.com/sitemap-index.xml

@@ -1,0 +1,108 @@
+---
+import BasisLayout from '../layouts/BasisLayout.astro';
+import { advertentiesActief } from '../config';
+
+const bijgewerkt = '10 augustus 2026';
+---
+
+<BasisLayout
+  titel="Cookiebeleid"
+  beschrijving="Welke cookies Mochi Glow plaatst, waarvoor, en hoe je je keuze kunt aanpassen."
+>
+  <div class="prozapagina">
+    <h1>Cookiebeleid</h1>
+    <p>Laatst bijgewerkt: {bijgewerkt}</p>
+
+    <h2>Kort samengevat</h2>
+    {
+      advertentiesActief ? (
+        <p>
+          Deze site plaatst alleen advertentiecookies, en alleen als je daar toestemming voor geeft.
+          Weiger je, dan gebeurt er niets en blijft de site gewoon werken.
+        </p>
+      ) : (
+        <p>
+          <strong>Deze site plaatst op dit moment geen enkele cookie.</strong> Er is geen analytics,
+          geen advertentienetwerk en geen trackingscript actief. Daarom zie je ook geen
+          toestemmingsvenster: een cookiemelding tonen voor cookies die niet geplaatst worden, wekt
+          ten onrechte de indruk dat er iets gevolgd wordt.
+        </p>
+      )
+    }
+
+    <h2>Wat een cookie is</h2>
+    <p>
+      Een cookie is een klein bestandje dat een website in je browser kan opslaan. Dat kan onschuldig
+      zijn (onthouden welke taal je koos) of juist niet (je gedrag volgen over meerdere sites). Voor
+      alles wat niet strikt noodzakelijk is om de site te laten werken, is vooraf jouw toestemming
+      nodig.
+    </p>
+
+    <h2>Welke cookies er zijn</h2>
+    {
+      advertentiesActief ? (
+        <div class="tabel-omhulsel">
+          <table>
+            <thead>
+              <tr>
+                <th>Cookie</th>
+                <th>Van wie</th>
+                <th>Waarvoor</th>
+                <th>Bewaartermijn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>mochiglow-toestemming</td>
+                <td>Deze site</td>
+                <td>Onthoudt jouw keuze in het toestemmingsvenster, zodat die niet elk bezoek opnieuw gevraagd wordt.</td>
+                <td>180 dagen</td>
+              </tr>
+              <tr>
+                <td>Diverse (Google)</td>
+                <td>Google AdSense</td>
+                <td>Advertenties tonen en meten. Worden pas geplaatst ná jouw toestemming.</td>
+                <td>Zie het privacybeleid van Google</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p>
+          Geen. Zodra dat verandert, komt hier een overzicht met per cookie de naam, de partij, het
+          doel en de bewaartermijn, en verschijnt er een toestemmingsvenster dat standaard alles
+          weigert tot je zelf iets anders kiest.
+        </p>
+      )
+    }
+
+    <h2>Je keuze aanpassen</h2>
+    {
+      advertentiesActief ? (
+        <p>
+          Je kunt je keuze op elk moment wijzigen of intrekken via het toestemmingsvenster. Daarnaast
+          kun je in je browserinstellingen cookies verwijderen of blokkeren.
+        </p>
+      ) : (
+        <p>
+          Er valt op dit moment niets aan te passen, omdat er niets geplaatst wordt. Je kunt in je
+          browser natuurlijk altijd cookies blokkeren of verwijderen.
+        </p>
+      )
+    }
+
+    <h2>Hoe dit technisch geregeld is</h2>
+    <p>
+      Voor toestemming gebruikt deze site Klaro, een open source oplossing die op deze server zelf
+      draait — er wordt dus geen externe toestemmingsdienst ingeschakeld die op zijn beurt weer
+      gegevens over je zou verwerken. Scripts die toestemming vereisen, worden geblokkeerd totdat je
+      toestemming geeft; ze staan tot dat moment in een vorm die de browser niet uitvoert.
+    </p>
+
+    <h2>Externe links</h2>
+    <p>
+      Klik je door naar een webwinkel of een andere site, dan gelden daar de cookies en het beleid van
+      die partij. Daar heb ik geen invloed op.
+    </p>
+  </div>
+</BasisLayout>

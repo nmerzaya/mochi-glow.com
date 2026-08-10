@@ -1,0 +1,97 @@
+---
+import BasisLayout from '../layouts/BasisLayout.astro';
+import { site } from '../config';
+
+const bijgewerkt = '10 augustus 2026';
+---
+
+<BasisLayout
+  titel="Algemene voorwaarden"
+  beschrijving="De voorwaarden voor het gebruik van Mochi Glow: aansprakelijkheid, auteursrecht en toepasselijk recht."
+>
+  <div class="prozapagina">
+    <h1>Algemene voorwaarden</h1>
+    <p>Laatst bijgewerkt: {bijgewerkt}</p>
+
+    <p>
+      Door {site.domein} te gebruiken ga je akkoord met onderstaande voorwaarden. Ze zijn kort
+      gehouden en in gewone taal geschreven.
+    </p>
+
+    <h2>1. Waarvoor deze site bedoeld is</h2>
+    <p>
+      {site.naam} is een informatieve website over verzorgingsingrediënten en over de verbinding
+      tussen darm en huid. De inhoud is algemeen van aard en bedoeld om je beter te informeren.
+    </p>
+
+    <h2>2. Geen medisch advies</h2>
+    <p>
+      Niets op deze site is medisch, diëtistisch of farmaceutisch advies. De artikelen worden
+      geschreven door iemand zonder medische opleiding en zijn samenvattingen van openbaar
+      beschikbare informatie. Ze vervangen geen consult bij een arts, apotheker, diëtist of
+      huidtherapeut.
+    </p>
+    <p>
+      Heb je klachten, gebruik je medicijnen, ben je zwanger of twijfel je ergens over: raadpleeg
+      iemand die je persoonlijk kan beoordelen. Stel een bezoek aan een arts nooit uit op basis van
+      iets wat je hier leest.
+    </p>
+
+    <h2>3. Geen productbeoordelingen</h2>
+    <p>
+      Er worden op deze site geen producten getest, gekocht of persoonlijk beoordeeld. Uitspraken
+      over ingrediënten gaan over het ingrediënt en niet over een specifiek merk of product.
+    </p>
+
+    <h2>4. Nauwkeurigheid en actualiteit</h2>
+    <p>
+      De informatie wordt met zorg samengesteld en van bronvermelding voorzien, maar kan verouderen:
+      onderzoek schrijdt voort en regelgeving verandert. Er wordt geen garantie gegeven dat alle
+      informatie op elk moment volledig, actueel en foutloos is. Zie je een fout, meld het via
+      <a href="/contact">contact</a>; correcties worden doorgevoerd en gedateerd.
+    </p>
+
+    <h2>5. Aansprakelijkheid</h2>
+    <p>
+      Gebruik van de informatie op deze site is voor eigen rekening en risico. Aansprakelijkheid voor
+      schade die voortvloeit uit het gebruik van deze site of van de informatie erop wordt
+      uitgesloten, voor zover dat wettelijk is toegestaan. Deze uitsluiting geldt niet bij opzet of
+      bewuste roekeloosheid.
+    </p>
+
+    <h2>6. Links naar andere sites</h2>
+    <p>
+      Deze site verwijst naar externe pagina's, waaronder webwinkels. Voor de inhoud, de
+      beschikbaarheid en het beleid van die sites ben ik niet verantwoordelijk. Sommige links zijn
+      affiliate-links; zie de <a href="/affiliate-disclaimer">affiliate-disclaimer</a>.
+    </p>
+
+    <h2>7. Auteursrecht</h2>
+    <p>
+      De teksten op deze site zijn auteursrechtelijk beschermd. Je mag eruit citeren met
+      bronvermelding en een link. Het integraal overnemen of herpubliceren van artikelen, ook in
+      bewerkte vorm of als input voor geautomatiseerde tekstgeneratie, is niet toegestaan zonder
+      voorafgaande toestemming.
+    </p>
+    <p>
+      De onderliggende broncode van deze site is apart en open source beschikbaar onder de
+      MIT-licentie. Die licentie geldt uitsluitend voor de code, niet voor de artikelteksten.
+    </p>
+
+    <h2>8. Wijzigingen</h2>
+    <p>
+      Deze voorwaarden kunnen worden aangepast. De datum bovenaan geeft aan wanneer dat voor het
+      laatst gebeurd is.
+    </p>
+
+    <h2>9. Toepasselijk recht</h2>
+    <p>
+      Op het gebruik van deze site is Nederlands recht van toepassing.
+    </p>
+
+    <h2>10. Contact</h2>
+    <p>
+      Vragen over deze voorwaarden: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+    </p>
+  </div>
+</BasisLayout>

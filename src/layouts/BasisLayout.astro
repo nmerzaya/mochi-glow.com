@@ -1,0 +1,90 @@
+---
+import { site } from '../config';
+import Kop from '../components/Kop.astro';
+import Voet from '../components/Voet.astro';
+import CookieToestemming from '../components/CookieToestemming.astro';
+import '../styles/globaal.css';
+
+interface Props {
+  titel: string;
+  beschrijving: string;
+  /** `article` zet Open Graph op artikelmodus; standaard `website`. */
+  soort?: 'website' | 'article';
+  publicatiedatum?: Date;
+  bijgewerkt?: Date;
+  /** Zet `noindex` voor pagina's die niet in de zoekresultaten horen. */
+  verbergVoorZoekmachines?: boolean;
+}
+
+const {
+  titel,
+  beschrijving,
+  soort = 'website',
+  publicatiedatum,
+  bijgewerkt,
+  verbergVoorZoekmachines = false,
+} = Astro.props;
+
+const canoniek = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const volledigeTitel = titel === site.naam ? `${site.naam} — ${site.tagline}` : `${titel} | ${site.naam}`;
+
+const gestructureerdeData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.naam,
+  url: site.url,
+  description: site.beschrijving,
+  inLanguage: 'nl-NL',
+  publisher: {
+    '@type': 'Organization',
+    name: site.naam,
+    url: site.url,
+  },
+};
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{volledigeTitel}</title>
+    <meta name="description" content={beschrijving} />
+    <link rel="canonical" href={canoniek} />
+    {verbergVoorZoekmachines && <meta name="robots" content="noindex, follow" />}
+
+    <meta property="og:type" content={soort} />
+    <meta property="og:site_name" content={site.naam} />
+    <meta property="og:title" content={titel} />
+    <meta property="og:description" content={beschrijving} />
+    <meta property="og:url" content={canoniek} />
+    <meta property="og:locale" content="nl_NL" />
+    {publicatiedatum && <meta property="article:published_time" content={publicatiedatum.toISOString()} />}
+    {bijgewerkt && <meta property="article:modified_time" content={bijgewerkt.toISOString()} />}
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="alternate" type="application/rss+xml" title={site.naam} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Geen externe lettertypen: dat zou een verbinding met een derde partij
+         opzetten en daarmee een AVG-vraagstuk creëren voor iets cosmetisch. -->
+    <meta name="theme-color" content="#fdf8f4" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(gestructureerdeData)} />
+
+    {/* Pagina's kunnen hier extra head-inhoud plaatsen, zoals Article-structuurdata. */}
+    <slot name="hoofd" />
+  </head>
+
+  <body>
+    <a class="sla-over" href="#inhoud">Naar de inhoud</a>
+    <Kop />
+    <main id="inhoud">
+      <div class="omhulsel">
+        <slot />
+      </div>
+    </main>
+    <Voet />
+    <CookieToestemming />
+  </body>
+</html>

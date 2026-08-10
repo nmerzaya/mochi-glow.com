@@ -1,0 +1,27 @@
+# Afhankelijkheden — bewust buiten OneDrive-sync houden waar mogelijk,
+# omdat sync de build vertraagt en bestanden kan vergrendelen.
+node_modules/
+
+# Build-output
+dist/
+.astro/
+
+# Wordt bij elke build uit node_modules gekopieerd (scripts/kopieer-klaro.mjs)
+public/klaro/
+
+# Omgevingsvariabelen
+.env
+.env.production
+
+# Lokale werkinstellingen van Claude Code — persoonlijk, hoort niet in een publieke repo.
+.claude/settings.local.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Besturingssysteem
+.DS_Store
+Thumbs.db
+desktop.ini

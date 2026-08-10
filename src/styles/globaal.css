@@ -1,0 +1,621 @@
+@import './tokens.css';
+
+/* ------------------------------------------------------------------ *
+   Basis
+ * ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--kleur-achtergrond);
+  color: var(--kleur-inkt);
+  font-family: var(--font-tekst);
+  font-size: var(--tekst-m);
+  line-height: var(--regelhoogte-tekst);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-kop);
+  line-height: var(--regelhoogte-kop);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--ruimte-4);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--tekst-3xl);
+}
+h2 {
+  font-size: var(--tekst-xl);
+  margin-top: var(--ruimte-7);
+}
+h3 {
+  font-size: var(--tekst-l);
+  margin-top: var(--ruimte-6);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--ruimte-5);
+}
+
+li + li {
+  margin-top: var(--ruimte-2);
+}
+
+a {
+  color: var(--kleur-roze);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Zichtbare focus is een AA-vereiste; nooit weghalen. */
+:focus-visible {
+  outline: 3px solid var(--kleur-paars);
+  outline-offset: 2px;
+  border-radius: var(--rond-s);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--kleur-rand);
+  margin: var(--ruimte-7) 0;
+}
+
+blockquote {
+  margin: var(--ruimte-6) 0;
+  padding: var(--ruimte-4) var(--ruimte-5);
+  background: var(--kleur-oppervlak);
+  border-left: 4px solid var(--kleur-roze-zacht);
+  border-radius: 0 var(--rond-m) var(--rond-m) 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+code {
+  background: var(--kleur-oppervlak);
+  padding: 0.15em 0.4em;
+  border-radius: var(--rond-s);
+  font-size: 0.9em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--ruimte-5) 0;
+  font-size: var(--tekst-s);
+}
+
+th,
+td {
+  text-align: left;
+  padding: var(--ruimte-3);
+  border-bottom: 1px solid var(--kleur-rand);
+  vertical-align: top;
+}
+
+th {
+  font-weight: 600;
+}
+
+/* Brede tabellen mogen zelf schuiven, de pagina niet. */
+.tabel-omhulsel {
+  overflow-x: auto;
+}
+
+/* ------------------------------------------------------------------ *
+   Structuur
+ * ------------------------------------------------------------------ */
+
+.omhulsel {
+  width: 100%;
+  max-width: var(--breedte-pagina);
+  margin-inline: auto;
+  padding-inline: var(--ruimte-5);
+}
+
+main {
+  flex: 1;
+  padding-block: var(--ruimte-7) var(--ruimte-9);
+}
+
+.sla-over {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--kleur-inkt);
+  color: var(--kleur-achtergrond);
+  padding: var(--ruimte-3) var(--ruimte-4);
+  border-radius: 0 0 var(--rond-m) 0;
+  z-index: 100;
+}
+
+.sla-over:focus {
+  left: 0;
+}
+
+/* ------------------------------------------------------------------ *
+   Koptekst en navigatie
+ * ------------------------------------------------------------------ */
+
+.kop {
+  background: var(--kleur-achtergrond);
+  border-bottom: 1px solid var(--kleur-rand);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.kop__binnen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ruimte-5);
+  min-height: 72px;
+  flex-wrap: wrap;
+}
+
+.merk {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  text-decoration: none;
+  color: var(--kleur-inkt);
+  font-size: var(--tekst-l);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  padding-block: var(--ruimte-3);
+}
+
+.merk__stip {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: var(--rond-vol);
+  background: var(--kleur-roze);
+  display: inline-block;
+}
+
+.merk__naam {
+  text-transform: lowercase;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--ruimte-5);
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--kleur-inkt);
+  text-decoration: none;
+  font-size: var(--tekst-s);
+  padding-block: var(--ruimte-2);
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover,
+.nav a[aria-current='page'] {
+  border-bottom-color: var(--kleur-roze);
+}
+
+/* ------------------------------------------------------------------ *
+   Voettekst
+ * ------------------------------------------------------------------ */
+
+.voet {
+  background: var(--kleur-oppervlak);
+  border-top: 1px solid var(--kleur-rand);
+  padding-block: var(--ruimte-7);
+  font-size: var(--tekst-s);
+  color: var(--kleur-inkt-zacht);
+}
+
+.voet__raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--ruimte-6);
+}
+
+.voet h2 {
+  font-size: var(--tekst-s);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--kleur-inkt);
+  margin: 0 0 var(--ruimte-3);
+}
+
+.voet ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.voet a {
+  color: var(--kleur-inkt-zacht);
+}
+
+.voet__onder {
+  margin-top: var(--ruimte-6);
+  padding-top: var(--ruimte-5);
+  border-top: 1px solid var(--kleur-rand);
+}
+
+/* ------------------------------------------------------------------ *
+   Kaarten
+ * ------------------------------------------------------------------ */
+
+.kaartenraster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--ruimte-5);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kaartenraster li + li {
+  margin-top: 0;
+}
+
+.kaart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--kleur-oppervlak);
+  border: 1px solid var(--kleur-rand);
+  border-radius: var(--rond-l);
+  padding: var(--ruimte-5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kaart:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--schaduw-zacht);
+}
+
+.kaart__vlak {
+  height: 112px;
+  border-radius: var(--rond-m);
+  margin-bottom: var(--ruimte-4);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-size: var(--tekst-2xl);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.kaart__titel {
+  font-size: var(--tekst-l);
+  margin: 0 0 var(--ruimte-3);
+}
+
+.kaart__titel a {
+  color: var(--kleur-inkt);
+  text-decoration: none;
+}
+
+/* Maakt de hele kaart klikbaar zonder de link uit de tabvolgorde te halen. */
+.kaart__titel a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--rond-l);
+}
+
+.kaart__titel a:hover {
+  color: var(--kleur-roze);
+}
+
+.kaart__tekst {
+  color: var(--kleur-inkt-zacht);
+  font-size: var(--tekst-s);
+  margin: 0 0 var(--ruimte-4);
+}
+
+.kaart__voet {
+  margin-top: auto;
+  font-size: var(--tekst-xs);
+  color: var(--kleur-inkt-zacht);
+  display: flex;
+  gap: var(--ruimte-3);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------------ *
+   Illustraties
+
+   Eigen SVG in plaats van fotografie (zie ArtikelBeeld.astro). De illustratie
+   vult zijn kader volledig; het kader bepaalt de hoogte, niet de tekening.
+ * ------------------------------------------------------------------ */
+
+.beeld {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.artikel__beeld {
+  height: 172px;
+  border-radius: var(--rond-l);
+  overflow: hidden;
+  margin: var(--ruimte-6) 0 var(--ruimte-7);
+}
+
+@media (max-width: 40rem) {
+  .artikel__beeld {
+    height: 128px;
+  }
+}
+
+/* Accentvarianten — vervangen de productfotografie die dit project niet heeft. */
+.accent-roze .kaart__vlak {
+  background: var(--kleur-roze-zacht);
+  color: var(--kleur-roze);
+}
+.accent-paars .kaart__vlak {
+  background: var(--kleur-paars-zacht);
+  color: var(--kleur-paars);
+}
+.accent-perzik .kaart__vlak {
+  background: var(--kleur-perzik-zacht);
+  color: var(--kleur-perzik);
+}
+.accent-mint .kaart__vlak {
+  background: var(--kleur-mint-zacht);
+  color: var(--kleur-mint);
+}
+
+/* ------------------------------------------------------------------ *
+   Etiketten
+ * ------------------------------------------------------------------ */
+
+.etiket {
+  display: inline-block;
+  font-size: var(--tekst-xs);
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--rond-vol);
+  background: var(--kleur-roze-zacht);
+  color: var(--kleur-roze);
+  text-decoration: none;
+}
+
+.etiket--paars {
+  background: var(--kleur-paars-zacht);
+  color: var(--kleur-paars);
+}
+
+.etiket--mint {
+  background: var(--kleur-mint-zacht);
+  color: var(--kleur-mint);
+}
+
+/* ------------------------------------------------------------------ *
+   Artikel
+ * ------------------------------------------------------------------ */
+
+.artikel {
+  max-width: var(--breedte-tekst);
+  margin-inline: auto;
+}
+
+.artikel__kop {
+  margin-bottom: var(--ruimte-6);
+}
+
+.artikel__meta {
+  font-size: var(--tekst-s);
+  color: var(--kleur-inkt-zacht);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ruimte-3);
+  align-items: center;
+  margin-top: var(--ruimte-4);
+}
+
+.artikel__inhoud > :first-child {
+  margin-top: 0;
+}
+
+.artikel__inhoud h2 {
+  padding-top: var(--ruimte-2);
+}
+
+/* ------------------------------------------------------------------ *
+   Meldingen: disclosure, disclaimer
+ * ------------------------------------------------------------------ */
+
+.melding {
+  border-radius: var(--rond-m);
+  padding: var(--ruimte-4) var(--ruimte-5);
+  margin-bottom: var(--ruimte-6);
+  font-size: var(--tekst-s);
+  border: 1px solid transparent;
+}
+
+.melding > :last-child {
+  margin-bottom: 0;
+}
+
+.melding--disclosure {
+  background: var(--kleur-perzik-zacht);
+  border-color: #f0d3ba;
+  color: var(--kleur-let-op);
+}
+
+.melding--medisch {
+  background: var(--kleur-mint-zacht);
+  border-color: #c2e2d5;
+  color: var(--kleur-mint);
+}
+
+/* ------------------------------------------------------------------ *
+   Bronnen
+ * ------------------------------------------------------------------ */
+
+.bronnen {
+  margin-top: var(--ruimte-8);
+  padding-top: var(--ruimte-5);
+  border-top: 2px solid var(--kleur-rand);
+}
+
+.bronnen h2 {
+  margin-top: 0;
+  font-size: var(--tekst-l);
+}
+
+.bronnen ol {
+  padding-left: 1.2rem;
+  font-size: var(--tekst-s);
+  color: var(--kleur-inkt-zacht);
+}
+
+.bronnen__type {
+  display: inline-block;
+  font-size: var(--tekst-xs);
+  border: 1px solid var(--kleur-rand);
+  border-radius: var(--rond-vol);
+  padding: 0 0.5rem;
+  margin-left: var(--ruimte-2);
+  color: var(--kleur-inkt-zacht);
+}
+
+/* ------------------------------------------------------------------ *
+   Hero en secties
+ * ------------------------------------------------------------------ */
+
+.hero {
+  padding-block: var(--ruimte-8) var(--ruimte-7);
+  text-align: center;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.hero h1 {
+  text-transform: lowercase;
+  margin-bottom: var(--ruimte-4);
+}
+
+.hero__intro {
+  font-size: var(--tekst-l);
+  color: var(--kleur-inkt-zacht);
+}
+
+.sectie {
+  margin-top: var(--ruimte-8);
+}
+
+.sectie__kop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ruimte-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--ruimte-5);
+}
+
+.sectie__kop h2 {
+  margin: 0;
+}
+
+.knop {
+  display: inline-block;
+  background: var(--kleur-inkt);
+  color: var(--kleur-achtergrond);
+  text-decoration: none;
+  padding: var(--ruimte-3) var(--ruimte-5);
+  border-radius: var(--rond-vol);
+  font-size: var(--tekst-s);
+  border: 0;
+  cursor: pointer;
+}
+
+.knop:hover {
+  background: var(--kleur-roze);
+}
+
+.knop--stil {
+  background: transparent;
+  color: var(--kleur-roze);
+  border: 1px solid var(--kleur-rand);
+}
+
+.knop--stil:hover {
+  background: var(--kleur-roze-zacht);
+  color: var(--kleur-roze);
+}
+
+/* ------------------------------------------------------------------ *
+   Inhoudspagina's (privacy, voorwaarden, enzovoort)
+ * ------------------------------------------------------------------ */
+
+.prozapagina {
+  max-width: var(--breedte-tekst);
+  margin-inline: auto;
+}
+
+.prozapagina h1 + p {
+  font-size: var(--tekst-l);
+  color: var(--kleur-inkt-zacht);
+}
+
+/* ------------------------------------------------------------------ *
+   Kleinere schermen
+ * ------------------------------------------------------------------ */
+
+@media (max-width: 640px) {
+  :root {
+    --tekst-3xl: 2rem;
+    --tekst-2xl: 1.75rem;
+    --tekst-xl: 1.4rem;
+  }
+
+  .kop__binnen {
+    min-height: 0;
+    padding-block: var(--ruimte-3);
+  }
+
+  .nav {
+    gap: var(--ruimte-4);
+  }
+}
+
+@media print {
+  .kop,
+  .voet,
+  .melding--disclosure {
+    display: none;
+  }
+}

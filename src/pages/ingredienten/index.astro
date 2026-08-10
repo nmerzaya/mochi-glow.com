@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BasisLayout from '../../layouts/BasisLayout.astro';
+import ArtikelKaart from '../../components/ArtikelKaart.astro';
+
+const artikelen = (await getCollection('ingredienten')).sort(
+  (a, b) => b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime(),
+);
+---
+
+<BasisLayout
+  titel="K-beauty-ingrediënten"
+  beschrijving="Uitleg over de ingrediënten die je op Koreaanse verzorgingsproducten tegenkomt: wat het is, waar het vandaan komt, en wat het onderzoek erover zegt."
+>
+  <div class="hero">
+    <h1>ingrediënten</h1>
+    <p class="hero__intro">
+      Wat is snail mucin nou eigenlijk, en waarom staat niacinamide op zowat elk etiket? Hieronder
+      staat per ingrediënt wat het is, hoe het volgens onderzoek werkt, en waar de grenzen van dat
+      onderzoek liggen.
+    </p>
+  </div>
+
+  {
+    artikelen.length === 0 ? (
+      <p>Er staan nog geen artikelen in deze categorie.</p>
+    ) : (
+      <ul class="kaartenraster">
+        {artikelen.map((artikel) => (
+          <ArtikelKaart
+            titel={artikel.data.titel}
+            beschrijving={artikel.data.beschrijving}
+            url={`/ingredienten/${artikel.id}`}
+            publicatiedatum={artikel.data.publicatiedatum}
+            accent={artikel.data.accent}
+            affiliate={artikel.data.affiliate}
+          />
+        ))}
+      </ul>
+    )
+  }
+</BasisLayout>
