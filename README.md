@@ -3,8 +3,12 @@
 Nederlandstalige contentsite over K-beauty-ingrediënten en de verbinding tussen darm en huid.
 Statisch gebouwd met Astro, zonder externe verzoeken en zonder tracking.
 
-> **Status:** in aanbouw. De site draait lokaal, maar staat nog niet online. Domein, GitHub-repo,
-> hosting en monetisatie volgen in latere fases — zie `TAKEN.md`.
+> **Status:** inhoudelijk compleet, nog niet online. 16 artikelen over twee pijlers, alle verplichte
+> pagina's, en een build die slaagt. Het domein `mochi-glow.com` is geregistreerd; de repo staat nog
+> niet op GitHub en er is nog geen hosting gekoppeld.
+>
+> **Om live te gaan: volg `DEPLOY.md`.** Begin bij stap 0 — die schermt je e-mailadres af voordat er
+> iets publiek wordt.
 
 ## Aan de slag
 
@@ -65,6 +69,8 @@ Elke keuze in dit project komt voort uit het onderzoek in `onderzoek/`. Lees `CL
 `ARCHITECTUUR.md`, `PLAN.md` en `TAKEN.md` voordat je iets structureels wijzigt.
 
 ## Nog te doen voor livegang
+
+De volledige route staat in **`DEPLOY.md`**. Kort samengevat blijven deze vier waarden nog open:
 
 - `public/admin/config.yml`: veld `repo` invullen zodra de GitHub-repo bestaat.
 - `data/toegestane-claims.json`: elke claim nalezen in het officiële EU-register en `geverifieerd` op

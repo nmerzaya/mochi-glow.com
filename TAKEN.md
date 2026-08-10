@@ -36,15 +36,13 @@ Alle pagina's hieronder staan in `src/pages/` en worden meegebouwd. Er is er é�
 
 ## Fase 3 — Eerste contentbatch (vóór welke aanvraag dan ook)
 
-Dit is de fase waar het werk nu ligt. Stand: **4 van de 15-20 artikelen**, allemaal in de ingrediënten-pijler (`centella-asiatica`, `hyaluronzuur`, `niacinamide`, `snail-mucin`). De gut-skin-pijler is nog leeg — `src/content/gut-skin/` bestaat nog niet eens, wat de bekende build-waarschuwing verklaart.
+Stand: **16 artikelen** — tien in de ingrediënten-pijler en zes in de gut-skin-pijler. Daarmee is de ondergrens gehaald. De taal- en claimregels hieronder worden mechanisch afgedwongen door `npm run check`, dat als eerste stap van elke build draait.
 
-De vier punten hieronder over taal, claims en testervaring worden inmiddels mechanisch afgedwongen door `npm run check`; ze blijven open zolang de artikelen zelf er nog niet zijn.
-
-- [ ] Minimaal 15-20 artikelen schrijven, verdeeld over beide pijlers, elk 800+ woorden en origineel.
-- [ ] Elk artikel met affiliate-link: disclosure-tekst als eerste zin (automatisch via het contentschema, zie `ARCHITECTUUR.md`).
-- [ ] Elk artikel over darmgezondheid: claims aftoetsen tegen het EFSA-register (Verordening 1924/2006) — geen ongeautoriseerde gezondheidsclaims.
-- [ ] Elk artikel over cosmetica: geen therapeutische/medische taal ("geneest", "vermindert ontsteking") — check tegen Verordening 1223/2009 en 655/2013.
-- [ ] Geen enkel artikel suggereert eigen testervaring (geen producten aangeschaft — zie `CLAUDE.md`, afspraken).
+- [x] Minimaal 15-20 artikelen schrijven, verdeeld over beide pijlers, elk 800+ woorden en origineel. → 16 stuks; de 800-woordengrens wordt door de controle afgedwongen, dus geen enkel artikel kan eronder zitten.
+- [x] Elk artikel met affiliate-link: disclosure-tekst als eerste zin (automatisch via het contentschema, zie `ARCHITECTUUR.md`). → Het mechanisme staat en is niet te omzeilen. Er is op dit moment nog géén artikel met `affiliate: true`, want er zijn nog geen affiliate-programma's (Fase 4).
+- [ ] Elk artikel over darmgezondheid: claims aftoetsen tegen het EFSA-register (Verordening 1924/2006) — geen ongeautoriseerde gezondheidsclaims. → De artikelen doen bewust géén gezondheidsclaim; `probiotica-en-de-europese-regels` legt uit waarom dat niet mag. Eén artikel (`vitamine-c`) haalt de toegestane bewoording letterlijk aan. Dit punt blijft open tot `data/toegestane-claims.json` handmatig in het register is nagelopen en op `geverifieerd: true` staat.
+- [x] Elk artikel over cosmetica: geen therapeutische/medische taal ("geneest", "vermindert ontsteking") — check tegen Verordening 1223/2009 en 655/2013. → Afgedwongen door `npm run check`; waar een verboden term beschrijvend voorkomt, staat er een `taalUitzondering` met reden bij.
+- [x] Geen enkel artikel suggereert eigen testervaring (geen producten aangeschaft — zie `CLAUDE.md`, afspraken). → Ook mechanisch afgedwongen.
 - [ ] Site minimaal 3-6 maanden laten "rijpen" (bestaan, geïndexeerd worden) vóór Fase 4 — dit is een harde practische verwachting uit het onderzoek, geen bureaucratische stap.
 
 ## Fase 4 — Monetisatie aanvragen (pas na Fase 3)

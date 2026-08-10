@@ -18,11 +18,13 @@ Volledige onderbouwing van alle keuzes staat in de map `onderzoek/` (zie onderaa
 
 ## Huidige staat
 
-De site is gescaffold en draait lokaal; hij staat nog niet online. Wat er staat: het Astro-project, het contentschema, de compliance-controle, alle verplichte pagina's, het ontwerpsysteem en de Sveltia-CMS-configuratie. Wat er nog niet is: een git-repo (`.gitignore` bestaat wel, maar `git init` is nog niet gedaan), een GitHub-remote, Cloudflare Pages, en de contentbatch — er staan vier artikelen in `src/content/ingredienten/` en **nul** in de gut-skin-pijler.
+De site is compleet en bouwt lokaal (27 pagina's), maar staat nog niet online. Er is een lokale git-repo met één commit; er is nog **geen** GitHub-remote en nog **geen** Cloudflare Pages-project. `DEPLOY.md` beschrijft die stappen; ze vragen allemaal om accounts en inloggegevens van de eigenaar.
 
-`src/content/gut-skin/` bestaat daarom nog niet als map. De build meldt dat als waarschuwing (`glob-loader: base directory does not exist` en `collection "gut-skin" does not exist or is empty`) en slaagt gewoon. Dat is geen defect en hoeft niet "gerepareerd" te worden — de waarschuwing verdwijnt zodra het eerste gut-skin-artikel bestaat.
+De contentbatch is er: **16 artikelen**, tien in `src/content/ingredienten/` en zes in `src/content/gut-skin/`. Daarmee is de ondergrens uit `PLAN.md` (15-20) gehaald.
 
-De vinkjes in `TAKEN.md` lopen achter op de werkelijkheid: Fase 0 t/m 2 zijn grotendeels uitgevoerd zonder afgevinkt te zijn. Ga bij twijfel af op wat er in de map staat, niet op de vinkjes, en vink af wat je bevestigd hebt.
+Het domein is `mochi-glow.com`, geregistreerd via Cloudflare. De site heette in een eerdere fase "Mochi Skin" op `mochiskin.nl`; die naam komt nog voor in `onderzoek/04-vormgeving-en-eisen.md`, en dat blijft zo — onderzoeksbestanden worden niet met terugwerkende kracht aangepast.
+
+Nog open vóór livegang: `repo:` in `public/admin/config.yml`, het verifiëren van `data/toegestane-claims.json`, de publisher-ID in `public/ads.txt`, en `advertentiesActief` in `src/config.ts`. Alle vier staan met uitleg in `DEPLOY.md`.
 
 ## Commando's
 
@@ -87,6 +89,7 @@ Wijk hier niet van af zonder `ARCHITECTUUR.md` → "Waarom geen andere opties" t
 - Klaro blokkeert standaard; advertentie- en analyticsscripts laden pas na toestemming, als `type="text/plain"` met `data-name="adsense"`.
 - Geen externe verzoeken vanaf de site: geen CDN's, geen externe lettertypen, geen tracking. Dat is een AVG-keuze, niet alleen een prestatiekeuze.
 - `uitgelicht`, `afbeelding` en `alt` staan wél in het schema en in de CMS-interface, maar worden nergens uitgelezen: de homepage sorteert puur op datum en toont de nieuwste zes respectievelijk drie. Ga er dus niet vanuit dat `uitgelicht: true` iets doet — bouw het eerst.
+- Beeld komt van `ArtikelBeeld.astro`: eigen, inline SVG-illustraties in de accentkleur, géén fotografie en géén AI-beeld. Het motief volgt uit het optionele veld `motief`, en anders deterministisch uit de slug — elk artikel heeft dus altijd beeld. Kaart en artikel gebruiken hetzelfde zaad zodat ze dezelfde tekening tonen. De gevulde vormen zijn wit omdat ze op een vlak in de zachte accentkleur liggen; maak ze niet accentkleurig, dan vallen ze weg tegen hun achtergrond.
 - Tekstkleuren in `src/styles/tokens.css` zijn getoetst op WCAG 2.2 AA. De `-zacht`-varianten zijn uitsluitend voor vlakken en randen, nooit voor tekst.
 
 ## Openstaande placeholders vóór livegang
