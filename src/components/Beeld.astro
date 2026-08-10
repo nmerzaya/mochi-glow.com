@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import ArtikelBeeld from './ArtikelBeeld.astro';
+import type { Motief } from './ArtikelBeeld.astro';
+
+/**
+ * Kiest het beeld bij een artikel.
+ *
+ * Staat er een foto in de frontmatter, dan wint die altijd: die wordt door
+ * `astro:assets` omgezet naar moderne formaten en meerdere breedtes, zodat een
+ * telefoon geen bestand van vier megapixel hoeft te downloaden.
+ *
+ * Staat er geen foto, dan valt het artikel terug op de eigen illustratie. Zo
+ * heeft elk artikel beeld, ook voordat er fotografie is, en kan de site stukje
+ * bij beetje van illustratie naar foto groeien zonder dat er iets omgebouwd
+ * hoeft te worden.
+ */
+
+interface Props {
+  afbeelding?: ImageMetadata;
+  alt?: string;
+  motief?: Motief;
+  accent?: 'roze' | 'paars' | 'perzik' | 'mint';
+  zaad?: string;
+  variant?: 'kaart' | 'kop';
+}
+
+const { afbeelding, alt, motief, accent = 'roze', zaad = '', variant = 'kaart' } = Astro.props;
+
+/* Op een kaart is het beeld hooguit een halve kolom breed; boven een artikel de volle breedte. */
+const breedtes = variant === 'kop' ? [640, 960, 1440, 1920] : [320, 480, 640, 960];
+const maten =
+  variant === 'kop' ? '(max-width: 1280px) 100vw, 1280px' : '(max-width: 60rem) 100vw, 33vw';
+---
+
+{
+  afbeelding ? (
+    <Image
+      class={`beeld beeld--${variant} beeld--foto`}
+      src={afbeelding}
+      alt={alt ?? ''}
+      widths={breedtes}
+      sizes={maten}
+      loading={variant === 'kop' ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+  ) : (
+    <ArtikelBeeld motief={motief} accent={accent} zaad={zaad} variant={variant} />
+  )
+}

@@ -43,6 +43,8 @@ const gutSkin = alleGutSkin.filter((a) => a.id !== uitgelicht?.artikel.id).slice
         publicatiedatum={uitgelicht.artikel.data.publicatiedatum}
         accent={uitgelicht.artikel.data.accent}
         motief={uitgelicht.artikel.data.motief}
+        afbeelding={uitgelicht.artikel.data.afbeelding}
+        alt={uitgelicht.artikel.data.alt}
         rubriek={uitgelicht.rubriek}
       />
     )
@@ -66,6 +68,8 @@ const gutSkin = alleGutSkin.filter((a) => a.id !== uitgelicht?.artikel.id).slice
               publicatiedatum={artikel.data.publicatiedatum}
               accent={artikel.data.accent}
               motief={artikel.data.motief}
+              afbeelding={artikel.data.afbeelding}
+              alt={artikel.data.alt}
               affiliate={artikel.data.affiliate}
               rubriek="Skincare"
             />
@@ -93,6 +97,8 @@ const gutSkin = alleGutSkin.filter((a) => a.id !== uitgelicht?.artikel.id).slice
               publicatiedatum={artikel.data.publicatiedatum}
               accent={artikel.data.accent}
               motief={artikel.data.motief}
+              afbeelding={artikel.data.afbeelding}
+              alt={artikel.data.alt}
               rubriek="Voeding & huid"
             />
           ))}

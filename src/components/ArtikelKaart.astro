@@ -1,6 +1,6 @@
 ---
 import { datumOpmaak } from '../config';
-import ArtikelBeeld from './ArtikelBeeld.astro';
+import Beeld from './Beeld.astro';
 import type { Motief } from './ArtikelBeeld.astro';
 
 interface Props {
@@ -16,6 +16,9 @@ interface Props {
   rubriek?: string;
   /** Groot uitgelicht formaat voor het eerste artikel op een overzicht. */
   groot?: boolean;
+  /** Echte foto; is die er, dan vervangt hij de illustratie. */
+  afbeelding?: ImageMetadata;
+  alt?: string;
 }
 
 const {
@@ -28,6 +31,8 @@ const {
   motief,
   rubriek,
   groot = false,
+  afbeelding,
+  alt,
 } = Astro.props;
 
 /*
@@ -42,7 +47,7 @@ const slug = url.split('/').filter(Boolean).pop() ?? titel;
   groot ? (
     <article class={`uitgelicht accent-${accent}`}>
       <div class="uitgelicht__vlak">
-        <ArtikelBeeld motief={motief} accent={accent} zaad={slug} variant="kop" />
+        <Beeld afbeelding={afbeelding} alt={alt} motief={motief} accent={accent} zaad={slug} variant="kop" />
       </div>
       <div>
         {rubriek && <span class="rubriek">{rubriek}</span>}
@@ -58,7 +63,7 @@ const slug = url.split('/').filter(Boolean).pop() ?? titel;
     <li>
       <article class={`kaart accent-${accent}`}>
         <div class="kaart__vlak">
-          <ArtikelBeeld motief={motief} accent={accent} zaad={slug} variant="kaart" />
+          <Beeld afbeelding={afbeelding} alt={alt} motief={motief} accent={accent} zaad={slug} variant="kaart" />
         </div>
         {rubriek && <span class="rubriek">{rubriek}</span>}
         <h3 class="kaart__titel"><a href={url}>{titel}</a></h3>

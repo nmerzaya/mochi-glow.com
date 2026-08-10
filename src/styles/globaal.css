@@ -473,6 +473,19 @@ main {
   height: 100%;
 }
 
+/* Een echte foto vult het kader en behoudt zijn verhouding. */
+.beeld--foto {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Op een foto hoort geen korrellaag — die is er om vlakke vormen te redden. */
+.kaart__vlak:has(.beeld--foto)::after,
+.uitgelicht__vlak:has(.beeld--foto)::after,
+.artikel__beeld:has(.beeld--foto)::after {
+  display: none;
+}
+
 /*
   Fijne korrel over elk illustratievlak. Dit is wat een vlakke digitale vorm laat
   lezen als drukwerk in plaats van als clipart. Eén gedeelde ruisdefinitie als

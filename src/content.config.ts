@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import type { ImageFunction } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 /**
@@ -20,7 +21,13 @@ const bron = z.object({
   type: z.enum(['A', 'B', 'C']),
 });
 
-const gedeeldeVelden = {
+/*
+  De gedeelde velden zijn een functie van `image`, omdat Astro die helper alleen
+  binnen de schemafunctie aanreikt. Daarmee wordt `afbeelding` een echt
+  beeldbestand in plaats van een tekstveld: Astro controleert bij de build of het
+  bestaat, en optimaliseert het naar meerdere formaten en breedtes.
+*/
+const gedeeldeVelden = (image: ImageFunction) => ({
   titel: z.string().min(10).max(80),
   beschrijving: z.string().min(50).max(200),
   publicatiedatum: z.coerce.date(),
@@ -50,8 +57,31 @@ const gedeeldeVelden = {
     .array(z.object({ term: z.string(), reden: z.string().min(15) }))
     .default([]),
   uitgelicht: z.boolean().default(false),
-  afbeelding: z.string().optional(),
+  /**
+   * Echte foto bij het artikel. Zet het bestand naast het markdown-bestand en
+   * verwijs er relatief naar, bijvoorbeeld `./propolis.jpg`.
+   *
+   * Staat dit veld leeg, dan valt het artikel terug op de eigen illustratie —
+   * er is dus altijd beeld. Zodra hier een foto staat, gebruikt de site die
+   * overal: op de kaart, op de overzichtspagina en boven het artikel.
+   *
+   * `alt` is verplicht zodra er een foto is. Dat is geen formaliteit maar een
+   * toegankelijkheidseis (WCAG 2.2, en de European Accessibility Act geldt voor
+   * deze site — zie onderzoek/04, par. 3d en 4.4).
+   */
+  afbeelding: image().optional(),
   alt: z.string().optional(),
+});
+
+/** Zonder alt-tekst is een foto onbruikbaar voor wie hem niet kan zien. */
+const eisAltTekst = <T extends { afbeelding?: unknown; alt?: string }>(data: T, ctx: z.RefinementCtx) => {
+  if (data.afbeelding && !data.alt?.trim()) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['alt'],
+      message: 'een artikel met een foto moet ook een alt-tekst hebben',
+    });
+  }
 };
 
 /**
@@ -59,8 +89,8 @@ const gedeeldeVelden = {
  */
 const ingredienten = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/ingredienten' }),
-  schema: z.object({
-    ...gedeeldeVelden,
+  schema: ({ image }) => z.object({
+    ...gedeeldeVelden(image),
     /** Zet automatisch de reclame-disclosure als eerste zin van het artikel. */
     affiliate: z.boolean().default(false),
     /**
@@ -73,7 +103,7 @@ const ingredienten = defineCollection({
     gezondheidsclaims: z.boolean().default(false),
     /** INCI-naam van het ingrediënt, als die bestaat. */
     inci: z.string().optional(),
-  }),
+  }).superRefine(eisAltTekst),
 });
 
 /**
@@ -87,12 +117,12 @@ const ingredienten = defineCollection({
  */
 const gutSkin = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/gut-skin' }),
-  schema: z.object({
-    ...gedeeldeVelden,
+  schema: ({ image }) => z.object({
+    ...gedeeldeVelden(image),
     affiliate: z.literal(false).default(false),
     productType: z.literal('geen').default('geen'),
     gezondheidsclaims: z.boolean().default(true),
-  }),
+  }).superRefine(eisAltTekst),
 });
 
 export const collections = { ingredienten, 'gut-skin': gutSkin };

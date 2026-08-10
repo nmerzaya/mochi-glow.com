@@ -57,11 +57,24 @@ collections:
         widget: select
         default: roze
         options: [roze, paars, perzik, mint]
+      - name: afbeelding
+        label: Foto
+        widget: image
+        required: false
+        hint: >-
+          Een echte foto vervangt de illustratie op de kaart, het overzicht en boven het
+          artikel. Laat leeg om de illustratie te gebruiken. Liefst liggend en minstens
+          1600 pixels breed; de site maakt zelf de kleinere formaten.
+      - name: alt
+        label: Beschrijving van de foto
+        widget: string
+        required: false
+        hint: Verplicht zodra er een foto is. Beschrijf wat er te zien is, voor wie de foto niet kan zien.
       - name: motief
         label: Illustratie
         widget: select
         required: false
-        hint: Laat leeg om er automatisch een te laten kiezen op basis van de slug.
+        hint: Wordt alleen gebruikt als er geen foto is. Laat leeg om er automatisch een te kiezen.
         options: [druppel, blad, korrels, golven, bloem, ringen, vlecht, kiem]
       - { name: uitgelicht, label: Uitgelicht, widget: boolean, default: false, required: false }
       - { name: tags, label: Tags, widget: list, required: false }
@@ -117,11 +130,24 @@ collections:
         widget: select
         default: mint
         options: [roze, paars, perzik, mint]
+      - name: afbeelding
+        label: Foto
+        widget: image
+        required: false
+        hint: >-
+          Een echte foto vervangt de illustratie op de kaart, het overzicht en boven het
+          artikel. Laat leeg om de illustratie te gebruiken. Liefst liggend en minstens
+          1600 pixels breed; de site maakt zelf de kleinere formaten.
+      - name: alt
+        label: Beschrijving van de foto
+        widget: string
+        required: false
+        hint: Verplicht zodra er een foto is. Beschrijf wat er te zien is, voor wie de foto niet kan zien.
       - name: motief
         label: Illustratie
         widget: select
         required: false
-        hint: Laat leeg om er automatisch een te laten kiezen op basis van de slug.
+        hint: Wordt alleen gebruikt als er geen foto is. Laat leeg om er automatisch een te kiezen.
         options: [druppel, blad, korrels, golven, bloem, ringen, vlecht, kiem]
       - { name: uitgelicht, label: Uitgelicht, widget: boolean, default: false, required: false }
       - { name: tags, label: Tags, widget: list, required: false }
