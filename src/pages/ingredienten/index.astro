@@ -6,37 +6,54 @@ import ArtikelKaart from '../../components/ArtikelKaart.astro';
 const artikelen = (await getCollection('ingredienten')).sort(
   (a, b) => b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime(),
 );
+
+const [eerste, ...rest] = artikelen;
 ---
 
 <BasisLayout
-  titel="K-beauty-ingrediënten"
-  beschrijving="Uitleg over de ingrediënten die je op Koreaanse verzorgingsproducten tegenkomt: wat het is, waar het vandaan komt, en wat het onderzoek erover zegt."
+  titel="Skincare"
+  beschrijving="De ingrediënten die je op Koreaanse verzorgingsproducten tegenkomt: wat het is, waar het vandaan komt, en wat het onderzoek erover laat zien."
 >
   <div class="hero">
-    <h1>ingrediënten</h1>
+    <h1>Skincare</h1>
     <p class="hero__intro">
-      Wat is snail mucin nou eigenlijk, en waarom staat niacinamide op zowat elk etiket? Hieronder
-      staat per ingrediënt wat het is, hoe het volgens onderzoek werkt, en waar de grenzen van dat
-      onderzoek liggen.
+      Wat is snail mucin nou eigenlijk, en waarom staat niacinamide op zowat elk etiket? Per
+      ingrediënt: wat het is, wat er onderzocht is, en waar dat onderzoek ophoudt.
     </p>
   </div>
 
   {
-    artikelen.length === 0 ? (
-      <p>Er staan nog geen artikelen in deze categorie.</p>
+    !eerste ? (
+      <p>Er staan nog geen artikelen in deze rubriek.</p>
     ) : (
-      <ul class="kaartenraster">
-        {artikelen.map((artikel) => (
-          <ArtikelKaart
-            titel={artikel.data.titel}
-            beschrijving={artikel.data.beschrijving}
-            url={`/ingredienten/${artikel.id}`}
-            publicatiedatum={artikel.data.publicatiedatum}
-            accent={artikel.data.accent}
-            affiliate={artikel.data.affiliate}
-          />
-        ))}
-      </ul>
+      <>
+        <ArtikelKaart
+          groot
+          titel={eerste.data.titel}
+          beschrijving={eerste.data.beschrijving}
+          url={`/ingredienten/${eerste.id}`}
+          publicatiedatum={eerste.data.publicatiedatum}
+          accent={eerste.data.accent}
+          motief={eerste.data.motief}
+          affiliate={eerste.data.affiliate}
+          rubriek="Skincare"
+        />
+
+        <ul class="kaartenraster">
+          {rest.map((artikel) => (
+            <ArtikelKaart
+              titel={artikel.data.titel}
+              beschrijving={artikel.data.beschrijving}
+              url={`/ingredienten/${artikel.id}`}
+              publicatiedatum={artikel.data.publicatiedatum}
+              accent={artikel.data.accent}
+              motief={artikel.data.motief}
+              affiliate={artikel.data.affiliate}
+              rubriek="Skincare"
+            />
+          ))}
+        </ul>
+      </>
     )
   }
 </BasisLayout>

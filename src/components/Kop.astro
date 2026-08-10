@@ -4,11 +4,16 @@ import { site, hoofdnavigatie } from '../config';
 const huidigPad = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
+{/*
+  Masthead in tijdschriftopmaak: naam gecentreerd en groot, rubrieken op een
+  eigen regel eronder. Dat is de indeling die de referentiesites gebruiken en
+  het geeft de naam het gewicht dat een logo normaal zou dragen.
+*/}
 <header class="kop">
   <div class="omhulsel kop__binnen">
     <a class="merk" href="/">
-      <span class="merk__stip" aria-hidden="true"></span>
       <span class="merk__naam">{site.naam}</span>
+      <span class="merk__onderschrift">{site.tagline}</span>
     </a>
 
     <nav class="nav" aria-label="Hoofdnavigatie">

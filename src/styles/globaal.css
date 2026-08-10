@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -33,21 +34,21 @@ h3,
 h4 {
   font-family: var(--font-kop);
   line-height: var(--regelhoogte-kop);
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-weight: 400; /* een display-serif heeft geen vet nodig om te dragen */
+  letter-spacing: var(--spatie-kop);
   margin: 0 0 var(--ruimte-4);
   text-wrap: balance;
 }
 
 h1 {
-  font-size: var(--tekst-3xl);
+  font-size: var(--tekst-4xl);
 }
 h2 {
-  font-size: var(--tekst-xl);
+  font-size: var(--tekst-2xl);
   margin-top: var(--ruimte-7);
 }
 h3 {
-  font-size: var(--tekst-l);
+  font-size: var(--tekst-xl);
   margin-top: var(--ruimte-6);
 }
 
@@ -62,7 +63,7 @@ li + li {
 }
 
 a {
-  color: var(--kleur-roze);
+  color: var(--kleur-accent);
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
 }
@@ -73,8 +74,8 @@ a:hover {
 
 /* Zichtbare focus is een AA-vereiste; nooit weghalen. */
 :focus-visible {
-  outline: 3px solid var(--kleur-paars);
-  outline-offset: 2px;
+  outline: 2px solid var(--kleur-inkt);
+  outline-offset: 3px;
   border-radius: var(--rond-s);
 }
 
@@ -90,11 +91,12 @@ hr {
 }
 
 blockquote {
-  margin: var(--ruimte-6) 0;
-  padding: var(--ruimte-4) var(--ruimte-5);
-  background: var(--kleur-oppervlak);
-  border-left: 4px solid var(--kleur-roze-zacht);
-  border-radius: 0 var(--rond-m) var(--rond-m) 0;
+  margin: var(--ruimte-7) 0;
+  padding-left: var(--ruimte-5);
+  border-left: 2px solid var(--kleur-inkt);
+  font-family: var(--font-display);
+  font-size: var(--tekst-xl);
+  line-height: 1.4;
 }
 
 blockquote > :last-child {
@@ -102,7 +104,7 @@ blockquote > :last-child {
 }
 
 code {
-  background: var(--kleur-oppervlak);
+  background: var(--kleur-rand-zacht);
   padding: 0.15em 0.4em;
   border-radius: var(--rond-s);
   font-size: 0.9em;
@@ -125,6 +127,9 @@ td {
 
 th {
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  font-size: var(--tekst-xs);
 }
 
 /* Brede tabellen mogen zelf schuiven, de pagina niet. */
@@ -140,7 +145,7 @@ th {
   width: 100%;
   max-width: var(--breedte-pagina);
   margin-inline: auto;
-  padding-inline: var(--ruimte-5);
+  padding-inline: var(--ruimte-6);
 }
 
 main {
@@ -155,7 +160,6 @@ main {
   background: var(--kleur-inkt);
   color: var(--kleur-achtergrond);
   padding: var(--ruimte-3) var(--ruimte-4);
-  border-radius: 0 0 var(--rond-m) 0;
   z-index: 100;
 }
 
@@ -164,68 +168,99 @@ main {
 }
 
 /* ------------------------------------------------------------------ *
-   Koptekst en navigatie
+   Label in kapitalen — het kenmerkende element van redactionele opmaak
+ * ------------------------------------------------------------------ */
+
+.rubriek {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-size: var(--tekst-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  color: var(--kleur-accent);
+  text-decoration: none;
+  margin-bottom: var(--ruimte-3);
+}
+
+.rubriek--stil {
+  color: var(--kleur-inkt-flauw);
+}
+
+/* ------------------------------------------------------------------ *
+   Masthead: naam gecentreerd, navigatie eronder
  * ------------------------------------------------------------------ */
 
 .kop {
   background: var(--kleur-achtergrond);
   border-bottom: 1px solid var(--kleur-rand);
-  position: sticky;
-  top: 0;
-  z-index: 50;
 }
 
 .kop__binnen {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--ruimte-5);
-  min-height: 72px;
-  flex-wrap: wrap;
+  gap: var(--ruimte-4);
+  padding-block: var(--ruimte-5) 0;
 }
 
 .merk {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.45rem;
+  display: inline-block;
   text-decoration: none;
   color: var(--kleur-inkt);
-  font-size: var(--tekst-l);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  padding-block: var(--ruimte-3);
-}
-
-.merk__stip {
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: var(--rond-vol);
-  background: var(--kleur-roze);
-  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
 }
 
 .merk__naam {
-  text-transform: lowercase;
+  text-transform: uppercase;
+}
+
+/* De stip uit het oude ontwerp is bewust weg: die las als speels, niet als merk. */
+.merk__stip {
+  display: none;
+}
+
+.merk__onderschrift {
+  display: block;
+  font-family: var(--font-label);
+  font-size: var(--tekst-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--kleur-inkt-flauw);
+  margin-top: var(--ruimte-3);
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--ruimte-5);
+  justify-content: center;
+  gap: var(--ruimte-6);
   flex-wrap: wrap;
+  width: 100%;
+  border-top: 1px solid var(--kleur-rand-zacht);
+  padding-block: var(--ruimte-4);
+  margin-top: var(--ruimte-2);
 }
 
 .nav a {
   color: var(--kleur-inkt);
   text-decoration: none;
-  font-size: var(--tekst-s);
-  padding-block: var(--ruimte-2);
-  border-bottom: 2px solid transparent;
+  font-size: var(--tekst-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  font-weight: 600;
+  padding-block: var(--ruimte-1);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
 
 .nav a:hover,
 .nav a[aria-current='page'] {
-  border-bottom-color: var(--kleur-roze);
+  border-bottom-color: var(--kleur-inkt);
 }
 
 /* ------------------------------------------------------------------ *
@@ -235,7 +270,7 @@ main {
 .voet {
   background: var(--kleur-oppervlak);
   border-top: 1px solid var(--kleur-rand);
-  padding-block: var(--ruimte-7);
+  padding-block: var(--ruimte-8);
   font-size: var(--tekst-s);
   color: var(--kleur-inkt-zacht);
 }
@@ -247,11 +282,13 @@ main {
 }
 
 .voet h2 {
-  font-size: var(--tekst-s);
+  font-family: var(--font-label);
+  font-size: var(--tekst-xs);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--spatie-label);
   color: var(--kleur-inkt);
-  margin: 0 0 var(--ruimte-3);
+  margin: 0 0 var(--ruimte-4);
 }
 
 .voet ul {
@@ -260,24 +297,36 @@ main {
   margin: 0;
 }
 
+.voet li + li {
+  margin-top: var(--ruimte-3);
+}
+
 .voet a {
   color: var(--kleur-inkt-zacht);
+  text-decoration: none;
+}
+
+.voet a:hover {
+  color: var(--kleur-inkt);
+  text-decoration: underline;
 }
 
 .voet__onder {
-  margin-top: var(--ruimte-6);
+  margin-top: var(--ruimte-7);
   padding-top: var(--ruimte-5);
   border-top: 1px solid var(--kleur-rand);
+  font-size: var(--tekst-xs);
+  color: var(--kleur-inkt-flauw);
 }
 
 /* ------------------------------------------------------------------ *
-   Kaarten
+   Kaarten — vlak op de pagina, geen omlijnde doosjes
  * ------------------------------------------------------------------ */
 
 .kaartenraster {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
-  gap: var(--ruimte-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: var(--ruimte-7) var(--ruimte-6);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -292,33 +341,27 @@ main {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--kleur-oppervlak);
-  border: 1px solid var(--kleur-rand);
-  border-radius: var(--rond-l);
-  padding: var(--ruimte-5);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.kaart:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--schaduw-zacht);
 }
 
 .kaart__vlak {
-  height: 112px;
-  border-radius: var(--rond-m);
-  margin-bottom: var(--ruimte-4);
-  display: grid;
-  place-items: center;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  font-size: var(--tekst-2xl);
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  margin-bottom: var(--ruimte-4);
+  background: var(--kleur-rand-zacht);
+}
+
+.kaart__vlak .beeld {
+  transition: transform 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.kaart:hover .kaart__vlak .beeld {
+  transform: scale(1.04);
 }
 
 .kaart__titel {
-  font-size: var(--tekst-l);
+  font-size: var(--tekst-xl);
   margin: 0 0 var(--ruimte-3);
+  line-height: 1.15;
 }
 
 .kaart__titel a {
@@ -331,34 +374,97 @@ main {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: var(--rond-l);
 }
 
-.kaart__titel a:hover {
-  color: var(--kleur-roze);
+.kaart:hover .kaart__titel a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 .kaart__tekst {
   color: var(--kleur-inkt-zacht);
   font-size: var(--tekst-s);
+  line-height: 1.65;
   margin: 0 0 var(--ruimte-4);
 }
 
 .kaart__voet {
   margin-top: auto;
   font-size: var(--tekst-xs);
-  color: var(--kleur-inkt-zacht);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  color: var(--kleur-inkt-flauw);
   display: flex;
   gap: var(--ruimte-3);
   flex-wrap: wrap;
   align-items: center;
 }
 
+/* --- Uitgelicht: één groot artikel bovenaan --- */
+
+.uitgelicht {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--ruimte-7);
+  align-items: center;
+  margin-bottom: var(--ruimte-9);
+}
+
+.uitgelicht__vlak {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--kleur-rand-zacht);
+}
+
+.uitgelicht__titel {
+  font-size: var(--tekst-3xl);
+  margin: 0 0 var(--ruimte-4);
+}
+
+.uitgelicht__titel a {
+  color: var(--kleur-inkt);
+  text-decoration: none;
+}
+
+.uitgelicht__titel a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.uitgelicht__intro {
+  font-size: var(--tekst-l);
+  color: var(--kleur-inkt-zacht);
+  margin-bottom: var(--ruimte-5);
+}
+
+@media (max-width: 60rem) {
+  .uitgelicht {
+    grid-template-columns: 1fr;
+    gap: var(--ruimte-5);
+  }
+}
+
+/* Accentvarianten — het vlak achter de illustratie. */
+.accent-roze .kaart__vlak,
+.accent-roze .uitgelicht__vlak {
+  background: var(--kleur-roze-zacht);
+}
+.accent-paars .kaart__vlak,
+.accent-paars .uitgelicht__vlak {
+  background: var(--kleur-paars-zacht);
+}
+.accent-perzik .kaart__vlak,
+.accent-perzik .uitgelicht__vlak {
+  background: var(--kleur-perzik-zacht);
+}
+.accent-mint .kaart__vlak,
+.accent-mint .uitgelicht__vlak {
+  background: var(--kleur-mint-zacht);
+}
+
 /* ------------------------------------------------------------------ *
    Illustraties
-
-   Eigen SVG in plaats van fotografie (zie ArtikelBeeld.astro). De illustratie
-   vult zijn kader volledig; het kader bepaalt de hoogte, niet de tekening.
  * ------------------------------------------------------------------ */
 
 .beeld {
@@ -367,35 +473,40 @@ main {
   height: 100%;
 }
 
+/*
+  Fijne korrel over elk illustratievlak. Dit is wat een vlakke digitale vorm laat
+  lezen als drukwerk in plaats van als clipart. Eén gedeelde ruisdefinitie als
+  data-URI: geen netwerkverzoek, en de browser hergebruikt hem voor alle vlakken
+  op de pagina in plaats van per illustratie een dure filter te draaien.
+*/
+.kaart__vlak,
+.uitgelicht__vlak,
 .artikel__beeld {
-  height: 172px;
-  border-radius: var(--rond-l);
+  position: relative;
+}
+
+.kaart__vlak::after,
+.uitgelicht__vlak::after,
+.artikel__beeld::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+.artikel__beeld {
+  aspect-ratio: 21 / 9;
   overflow: hidden;
-  margin: var(--ruimte-6) 0 var(--ruimte-7);
+  margin: 0 0 var(--ruimte-7);
 }
 
 @media (max-width: 40rem) {
   .artikel__beeld {
-    height: 128px;
+    aspect-ratio: 16 / 9;
   }
-}
-
-/* Accentvarianten — vervangen de productfotografie die dit project niet heeft. */
-.accent-roze .kaart__vlak {
-  background: var(--kleur-roze-zacht);
-  color: var(--kleur-roze);
-}
-.accent-paars .kaart__vlak {
-  background: var(--kleur-paars-zacht);
-  color: var(--kleur-paars);
-}
-.accent-perzik .kaart__vlak {
-  background: var(--kleur-perzik-zacht);
-  color: var(--kleur-perzik);
-}
-.accent-mint .kaart__vlak {
-  background: var(--kleur-mint-zacht);
-  color: var(--kleur-mint);
 }
 
 /* ------------------------------------------------------------------ *
@@ -405,20 +516,20 @@ main {
 .etiket {
   display: inline-block;
   font-size: var(--tekst-xs);
-  padding: 0.15rem 0.6rem;
-  border-radius: var(--rond-vol);
-  background: var(--kleur-roze-zacht);
-  color: var(--kleur-roze);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--kleur-rand);
+  background: transparent;
+  color: var(--kleur-inkt-zacht);
   text-decoration: none;
 }
 
 .etiket--paars {
-  background: var(--kleur-paars-zacht);
   color: var(--kleur-paars);
 }
 
 .etiket--mint {
-  background: var(--kleur-mint-zacht);
   color: var(--kleur-mint);
 }
 
@@ -427,26 +538,51 @@ main {
  * ------------------------------------------------------------------ */
 
 .artikel {
-  max-width: var(--breedte-tekst);
+  max-width: var(--breedte-smal);
   margin-inline: auto;
 }
 
 .artikel__kop {
-  margin-bottom: var(--ruimte-6);
+  margin-bottom: var(--ruimte-7);
+  text-align: center;
+}
+
+.artikel__kop h1 {
+  margin-bottom: var(--ruimte-5);
 }
 
 .artikel__meta {
-  font-size: var(--tekst-s);
-  color: var(--kleur-inkt-zacht);
+  font-size: var(--tekst-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  color: var(--kleur-inkt-flauw);
   display: flex;
   flex-wrap: wrap;
   gap: var(--ruimte-3);
   align-items: center;
-  margin-top: var(--ruimte-4);
+  justify-content: center;
+  margin-top: var(--ruimte-5);
+}
+
+.artikel__meta a {
+  color: var(--kleur-inkt-zacht);
+}
+
+.artikel__inhoud {
+  max-width: var(--breedte-tekst);
+  margin-inline: auto;
+  font-size: var(--tekst-l);
 }
 
 .artikel__inhoud > :first-child {
   margin-top: 0;
+}
+
+/* Eerste alinea groter — een klassieke redactionele opmaakregel. */
+.artikel__inhoud > p:first-of-type {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: var(--kleur-inkt);
 }
 
 .artikel__inhoud h2 {
@@ -455,30 +591,36 @@ main {
 
 /* ------------------------------------------------------------------ *
    Meldingen: disclosure, disclaimer
+
+   Bewust ingetogen. De reclame-disclosure is wettelijk verplicht zodra er een
+   affiliate-link in een artikel staat, maar hij hoeft niet te schreeuwen: een
+   dunne regel leest als redactionele voetnoot in plaats van als waarschuwing.
  * ------------------------------------------------------------------ */
 
 .melding {
-  border-radius: var(--rond-m);
-  padding: var(--ruimte-4) var(--ruimte-5);
+  max-width: var(--breedte-tekst);
+  margin-inline: auto;
+  padding: var(--ruimte-3) 0;
   margin-bottom: var(--ruimte-6);
   font-size: var(--tekst-s);
-  border: 1px solid transparent;
+  line-height: 1.6;
+  color: var(--kleur-inkt-zacht);
+  border-top: 1px solid var(--kleur-rand);
+  border-bottom: 1px solid var(--kleur-rand);
 }
 
 .melding > :last-child {
   margin-bottom: 0;
 }
 
-.melding--disclosure {
-  background: var(--kleur-perzik-zacht);
-  border-color: #f0d3ba;
-  color: var(--kleur-let-op);
-}
-
-.melding--medisch {
-  background: var(--kleur-mint-zacht);
-  border-color: #c2e2d5;
-  color: var(--kleur-mint);
+.melding strong {
+  font-family: var(--font-label);
+  font-size: var(--tekst-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  color: var(--kleur-inkt);
+  display: block;
+  margin-bottom: var(--ruimte-1);
 }
 
 /* ------------------------------------------------------------------ *
@@ -488,12 +630,23 @@ main {
 .bronnen {
   margin-top: var(--ruimte-8);
   padding-top: var(--ruimte-5);
-  border-top: 2px solid var(--kleur-rand);
+  border-top: 1px solid var(--kleur-inkt);
+  max-width: var(--breedte-tekst);
+  margin-inline: auto;
 }
 
 .bronnen h2 {
   margin-top: 0;
-  font-size: var(--tekst-l);
+  font-family: var(--font-label);
+  font-size: var(--tekst-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+}
+
+.bronnen p {
+  font-size: var(--tekst-s);
+  color: var(--kleur-inkt-zacht);
 }
 
 .bronnen ol {
@@ -506,10 +659,9 @@ main {
   display: inline-block;
   font-size: var(--tekst-xs);
   border: 1px solid var(--kleur-rand);
-  border-radius: var(--rond-vol);
-  padding: 0 0.5rem;
+  padding: 0 0.4rem;
   margin-left: var(--ruimte-2);
-  color: var(--kleur-inkt-zacht);
+  color: var(--kleur-inkt-flauw);
 }
 
 /* ------------------------------------------------------------------ *
@@ -517,24 +669,28 @@ main {
  * ------------------------------------------------------------------ */
 
 .hero {
-  padding-block: var(--ruimte-8) var(--ruimte-7);
+  padding-block: var(--ruimte-7) var(--ruimte-8);
   text-align: center;
-  max-width: 46rem;
+  max-width: 52rem;
   margin-inline: auto;
+  border-bottom: 1px solid var(--kleur-rand);
+  margin-bottom: var(--ruimte-8);
 }
 
 .hero h1 {
-  text-transform: lowercase;
-  margin-bottom: var(--ruimte-4);
+  font-size: var(--tekst-5xl);
+  margin-bottom: var(--ruimte-5);
 }
 
 .hero__intro {
   font-size: var(--tekst-l);
   color: var(--kleur-inkt-zacht);
+  max-width: 42rem;
+  margin-inline: auto;
 }
 
 .sectie {
-  margin-top: var(--ruimte-8);
+  margin-top: var(--ruimte-9);
 }
 
 .sectie__kop {
@@ -543,11 +699,26 @@ main {
   justify-content: space-between;
   gap: var(--ruimte-4);
   flex-wrap: wrap;
-  margin-bottom: var(--ruimte-5);
+  margin-bottom: var(--ruimte-6);
+  padding-bottom: var(--ruimte-4);
+  border-bottom: 1px solid var(--kleur-inkt);
 }
 
 .sectie__kop h2 {
   margin: 0;
+  font-size: var(--tekst-2xl);
+}
+
+.sectie__kop a {
+  font-family: var(--font-label);
+  font-size: var(--tekst-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  font-weight: 600;
+  color: var(--kleur-inkt);
+  text-decoration: none;
+  border-bottom: 1px solid var(--kleur-inkt);
+  padding-bottom: 2px;
 }
 
 .knop {
@@ -555,26 +726,30 @@ main {
   background: var(--kleur-inkt);
   color: var(--kleur-achtergrond);
   text-decoration: none;
-  padding: var(--ruimte-3) var(--ruimte-5);
-  border-radius: var(--rond-vol);
-  font-size: var(--tekst-s);
-  border: 0;
+  padding: var(--ruimte-4) var(--ruimte-6);
+  font-family: var(--font-label);
+  font-size: var(--tekst-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-label);
+  font-weight: 600;
+  border: 1px solid var(--kleur-inkt);
   cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .knop:hover {
-  background: var(--kleur-roze);
+  background: transparent;
+  color: var(--kleur-inkt);
 }
 
 .knop--stil {
   background: transparent;
-  color: var(--kleur-roze);
-  border: 1px solid var(--kleur-rand);
+  color: var(--kleur-inkt);
 }
 
 .knop--stil:hover {
-  background: var(--kleur-roze-zacht);
-  color: var(--kleur-roze);
+  background: var(--kleur-inkt);
+  color: var(--kleur-achtergrond);
 }
 
 /* ------------------------------------------------------------------ *
@@ -586,6 +761,11 @@ main {
   margin-inline: auto;
 }
 
+.prozapagina h1 {
+  font-size: var(--tekst-3xl);
+  margin-bottom: var(--ruimte-5);
+}
+
 .prozapagina h1 + p {
   font-size: var(--tekst-l);
   color: var(--kleur-inkt-zacht);
@@ -595,27 +775,32 @@ main {
    Kleinere schermen
  * ------------------------------------------------------------------ */
 
-@media (max-width: 640px) {
-  :root {
-    --tekst-3xl: 2rem;
-    --tekst-2xl: 1.75rem;
-    --tekst-xl: 1.4rem;
-  }
-
-  .kop__binnen {
-    min-height: 0;
-    padding-block: var(--ruimte-3);
+@media (max-width: 40rem) {
+  .omhulsel {
+    padding-inline: var(--ruimte-5);
   }
 
   .nav {
     gap: var(--ruimte-4);
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav a {
+    white-space: nowrap;
+  }
+
+  .artikel__inhoud {
+    font-size: var(--tekst-m);
   }
 }
 
 @media print {
   .kop,
   .voet,
-  .melding--disclosure {
+  .artikel__beeld {
     display: none;
   }
 }

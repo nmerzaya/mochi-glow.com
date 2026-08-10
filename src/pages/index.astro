@@ -7,27 +7,51 @@ import { site } from '../config';
 const opDatum = (a: { data: { publicatiedatum: Date } }, b: { data: { publicatiedatum: Date } }) =>
   b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime();
 
-const ingredienten = (await getCollection('ingredienten')).sort(opDatum).slice(0, 6);
-const gutSkin = (await getCollection('gut-skin')).sort(opDatum).slice(0, 3);
+const alleIngredienten = (await getCollection('ingredienten')).sort(opDatum);
+const alleGutSkin = (await getCollection('gut-skin')).sort(opDatum);
+
+/*
+  Het nieuwste artikel uit beide rubrieken samen krijgt de uitgelichte plek
+  bovenaan, en verschijnt daarna niet nog een keer in het raster eronder.
+*/
+const gecombineerd = [
+  ...alleIngredienten.map((artikel) => ({ artikel, pad: 'ingredienten', rubriek: 'Skincare' })),
+  ...alleGutSkin.map((artikel) => ({ artikel, pad: 'gut-skin', rubriek: 'Voeding & huid' })),
+].sort((a, b) => opDatum(a.artikel, b.artikel));
+
+const uitgelicht = gecombineerd[0];
+const ingredienten = alleIngredienten.filter((a) => a.id !== uitgelicht?.artikel.id).slice(0, 6);
+const gutSkin = alleGutSkin.filter((a) => a.id !== uitgelicht?.artikel.id).slice(0, 3);
 ---
 
 <BasisLayout titel={site.naam} beschrijving={site.beschrijving}>
   <div class="hero">
-    <h1>zachte huid, echte uitleg</h1>
+    <h1>Wat zit er nu eigenlijk in?</h1>
     <p class="hero__intro">
-      Over K-beauty-ingrediënten en de verbinding tussen darm en huid. Geen beloftes en geen
-      wondermiddelen — gewoon uitleg over wat een ingrediënt is, wat onderzoek erover zegt, en waar
-      dat onderzoek ophoudt.
-    </p>
-    <p>
-      <a class="knop" href="/ingredienten">Begin bij de ingrediënten</a>
+      Koreaanse huidverzorging belooft veel en legt weinig uit. Hier lees je wat een ingrediënt is,
+      wat het onderzoek erover laat zien, en waar dat onderzoek ophoudt.
     </p>
   </div>
 
+  {
+    uitgelicht && (
+      <ArtikelKaart
+        groot
+        titel={uitgelicht.artikel.data.titel}
+        beschrijving={uitgelicht.artikel.data.beschrijving}
+        url={`/${uitgelicht.pad}/${uitgelicht.artikel.id}`}
+        publicatiedatum={uitgelicht.artikel.data.publicatiedatum}
+        accent={uitgelicht.artikel.data.accent}
+        motief={uitgelicht.artikel.data.motief}
+        rubriek={uitgelicht.rubriek}
+      />
+    )
+  }
+
   <section class="sectie">
     <div class="sectie__kop">
-      <h2>Ingrediënten</h2>
-      <a href="/ingredienten">Alles bekijken</a>
+      <h2>Skincare</h2>
+      <a href="/ingredienten">Alle ingrediënten</a>
     </div>
     {
       ingredienten.length === 0 ? (
@@ -41,7 +65,9 @@ const gutSkin = (await getCollection('gut-skin')).sort(opDatum).slice(0, 3);
               url={`/ingredienten/${artikel.id}`}
               publicatiedatum={artikel.data.publicatiedatum}
               accent={artikel.data.accent}
+              motief={artikel.data.motief}
               affiliate={artikel.data.affiliate}
+              rubriek="Skincare"
             />
           ))}
         </ul>
@@ -51,7 +77,7 @@ const gutSkin = (await getCollection('gut-skin')).sort(opDatum).slice(0, 3);
 
   <section class="sectie">
     <div class="sectie__kop">
-      <h2>Darm &amp; huid</h2>
+      <h2>Voeding &amp; huid</h2>
       <a href="/gut-skin">Alles bekijken</a>
     </div>
     {
@@ -66,6 +92,8 @@ const gutSkin = (await getCollection('gut-skin')).sort(opDatum).slice(0, 3);
               url={`/gut-skin/${artikel.id}`}
               publicatiedatum={artikel.data.publicatiedatum}
               accent={artikel.data.accent}
+              motief={artikel.data.motief}
+              rubriek="Voeding & huid"
             />
           ))}
         </ul>
@@ -74,18 +102,16 @@ const gutSkin = (await getCollection('gut-skin')).sort(opDatum).slice(0, 3);
   </section>
 
   <section class="sectie">
-    <div class="prozapagina">
-      <h2>Hoe deze site werkt</h2>
+    <div class="prozapagina" style="text-align: center">
+      <span class="rubriek rubriek--stil">De werkwijze</span>
+      <h2 style="margin-top: 0">Geen beloftes, wel bronnen</h2>
       <p>
-        Er worden hier geen producten gekocht, getest of beoordeeld. Dat scheelt je een hoop
-        enthousiasme dat nergens op gebaseerd is, maar het betekent ook dat je hier geen "dit werkte
-        bij mij" zult lezen. Wat je wél krijgt: uitleg van wat een ingrediënt is, een samenvatting
-        van wat er over onderzocht is, en een bronnenlijst onderaan elk artikel zodat je het zelf kunt
-        nakijken.
+        Elk artikel vat samen wat er gepubliceerd is, met de vindplaats erbij, en zegt erbij waar het
+        bewijs dun is. Dat laatste is meestal het stuk dat wegvalt — en juist het stuk waar je iets
+        aan hebt.
       </p>
       <p>
-        Ik ben geen arts, diëtist of huidtherapeut. Waar het onderzoek dun is, staat dat er gewoon
-        bij. <a href="/redactionele-richtlijnen">Zo komen deze artikelen tot stand</a>.
+        <a class="knop knop--stil" href="/redactionele-richtlijnen">Zo komen deze artikelen tot stand</a>
       </p>
     </div>
   </section>

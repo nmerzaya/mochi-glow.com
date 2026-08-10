@@ -58,7 +58,7 @@ const {
 */
 const bronLinksToegestaan = productType !== 'voeding-supplement';
 
-const pijlerNaam = pijler === 'ingredienten' ? 'Ingrediënten' : 'Darm & huid';
+const pijlerNaam = pijler === 'ingredienten' ? 'Skincare' : 'Voeding & huid';
 const pijlerPad = pijler === 'ingredienten' ? '/ingredienten' : '/gut-skin';
 
 const gestructureerdeData = {
@@ -93,19 +93,13 @@ const gestructureerdeData = {
   <script type="application/ld+json" set:html={JSON.stringify(gestructureerdeData)} slot="hoofd" />
 
   <article class="artikel">
-    <nav aria-label="Kruimelpad" class="artikel__meta" style="margin-bottom: var(--ruimte-5)">
-      <a href={pijlerPad}>{pijlerNaam}</a>
-    </nav>
-
     {/*
-      Decoratief, en bewust bóven de kop: zo blijft de reclame-disclosure direct
-      tegen de eerste alinea van het artikel aan staan, zoals de RSM vereist.
+      Opmaak van een tijdschriftartikel: rubrieklabel, kop, inleiding, dan pas
+      het beeld. De reclame-disclosure staat daarna en dus nog altijd direct
+      tegen de eerste alinea aan, zoals de RSM vereist.
     */}
-    <div class="artikel__beeld" style={`background: var(--kleur-${accent}-zacht)`}>
-      <ArtikelBeeld motief={motief} accent={accent} zaad={zaad} variant="kop" />
-    </div>
-
     <header class="artikel__kop">
+      <a class="rubriek" href={pijlerPad}>{pijlerNaam}</a>
       <h1>{titel}</h1>
       <p class="hero__intro">{beschrijving}</p>
 
@@ -131,6 +125,10 @@ const gestructureerdeData = {
         )}
       </div>
     </header>
+
+    <div class={`artikel__beeld accent-${accent}`} style={`background: var(--kleur-${accent}-zacht)`}>
+      <ArtikelBeeld motief={motief} accent={accent} zaad={zaad} variant="kop" />
+    </div>
 
     {/* Automatisch, niet handmatig: zo kan de disclosure niet vergeten worden. */}
     {affiliate && <AffiliateDisclosure />}

@@ -2,55 +2,78 @@
   Mochi Glow — ontwerptokens
   ==========================
 
-  Palet en typografie volgen uit `onderzoek/04-vormgeving-en-eisen.md`, par. 4.1:
-  licht en warm, veel witruimte, en kleur die het werk doet dat fotografie
-  normaal doet (dit project heeft geen eigen productfotografie).
+  Redactionele richting, geen "cute". De referentie is de vormgeving van
+  beautytijdschriften: een hoog-contrast serif voor koppen, een rustige sans voor
+  lopende tekst, veel wit, en kleur die spaarzaam wordt ingezet.
 
-  Alle tekstkleuren zijn getoetst op WCAG 2.2 AA (>= 4.5:1 op de crème
-  achtergrond). De "-zacht" varianten zijn uitsluitend voor vlakken en randen,
-  nooit voor tekst.
+  Waarom systeemlettertypen en geen webfont: een extern lettertype laadt vanaf de
+  server van een derde partij en stuurt daarmee het IP-adres van elke bezoeker
+  mee. Dat botst met het privacybeleid van deze site. De stacks hieronder pakken
+  op elk platform een echte redactionele letter en vallen netjes terug.
+
+  Alle tekstkleuren zijn getoetst op WCAG 2.2 AA (>= 4.5:1). De "-zacht"
+  varianten zijn uitsluitend voor vlakken en randen, nooit voor tekst.
 */
 
 :root {
-  /* --- Basis --- */
-  --kleur-achtergrond: #fdf8f4; /* crème */
+  /* --- Basis: warm wit, geen crème-roze --- */
+  --kleur-achtergrond: #fbfaf8;
   --kleur-oppervlak: #ffffff;
-  --kleur-rand: #eadfd8;
+  --kleur-rand: #e6e2dc;
+  --kleur-rand-zacht: #f0ece6;
 
   /* --- Tekst --- */
-  --kleur-inkt: #2b2028; /* ~15:1 op crème */
-  --kleur-inkt-zacht: #665a62; /* ~6,2:1 op crème */
+  --kleur-inkt: #16130f; /* ~17:1 */
+  --kleur-inkt-zacht: #6b635a; /* ~5,6:1 */
+  --kleur-inkt-flauw: #8c8377; /* alleen voor secundaire tekst op 14px+ */
 
-  /* --- Accenten: tekstveilig (AA) --- */
-  --kleur-roze: #a84a67; /* ~5,2:1 */
-  --kleur-paars: #6d4e9c;
-  --kleur-perzik: #a4552a;
-  --kleur-mint: #2e7360;
+  /* --- Accent: één tint, spaarzaam --- */
+  --kleur-accent: #8c2f4a;
+  --kleur-accent-diep: #5e1f31;
+  --kleur-accent-zacht: #f7e9ec;
 
-  /* --- Accenten: alleen voor vlakken en randen --- */
-  --kleur-roze-zacht: #f6dde4;
-  --kleur-paars-zacht: #eae2f6;
-  --kleur-perzik-zacht: #fbe5d4;
-  --kleur-mint-zacht: #dcefe7;
+  /* --- Categoriekleuren: alleen voor vlakken achter illustraties --- */
+  --kleur-roze: #8c2f4a;
+  --kleur-paars: #4b3a6b;
+  --kleur-perzik: #96501f;
+  --kleur-mint: #1f5c4c;
+
+  --kleur-roze-zacht: #f3e4e8;
+  --kleur-paars-zacht: #e9e5f0;
+  --kleur-perzik-zacht: #f7e8db;
+  --kleur-mint-zacht: #e0ede8;
 
   /* --- Functioneel --- */
-  --kleur-let-op: #8a4b12;
-  --kleur-let-op-zacht: #fdf0e2;
+  --kleur-let-op: #7a4310;
+  --kleur-let-op-zacht: #fdf4e9;
 
-  /* --- Typografie --- */
-  --font-tekst: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --font-kop: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  /*
+    --- Typografie ---
 
-  --tekst-xs: 0.8125rem;
-  --tekst-s: 0.9375rem;
+    Kop: hoog-contrast serif. Didot staat op macOS, Bodoni MT op Windows; beide
+    geven de klassieke modetijdschrift-letter. Georgia vangt de rest op.
+  */
+  --font-display: Didot, 'Bodoni MT', 'Playfair Display', 'Hoefler Text', Garamond, Georgia, serif;
+  --font-kop: var(--font-display);
+  --font-tekst: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-label: var(--font-tekst);
+
+  --tekst-xs: 0.75rem;
+  --tekst-s: 0.875rem;
   --tekst-m: 1.0625rem;
-  --tekst-l: 1.25rem;
-  --tekst-xl: 1.625rem;
-  --tekst-2xl: 2.125rem;
+  --tekst-l: 1.1875rem;
+  --tekst-xl: 1.5rem;
+  --tekst-2xl: 2rem;
   --tekst-3xl: 2.75rem;
+  --tekst-4xl: 3.75rem;
+  --tekst-5xl: 5rem;
 
-  --regelhoogte-tekst: 1.7;
-  --regelhoogte-kop: 1.2;
+  --regelhoogte-tekst: 1.75;
+  --regelhoogte-kop: 1.08;
+
+  /* Kapitalenlabels krijgen ruime letterafstand; koppen juist krappe. */
+  --spatie-label: 0.14em;
+  --spatie-kop: -0.02em;
 
   /* --- Ritme --- */
   --ruimte-1: 0.25rem;
@@ -60,31 +83,44 @@
   --ruimte-5: 1.5rem;
   --ruimte-6: 2rem;
   --ruimte-7: 3rem;
-  --ruimte-8: 4rem;
-  --ruimte-9: 6rem;
+  --ruimte-8: 4.5rem;
+  --ruimte-9: 7rem;
 
-  /* --- Vorm: rond, passend bij "mochi" --- */
-  --rond-s: 8px;
-  --rond-m: 14px;
-  --rond-l: 22px;
+  /*
+    --- Vorm ---
+    Vrijwel recht. Ronde hoeken lezen als speels; redactioneel werk is strak.
+  */
+  --rond-s: 2px;
+  --rond-m: 3px;
+  --rond-l: 4px;
   --rond-vol: 999px;
 
-  --schaduw-zacht: 0 1px 2px rgba(43, 32, 40, 0.04), 0 6px 20px rgba(43, 32, 40, 0.06);
+  --schaduw-zacht: 0 1px 2px rgba(22, 19, 15, 0.03), 0 8px 28px rgba(22, 19, 15, 0.05);
 
   /* --- Breedtes --- */
-  --breedte-tekst: 68ch;
-  --breedte-pagina: 1120px;
+  --breedte-tekst: 64ch;
+  --breedte-pagina: 1280px;
+  --breedte-smal: 780px;
 }
 
 /*
-  De site is bewust licht (zie onderzoek 04, par. 3a: dit is een keuze tegen de
-  bredere "dark design"-trend in). Wie systeembreed donker heeft ingesteld krijgt
-  daarom geen omgekeerd palet, maar wel iets minder fel wit.
+  De site is bewust licht (zie onderzoek 04, par. 3a: een keuze tegen de bredere
+  "dark design"-trend in). Wie systeembreed donker heeft ingesteld krijgt daarom
+  geen omgekeerd palet, maar wel iets minder fel wit.
 */
 @media (prefers-color-scheme: dark) {
   :root {
-    --kleur-achtergrond: #f7f1ec;
-    --kleur-oppervlak: #fffdfb;
+    --kleur-achtergrond: #f5f3f0;
+    --kleur-oppervlak: #fffefd;
+  }
+}
+
+@media (max-width: 60rem) {
+  :root {
+    --tekst-5xl: 3.25rem;
+    --tekst-4xl: 2.5rem;
+    --tekst-3xl: 2rem;
+    --tekst-2xl: 1.625rem;
   }
 }
 

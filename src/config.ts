@@ -9,9 +9,9 @@ export const site = {
   naam: 'Mochi Glow',
   domein: 'mochi-glow.com',
   url: 'https://mochi-glow.com',
-  tagline: 'zachte huid, echte uitleg',
+  tagline: 'Skincare, onderzocht',
   beschrijving:
-    'Uitleg over K-beauty-ingrediënten en de darm-huid-connectie, op basis van bronnen. Geen beloftes, wel eerlijke uitleg over wat een ingrediënt is en wat het onderzoek erover zegt.',
+    'Over de ingrediënten in Koreaanse huidverzorging en het verband tussen voeding en huid. Wat een ingrediënt is, wat het onderzoek laat zien, en waar dat onderzoek ophoudt.',
   taal: 'nl-NL',
   auteur: 'Noor',
   contactEmail: 'hallo@mochi-glow.com',
@@ -28,21 +28,30 @@ export const site = {
  */
 export const advertentiesActief = false;
 
+/*
+  Menu-items volgen de taal van de lezer, niet die van het contentmodel. De
+  onderliggende mappen heten nog `ingredienten` en `gut-skin`; dat zijn URL's en
+  die veranderen niet mee, om links en indexering niet te breken.
+
+  Makeup en Lifestyle staan hier bewust nog niet in: daar is nog geen artikel
+  voor, en een menu-item dat op een lege pagina uitkomt doet meer kwaad dan een
+  kort menu.
+*/
 export const hoofdnavigatie = [
-  { tekst: 'Ingrediënten', pad: '/ingredienten' },
-  { tekst: 'Darm & huid', pad: '/gut-skin' },
+  { tekst: 'Skincare', pad: '/ingredienten' },
+  { tekst: 'Voeding & huid', pad: '/gut-skin' },
   { tekst: 'Over', pad: '/over' },
 ] as const;
 
 export const voetnavigatie = {
-  Lezen: [
-    { tekst: 'Alle ingrediënten', pad: '/ingredienten' },
-    { tekst: 'Darm & huid', pad: '/gut-skin' },
+  Rubrieken: [
+    { tekst: 'Skincare', pad: '/ingredienten' },
+    { tekst: 'Voeding & huid', pad: '/gut-skin' },
     { tekst: 'RSS-feed', pad: '/rss.xml' },
   ],
-  'Over deze site': [
-    { tekst: 'Over Noor', pad: '/over' },
-    { tekst: 'Redactionele richtlijnen', pad: '/redactionele-richtlijnen' },
+  Redactie: [
+    { tekst: 'Over', pad: '/over' },
+    { tekst: 'Werkwijze', pad: '/redactionele-richtlijnen' },
     { tekst: 'Contact', pad: '/contact' },
   ],
   Juridisch: [
