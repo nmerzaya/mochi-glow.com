@@ -7,6 +7,7 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: mint
+motief: korrels
 inci: Snail Secretion Filtrate
 tags:
   - snail mucin

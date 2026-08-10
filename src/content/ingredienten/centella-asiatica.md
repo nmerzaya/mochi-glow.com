@@ -7,6 +7,7 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: mint
+motief: blad
 inci: Centella Asiatica Extract
 tags:
   - centella

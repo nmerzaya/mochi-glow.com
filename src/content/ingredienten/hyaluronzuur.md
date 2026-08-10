@@ -7,6 +7,7 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: paars
+motief: druppel
 inci: Sodium Hyaluronate
 tags:
   - hyaluronzuur

@@ -7,6 +7,7 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: roze
+motief: ringen
 inci: Niacinamide
 tags:
   - niacinamide
