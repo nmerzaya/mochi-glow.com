@@ -40,6 +40,7 @@ export const advertentiesActief = false;
 export const hoofdnavigatie = [
   { tekst: 'Skincare', pad: '/ingredienten' },
   { tekst: 'Voeding & huid', pad: '/gut-skin' },
+  { tekst: 'Routinetest', pad: '/routine' },
   { tekst: 'Over', pad: '/over' },
 ] as const;
 
@@ -47,6 +48,7 @@ export const voetnavigatie = {
   Rubrieken: [
     { tekst: 'Skincare', pad: '/ingredienten' },
     { tekst: 'Voeding & huid', pad: '/gut-skin' },
+    { tekst: 'Routinetest', pad: '/routine' },
     { tekst: 'RSS-feed', pad: '/rss.xml' },
   ],
   Redactie: [

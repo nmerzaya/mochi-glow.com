@@ -32,6 +32,32 @@
   --kleur-accent-diep: #5e1f31;
   --kleur-accent-zacht: #f7e9ec;
 
+  /*
+    Tweede accent, warm. Uitsluitend voor dingen waar je iets kúnt doen: de
+    routinetest, badges, gekozen antwoorden. Een link in lopende tekst blijft
+    --kleur-accent, zodat kleur binnen de site één ding blijft betekenen.
+
+    Let op wat hier níet aan ten grondslag ligt: er bestaat geen kleurpsychologie
+    waaruit je een tint kunt afleiden. Zie onderzoek/06, par. 3a en 4.1 — dezelfde
+    kleur levert in hetzelfde experiment tegengesteld gedrag op, afhankelijk van
+    de context. De keuze is dus functioneel (doen versus lezen) en gebonden aan
+    de contrasteis, niet aan een beweerde betekenis van warm rood.
+
+    Gemeten op --kleur-achtergrond: 5,2:1 — ruim boven de AA-grens van 4,5:1.
+  */
+  --kleur-accent-warm: #b04a3d;
+  --kleur-accent-warm-diep: #8a3529;
+  --kleur-accent-warm-zacht: #fbeae4;
+
+  /*
+    Glans: drie zachte tinten die uitsluitend als verloopvlak dienen — de hero,
+    het testblok, de lopende band. Nooit als tekstkleur; ze halen geen enkele
+    contrasteis.
+  */
+  --kleur-glans-1: #fdeee7;
+  --kleur-glans-2: #f7e4ea;
+  --kleur-glans-3: #ece6f2;
+
   /* --- Categoriekleuren: alleen voor vlakken achter illustraties --- */
   --kleur-roze: #8c2f4a;
   --kleur-paars: #4b3a6b;
@@ -95,7 +121,32 @@
   --rond-l: 4px;
   --rond-vol: 999px;
 
+  /*
+    De speelse uitzondering, en het is er één met een grens.
+
+    onderzoek/06, par. 4.3 legt vast waar speelsheid mag zitten: de hero, de
+    routinetest, badges en pillen, en de lopende band. Daarbuiten niet — broodtekst,
+    artikelpagina's, kaarten en tabellen blijven strak, omdat de duiding die een
+    lezer aan vormgeving geeft over ingeloste verwachtingen gaat (DV12-01) en een
+    gezondheidsonderwerp andere verwachtingen wekt dan een merk dat iets verkoopt.
+
+    Gebruik --rond-speels dus alleen op die vier plekken. Zodra het op een kaart
+    of in een artikel opduikt, is de scheiding stilzwijgend verdwenen — en dat is
+    precies hoe dit project al één keer eerder van vormgevingsrichting wisselde.
+  */
+  --rond-speels: 18px;
+
   --schaduw-zacht: 0 1px 2px rgba(22, 19, 15, 0.03), 0 8px 28px rgba(22, 19, 15, 0.05);
+  --schaduw-diep: 0 2px 6px rgba(22, 19, 15, 0.05), 0 18px 50px rgba(22, 19, 15, 0.09);
+
+  /*
+    --- Beweging ---
+    Eén ritme voor de hele site, zodat beweging niet per component wordt verzonnen.
+    Alles hieronder valt weg bij prefers-reduced-motion (zie onderaan dit bestand).
+  */
+  --overgang-snel: 160ms;
+  --overgang-zacht: 420ms;
+  --soepel: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   /* --- Breedtes --- */
   --breedte-tekst: 64ch;

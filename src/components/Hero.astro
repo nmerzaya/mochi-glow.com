@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import beeld from '../assets/hero-homepage.jpg';
+
+/**
+ * De grote header van de homepage.
+ *
+ * Eén eis stuurt dit component (onderzoek/06, par. 4.2): de header moet
+ * volledig werken als je het beeld wegdenkt. Groot sfeerbeeld dat niets aan de
+ * pagina toevoegt wordt namelijk aantoonbaar genegeerd (DV11-01), dus alle
+ * informatie staat als echte tekst in de HTML en het contrast komt van de
+ * sluier, niet van het beeld. Wit op de donkerste band van die sluier haalt
+ * ruim 7:1, ook als het beeld daar wit zou zijn.
+ *
+ * Het beeld is decoratief — het draagt geen informatie die niet ook in de kop
+ * staat — en heeft daarom een lege alt-tekst. Waar het vandaan komt, staat in
+ * `src/assets/HERKOMST.md`.
+ *
+ * Geen bewegend beeld hier: animatie trekt de aandacht naar zichzelf en niet
+ * naar het onderwerp (DV11-03), en dat is precies het omgekeerde van wat een
+ * header moet doen.
+ */
+---
+
+<section class="hero-groot">
+  <Image
+    class="hero-groot__beeld"
+    src={beeld}
+    alt=""
+    widths={[640, 960, 1024]}
+    sizes="(max-width: 1280px) 100vw, 1280px"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+  />
+  <div class="hero-groot__sluier" aria-hidden="true"></div>
+
+  <div class="hero-groot__inhoud">
+    <span class="rubriek">Skincare, onderzocht</span>
+    <h1 class="hero-groot__kop">Wat zit er nu eigenlijk in?</h1>
+    <p class="hero-groot__intro">
+      Koreaanse huidverzorging belooft veel en legt weinig uit. Hier lees je wat een ingrediënt is,
+      wat het onderzoek erover laat zien, en waar dat onderzoek ophoudt.
+    </p>
+    <div class="hero-groot__knoppen">
+      <a class="knop knop--doen" href="/routine">Doe de routinetest</a>
+      <a class="knop knop--licht" href="/ingredienten">Bekijk de ingrediënten</a>
+    </div>
+  </div>
+</section>

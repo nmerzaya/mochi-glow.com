@@ -1,0 +1,32 @@
+---
+import BasisLayout from '../layouts/BasisLayout.astro';
+import RoutineTest from '../components/RoutineTest.astro';
+
+const beschrijving =
+  'Vijf vragen over hoe je huid aanvoelt en wat je prettig vindt, en daarna een routine in stappen met de artikelen die erbij horen. Geen diagnose, geen producten — een leeswijzer.';
+---
+
+<BasisLayout titel="Routinetest" beschrijving={beschrijving}>
+  {/*
+    Dit staat in de <head> en niet onderaan de pagina, en het is bewust een
+    los, inline scriptje: zo weet de opmaak vóór het eerste renderen al of er
+    JavaScript is. Zonder deze regel zou een bezoeker eerst het volledige
+    routine-overzicht zien, dat een fractie later wegspringt zodra de test het
+    overneemt.
+  */}
+  <script slot="hoofd" is:inline>
+    document.documentElement.dataset.js = 'aan';
+  </script>
+
+  <div class="hero">
+    <span class="rubriek">Vijf vragen</span>
+    <h1>Waar zou jij beginnen?</h1>
+    <p class="hero__intro">
+      Koreaanse routines hebben de naam eindeloos lang te zijn. Dat hoeven ze niet te zijn. Deze
+      vragenlijst gaat over hoe je huid aanvoelt en wat je volhoudt, en komt uit op een routine in
+      stappen — met bij elke stap het artikel waarin staat wat het onderzoek erover zegt.
+    </p>
+  </div>
+
+  <RoutineTest />
+</BasisLayout>

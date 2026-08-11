@@ -1,0 +1,278 @@
+---
+import ArtikelBeeld from './ArtikelBeeld.astro';
+import { vragen, profielen, uitkomstVoorbehoud } from '../data/routinetest';
+
+/**
+ * De routinetest, in twee standen.
+ *
+ * Zonder JavaScript is deze pagina een routine-overzicht: alle vijf de routines
+ * staan gewoon onder elkaar, met hun stappen en artikellinks. Dat is echte
+ * inhoud — voor een zoekmachine en voor iedereen die geen scripts draait.
+ *
+ * Met JavaScript verdwijnt dat overzicht en komt de vragenlijst ervoor in de
+ * plaats, die aan het eind precies één van diezelfde routines weer tevoorschijn
+ * haalt. Er is dus maar één versie van elke routine in de HTML: het script
+ * bouwt niets op, het toont en verbergt alleen. Daarmee is er geen sjabloon in
+ * JavaScript, geen innerHTML, en geen manier waarop de twee standen uit elkaar
+ * kunnen lopen.
+ *
+ * Het onderscheid hangt aan `data-js` op <html>, gezet door een klein script in
+ * de <head> van de pagina. Zo is er geen moment waarop de bezoeker eerst het
+ * overzicht ziet dat daarna wegspringt.
+ */
+---
+
+<div class="met-js">
+  <div class="testkaart" data-test>
+    <div class="testkaart__voortgang">
+      <p class="testkaart__teller" aria-live="polite">
+        Vraag <span data-teller>1</span> van {vragen.length}
+      </p>
+      <div class="balk">
+        <div class="balk__vulling" data-balk style={`width: ${100 / vragen.length}%`}></div>
+      </div>
+    </div>
+
+    <form data-formulier>
+      {
+        vragen.map((v, i) => (
+          <fieldset class="vraag" data-vraag={i} hidden={i !== 0}>
+            <legend class="vraag__kop" tabindex="-1">
+              {v.vraag}
+            </legend>
+            {v.hulp && <p class="vraag__hulp">{v.hulp}</p>}
+            <ul class="opties">
+              {v.antwoorden.map((a) => (
+                <li>
+                  <label class="optie">
+                    <input
+                      class="optie__radio"
+                      type="radio"
+                      name={v.id}
+                      value={a.id}
+                      data-punten={JSON.stringify(a.punten)}
+                    />
+                    <span class="optie__tekst">{a.tekst}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </fieldset>
+        ))
+      }
+    </form>
+
+    <p class="test__melding" data-melding hidden>Kies eerst een antwoord.</p>
+
+    <div class="test__knoppen">
+      <button type="button" class="knop knop--stil" data-terug hidden>Vorige</button>
+      <button type="button" class="knop knop--doen" data-verder>Volgende</button>
+    </div>
+  </div>
+
+  <div class="uitslag" data-uitslag hidden>
+    <div class="uitslag__kop">
+      <span class="rubriek">Jouw uitkomst</span>
+      <h2 tabindex="-1" data-uitslag-kop>Hier zou ik beginnen</h2>
+    </div>
+    <p class="uitslag__waarom" data-waarom></p>
+  </div>
+</div>
+
+<section class="routines">
+  <h2 class="zonder-js">De vijf routines</h2>
+  <p class="zonder-js prozapagina">
+    Hieronder staan ze alle vijf. Werkt JavaScript in je browser, dan staat hierboven een
+    vragenlijst van vijf vragen die je naar één ervan brengt.
+  </p>
+
+  {
+    profielen.map((p) => (
+      <article class={`routine accent-${p.accent}`} id={p.id} data-profiel={p.id}>
+        <div class="kaart__vlak routine__vlak">
+          <ArtikelBeeld motief={p.motief} accent={p.accent} zaad={p.id} variant="kop" />
+        </div>
+        <div class="routine__kop">
+          <h3>{p.naam}</h3>
+          <span class="pil">{p.stappen.length} stappen</span>
+        </div>
+        <p class="routine__intro">{p.samenvatting}</p>
+        <ol class="stappen">
+          {p.stappen.map((s) => (
+            <li>
+              <p class="stap__naam">{s.naam}</p>
+              <p class="stap__tekst">
+                {s.tekst}
+                {s.artikel && (
+                  <>
+                    {' '}
+                    <a href={s.artikel.pad}>Lees over {s.artikel.titel}</a>.
+                  </>
+                )}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </article>
+    ))
+  }
+
+  <p class="melding">
+    <strong>Let op</strong>
+    {uitkomstVoorbehoud}
+  </p>
+
+  <p class="prozapagina met-js" style="text-align: center">
+    <button type="button" class="knop knop--doen" data-opnieuw>Test opnieuw doen</button>
+  </p>
+</section>
+
+<script>
+  /*
+    Bewust zonder import van `src/data/routinetest`: alle tekst staat al in de
+    HTML op deze pagina. Importeren zou hem een tweede keer meesturen in de
+    bundel. De profielen worden daarom uit de DOM gelezen.
+  */
+  const test = document.querySelector<HTMLElement>('[data-test]');
+  const formulier = document.querySelector<HTMLFormElement>('[data-formulier]');
+  const uitslag = document.querySelector<HTMLElement>('[data-uitslag]');
+  const waarom = document.querySelector<HTMLElement>('[data-waarom]');
+  const teller = document.querySelector<HTMLElement>('[data-teller]');
+  const balk = document.querySelector<HTMLElement>('[data-balk]');
+  const melding = document.querySelector<HTMLElement>('[data-melding]');
+  const knopVerder = document.querySelector<HTMLButtonElement>('[data-verder]');
+  const knopTerug = document.querySelector<HTMLButtonElement>('[data-terug]');
+  const knopOpnieuw = document.querySelector<HTMLButtonElement>('[data-opnieuw]');
+  const uitslagKop = document.querySelector<HTMLElement>('[data-uitslag-kop]');
+  const groepen = Array.from(document.querySelectorAll<HTMLFieldSetElement>('[data-vraag]'));
+  const routines = Array.from(document.querySelectorAll<HTMLElement>('[data-profiel]'));
+  const profielIds = routines
+    .map((r) => r.dataset.profiel)
+    .filter((id): id is string => Boolean(id));
+
+  if (test && formulier && uitslag && waarom && teller && balk && knopVerder && knopTerug) {
+    const laatste = groepen.length - 1;
+    let nu = 0;
+
+    const toon = (index: number) => {
+      nu = index;
+      groepen.forEach((g, i) => (g.hidden = i !== index));
+      teller.textContent = String(index + 1);
+      /*
+        De balk toont de vraag waar je mee bezig bent als voortgang, niet het
+        aantal dat je al afgerond hebt. Je bént namelijk begonnen — dat is de
+        eerlijke lezing van het effect uit onderzoek/06, DV13-02. Een verzonnen
+        voorsprong zou hier niet passen bij een site die verder nergens
+        overdrijft.
+      */
+      balk.style.width = `${((index + 1) / groepen.length) * 100}%`;
+      knopTerug.hidden = index === 0;
+      knopVerder.textContent = index === laatste ? 'Toon mijn routine' : 'Volgende';
+      if (melding) melding.hidden = true;
+      groepen[index]?.querySelector<HTMLElement>('.vraag__kop')?.focus();
+    };
+
+    const gekozen = (index: number) =>
+      groepen[index]?.querySelector<HTMLInputElement>('input:checked') ?? null;
+
+    const bereken = () => {
+      const score: Record<string, number> = {};
+      for (const groep of groepen) {
+        const keuze = groep.querySelector<HTMLInputElement>('input:checked');
+        if (!keuze) continue;
+        const punten = JSON.parse(keuze.dataset.punten || '{}') as Record<string, number>;
+        for (const [profiel, aantal] of Object.entries(punten)) {
+          score[profiel] = (score[profiel] ?? 0) + aantal;
+        }
+      }
+
+      let winnaar = profielIds[0];
+      let hoogste = -1;
+      for (const id of profielIds) {
+        const punten = score[id] ?? 0;
+        if (punten > hoogste) {
+          hoogste = punten;
+          winnaar = id;
+        }
+      }
+
+      /*
+        Gelijkspel wordt beslist door de eerste vraag: die gaat over hoe je huid
+        aanvoelt, en dat weegt zwaarder dan de voorkeursvragen erna.
+      */
+      const eerste = gekozen(0);
+      if (eerste) {
+        const eerstePunten = JSON.parse(eerste.dataset.punten || '{}') as Record<string, number>;
+        const gelijk = profielIds.filter((id) => (score[id] ?? 0) === hoogste);
+        if (gelijk.length > 1) {
+          const voorkeur = gelijk.find((id) => (eerstePunten[id] ?? 0) > 0);
+          if (voorkeur) winnaar = voorkeur;
+        }
+      }
+
+      return winnaar;
+    };
+
+    const toonUitslag = (profiel: string, verplaatsFocus = true) => {
+      test.hidden = true;
+      uitslag.hidden = false;
+
+      const antwoorden = groepen
+        .map((groep) => groep.querySelector<HTMLInputElement>('input:checked'))
+        .filter((keuze): keuze is HTMLInputElement => keuze !== null)
+        .map((keuze) => keuze.closest('label')?.querySelector('.optie__tekst')?.textContent?.trim())
+        .filter((tekst): tekst is string => Boolean(tekst));
+
+      waarom.textContent = antwoorden.length
+        ? `Je koos: ${antwoorden.join(' · ')}.`
+        : 'Je kwam hier via een link, dus deze routine volgt niet uit ingevulde antwoorden.';
+
+      routines.forEach((r) => r.classList.toggle('routine--getoond', r.dataset.profiel === profiel));
+      history.replaceState(null, '', `#${profiel}`);
+      if (verplaatsFocus) uitslagKop?.focus();
+    };
+
+    knopVerder.addEventListener('click', () => {
+      if (!gekozen(nu)) {
+        if (melding) melding.hidden = false;
+        return;
+      }
+      if (nu === laatste) toonUitslag(bereken());
+      else toon(nu + 1);
+    });
+
+    knopTerug.addEventListener('click', () => toon(Math.max(0, nu - 1)));
+
+    /* Een antwoord kiezen haalt de melding meteen weg; die hoort niet te blijven staan. */
+    formulier.addEventListener('change', () => {
+      if (melding) melding.hidden = true;
+    });
+
+    knopOpnieuw?.addEventListener('click', () => {
+      formulier.reset();
+      routines.forEach((r) => r.classList.remove('routine--getoond'));
+      uitslag.hidden = true;
+      test.hidden = false;
+      history.replaceState(null, '', location.pathname);
+      toon(0);
+    });
+
+    /*
+      Twee manieren om binnen te komen zonder de test opnieuw te doen: een
+      gedeelde link naar een uitkomst (#glans), of de eerste vraag die al op de
+      homepage beantwoord is (?start=strak).
+    */
+    const uitHash = location.hash.replace('#', '');
+    const start = new URLSearchParams(location.search).get('start');
+
+    if (profielIds.includes(uitHash)) {
+      toonUitslag(uitHash, false);
+    } else if (start) {
+      const invoer = groepen[0]?.querySelector<HTMLInputElement>(`input[value="${CSS.escape(start)}"]`);
+      if (invoer) {
+        invoer.checked = true;
+        toon(1);
+      }
+    }
+  }
+</script>

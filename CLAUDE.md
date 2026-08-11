@@ -18,9 +18,11 @@ Volledige onderbouwing van alle keuzes staat in de map `onderzoek/` (zie onderaa
 
 ## Huidige staat
 
-De site is compleet en bouwt lokaal (27 pagina's), maar staat nog niet online. Er is een lokale git-repo met één commit; er is nog **geen** GitHub-remote en nog **geen** Cloudflare Pages-project. `DEPLOY.md` beschrijft die stappen; ze vragen allemaal om accounts en inloggegevens van de eigenaar.
+De site is compleet en bouwt lokaal (28 pagina's), maar staat nog niet online. Er is een lokale git-repo met één commit; er is nog **geen** GitHub-remote en nog **geen** Cloudflare Pages-project. `DEPLOY.md` beschrijft die stappen; ze vragen allemaal om accounts en inloggegevens van de eigenaar.
 
 De contentbatch is er: **16 artikelen**, tien in `src/content/ingredienten/` en zes in `src/content/gut-skin/`. Daarmee is de ondergrens uit `PLAN.md` (15-20) gehaald.
+
+Daarnaast is er sinds de herziening van augustus 2026 een interactief onderdeel: `/routine`, een vragenlijst van vijf vragen die uitkomt op één van vijf routines. Zonder JavaScript is diezelfde pagina een routine-overzicht. De onderbouwing van die herziening — kleur, beeld, geloofwaardigheid, vragenlijstvorm en beweging — staat in `onderzoek/06-kleur-beeld-en-interactie.md`.
 
 Het domein is `mochi-glow.com`, geregistreerd via Cloudflare. De site heette in een eerdere fase "Mochi Skin" op `mochiskin.nl`; die naam komt nog voor in `onderzoek/04-vormgeving-en-eisen.md`, en dat blijft zo — onderzoeksbestanden worden niet met terugwerkende kracht aangepast.
 
@@ -80,7 +82,9 @@ Wijk hier niet van af zonder `ARCHITECTUUR.md` → "Waarom geen andere opties" t
 
 **Volgorde van werken:** eerst de technische basis en verplichte pagina's, dán de eerste contentbatch (15-20 artikelen), en pas dáárna affiliate-programma's en AdSense aanvragen. Niet eerder aanvragen — een te vroege, afgewezen aanvraag (vooral bij Amazon Associates) kan niet opnieuw beoordeeld worden; je moet dan volledig opnieuw solliciteren. Zie `TAKEN.md` voor de exacte fasering.
 
-**Afbeeldingen:** geen eigen fotografie (geen producten aangeschaft). Het ontwerp vangt dat op met accentkleuren per artikel (`accent: roze | paars | perzik | mint`) in plaats van beeld. Gebruik verder alleen toegestane, licentievrije bronnen of duidelijk gelabelde AI-beelden; wees terughoudend met AI-beelden omdat generieke plaatjes slecht presteren in een visuele niche als beauty.
+**Afbeeldingen (bijgewerkt besluit, was: alleen SVG-illustraties):** de site gebruikt nu wél beeld — gezichten en producten — omdat de eerdere SVG-only aanpak te weinig voorstelde. Primaire bron is **Pollinations.ai** (open source, gratis, geen API-key nodig, aan te roepen via een simpele URL — zie `ARCHITECTUUR.md`); Claude Code roept dit zelf aan tijdens het bouwen/schrijven van content. Twee harde regels blijven staan, ook met AI-beeld:
+1. Een AI-gegenereerd gezicht voor de persona ("Noor") mag nooit gepresenteerd worden alsof het een echte foto van een bestaand persoon is — een duidelijk gestileerde illustratie/avatar is prima, een pseudo-realistische "portretfoto" niet.
+2. Productafbeeldingen zijn bij voorkeur echte pers-/marketingbeelden van het merk zelf (gebruikelijk en toegestaan bij affiliate-content), geen AI-nabootsing van een specifiek, linkbaar product — dat zou misleidend zijn over wat een lezer daadwerkelijk koopt. AI-beeld is dus vooral voor sfeerbeeld, illustraties en de persona-avatar.
 
 ## Invarianten bij het bouwen
 
@@ -88,9 +92,14 @@ Wijk hier niet van af zonder `ARCHITECTUUR.md` → "Waarom geen andere opties" t
 - Twee content collections: **`ingredienten`** en **`gut-skin`**. (Let op: `ARCHITECTUUR.md` en `TAKEN.md` noemen de eerste nog `kbeauty-ingredienten` — de code is leidend.) De verplichte pagina's (privacy, cookiebeleid, affiliate-disclaimer, algemene voorwaarden, contact, over, redactionele richtlijnen) zijn losse statische pagina's in `src/pages/`, géén collectie.
 - Klaro blokkeert standaard; advertentie- en analyticsscripts laden pas na toestemming, als `type="text/plain"` met `data-name="adsense"`.
 - Geen externe verzoeken vanaf de site: geen CDN's, geen externe lettertypen, geen tracking. Dat is een AVG-keuze, niet alleen een prestatiekeuze.
-- `uitgelicht`, `afbeelding` en `alt` staan wél in het schema en in de CMS-interface, maar worden nergens uitgelezen: de homepage sorteert puur op datum en toont de nieuwste zes respectievelijk drie. Ga er dus niet vanuit dat `uitgelicht: true` iets doet — bouw het eerst.
-- Beeld komt van `ArtikelBeeld.astro`: eigen, inline SVG-illustraties in de accentkleur, géén fotografie en géén AI-beeld. Het motief volgt uit het optionele veld `motief`, en anders deterministisch uit de slug — elk artikel heeft dus altijd beeld. Kaart en artikel gebruiken hetzelfde zaad zodat ze dezelfde tekening tonen. De gevulde vormen zijn wit omdat ze op een vlak in de zachte accentkleur liggen; maak ze niet accentkleurig, dan vallen ze weg tegen hun achtergrond.
-- Tekstkleuren in `src/styles/tokens.css` zijn getoetst op WCAG 2.2 AA. De `-zacht`-varianten zijn uitsluitend voor vlakken en randen, nooit voor tekst.
+- `uitgelicht: true` wérkt nu: de homepage kiest het nieuwste artikel met die vlag en valt terug op het nieuwste artikel überhaupt als niemand hem heeft gezet. De uitgelichte plek is dus nooit leeg.
+- **Gewijzigd, nog te bouwen:** `ArtikelBeeld.astro` genereerde tot nu toe uitsluitend eigen, inline SVG-illustraties in de accentkleur (motief uit het `motief`-veld, of anders deterministisch uit de slug; kaart en artikel delen hetzelfde zaad; gevulde vormen wit op de zachte accentkleur, niet accentkleurig maken anders vallen ze weg). Dat mechanisme blijft bestaan als stijlkeuze/fallback, maar is niet langer de enige beeldbron — zie de bijgewerkte `Afbeeldingen`-afspraak hierboven. Dit is nog **niet geïmplementeerd**: `ArtikelBeeld.astro` (of een nieuw component ernaast) moet ook een AI-gegenereerde afbeelding kunnen tonen, en `src/content.config.ts` heeft vermoedelijk een nieuw veld nodig om het beeldpad vast te leggen.
+- Tekstkleuren in `src/styles/tokens.css` zijn getoetst op WCAG 2.2 AA. De `-zacht`-varianten zijn uitsluitend voor vlakken en randen, nooit voor tekst. Dat geldt ook voor de drie `--kleur-glans-*`-tinten: die zijn er voor verloopvlakken en halen geen enkele contrasteis.
+- **De speelse laag heeft een grens, en die is opzettelijk.** `--rond-speels` en `--kleur-accent-warm` horen uitsluitend op vier plekken: de header van de homepage, de routinetest, badges/pillen en de lopende band. Broodtekst, artikelpagina's, kaarten en tabellen blijven redactioneel. De onderbouwing staat in `onderzoek/06`, par. 4.3; de reden dat het als invariant is opgeschreven, is dat dit project al één keer eerder ongemerkt van vormgevingsrichting wisselde (`onderzoek/04` par. 4.1 koos speels, commit 5f38fc9 draaide dat om).
+- **De routinetest (`/routine`) mag geen diagnose stellen en niets verkopen.** Vragen gaan over hoe de huid aanvoelt en wat iemand prettig vindt, nooit over een aandoening; uitkomsten beloven geen effect en noemen geen merken of producten. Zodra er wél een product in komt, geldt de disclosureplicht ook op die pagina.
+- **Alle tekst van de routinetest staat in `src/data/routinetest.ts`, en nergens anders.** `scripts/check-compliance.mjs` leest dat bestand en haalt elke tekenreeks erin langs dezelfde verboden-taalpatronen als de artikelen. Zet je testteksten rechtstreeks in een `.astro`-bestand, dan ontsnappen ze aan die controle.
+- **De lopende band mag alleen bewegen als hij te stoppen is.** Hij valt onder WCAG 2.2 SC 2.2.2 (start vanzelf, duurt langer dan vijf seconden, staat naast andere inhoud) en heeft daarom een echte pauzeknop; de CSS zet de animatie pas aan als het script `data-actief` heeft gezet. `prefers-reduced-motion` alléén is niet genoeg — de W3C-toelichting noemt die mediaquery niet als manier om aan het criterium te voldoen.
+- De routinetest slaat niets op: geen cookie, geen localStorage, geen netwerkverzoek. Dat staat zo in het privacybeleid, dus het moet zo blijven.
 
 ## Openstaande placeholders vóór livegang
 
@@ -126,7 +135,9 @@ Bevat het volledige onderzoek dat aan dit project ten grondslag ligt:
 - `01-bronnen.md` — 45 gelogde en geverifieerde bronnen (36 bruikbaar, 9 gemarkeerd onbruikbaar met reden).
 - `03-tegenspraak.md` — expliciete tegenspraak-check per deelvraag, incl. één deelvraag waar bewust niets tegensprekends is gevonden (met onderbouwing).
 - `04-vormgeving-en-eisen.md` — vormgeving, E-E-A-T, claims op voeding/supplementen en toegankelijkheid. **Par. 4.3 is de bron voor de taalregels in `check-compliance.mjs`**; par. 4.1 voor de ontwerptokens.
+- `05-bronnen-contentbatch.md` — de bronnen achter de zestien artikelen.
+- `06-kleur-beeld-en-interactie.md` — kleur, beeld, geloofwaardigheid, vragenlijstvorm en beweging. Bron voor de speelse laag in `tokens.css`, voor `Hero.astro`, `Lopendeband.astro` en de routinetest. **Belangrijkste uitkomst is een negatief resultaat:** kleurpsychologie levert geen bruikbare regels om een palet uit af te leiden, want het effect van een kleur hangt aantoonbaar van de context af. Onderbouw een kleurkeuze hier dus nooit met "kleur X staat voor Y".
 
 De nummering springt van `01` naar `03`; er is geen `02-`-bestand en geen enkel document verwijst ernaar — er ontbreekt dus niets.
 
-Deze bestanden zijn de bron van waarheid voor **waarom** de keuzes in `ARCHITECTUUR.md` en `PLAN.md` zijn gemaakt. Wijzig ze niet met terugwerkende kracht om latere beslissingen te "rechtvaardigen" — voeg bij nieuw onderzoek een nieuw genummerd bestand toe (bv. `05-...md`).
+Deze bestanden zijn de bron van waarheid voor **waarom** de keuzes in `ARCHITECTUUR.md` en `PLAN.md` zijn gemaakt. Wijzig ze niet met terugwerkende kracht om latere beslissingen te "rechtvaardigen" — voeg bij nieuw onderzoek een nieuw genummerd bestand toe (bv. `07-...md`).

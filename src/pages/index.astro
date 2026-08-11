@@ -2,7 +2,10 @@
 import { getCollection } from 'astro:content';
 import BasisLayout from '../layouts/BasisLayout.astro';
 import ArtikelKaart from '../components/ArtikelKaart.astro';
+import Hero from '../components/Hero.astro';
+import Lopendeband from '../components/Lopendeband.astro';
 import { site } from '../config';
+import { vragen } from '../data/routinetest';
 
 const opDatum = (a: { data: { publicatiedatum: Date } }, b: { data: { publicatiedatum: Date } }) =>
   b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime();
@@ -11,27 +14,53 @@ const alleIngredienten = (await getCollection('ingredienten')).sort(opDatum);
 const alleGutSkin = (await getCollection('gut-skin')).sort(opDatum);
 
 /*
-  Het nieuwste artikel uit beide rubrieken samen krijgt de uitgelichte plek
-  bovenaan, en verschijnt daarna niet nog een keer in het raster eronder.
+  Het uitgelichte artikel is voortaan echt te sturen: staat er ergens
+  `uitgelicht: true`, dan wint het nieuwste daarvan. Staat het nergens, dan valt
+  de site terug op het nieuwste artikel überhaupt, zodat de plek nooit leeg is.
+
+  Tot deze wijziging deed dat veld niets — het stond in het schema en in de
+  CMS-interface, maar werd nergens uitgelezen. Dat was een valstrik voor wie
+  later via het CMS iets wil uitlichten.
 */
 const gecombineerd = [
   ...alleIngredienten.map((artikel) => ({ artikel, pad: 'ingredienten', rubriek: 'Skincare' })),
   ...alleGutSkin.map((artikel) => ({ artikel, pad: 'gut-skin', rubriek: 'Voeding & huid' })),
 ].sort((a, b) => opDatum(a.artikel, b.artikel));
 
-const uitgelicht = gecombineerd[0];
+const uitgelicht = gecombineerd.find((item) => item.artikel.data.uitgelicht) ?? gecombineerd[0];
 const ingredienten = alleIngredienten.filter((a) => a.id !== uitgelicht?.artikel.id).slice(0, 6);
 const gutSkin = alleGutSkin.filter((a) => a.id !== uitgelicht?.artikel.id).slice(0, 3);
+
+/* De eerste vraag van de routinetest staat ook op de homepage: wie hier al kiest, begint niet meer bij nul. */
+const eersteVraag = vragen[0];
 ---
 
 <BasisLayout titel={site.naam} beschrijving={site.beschrijving}>
-  <div class="hero">
-    <h1>Wat zit er nu eigenlijk in?</h1>
-    <p class="hero__intro">
-      Koreaanse huidverzorging belooft veel en legt weinig uit. Hier lees je wat een ingrediënt is,
-      wat het onderzoek erover laat zien, en waar dat onderzoek ophoudt.
-    </p>
-  </div>
+  <Hero />
+
+  <Lopendeband />
+
+  <section class="verleider onthul">
+    <div class="verleider__tekst">
+      <span class="rubriek">Routinetest · vijf vragen</span>
+      <h2>{eersteVraag.vraag}</h2>
+      <p>
+        Kies hier je antwoord, dan sla je de eerste vraag over. Er wordt niets opgeslagen en er
+        wordt niet om een e-mailadres gevraagd.
+      </p>
+    </div>
+    <ul class="verleider__opties">
+      {
+        eersteVraag.antwoorden.map((antwoord) => (
+          <li>
+            <a class="verleider__optie" href={`/routine?start=${antwoord.id}`}>
+              {antwoord.tekst}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
   {
     uitgelicht && (

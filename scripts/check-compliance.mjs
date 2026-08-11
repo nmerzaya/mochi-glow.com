@@ -265,8 +265,79 @@ function controleer(bestandspad, ruweTekst) {
 }
 
 /* ------------------------------------------------------------------ *
+   Controle van losse tekstmodules
+
+   Niet alle zichtbare tekst staat in artikelen. De routinetest heeft eigen
+   vragen, antwoorden en routineteksten, en die worden door een bezoeker net zo
+   gelezen als een alinea uit een artikel. Zonder deze controle zou dat het
+   enige stuk tekst op de site zijn dat ongecontroleerd doorglipt.
+
+   Wat hier wél en niet geldt: de taalregels gelden onverkort, de regels over
+   woordaantal, bronnen en frontmatter niet — een vragenlijst is geen artikel.
+ * ------------------------------------------------------------------ */
+
+/**
+ * Haalt de zichtbare tekst uit een TypeScript-module: commentaar valt af,
+ * tekenreeksen blijven over.
+ *
+ * Commentaar wordt vervangen door evenveel spaties in plaats van verwijderd,
+ * zodat regelnummers blijven kloppen met het bestand op schijf.
+ *
+ * Alleen tekenreeksen controleren en niet de hele broncode is een bewuste
+ * keuze: een comment dat uitlegt wélke term verboden is, hoort geen fout op te
+ * leveren. Artikelen hebben daar `taalUitzonderingen` voor; een datamodule
+ * heeft geen frontmatter om zoiets in te declareren.
+ */
+function tekstenUitModule(bron) {
+  const zonderCommentaar = bron
+    .replace(/\/\*[\s\S]*?\*\//g, (blok) => blok.replace(/[^\n]/g, ' '))
+    .replace(/\/\/[^\n]*/g, (regel) => ' '.repeat(regel.length));
+
+  const gevonden = [];
+  const tekenreeks = /'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)"|`((?:[^`\\]|\\.)*)`/g;
+  for (const treffer of zonderCommentaar.matchAll(tekenreeks)) {
+    const waarde = treffer[1] ?? treffer[2] ?? treffer[3] ?? '';
+    if (!waarde.trim()) continue;
+    gevonden.push({
+      tekst: waarde.replace(/\\(['"`])/g, '$1'),
+      index: treffer.index ?? 0,
+    });
+  }
+  return gevonden;
+}
+
+function controleerModule(bestandspad, bron) {
+  const naam = relative(wortel, bestandspad).replace(/\\/g, '/');
+
+  for (const stuk of tekstenUitModule(bron)) {
+    for (const groep of [therapeutischeTaal, testervaringTaal, darmClaimTaal]) {
+      for (const { patroon, uitleg } of groep) {
+        for (const treffer of stuk.tekst.matchAll(patroon)) {
+          meld(fouten, naam, regelVan(bron, stuk.index), `"${treffer[0].trim()}" — ${uitleg}`);
+        }
+      }
+    }
+
+    for (const treffer of stuk.tekst.matchAll(claimPatroon)) {
+      const zin = normaliseer(treffer[0]);
+      const alleToegestaan = [...toegestaneClaims.claims, ...toegestaneClaims.darmclaims].map(normaliseer);
+      if (!alleToegestaan.some((claim) => zin.includes(claim) || claim.includes(zin))) {
+        meld(
+          fouten,
+          naam,
+          regelVan(bron, stuk.index),
+          `claim "${treffer[0].trim().slice(0, 90)}" staat niet in data/toegestane-claims.json`,
+        );
+      }
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
    Uitvoeren
  * ------------------------------------------------------------------ */
+
+const modules = [join(wortel, 'src', 'data', 'routinetest.ts')];
 
 const bestanden = await vindMarkdownBestanden(contentMap);
 
@@ -277,6 +348,19 @@ if (bestanden.length === 0) {
 
 for (const bestand of bestanden) {
   controleer(bestand, await readFile(bestand, 'utf8'));
+}
+
+let gecontroleerdeModules = 0;
+for (const module of modules) {
+  let bron;
+  try {
+    bron = await readFile(module, 'utf8');
+  } catch {
+    /* Ontbreekt de module, dan faalt de build er even verderop toch al op. */
+    continue;
+  }
+  controleerModule(module, bron);
+  gecontroleerdeModules++;
 }
 
 const groepeer = (lijst) => {
@@ -306,4 +390,6 @@ if (fouten.length > 0) {
   process.exit(1);
 }
 
-console.log(`Compliance-controle akkoord — ${bestanden.length} artikel(en) gecontroleerd, geen overtredingen.`);
+console.log(
+  `Compliance-controle akkoord — ${bestanden.length} artikel(en) en ${gecontroleerdeModules} tekstmodule(s) gecontroleerd, geen overtredingen.`,
+);
