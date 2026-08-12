@@ -100,42 +100,76 @@
   /*
     --- Letters ---
 
-    Er worden geen webfonts geladen: dat zou een verbinding met een derde partij
-    opzetten en het IP-adres van elke bezoeker meesturen. Alles hieronder staat
-    al op het apparaat van de lezer.
+    Drie families, zelf geserveerd vanuit public/fonts/ (zie letters.css). Er
+    gaat nog steeds geen enkel verzoek naar een derde partij; alleen staat er nu
+    wél een eigen letter in plaats van wat het apparaat toevallig had.
 
-    De koppeling is omgedraaid ten opzichte van wat gebruikelijk is. Normaal
-    krijgt een blog een serif-kop en een sans-broodtekst; hier is het een strakke
-    sans voor koppen en een serif voor het lezen. Dat leest hedendaags in plaats
-    van deftig, en het geeft de lange stukken onderzoek de rust van een boek.
+    Waarom dat de moeite waard was: onderzoek/09 par. 4.1 — vormgevingskwaliteit
+    is het eerste en zwaarste vertrouwensoordeel van een bezoeker, nog vóór de
+    inhoud. Systeemletters lezen als een onopgemaakt document, en voor een site
+    die volledig van geloofwaardigheid leeft is dat de duurste besparing die er
+    is.
+
+    Hier stond eerder een strakke sans voor koppen en een serif voor de tekst,
+    met als argument dat de omgekeerde koppeling hedendaags leest in plaats van
+    deftig. Dat argument klopt nog steeds — alleen kwam die "strakke sans" in de
+    praktijk neer op Segoe UI of Helvetica, en dat leest niet hedendaags maar
+    ongevormd. Vandaar twee serifs die elkaar niet in de weg zitten:
+
+      Fraunces     de koppen. Warme old-style met een SOFT-as die de punten
+                   afrondt — precies de "zachte dingen" uit de richting hierboven
+                   — en een opsz-as die grote graden fijner tekent.
+      Newsreader   de broodtekst. Lager contrast, getekend voor schermen. Naast
+                   Fraunces leest het als de rustige stem naast de sprekende.
 
     De monospace is de derde stem, en de belangrijkste van de drie: die is voor
     alles wat een méting is — aantallen bronnen, INCI-namen, data, percentages,
     labels. Cijfers in een monospace lezen als afgelezen, niet als beweerd.
   */
-  --font-kop: 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system,
-    BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  --font-tekst: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
-  --font-meting: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', 'SF Mono', Menlo, Consolas,
-    'Liberation Mono', monospace;
+  --font-kop: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-tekst: 'Newsreader', Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+  --font-meting: 'Plex Mono', ui-monospace, 'Cascadia Mono', 'SF Mono', Menlo, Consolas, monospace;
 
+  /*
+    De variabele assen. `opsz` moet mee met de graad, anders ziet een kop van
+    zeven rem er hetzelfde uit als een kop van één rem — alleen groter, en dat is
+    precies wat een letter goedkoop maakt. Een echte optische maatvoering maakt
+    grote tekst fijner en kleine tekst steviger.
+  */
+  --as-kop-groot: 'opsz' 144, 'SOFT' 28;
+  --as-kop-klein: 'opsz' 24, 'SOFT' 20;
+  --as-tekst: 'opsz' 16;
+
+  /*
+    Een kleine-terts-schaal (1,2) tot en met xl, daarboven ruimer. Een schaal die
+    overal dezelfde stap houdt, wordt in de grote graden te braaf; de sprongen
+    bovenin zijn wat dat betreft opzettelijk groter dan de rekenmachine zegt.
+  */
   --tekst-xs: 0.6875rem;
   --tekst-s: 0.8125rem;
   --tekst-m: 1rem;
-  --tekst-l: 1.125rem;
-  --tekst-xl: 1.375rem;
-  --tekst-2xl: 1.75rem;
-  --tekst-3xl: 2.5rem;
-  --tekst-4xl: 3.5rem;
-  --tekst-5xl: 5rem;
-  --tekst-6xl: 7.5rem;
+  --tekst-l: 1.1875rem;
+  --tekst-xl: 1.4375rem;
+  --tekst-2xl: 1.875rem;
+  --tekst-3xl: 2.625rem;
+  --tekst-4xl: 3.75rem;
+  --tekst-5xl: 5.5rem;
+  --tekst-6xl: 8.5rem;
 
-  --regelhoogte-tekst: 1.7;
-  --regelhoogte-kop: 1.02;
+  --regelhoogte-tekst: 1.72;
+  /*
+    1,02 was te krap voor deze letter: Fraunces heeft lange staarten, en die
+    raakten bij een kop van twee regels de regel eronder.
+  */
+  --regelhoogte-kop: 1.08;
 
-  /* Koppen staan krap, metingen ruim. Dat verschil maakt de twee stemmen hoorbaar. */
-  --spatie-kop: -0.035em;
-  --spatie-meting: 0.1em;
+  /*
+    Koppen staan krap, metingen ruim. Dat verschil maakt de twee stemmen
+    hoorbaar. Minder negatief dan bij de vorige sans: een serif heeft van
+    zichzelf al meer ruimte in de vorm, en te krap gespatieerd valt hij dicht.
+  */
+  --spatie-kop: -0.018em;
+  --spatie-meting: 0.11em;
 
   /* --- Ritme --------------------------------------------------------- */
   --ruimte-1: 0.25rem;

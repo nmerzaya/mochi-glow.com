@@ -1,3 +1,4 @@
+@import './letters.css';
 @import './tokens.css';
 
 /* ==================================================================== *
@@ -33,10 +34,27 @@ body {
   font-family: var(--font-tekst);
   font-size: var(--tekst-l);
   line-height: var(--regelhoogte-tekst);
+  font-variation-settings: var(--as-tekst);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  /*
+    Echte kapitalenvarianten en normale cijfers. Zonder dit zet Newsreader
+    zijn tabelcijfers in de lopende tekst, en die staan daar te ruim.
+  */
+  font-kerning: normal;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  /*
+    De vollebreedte-blokken rekenen met `100vw`, en dat is in vrijwel elke
+    browser inclusief de verticale schuifbalk. Op een pagina die verticaal
+    schuift steken ze daardoor een centimeter of twee buiten beeld en verschijnt
+    er onderaan een horizontale schuifbalk.
+
+    `clip` en niet `hidden`: `hidden` maakt van de body een scroll-container,
+    en dan werkt de plakkende koptekst niet meer.
+  */
+  overflow-x: clip;
 }
 
 /* Het hidden-attribuut verliest van elke klasse die zelf een display zet. */
@@ -44,20 +62,33 @@ body {
   display: none !important;
 }
 
+/*
+  Koppen. Het gewicht ligt op 560 en niet op 680: Fraunces is van zichzelf al
+  vrij vlezig, en een te zware kop leest als een aanbieding in plaats van als een
+  redactionele titel. De terughoudendheid is hier het premium-signaal.
+
+  `font-variant-numeric: lining-nums` zet in koppen de cijfers weer op volle
+  hoogte — een oudstijlcijfer met een staart is prachtig in lopende tekst en
+  rommelig in een titel.
+*/
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-kop);
-  font-weight: 680;
+  font-weight: 560;
+  font-variation-settings: var(--as-kop-klein);
   line-height: var(--regelhoogte-kop);
   letter-spacing: var(--spatie-kop);
   margin: 0 0 var(--ruimte-4);
   text-wrap: balance;
+  font-variant-numeric: lining-nums proportional-nums;
 }
 
 h1 {
   font-size: var(--tekst-4xl);
+  font-variation-settings: var(--as-kop-groot);
+  letter-spacing: -0.024em;
 }
 h2 {
   font-size: var(--tekst-2xl);
@@ -429,11 +460,25 @@ main {
   padding-block: var(--ruimte-9) var(--ruimte-8);
 }
 
+/*
+  De opening staat vloeiend in plaats van op een vaste graad. Deze kop is een
+  hele zin en geen woord van drie letters; op een vaste 8,5rem viel hij in de
+  halve kolom uiteen in acht regels. `clamp` laat hem meeademen met het scherm,
+  met een bovengrens die op een breed scherm nog steeds groot genoeg is om als
+  uitspraak te lezen.
+
+  Leading en tracking zijn ruimer dan bij de vorige sans. Een serif van deze
+  graad met -0,045em valt dicht: de schreven raken elkaar en het woordbeeld
+  verdwijnt. En 0,94 regelhoogte werkte alleen zolang de letter geen staarten
+  had — Fraunces heeft ze wel.
+*/
 .opening__kop {
-  font-size: var(--tekst-6xl);
+  font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+  font-variation-settings: var(--as-kop-groot);
+  font-weight: 540;
   margin: 0 0 var(--ruimte-5);
-  letter-spacing: -0.045em;
-  line-height: 0.94;
+  letter-spacing: -0.028em;
+  line-height: 1.02;
 }
 
 .opening__kop em {
@@ -649,12 +694,331 @@ main {
   margin-top: 0;
 }
 
+/* ------------------------------------------------------------------ *
+   De stroom — artikelen in tijdschriftritme
+
+   Hier stonden de blokken `.kaart*` en `.uitgelicht*` uit de vorige opmaak.
+   Die zijn verwijderd toen `Stroom.astro` en `ArtikelKaart.astro` op `.item*`
+   overgingen — maar de vervangende opmaak is er destijds nooit gekomen. De
+   componenten gaven `.stroom`, `.item`, `.item__vlak`, `.item__tekst`,
+   `.item__titel`, `.item__intro` en `.item__voet` af terwijl geen van die
+   klassen ergens beschreven stond.
+
+   Het gevolg was niet subtiel: elk beeld viel terug op zijn eigen volle breedte,
+   waardoor de overzichtspagina's uit paginagrote foto's onder elkaar bestonden
+   en het hele tijdschriftritme uit `Stroom.astro` onzichtbaar was. Dit blok
+   herstelt dat.
+
+   Het raster telt zes kolommen, zodat de drie formaten er precies in opgaan:
+   een spread vult alle zes, een breed blok drie (de halve pagina) en een kaart
+   twee (de derde). `Stroom.astro` rekent dezelfde verdeling uit — 2 × 3 en
+   3 × 2 — zodat er nooit een gat aan het eind van een rij valt.
+ * ------------------------------------------------------------------ */
+
+.stroom {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--ruimte-8) var(--ruimte-6);
+  align-items: start;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  grid-column: span 2;
+}
+
+.item--breed {
+  grid-column: span 3;
+}
+
 /*
-  Hier stonden de blokken `.kaart*` en `.uitgelicht*` uit de vorige opmaak. Ze
-  zijn verwijderd: sinds `Stroom.astro` en `ArtikelKaart.astro` met `.item*`
-  werken, geeft geen enkel component die klassen nog af. Ze bleven ongebruikt
-  meeliften en hielden bovendien de accentregels hieronder aan een dood adres.
+  De spread: beeld en tekst naast elkaar over de volle breedte. De tekstkolom
+  is de smallere van de twee — een openingsstuk leest als beeld met een
+  onderschrift, niet als twee gelijke helften.
 */
+.item--spread {
+  grid-column: span 6;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--ruimte-8);
+}
+
+.item--spread .item__vlak {
+  flex: 1 1 58%;
+}
+
+.item--spread .item__tekst {
+  flex: 1 1 42%;
+}
+
+/* Elke tweede spread gespiegeld, zodat een lange pagina niet in één ritme blijft hangen. */
+.item--spread:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+/* --- Het beeldvlak --- */
+
+.item__vlak {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--rond-l);
+  margin-bottom: var(--ruimte-4);
+  background: var(--kleur-grond-diep);
+  aspect-ratio: 4 / 3;
+}
+
+/*
+  De verhoudingen blijven dicht bij het bronmateriaal. De foto's zijn liggend
+  (16:9); ze in een staand kader persen zou de helft van elke compositie
+  wegsnijden.
+*/
+.item--spread .item__vlak,
+.item--breed .item__vlak {
+  aspect-ratio: 3 / 2;
+}
+
+.item__vlak .beeld {
+  transition: transform var(--overgang-traag) var(--soepel);
+}
+
+.item:hover .item__vlak .beeld {
+  transform: scale(1.028);
+}
+
+/* --- De tekst --- */
+
+.item__tekst {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.item__titel {
+  font-family: var(--font-kop);
+  font-variation-settings: var(--as-kop-klein);
+  font-weight: 560;
+  font-size: var(--tekst-xl);
+  line-height: 1.16;
+  letter-spacing: var(--spatie-kop);
+  text-wrap: balance;
+  margin: 0 0 var(--ruimte-3);
+}
+
+.item--breed .item__titel {
+  font-size: var(--tekst-2xl);
+}
+
+.item--spread .item__titel {
+  font-size: var(--tekst-3xl);
+  font-variation-settings: var(--as-kop-groot);
+}
+
+.item__titel a {
+  color: var(--kleur-inkt);
+  text-decoration: none;
+}
+
+/*
+  De hele kaart is klikbaar via één uitgerekt pseudo-element op de titellink.
+  Dat houdt het bij één link in de toegankelijkheidsboom in plaats van drie die
+  naar dezelfde plek gaan.
+*/
+.item__titel a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.item:hover .item__titel a {
+  color: var(--kleur-orchidee);
+}
+
+.item__intro {
+  color: var(--kleur-inkt-half);
+  font-size: var(--tekst-m);
+  line-height: 1.62;
+  margin: 0 0 var(--ruimte-4);
+  max-width: 62ch;
+}
+
+/* Op het kleinste formaat is de introtekst ruis; de titel doet daar het werk. */
+.item--kaart .item__intro {
+  display: none;
+}
+
+.item--spread .item__intro {
+  font-size: var(--tekst-l);
+}
+
+.item__voet {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--ruimte-4);
+  flex-wrap: wrap;
+  font-family: var(--font-meting);
+  font-size: var(--tekst-xs);
+  letter-spacing: var(--spatie-meting);
+  color: var(--kleur-inkt-stil);
+  padding-top: var(--ruimte-3);
+}
+
+@media (max-width: 64rem) {
+  .stroom {
+    gap: var(--ruimte-7) var(--ruimte-5);
+  }
+  /* Onder deze breedte is een derde van de pagina te smal voor een leesbare kaart. */
+  .item,
+  .item--breed {
+    grid-column: span 3;
+  }
+  .item--spread {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .item--spread:nth-of-type(even) {
+    flex-direction: column;
+  }
+  .item--spread .item__titel {
+    font-size: var(--tekst-2xl);
+  }
+}
+
+@media (max-width: 40rem) {
+  .item,
+  .item--breed,
+  .item--spread {
+    grid-column: span 6;
+  }
+  .item--kaart .item__intro {
+    display: block;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Het tweeluik — de twee vragenlijsten op de homepage
+
+   Asymmetrisch en niet in twee gelijke helften: twee even grote blokken naast
+   elkaar maken van allebei een widget. De routinetest krijgt de ruimte en toont
+   zijn eerste vraag meteen; het eetritme staat ernaast als aankondiging.
+ * ------------------------------------------------------------------ */
+
+.tweeluik {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: var(--ruimte-6);
+  margin-block: var(--ruimte-9);
+}
+
+.tweeluik__hoofd,
+.tweeluik__zij {
+  border: 1px solid var(--kleur-rand);
+  border-radius: var(--rond-speels);
+  padding: var(--ruimte-7);
+  background: var(--kleur-vlies);
+}
+
+.tweeluik__hoofd h2,
+.tweeluik__zij h2 {
+  margin-top: 0;
+  font-size: var(--tekst-2xl);
+}
+
+.tweeluik__hoofd p,
+.tweeluik__zij p {
+  color: var(--kleur-inkt-half);
+  font-size: var(--tekst-m);
+  max-width: 52ch;
+}
+
+.tweeluik__opties {
+  list-style: none;
+  padding: 0;
+  margin: var(--ruimte-5) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ruimte-3);
+}
+
+.tweeluik__opties li + li {
+  margin-top: 0;
+}
+
+.tweeluik__optie {
+  display: inline-block;
+  padding: var(--ruimte-3) var(--ruimte-5);
+  border: 1px solid var(--kleur-rand);
+  border-radius: var(--rond-vol);
+  background: var(--kleur-grond);
+  color: var(--kleur-inkt);
+  text-decoration: none;
+  font-family: var(--font-tekst);
+  font-size: var(--tekst-m);
+  transition:
+    background var(--overgang-snel) var(--soepel),
+    border-color var(--overgang-snel) var(--soepel);
+}
+
+.tweeluik__optie:hover {
+  background: var(--kleur-accent-warm-vlak);
+  border-color: var(--kleur-accent-warm);
+  color: var(--kleur-inkt);
+}
+
+.tweeluik__zij {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: var(--kleur-orchidee-vlak);
+  border-color: transparent;
+  transition: transform var(--overgang-traag) var(--soepel);
+}
+
+.tweeluik__zij:hover {
+  transform: translateY(-3px);
+  color: inherit;
+}
+
+.tweeluik__pijl {
+  margin-top: auto;
+  font-size: var(--tekst-2xl);
+  color: var(--kleur-orchidee);
+  line-height: 1;
+}
+
+@media (max-width: 64rem) {
+  .tweeluik {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+   Uitleg — het blok "hoe dit werkt" onder aan de homepage
+ * ------------------------------------------------------------------ */
+
+.uitleg {
+  columns: 2;
+  column-gap: var(--ruimte-8);
+  max-width: var(--breedte-ruim);
+  color: var(--kleur-inkt-half);
+}
+
+.uitleg p {
+  margin-top: 0;
+  break-inside: avoid;
+}
+
+@media (max-width: 52rem) {
+  .uitleg {
+    columns: 1;
+  }
+}
 
 /*
   Accentvlakken achter het beeld.
@@ -835,6 +1199,13 @@ main {
   --uitbraak: clamp(0rem, (100vw - var(--breedte-lees) - 2 * var(--ruimte-6)) / 2, var(--ruimte-9));
   display: block;
   width: calc(100% + 2 * var(--uitbraak));
+  /*
+    Zonder dit gebeurt er niets zichtbaars. De algemene regel `img { max-width:
+    100% }` bovenaan dit bestand houdt het beeld op de breedte van de tekstkolom,
+    waardoor de negatieve marges hem wel naar links trekken maar hij niet mag
+    groeien — het beeld schoof dan scheef in plaats van uit te breken.
+  */
+  max-width: none;
   margin: var(--ruimte-8) calc(-1 * var(--uitbraak));
   border-radius: var(--rond-l);
 }

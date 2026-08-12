@@ -66,8 +66,31 @@ const gestructureerdeData = {
     <link rel="alternate" type="application/rss+xml" title={site.naam} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Geen externe lettertypen: dat zou een verbinding met een derde partij
-         opzetten en daarmee een AVG-vraagstuk creëren voor iets cosmetisch. -->
+    {/*
+      De letters worden van dit domein zelf geserveerd (public/fonts/, opgehaald
+      door scripts/haal-letters.mjs). Nog steeds geen enkel extern verzoek: er
+      gaat geen IP-adres van een bezoeker naar een derde partij.
+
+      De twee die de eerste schermvulling bepalen, worden voorgeladen. Zonder dit
+      begint de browser er pas aan nadat hij de CSS heeft ontleed, en dat is
+      precies de vertraging die je als flikkerende tekst ziet. `crossorigin` is
+      ook bij dezelfde herkomst verplicht bij lettertypen — laat je het weg, dan
+      haalt de browser het bestand een tweede keer op.
+    */}
+    <link
+      rel="preload"
+      href="/fonts/fraunces-variabel.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/newsreader-variabel.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <meta name="theme-color" content="#f2eff5" />
 
     <script type="application/ld+json" set:html={JSON.stringify(gestructureerdeData)} />

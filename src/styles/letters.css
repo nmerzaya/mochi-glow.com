@@ -1,0 +1,76 @@
+/*
+  Mochi Glow — lettertypen
+  ========================
+
+  De bestanden staan in `public/fonts/` en worden door deze site zelf
+  geserveerd. Ze zijn opgehaald met `scripts/haal-letters.mjs`; de licenties
+  staan in `public/fonts/LICENTIE.md`. Alle drie de families vallen onder de SIL
+  Open Font License 1.1.
+
+  Dit is géén inbreuk op de invariant "geen externe verzoeken". Die regel bestaat
+  omdat een lettertype van een CDN de browser van elke bezoeker een verbinding
+  met een derde partij laat opzetten, inclusief IP-adres. Hier komt het bestand
+  van hetzelfde domein als de pagina: geen derde partij, niets te lekken.
+
+  Waarom het de moeite waard was: onderzoek/09 par. 4.1 — ontwerpkwaliteit is het
+  eerste en zwaarste vertrouwensoordeel dat een bezoeker velt, nog vóór hij de
+  inhoud leest. Systeemletters lezen als een onopgemaakt document.
+
+  `font-display: swap` toont de tekst meteen in de terugvalletter en wisselt
+  zodra het bestand binnen is. Nooit `block`: dan staat de lezer naar een lege
+  pagina te kijken omdat een letter nog onderweg is.
+*/
+
+/* ------------------------------------------------------------------ *
+   Fraunces — de koppen
+
+   Een warme old-style met twee assen die hier daadwerkelijk gebruikt worden:
+   `opsz` past de vormen aan de graad aan (grote koppen krijgen fijnere details,
+   kleine blijven leesbaar) en `SOFT` rondt de punten af. Die tweede as is de
+   reden dat juist deze letter bij "het laboratorium van zachte dingen" past.
+ * ------------------------------------------------------------------ */
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/fraunces-variabel.woff2') format('woff2-variations');
+  font-weight: 300 700;
+  font-stretch: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------ *
+   Newsreader — de broodtekst
+
+   Getekend om op een scherm gelezen te worden. Het contrast tussen dik en dun
+   ligt lager dan bij Fraunces, zodat de twee naast elkaar niet met elkaar
+   concurreren: de kop is het instrument, de tekst is de rust.
+ * ------------------------------------------------------------------ */
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-variabel.woff2') format('woff2-variations');
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------ *
+   IBM Plex Mono — de metingen
+
+   Twee vaste gewichten in plaats van een variabele as: er zijn er maar twee
+   nodig, en twee kleine bestanden zijn samen lichter dan één variabel bestand.
+ * ------------------------------------------------------------------ */
+@font-face {
+  font-family: 'Plex Mono';
+  src: url('/fonts/plex-mono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plex Mono';
+  src: url('/fonts/plex-mono-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
