@@ -140,42 +140,63 @@ const gestructureerdeData = {
     <script type="application/ld+json" set:html={JSON.stringify(gestructureerdeData)} />
 
     {/*
-      Google Analytics 4 — bewust NIET het knip-en-plakfragment van Google.
+      Google Analytics 4 met Consent Mode v2.
 
-      Beide scripts staan op `type="text/plain"`, waardoor de browser ze niet
-      uitvoert. Klaro zet ze pas om naar echte scripts zodra de bezoeker
-      toestemming geeft voor "statistieken"; weigert iemand, dan wordt gtag.js
-      nooit opgehaald en gaat er geen byte naar Google.
+      ── Waarom deze opzet en niet de vorige ────────────────────────────────
 
-      Dat is geen overdreven voorzichtigheid maar de wettelijke volgorde: onder
-      de ePrivacy-richtlijn en de AVG mag een analysecookie pas ná toestemming
-      geplaatst worden. Het originele fragment laadt meteen en zou de site vanaf
-      de eerste bezoeker in overtreding brengen.
+      Eerst stonden beide scripts op `type="text/plain"`, zodat Klaro ze pas
+      vrijgaf ná toestemming. Privacytechnisch is dat het strengst, maar het
+      heeft één praktisch gevolg: Google ziet de tag dan niet. De controle van
+      Google zoekt naar een uitvoerbaar gtag-script, en een geblokkeerd script
+      is er geen — vandaar de melding "tag niet gevonden", ook al stond hij wel
+      degelijk in de HTML.
 
-      `data-name` moet exact overeenkomen met de dienstnaam in
-      `CookieToestemming.astro`, anders geeft Klaro het script nooit vrij.
+      Consent Mode v2 is Google's eigen antwoord daarop, en het is de opzet die
+      voor Europese sites bedoeld is. De volgorde is wat hem werkbaar maakt:
+
+      1. Eerst wordt `consent default` op *denied* gezet — vóór gtag.js geladen
+         wordt. Zolang dat geldt, plaatst Google geen enkele analytics- of
+         advertentiecookie en worden er geen identifiers verstuurd.
+      2. Dán pas laadt gtag.js. De tag is daarmee zichtbaar en meetbaar voor
+         Google's controle.
+      3. Zodra de bezoeker in het venster toestemming geeft, zet
+         `CookieToestemming.astro` de status om naar *granted* en begint de
+         gewone meting.
+
+      ── Wat dit wél verandert, eerlijk gezegd ──────────────────────────────
+
+      Er gaat nu bij het openen van de pagina een verzoek naar
+      googletagmanager.com, en daarmee het IP-adres van de bezoeker. Dat gebeurde
+      in de vorige opzet niet. Het blijft binnen wat Consent Mode v2 voor de EU
+      voorschrijft — geen cookies, geen identifiers, alleen geaggregeerde
+      signalen — maar het is een stap minder streng dan volledig blokkeren.
+
+      Wie dat niet wil: `ga4MeetID` in `src/config.ts` op `null` zetten. Dan
+      verdwijnt elk extern verzoek weer van de site.
     */}
     {
       ga4MeetID && (
         <>
           <script
-            type="text/plain"
-            data-name="google-analytics"
-            data-type="application/javascript"
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeetID}`}
-          />
-          <script
-            type="text/plain"
-            data-name="google-analytics"
-            data-type="application/javascript"
+            is:inline
             set:html={`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                analytics_storage: 'denied',
+                functionality_storage: 'denied',
+                personalization_storage: 'denied',
+                security_storage: 'granted',
+                wait_for_update: 500
+              });
               gtag('js', new Date());
               gtag('config', '${ga4MeetID}', { anonymize_ip: true });
             `}
           />
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeetID}`} />
         </>
       )
     }

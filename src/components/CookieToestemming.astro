@@ -110,6 +110,58 @@ const toon = diensten.length > 0;
       )};`} />
 
       <script is:inline defer src="/klaro/klaro-no-translations.js" />
+
+      {/*
+        De brug tussen Klaro en Google Consent Mode.
+
+        `BasisLayout.astro` zet de toestemming bij het laden op *denied*. Dit
+        stukje zet hem om naar *granted* zodra de bezoeker statistieken toestaat,
+        en terug naar *denied* als hij zijn keuze intrekt. Zonder deze brug staat
+        Consent Mode voor altijd op geweigerd en meet GA4 niets, hoe vaak iemand
+        ook op accepteren drukt.
+
+        De koppeling loopt via de toestemmingscookie en niet via de JavaScript
+        van Klaro. Dat is een bewuste keuze: de meegeleverde build
+        (`klaro-no-translations.js`) zet alleen `window.klaro.__k` neer en heeft
+        geen `getManager()`. Een eerdere versie van dit bestand ging daar wél van
+        uit en deed daardoor helemaal niets — de banner werkte, maar de meting
+        bleef geweigerd. De cookie is de enige afspraak die tussen Klaro-versies
+        stabiel blijft.
+
+        Het klikpunt hangt op `document` in de capture-fase, zodat het ook werkt
+        voor knoppen die Klaro pas later in de DOM zet.
+      */}
+      <script is:inline set:html={`
+        (function () {
+          var NAAM = 'mochiglow-toestemming';
+
+          function keuze() {
+            var m = document.cookie.match(new RegExp('(?:^|;\\\\s*)' + NAAM + '=([^;]*)'));
+            if (!m) return null;
+            try { return JSON.parse(decodeURIComponent(m[1])); } catch (e) { return null; }
+          }
+
+          function pas() {
+            if (typeof window.gtag !== 'function') return;
+            var c = keuze();
+            if (!c) return;
+            window.gtag('consent', 'update', {
+              analytics_storage: c['google-analytics'] ? 'granted' : 'denied'
+            });
+          }
+
+          /* Terugkerende bezoeker: keuze staat al in de cookie. */
+          pas();
+
+          /* Nieuwe keuze: de cookie wordt vlak na de klik geschreven. */
+          document.addEventListener('click', function (e) {
+            if (e.target && e.target.closest && e.target.closest('#klaro')) {
+              setTimeout(pas, 250);
+              setTimeout(pas, 1000);
+            }
+          }, true);
+        })();
+      `} />
     </>
   )
 }

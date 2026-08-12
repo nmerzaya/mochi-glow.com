@@ -60,9 +60,15 @@ const bijgewerkt = '12 augustus 2026';
         <>
           <p>
             Deze site gebruikt <strong>Google Analytics 4</strong> om te meten welke artikelen
-            gelezen worden. Dat gebeurt <strong>alleen als je daar toestemming voor geeft</strong>.
-            Zolang je die niet hebt gegeven, wordt het script niet geladen en gaat er niets naar
-            Google — ook je IP-adres niet.
+            gelezen worden. Er wordt <strong>pas gemeten als je daar toestemming voor geeft</strong>.
+          </p>
+          <p>
+            Hoe dat technisch werkt, in gewone taal: bij het openen van een pagina wordt het script
+            van Google wél opgehaald, maar met de instelling "toestemming geweigerd" (Google noemt
+            dit Consent Mode). Zolang die geldt, worden er geen cookies geplaatst en gaan er geen
+            gegevens mee waarmee je herkenbaar bent. Bij het ophalen van dat script ziet Google wel
+            je IP-adres — dat is onvermijdelijk zodra een bestand van een andere server komt. Geef je
+            toestemming, dan wordt de instelling omgezet en begint de gewone meting.
           </p>
           <p>
             Geef je toestemming, dan verwerkt Google gegevens over je bezoek: welke pagina's je
@@ -92,8 +98,9 @@ const bijgewerkt = '12 augustus 2026';
       {
         ga4MeetID && (
           <>
-            {' '}De enige uitzondering is het hierboven genoemde statistiekscript, en dat wordt
-            uitsluitend geladen nadat je daar toestemming voor hebt gegeven.
+            {' '}De enige uitzondering is het statistiekscript van Google dat hierboven beschreven
+            staat. Dat meet niets tot je toestemming geeft, maar het bestand zelf komt wel van een
+            server van Google.
           </>
         )
       }
