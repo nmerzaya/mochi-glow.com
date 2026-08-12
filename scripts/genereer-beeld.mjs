@@ -69,18 +69,56 @@ const herkomstPad = join(wortel, 'src', 'assets', 'HERKOMST.md');
 /**
  * Verhoog dit als de stijl verandert; dan wordt alles opnieuw gegenereerd.
  *
+ * 4 (2026-08-12) — belichting op selectie in plaats van op correctie, plus een
+ * lichte gradatie. Zie de toelichting bij `BELICHTING` hieronder.
+ *
  * 3 (2026-08-12) — overgestapt op een Pollinations-token. Versie 2 is zonder
  * token gemaakt: opgevraagd op 1024×576 en lokaal 2× opgeschaald. Met token komt
  * er echt 1920×1080 uit. Alleen de nieuwe beelden op token halen zou de reeks in
  * twee zichtbaar verschillende kwaliteiten splitsen, dus gaat alles opnieuw.
  */
-const STIJLVERSIE = 3;
+const STIJLVERSIE = 4;
 
-const PAUZE_MS = 16_000;
-const DOELBREEDTE = 2048;
+/*
+  ── Belichting ──────────────────────────────────────────────────────────────
+
+  Het model levert bij dezelfde stijlzin de ene keer een bijna wit stilleven en
+  de andere keer een vrijwel zwart bladerdek. Die spreiding is wat de reeks als
+  geheel rommelig maakt — meer nog dan de resolutie.
+
+  Er zijn twee manieren om dat op te lossen en maar één ervan werkt.
+
+  Wat NIET werkt: het achteraf rechttrekken. Een gemeten gemiddelde van 51 met
+  een factor 2,6 naar 132 tillen is geprobeerd (2026-08-12) en levert een grijs,
+  luidruchtig beeld op waarin de ruis is meevergroot. Donker beeld bevat de
+  informatie simpelweg niet.
+
+  Wat wél werkt: het beeld niet accepteren. Valt de gemeten helderheid buiten de
+  band, dan wordt hetzelfde onderwerp opnieuw opgevraagd met een ander zaad. Dat
+  is hoe een fotograaf het ook doet: niet een mislukte opname redden, maar er
+  nog een maken. Pas daarna gaat er een lichte gradatie overheen.
+
+  Maar herhalen is het tweede redmiddel, niet het eerste. Bij de eerste run op
+  deze band bleek het onderwerp zélf de oorzaak: achttien beschrijvingen zetten
+  hun onderwerp op "dark earth", "dark slate" of "dark glass", of vroegen om
+  tegenlicht. Die spraken de stijlzin ("bone white, warm grey") rechtstreeks
+  tegen, en dan helpt geen enkel ander zaad — centella kwam na vier pogingen nog
+  steeds op 85 uit. Die ondergronden zijn vervangen door bleke. Herhalen vangt nu
+  alleen nog de toevallige uitschieter op, en drie pogingen volstaan daarvoor.
+*/
+const BELICHTING = { min: 100, max: 185, pogingen: 3 };
 
 /* Zonder token is dit de feitelijke bovengrens; ermee wordt het 1920×1080. */
 const token = process.env.POLLINATIONS_TOKEN?.trim() || null;
+
+/*
+  De wachttijd tussen twee verzoeken. Zestien seconden is wat de anonieme laag
+  verdraagt; mét token mag het sneller, en dát is waar een token wél voor dient.
+  Dat scheelt op vijfentachtig beelden ruim twintig minuten, en dat telt: een run
+  die een halfuur duurt wordt onderweg afgebroken en moet dan hervat worden.
+*/
+const PAUZE_MS = token ? 9_000 : 16_000;
+const DOELBREEDTE = 2048;
 const BREEDTE = token ? 1920 : 1024;
 const HOOGTE = token ? 1080 : 576;
 
@@ -129,7 +167,7 @@ const NIET = 'no text, no lettering, no logo, no watermark, no faces, no brand p
 const onderwerpen = {
   /* ── Wat zit erin? — bestaand ── */
   'ingredienten/centella-asiatica': [
-    'a cluster of round pennywort leaves with scalloped edges, still wet with dew, on damp dark earth',
+    'a cluster of round pennywort leaves with scalloped edges, still wet with dew, on pale damp stone',
     'dried centella leaves and thin stems loose in a shallow unglazed ceramic dish',
     'one translucent green leaf held up against soft light, fine veins visible',
   ],
@@ -156,11 +194,11 @@ const onderwerpen = {
   'ingredienten/pdrn': [
     'macro of salmon skin, silvery iridescent scales, resting on crushed ice',
     'a slender empty glass ampoule lying on brushed cold steel',
-    'a twisted translucent ribbon of gel coiled like a helix on dark wet stone',
+    'a twisted translucent ribbon of gel coiled like a helix on pale wet stone',
   ],
   'ingredienten/propolis': [
-    'a broken fragment of honeycomb with dark amber resin in the cells, backlit',
-    'raw propolis chunks, dark and waxy, in a small carved wooden bowl',
+    'a broken fragment of honeycomb with warm amber resin in the cells, lit from behind against a bright bone-white background',
+    'raw propolis chunks, waxy and amber, in a small pale carved wooden bowl',
     'thick amber liquid drawing out slowly from the back of a spoon',
   ],
   'ingredienten/rijstextract': [
@@ -169,41 +207,41 @@ const onderwerpen = {
     'fermenting rice mash in an earthenware crock with the wooden lid pushed aside',
   ],
   'ingredienten/snail-mucin': [
-    'a glossy spiral shell seen from directly above on wet dark slate',
-    'macro of a clear viscous trail across dark glass, catching a thin line of light',
-    'damp green leaves in low soft light with water beading on the surface',
+    'a glossy spiral shell seen from directly above on pale wet stone',
+    'macro of a clear viscous trail across pale grey glass, catching a thin line of light',
+    'damp green leaves in soft even daylight with water beading on the surface',
   ],
   'ingredienten/vitamine-c': [
-    'a citrus cross-section, macro, pulp segments translucent and backlit',
+    'a citrus cross-section, macro, pulp segments translucent, lit from behind against a bright bone-white background',
     'a small amber glass bottle on a windowsill casting a long shadow',
     'white crystalline powder spilling from a folded paper packet onto grey stone',
   ],
 
   /* ── Wat zit erin? — nieuw ── */
   'ingredienten/groene-thee': [
-    'fresh green tea leaves, macro, still wet from rain, on dark slate',
+    'fresh green tea leaves, macro, still wet from rain, on pale grey stone',
     'loose dried green tea heaped in a small ceramic scoop on linen',
     'pale green tea steeping in a clear glass cup with steam rising',
   ],
   'ingredienten/ginseng': [
-    'a whole ginseng root with fine pale tendrils lying on dark soil, macro',
+    'a whole ginseng root with fine pale tendrils lying on pale linen, macro',
     'thin slices of dried ginseng arranged in a row on a worn wooden board',
     'an amber infusion in a small earthenware cup, seen from just above the rim',
   ],
   'ingredienten/bijvoet': [
     'fresh mugwort leaves with the silvery underside showing, macro, soft daylight',
     'a bundle of dried mugwort tied with rough twine hanging against a pale plaster wall',
-    'a dark herbal infusion in a shallow stone bowl with steam lifting off it',
+    'a herbal infusion in a shallow pale stone bowl with steam lifting off it',
   ],
   'ingredienten/houttuynia-cordata': [
-    'heart-shaped houttuynia leaves wet with rain, macro, deep green against dark earth',
-    'houttuynia growing densely in shade, low soft light, shallow focus',
+    'heart-shaped houttuynia leaves wet with rain, macro, against pale grey stone',
+    'houttuynia leaves in soft even daylight, shallow focus, pale background',
     'crushed green leaves in a rough stone mortar with a pestle beside it',
   ],
   'ingredienten/gefermenteerde-soja': [
     'dried soybeans heaped in a wooden bowl, macro, warm side light',
     'traditional Korean earthenware fermentation jars on a stone terrace in morning light',
-    'dark fermented soybean paste in a ceramic dish, thick textured surface',
+    'fermented soybean paste in a pale ceramic dish, thick textured surface',
   ],
 
   /* ── Huid van binnenuit — wetenschapsspoor, bestaand ── */
@@ -215,7 +253,7 @@ const onderwerpen = {
   'gut-skin/darm-huid-as': [
     'two smooth river stones on pale sand joined by a single taut strand of thread',
     'a long coiled length of natural rope on a linen sheet, seen from above',
-    'macro of a fern frond unfurling, backlit',
+    'macro of a fern frond unfurling, lit from behind against a bright bone-white background',
   ],
   'gut-skin/darmbarriere-en-ontstekingsprocessen': [
     'a dense wall of small round pebbles fitted tightly together with one gap between them',
@@ -225,7 +263,7 @@ const onderwerpen = {
   'gut-skin/darmmicrobioom-en-huidmicrobioom': [
     'two circular fields of scattered poppy seeds on white paper, one dense and one sparse',
     'macro of kefir grains in a clear glass jar, soft daylight',
-    'close-up of forearm skin texture in low raking light, fine detail',
+    'close-up of forearm skin texture in soft raking light, fine detail',
   ],
   'gut-skin/probiotica-en-de-europese-regels': [
     'an empty glass petri dish on a pale grey desk beside a folded blank document',
@@ -245,8 +283,8 @@ const onderwerpen = {
     'close-up of a spoon lifting thick set yoghurt out of a ceramic pot',
   ],
   'gut-skin/suiker-en-glycatie': [
-    'white sugar crystals spilled across dark slate, extreme macro',
-    'caramel darkening in a pan, close-up of the surface catching light',
+    'white sugar crystals spilled across pale grey stone, extreme macro',
+    'pale caramel in a pan, close-up of the surface catching light',
     'a torn slice of toasted bread, crust texture in raking light',
   ],
   'gut-skin/slaap-en-huid': [
@@ -301,7 +339,14 @@ function zaadVan(tekst) {
   return som;
 }
 
-async function haalOp(prompt, bestandsnaam, seed) {
+/** Gewogen gemiddelde helderheid (Rec. 709), 0-255. */
+async function helderheidVan(buffer) {
+  const { channels } = await sharp(buffer).stats();
+  const [r, g, b] = channels;
+  return 0.2126 * r.mean + 0.7152 * g.mean + 0.0722 * b.mean;
+}
+
+async function vraagOp(prompt, seed) {
   const url =
     `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}` +
     `?width=${BREEDTE}&height=${HOOGTE}&nologo=true&seed=${seed}`;
@@ -313,6 +358,33 @@ async function haalOp(prompt, bestandsnaam, seed) {
 
   const inhoud = Buffer.from(await antwoord.arrayBuffer());
   if (inhoud.length < 5000) throw new Error(`verdacht klein bestand (${inhoud.length} bytes)`);
+  return inhoud;
+}
+
+async function haalOp(prompt, bestandsnaam, seed) {
+  /*
+    Opvragen tot de belichting binnen de band valt. Het zaad schuift per poging
+    op, zodat er werkelijk een andere opname terugkomt en niet dezelfde.
+  */
+  let inhoud = null;
+  let helderheid = 0;
+  let pogingen = 0;
+
+  for (let i = 0; i < BELICHTING.pogingen; i++) {
+    pogingen = i + 1;
+    const kandidaat = await vraagOp(prompt, (seed + i * 7919) % 100000);
+    const gemeten = await helderheidVan(kandidaat);
+
+    /* De best belichte poging tot nu toe bewaren, voor als geen enkele slaagt. */
+    const afwijking = (h) => Math.abs(h - (BELICHTING.min + BELICHTING.max) / 2);
+    if (inhoud === null || afwijking(gemeten) < afwijking(helderheid)) {
+      inhoud = kandidaat;
+      helderheid = gemeten;
+    }
+
+    if (gemeten >= BELICHTING.min && gemeten <= BELICHTING.max) break;
+    if (i < BELICHTING.pogingen - 1) await wacht(PAUZE_MS);
+  }
 
   const bron = sharp(inhoud);
   const { width = 0, height = 0 } = await bron.metadata();
@@ -329,14 +401,42 @@ async function haalOp(prompt, bestandsnaam, seed) {
     interpoleert de browser net zo goed, en zonder het detailverlies.
   */
   const schaal = width > 0 ? Math.min(2, DOELBREEDTE / width) : 1;
-  const bewerkt =
-    schaal >= 1.25
-      ? bron
-          .resize(Math.round(width * schaal), Math.round(height * schaal), { kernel: 'lanczos3' })
-          .sharpen({ sigma: 0.7, m1: 0.5, m2: 0.5 })
-      : bron;
 
-  const uit = await bewerkt.jpeg({ quality: 92, mozjpeg: true }).toBuffer();
+  /*
+    ── De gradatie ───────────────────────────────────────────────────────────
+
+    Bewust licht. Een tijdschrift brengt al zijn fotografie naar één afdruk, en
+    dát is het doel — niet dat het beeld er zichtbaar "bewerkt" uitziet. Vandaar
+    waarden dicht bij 1.
+
+    De verzadiging gaat een stukje omlaag omdat het model bij groen (blad, thee,
+    kruiden) naar een felheid neigt die naast een bleke lila grond schreeuwt.
+
+    `linear` wordt precies één keer aangeroepen. Sharp stapelt die niet maar
+    overschrijft hem: twee aanroepen achter elkaar gooien de eerste weg. Contrast
+    en helderheid zitten daarom in dezelfde formule.
+  */
+  let pijp = bron.linear(1.03, -4).modulate({ saturation: 0.88 });
+
+  /*
+    Fijne korrel in soft-light. Dit is niet alleen sfeer: het breekt het gladde,
+    te schone oppervlak waaraan een gegenereerd beeld te herkennen is, en het
+    sluit aan op "fine film grain" uit de stijlzin. Rond 128 gehouden, want
+    daaronder verdonkert soft-light het beeld.
+  */
+  const korrel = Buffer.alloc(width * height);
+  for (let i = 0; i < korrel.length; i++) korrel[i] = 124 + Math.floor(Math.random() * 9);
+  pijp = pijp.composite([
+    { input: korrel, raw: { width, height, channels: 1 }, blend: 'soft-light' },
+  ]);
+
+  if (schaal >= 1.25) {
+    pijp = pijp
+      .resize(Math.round(width * schaal), Math.round(height * schaal), { kernel: 'lanczos3' })
+      .sharpen({ sigma: 0.6, m1: 0.4, m2: 0.4 });
+  }
+
+  const uit = await pijp.jpeg({ quality: 92, mozjpeg: true }).toBuffer();
   await writeFile(join(doelmap, bestandsnaam), uit);
 
   const na = await sharp(uit).metadata();
@@ -345,6 +445,9 @@ async function haalOp(prompt, bestandsnaam, seed) {
     breedte: na.width,
     hoogte: na.height,
     gegenereerd: `${width}×${height}`,
+    helderheid: Math.round(helderheid),
+    binnenBand: helderheid >= BELICHTING.min && helderheid <= BELICHTING.max,
+    pogingen,
     /*
       Of er daadwerkelijk is opgeschaald, en niet of er een token was. Dat waren
       tot 2026-08-12 hetzelfde, in de veronderstelling dat een token hogere
@@ -436,7 +539,10 @@ for (const [index, opdracht] of teDoen.entries()) {
   try {
     const uitkomst = await haalOp(opdracht.prompt, opdracht.bestand, zaadVan(opdracht.sleutel));
     console.log(
-      `${nummer} ✓ ${opdracht.bestand} — ${uitkomst.gegenereerd} → ${uitkomst.breedte}×${uitkomst.hoogte}, ${Math.round(uitkomst.bytes / 1024)} kB`,
+      `${nummer} ${uitkomst.binnenBand ? '✓' : '~'} ${opdracht.bestand} — ` +
+        `helderheid ${uitkomst.helderheid}${uitkomst.pogingen > 1 ? ` na ${uitkomst.pogingen} pogingen` : ''}` +
+        `${uitkomst.binnenBand ? '' : ' (buiten de band, beste poging gehouden)'}, ` +
+        `${Math.round(uitkomst.bytes / 1024)} kB`,
     );
     verslag.push({
       bestand: opdracht.bestand,
@@ -449,6 +555,9 @@ for (const [index, opdracht] of teDoen.entries()) {
       afmeting: `${uitkomst.breedte}×${uitkomst.hoogte}`,
       bytes: uitkomst.bytes,
       opgeschaald: uitkomst.opgeschaald,
+      helderheid: uitkomst.helderheid,
+      binnenBand: uitkomst.binnenBand,
+      pogingen: uitkomst.pogingen,
       datum: new Date().toISOString().slice(0, 10),
       gelukt: true,
     });
@@ -518,6 +627,19 @@ de hand bij te werken — draai het script opnieuw.
   terug. Een token verhoogt de resolutie dus niet — het geeft alleen een ruimer
   aanvraagtempo.
 - **Nabewerking:** ${gelukt.some((r) => r.opgeschaald) ? 'de beelden zijn na het ophalen met sharp 2× opgeschaald (Lanczos3 en een milde unsharp mask) en als JPEG kwaliteit 92 weggeschreven. Dat voegt geen detail toe, maar voorkomt dat de browser zelf moet interpoleren en geeft Astro genoeg pixels voor nette WebP-varianten' : 'geen opschaling nodig geweest; de beelden zijn als JPEG kwaliteit 92 weggeschreven'}.
+- **Gradatie:** verzadiging naar 0,88, een lichte contraststap en fijne korrel in
+  soft-light. Bewust licht gehouden — het doel is dat vierentachtig losse opnamen
+  als één reeks lezen, niet dat ze er bewerkt uitzien.
+- **Belichting op selectie:** per beeld wordt de gemiddelde helderheid gemeten
+  (Rec. 709). Valt die buiten ${BELICHTING.min}-${BELICHTING.max}, dan wordt het
+  onderwerp opnieuw opgevraagd met een ander zaad, tot ${BELICHTING.pogingen}
+  pogingen. Een te donkere opname achteraf optrekken is geprobeerd en levert een
+  grijs, luidruchtig beeld op; niet accepteren werkt wél.
+  ${(() => {
+    const buiten = gelukt.filter((r) => r.binnenBand === false).length;
+    const extra = gelukt.filter((r) => (r.pogingen ?? 1) > 1).length;
+    return `Bij deze run zijn ${extra} beelden opnieuw opgevraagd en bleven er ${buiten} buiten de band.`;
+  })()}
 
 ## Beelden (${gelukt.length})
 

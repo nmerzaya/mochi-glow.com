@@ -121,6 +121,16 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
+/*
+  Geselecteerde tekst in de accentkleur in plaats van het blauw van de browser.
+  Een klein ding, maar het is precies het soort detail waaraan een pagina laat
+  merken dat er iemand naar gekeken heeft.
+*/
+::selection {
+  background: var(--kleur-orchidee);
+  color: #fff;
+}
+
 :focus-visible {
   outline: 2px solid var(--kleur-orchidee);
   outline-offset: 3px;
@@ -273,10 +283,16 @@ main {
   line-height: 1;
 }
 
+/*
+  Het woordmerk. Gewicht 620 en niet 700: op deze graad valt de zwaarste snede
+  van Fraunces dicht en verliest de naam zijn vorm. De optische as staat op de
+  kleine waarde zodat de details op 1,25rem stevig genoeg blijven.
+*/
 .merk__naam {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 1.3rem;
+  font-weight: 620;
+  font-variation-settings: var(--as-kop-klein);
+  letter-spacing: -0.012em;
 }
 
 .merk__stip {
@@ -754,10 +770,13 @@ main {
   flex: 1 1 42%;
 }
 
-/* Elke tweede spread gespiegeld, zodat een lange pagina niet in één ritme blijft hangen. */
-.item--spread:nth-of-type(even) {
-  flex-direction: row-reverse;
-}
+/*
+  Hier stond een regel die elke tweede spread spiegelde. Verwijderd: `Stroom.astro`
+  geeft per pagina hoogstens één spread af (alleen het eerste artikel, en alleen
+  als `opening` aanstaat), dus die regel kon nooit afgaan. Precies het soort dode
+  opmaak dat dit bestand eerder al aan een dood adres hield — niet opnieuw
+  invoeren zonder dat er meerdere spreads bestaan.
+*/
 
 /* --- Het beeldvlak --- */
 
@@ -879,9 +898,6 @@ main {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-  }
-  .item--spread:nth-of-type(even) {
-    flex-direction: column;
   }
   .item--spread .item__titel {
     font-size: var(--tekst-2xl);

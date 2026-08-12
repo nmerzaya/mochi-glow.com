@@ -112,6 +112,20 @@ Pollinations levert ongeveer 0,6 megapixel, ongeacht wat er gevraagd wordt en on
 
 `src/assets/HERKOMST.md` legt per beeld vast wat er gevraagd is en wat eruit kwam, zodat deze beperking navolgbaar blijft en niet als "hoge resolutie" de documentatie in sluipt.
 
+### 4.2b Belichting: selecteren in plaats van corrigeren (aanvulling 2026-08-12)
+
+Bij het beoordelen van de reeks op het scherm bleek niet de resolutie de grootste stoorzender, maar de **spreiding in belichting**. Dezelfde stijlzin leverde de ene keer een bijna wit stilleven (gemeten gemiddelde 153 op een schaal van 255) en de andere keer een vrijwel zwart bladerdek (51). Naast elkaar op een overzichtspagina leest dat als een verzameling losse plaatjes in plaats van als één reeks.
+
+Twee oplossingen geprobeerd, en maar één werkt.
+
+**Achteraf rechttrekken — verworpen.** Het donkere beeld met een factor 2,6 naar de doelhelderheid tillen is uitgevoerd en beoordeeld: het resultaat is grijs, vlak en luidruchtig, want de correctie vergroot de ruis mee. Een onderbelichte opname bevat de informatie eenvoudigweg niet. Dit is een negatief resultaat dat het opschrijven waard is, omdat "gewoon ophelderen" de voor de hand liggende reflex is.
+
+**Niet accepteren — aangehouden.** De helderheid wordt per opname gemeten (Rec. 709). Valt hij buiten de band 100-185, dan wordt hetzelfde onderwerp opnieuw opgevraagd met een ander zaad, tot vier pogingen; de best belichte poging wordt gehouden als geen enkele binnen de band valt. Dat is hoe een fotograaf het ook doet — niet een mislukte opname redden, maar er nog een maken.
+
+Daarbovenop gaat een **lichte** gradatie: verzadiging naar 0,88 (het model neigt bij groen naar een felheid die naast de bleke lila grond schreeuwt), een kleine contraststap en fijne korrel in soft-light. Bewust dicht bij 1 gehouden: het doel is dat vierentachtig losse opnamen als één reeks lezen, niet dat ze er bewerkt uitzien.
+
+Eén technisch detail dat een uur kostte en dus vastlegging verdient: **sharp stapelt `linear()` niet maar overschrijft hem.** Twee aanroepen achter elkaar gooien de eerste stilzwijgend weg, waardoor een helderheidscorrectie spoorloos verdwijnt. Contrast en helderheid horen daarom in één formule.
+
 ### 4.3 De voedingspijler in twee sporen (uit deelvraag 16)
 
 Dit is de paragraaf waarnaar `src/content.config.ts` verwijst.

@@ -147,6 +147,20 @@ Vastgelegd zodat het later niet alsnog binnensluipt:
 
 ---
 
+## 4.7 Wat er feitelijk gebouwd is (2026-08-12)
+
+Vastgelegd zodat later te controleren valt of een wijziging nog bij de onderbouwing past.
+
+**Typografie (uit 4.4).** Drie zelfgehoste families: Fraunces voor koppen, Newsreader voor de broodtekst, IBM Plex Mono voor de metingen. Het gewicht van koppen staat op 560 en niet op 680 — een te zware kop leest als een aanbieding in plaats van als een titel, en terughoudendheid is hier het premium-signaal. De optische as (`opsz`) loopt mee met de graad; zonder dat ziet een kop van vier rem eruit als een kop van één rem, alleen groter, en dát is wat een letter goedkoop maakt.
+
+**Een fout die de hele opmaak raakte.** Bij het bouwen bleek dat `Stroom.astro` en `ArtikelKaart.astro` acht klassen afgaven (`.stroom`, `.item`, `.item__vlak`, `.item__tekst`, `.item__titel`, `.item__intro`, `.item__voet`, en de drie formaatvarianten) waarvoor **nergens opmaak bestond**. Het tijdschriftritme uit par. 4.2 zat wel in de componenten maar niet in de stylesheet; elk beeld viel daardoor terug op zijn volle breedte. Dat is de meest waarschijnlijke verklaring voor het oordeel dat de site "onaf" oogde, en het illustreert par. 4.1 pijnlijk precies: de inhoud was al goed, de vormgeving stond het oordeel erover in de weg.
+
+**Beeld (aanvulling op `onderzoek/07` par. 4.2b).** Belichting wordt per opname gemeten en op selectie geregeld in plaats van op correctie. Achttien onderwerpbeschrijvingen die om een donkere ondergrond vroegen zijn vervangen door bleke — ze spraken de stijlzin tegen, en dan helpt geen enkel ander zaad.
+
+**Wat er niet is gebouwd.** Zie par. 4.6. Er staat geen afteller, geen voorraadmelding, geen onderbrekend venster en geen automatisch startende beweging op de site.
+
+---
+
 ## 5. Samenvatting
 
 - Vormgevingskwaliteit is het **eerste en zwaarste** vertrouwensoordeel — boven inhoud. Voor een site die van geloofwaardigheid leeft, is ontwerp daarmee een commerciële hefboom en geen afwerking.
