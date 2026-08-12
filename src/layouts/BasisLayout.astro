@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import { site } from '../config';
 import Kop from '../components/Kop.astro';
 import Voet from '../components/Voet.astro';
@@ -14,6 +15,11 @@ interface Props {
   bijgewerkt?: Date;
   /** Zet `noindex` voor pagina's die niet in de zoekresultaten horen. */
   verbergVoorZoekmachines?: boolean;
+  /**
+   * Het beeld op de deelkaart. Geef het artikelbeeld mee; ontbreekt het, dan
+   * valt de pagina terug op de merkkaart uit `public/`.
+   */
+  deelbeeld?: ImageMetadata;
 }
 
 const {
@@ -23,10 +29,32 @@ const {
   publicatiedatum,
   bijgewerkt,
   verbergVoorZoekmachines = false,
+  deelbeeld,
 } = Astro.props;
 
 const canoniek = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const volledigeTitel = titel === site.naam ? `${site.naam} — ${site.tagline}` : `${titel} | ${site.naam}`;
+
+/*
+  De deelkaart.
+
+  Elke gedeelde link kwam tot nu toe als een lege kaart binnen: er stond geen
+  enkele `og:image` op de site. Dat is niet alleen lelijk — `onderzoek/08`
+  par. 4.3 laat zien dat zoekverkeer structureel is weggevallen en dat delen en
+  terugkeren overblijven als route naar de lezer. Dan is de kaart die iemand in
+  WhatsApp of LinkedIn ziet geen detail maar het visitekaartje.
+
+  1200×630 is de maat die de grote platformen aanhouden. `fit: 'cover'` snijdt
+  het artikelbeeld daarop bij; zonder beeld valt de pagina terug op de merkkaart
+  die `scripts/maak-merkbeeld.mjs` maakt.
+
+  Absolute URL's zijn hier verplicht: een deelkaart wordt door een server elders
+  opgehaald, en die kan met een pad dat met een schuine streep begint niets.
+*/
+const basis = Astro.site ?? new URL(site.url);
+const deelkaart = deelbeeld
+  ? new URL((await getImage({ src: deelbeeld, width: 1200, height: 630, fit: 'cover', format: 'jpg' })).src, basis).href
+  : new URL('/og-standaard.jpg', basis).href;
 
 const gestructureerdeData = {
   '@context': 'https://schema.org',
@@ -61,10 +89,26 @@ const gestructureerdeData = {
     <meta property="og:locale" content="nl_NL" />
     {publicatiedatum && <meta property="article:published_time" content={publicatiedatum.toISOString()} />}
     {bijgewerkt && <meta property="article:modified_time" content={bijgewerkt.toISOString()} />}
-    <meta name="twitter:card" content="summary" />
+
+    <meta property="og:image" content={deelkaart} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={titel} />
+    {/* `summary_large_image` en niet `summary`: anders krijgt een kaart van 1200×630 een postzegel. */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={deelkaart} />
 
     <link rel="alternate" type="application/rss+xml" title={site.naam} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {/*
+      Het merkteken. SVG voor alles wat het aankan — één bestand, elke graad
+      scherp — met een PNG ernaast voor de rest. iOS negeert een SVG-icoon
+      volledig en heeft de apple-touch-icon nodig.
+    */}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
 
     {/*
       De letters worden van dit domein zelf geserveerd (public/fonts/, opgehaald

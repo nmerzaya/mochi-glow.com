@@ -8,7 +8,7 @@ productType: cosmetica
 gezondheidsclaims: false
 accent: mint
 afbeelding: ../../assets/artikelen/groene-thee.jpg
-alt: 'Verse groene theeblaadjes, macro, nog nat van de regen, op donkere leisteen.'
+alt: 'Verse groene theeblaadjes, macro, nog nat van de regen, op lichtgrijze steen.'
 inci: Camellia Sinensis Leaf Extract
 tags:
   - groene thee

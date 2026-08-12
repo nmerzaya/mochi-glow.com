@@ -8,7 +8,7 @@ productType: cosmetica
 gezondheidsclaims: false
 accent: perzik
 afbeelding: ../../assets/artikelen/propolis.jpg
-alt: 'Een afgebroken stuk honingraat met donkere amberkleurige hars in de cellen, van achteren belicht.'
+alt: 'Een afgebroken stuk honingraat met warme amberkleurige hars in de cellen, van achteren belicht tegen een lichte achtergrond.'
 inci: Propolis Extract
 tags:
   - propolis
@@ -44,7 +44,7 @@ En dan volgt het punt dat het hele ingrediënt kenmerkt. Diezelfde review stelt 
 
 Lees dat nog eens. De samenstelling hangt af van welke bomen er in de buurt van de kast stonden, in welk land die kast stond, en in welke maand er geoogst is.
 
-![Ruwe brokken propolis, donker en wasachtig, in een klein uitgesneden houten kommetje.](../../assets/artikelen/propolis-2.jpg)
+![Ruwe brokken propolis, wasachtig en amberkleurig, in een klein licht uitgesneden houten kommetje.](../../assets/artikelen/propolis-2.jpg)
 
 ## Waarom dat meer uitmaakt dan bij andere ingrediënten
 

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Mochi Glow">
+  <!--
+    Het merkteken is de bronnenmeter, niet een letter.
+
+    Dat is een bewuste keuze: de meter is het enige beeldelement dat deze site
+    heeft en geen andere, en hij zegt precies waar de site over gaat — hoe hard
+    de onderbouwing onder een artikel is. Groen is origineel onderzoek of
+    wetgeving, oker is vakmedia, rood is een blog. Aflopende lengte, want dat is
+    ook de volgorde waarin het bewijs zwakker wordt.
+
+    De tinten zijn opzettelijk lichter dan de jade, amber en roos uit
+    tokens.css. Die zijn afgestemd op tekst tegen een bleke grond; hier liggen ze
+    op diep indigo, en op zestien bij zestien pixels moeten ze het van helderheid
+    hebben in plaats van van verzadiging.
+  -->
+  <rect width="32" height="32" rx="7" fill="#171226"/>
+  <rect x="6" y="9"  width="20" height="3.4" rx="1.7" fill="#3fb39b"/>
+  <rect x="6" y="15" width="14" height="3.4" rx="1.7" fill="#e0a63f"/>
+  <rect x="6" y="21" width="8"  height="3.4" rx="1.7" fill="#e87396"/>
+</svg>

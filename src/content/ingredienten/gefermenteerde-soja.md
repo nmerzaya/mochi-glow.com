@@ -62,7 +62,7 @@ Een eerdere studie in *BioMed Research International* uit 2013 keek naar gedroog
 
 Twee dingen vallen op. Het zijn allebei diermodellen, en het tweede is bovendien een kunstmatig opgewekt beeld. En de eerste studie gebruikte niosomen — kleine blaasjes die speciaal zijn gemaakt om een stof door de huid te helpen. Dat is een aanwijzing dat de opname zonder zo'n hulpmiddel juist het knelpunt is, en het betekent dat de uitkomst niet zomaar geldt voor een gewoon serum waarin het extract los is opgelost.
 
-![Donkere gefermenteerde sojabonenpasta in een keramieken schaaltje, met dik getextureerd oppervlak.](../../assets/artikelen/gefermenteerde-soja-3.jpg)
+![Gefermenteerde sojabonenpasta in een licht keramieken schaaltje, met dik getextureerd oppervlak.](../../assets/artikelen/gefermenteerde-soja-3.jpg)
 
 ## Wat een product hierover mag zeggen
 

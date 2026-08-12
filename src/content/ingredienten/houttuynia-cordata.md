@@ -8,7 +8,7 @@ productType: cosmetica
 gezondheidsclaims: false
 accent: mint
 afbeelding: ../../assets/artikelen/houttuynia-cordata.jpg
-alt: 'Hartvormige houttuyniabladeren nat van de regen, macro, diepgroen tegen donkere aarde.'
+alt: 'Hartvormige houttuyniabladeren nat van de regen, macro, tegen lichtgrijze steen.'
 inci: Houttuynia Cordata Extract
 tags:
   - houttuynia
@@ -44,7 +44,7 @@ De stoffen die in het onderzoek naar voren komen, zijn flavonoïden — plantsto
 
 Wat er in een extract belandt, hangt sterk af van het oplosmiddel. Een waterig extract haalt vooral de wateroplosbare flavonoïden en suikers eruit; een extract op alcohol trekt een andere verzameling los. *Houttuynia Cordata Extract* op een etiket zegt dus minder dan het lijkt.
 
-![Houttuynia die dicht opeen in de schaduw groeit, laag zacht licht, geringe scherptediepte.](../../assets/artikelen/houttuynia-cordata-2.jpg)
+![Houttuyniabladeren bij zacht gelijkmatig daglicht, geringe scherptediepte, lichte achtergrond.](../../assets/artikelen/houttuynia-cordata-2.jpg)
 
 ## Het onderzoek: keratinocyten in een schaaltje
 

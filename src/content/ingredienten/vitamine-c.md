@@ -8,7 +8,7 @@ productType: cosmetica
 gezondheidsclaims: false
 accent: perzik
 afbeelding: ../../assets/artikelen/vitamine-c.jpg
-alt: 'Een doorgesneden citrusvrucht, macro, met de partjes doorschijnend tegen het licht.'
+alt: 'Een doorgesneden citrusvrucht, macro, met de partjes doorschijnend, van achteren belicht tegen een lichte achtergrond.'
 inci: Ascorbic Acid
 tags:
   - vitamine C

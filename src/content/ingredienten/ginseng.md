@@ -8,7 +8,7 @@ productType: cosmetica
 gezondheidsclaims: false
 accent: perzik
 afbeelding: ../../assets/artikelen/ginseng.jpg
-alt: 'Een hele ginsengwortel met fijne bleke uitlopers op donkere grond, macro-opname.'
+alt: 'Een hele ginsengwortel met fijne bleke uitlopers op bleek linnen, macro-opname.'
 inci: Panax Ginseng Root Extract
 tags:
   - ginseng

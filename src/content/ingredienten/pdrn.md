@@ -72,7 +72,7 @@ Je komt verschillende termen tegen die op elkaar lijken.
 
 Die laatste is nuttig om te weten. Als een product PDRN groot op de voorkant zet maar op de ingrediëntenlijst helemaal geen Sodium DNA of vergelijkbaar bestanddeel noemt, is dat een reden om nog eens goed te kijken.
 
-![Een gedraaid doorschijnend lint gel dat als een helix opkrult op donkere natte steen.](../../assets/artikelen/pdrn-3.jpg)
+![Een gedraaid doorschijnend lint gel dat als een helix opkrult op bleke natte steen.](../../assets/artikelen/pdrn-3.jpg)
 
 ## Waarom het ineens overal zit
 

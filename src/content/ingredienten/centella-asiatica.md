@@ -8,7 +8,7 @@ productType: cosmetica
 gezondheidsclaims: false
 accent: mint
 afbeelding: ../../assets/artikelen/centella-asiatica.jpg
-alt: 'Een pol ronde waternavelblaadjes met gekartelde randen, nat van de dauw, op donkere vochtige aarde.'
+alt: 'Een pol ronde waternavelblaadjes met gekartelde randen, nat van de dauw, op bleke vochtige steen.'
 inci: Centella Asiatica Extract
 tags:
   - centella

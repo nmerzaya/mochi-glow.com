@@ -68,7 +68,7 @@ Beide beschrijven gunstige uitkomsten in dat model. En beide illustreren precies
 
 **Het gaat om een andere soort dan die in je potje zit.** Zie hierboven.
 
-![Een donker kruidenaftreksel in een ondiepe stenen kom met opstijgende damp.](../../assets/artikelen/bijvoet-3.jpg)
+![Een kruidenaftreksel in een ondiepe lichte stenen kom met opstijgende damp.](../../assets/artikelen/bijvoet-3.jpg)
 
 Dit is geen reden om het onderzoek weg te wuiven. Dierproeven met een ziektemodel zijn een normale, nuttige stap in de opbouw van kennis. Het is wel de reden dat zulke uitkomsten geen basis vormen voor een belofte op een verpakking — en dat is niet alleen een kwestie van zorgvuldigheid, maar ook van wat de wet toestaat.
 

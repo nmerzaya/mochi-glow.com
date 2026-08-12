@@ -64,7 +64,7 @@ Het verwarren van de twee microbiomen leidt tot een paar hardnekkige misverstand
 
 **"Microbioomvriendelijk" is geen beschermde term.** Er is geen norm die vastlegt wat een product moet doen om zich zo te mogen noemen, en er is geen toets die je als koper kunt nalopen. Het zegt dus vooral iets over de marketingafdeling.
 
-![Close-up van de huidtextuur van een onderarm in laag scherend licht, fijn detail.](../../assets/artikelen/darmmicrobioom-en-huidmicrobioom-3.jpg)
+![Close-up van de huidtextuur van een onderarm in zacht scherend licht, fijn detail.](../../assets/artikelen/darmmicrobioom-en-huidmicrobioom-3.jpg)
 
 ## Wat dit betekent voor wat je leest
 

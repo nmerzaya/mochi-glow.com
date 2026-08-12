@@ -6,7 +6,7 @@ auteur: Noor
 gezondheidsclaims: true
 accent: perzik
 afbeelding: ../../assets/artikelen/suiker-en-glycatie.jpg
-alt: 'Witte suikerkristallen verspreid over donkere leisteen, extreme macro-opname.'
+alt: 'Witte suikerkristallen verspreid over lichtgrijze steen, extreme macro-opname.'
 tags:
   - suiker
   - glycatie
@@ -34,7 +34,7 @@ Waarom dat voor de huid uitmaakt, staat beschreven in een overzichtsartikel in *
 
 Wat er dan gebeurt, is dat die lange vezels aan elkaar gekoppeld raken. Het weefsel wordt stugger en minder elastisch. Bij mensen met diabetes, waar de bloedsuiker langdurig hoger staat, is dat proces duidelijk sneller zichtbaar — en dat is een van de sterkste aanwijzingen dat het verhaal in de kern klopt.
 
-![Karamel die donker wordt in een pan, close-up van het oppervlak dat het licht vangt.](../../assets/artikelen/suiker-en-glycatie-2.jpg)
+![Lichte karamel in een pan, close-up van het oppervlak dat het licht vangt.](../../assets/artikelen/suiker-en-glycatie-2.jpg)
 
 ## Waar de redenering oprekt
 

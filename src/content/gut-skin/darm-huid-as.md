@@ -67,7 +67,7 @@ Het gevolg daarvan is streng en wordt vaak verkeerd begrepen: er bestaat op dit 
 
 Voor de artikelen hier betekent dat iets concreets. Je zult hier lezen wat onderzoekers hebben gemeten en wat zij daarover schrijven. Je zult hier niet lezen dat iets goed is voor je darmen, want dat mag niemand in Nederland beweren, en het zou bovendien meer zekerheid suggereren dan er is.
 
-![Macro-opname van een varenblad dat zich ontrolt, van achteren belicht.](../../assets/artikelen/darm-huid-as-3.jpg)
+![Macro-opname van een varenblad dat zich ontrolt, van achteren belicht tegen een lichte achtergrond.](../../assets/artikelen/darm-huid-as-3.jpg)
 
 ## Wat je hier wél aan hebt
 

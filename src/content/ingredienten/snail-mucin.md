@@ -8,7 +8,7 @@ productType: cosmetica
 gezondheidsclaims: false
 accent: mint
 afbeelding: ../../assets/artikelen/snail-mucin.jpg
-alt: 'Een glanzende spiraalschelp recht van boven gezien op natte donkere leisteen.'
+alt: 'Een glanzende spiraalschelp recht van boven gezien op bleke natte steen.'
 inci: Snail Secretion Filtrate
 tags:
   - snail mucin
@@ -45,7 +45,7 @@ Wat je op een verpakking wél kunt tegenkomen zijn keurmerken of vermeldingen ov
 
 Het is ook goed om te weten dat er inmiddels laboratoriumvarianten bestaan die de samenstelling proberen na te bootsen zonder slakken. Die staan onder andere namen op de ingrediëntenlijst.
 
-![Macro-opname van een heldere, stroperige baan over donker glas, die een dunne streep licht vangt.](../../assets/artikelen/snail-mucin-2.jpg)
+![Macro-opname van een heldere, stroperige baan over lichtgrijs glas, die een dunne streep licht vangt.](../../assets/artikelen/snail-mucin-2.jpg)
 
 ## Wat het onderzoek laat zien
 
@@ -65,7 +65,7 @@ In de Europese Unie stelt Verordening 655/2013 gemeenschappelijke criteria vast 
 
 Het gevolg is dat een merk wel mag zeggen dat een product de huid hydrateert — dat is meetbaar en aantoonbaar — maar niet dat het een huidaandoening aanpakt. Dat verschil tussen wat op de doos staat en wat er in enthousiaste online berichten staat, is dus geen bescheidenheid maar wetgeving. En het is een bruikbaar kompas: hoe verder een bewering afstaat van wat het merk zelf op de verpakking durft te zetten, hoe voorzichtiger je ermee moet zijn.
 
-![Vochtige groene bladeren in laag zacht licht, met waterdruppels op het oppervlak.](../../assets/artikelen/snail-mucin-3.jpg)
+![Vochtige groene bladeren bij zacht gelijkmatig daglicht, met waterdruppels op het oppervlak.](../../assets/artikelen/snail-mucin-3.jpg)
 
 ## Waar je op kunt letten
 
