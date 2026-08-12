@@ -1164,6 +1164,27 @@ main {
   margin-bottom: var(--ruimte-7);
 }
 
+/*
+  Drie omhulsels die het artikel afgeeft en die geen opmaak hadden. Ze deden
+  daardoor niets verkeerds — de inhoud stond er gewoon — maar het ritme klopte
+  niet: de bronnenmeter plakte tegen de eerste alinea en de etiketten onderaan
+  liepen zonder tussenruimte in de knop eronder over.
+*/
+.artikel__meter {
+  margin-bottom: var(--ruimte-7);
+}
+
+.artikel__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ruimte-2);
+  margin-top: var(--ruimte-8);
+}
+
+.artikel__terug {
+  margin-top: var(--ruimte-7);
+}
+
 .artikel__kop h1 {
   font-size: var(--tekst-4xl);
   margin-bottom: var(--ruimte-5);
@@ -1258,6 +1279,29 @@ main {
   background: var(--kleur-vlies);
   border-left: 2px solid var(--kleur-orchidee);
   border-radius: 0 var(--rond-m) var(--rond-m) 0;
+}
+
+/*
+  De twee meldingen zijn niet hetzelfde en horen er dus niet hetzelfde uit te
+  zien. Beide klassen werden wel afgegeven maar nergens beschreven, waardoor een
+  reclamemededeling en een medisch voorbehoud tot nu toe identiek op de pagina
+  stonden.
+
+  De reclame-disclosure krijgt de warme accentkleur: hij is wettelijk verplicht
+  als eerste blok van een artikel met affiliate-links (RSM per 1 juli 2026) en
+  moet als mededeling te onderscheiden zijn van de redactie eromheen.
+
+  Het medisch voorbehoud krijgt de let-op-kleur — dezelfde die elders op de site
+  "lees dit nog eens" betekent.
+*/
+.melding--disclosure {
+  border-left-color: var(--kleur-accent-warm);
+  background: var(--kleur-accent-warm-vlak);
+}
+
+.melding--medisch {
+  border-left-color: var(--kleur-let-op);
+  background: var(--kleur-let-op-vlak);
 }
 
 .melding > :last-child {
