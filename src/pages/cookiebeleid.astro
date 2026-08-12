@@ -1,8 +1,8 @@
 ---
 import BasisLayout from '../layouts/BasisLayout.astro';
-import { advertentiesActief } from '../config';
+import { advertentiesActief, ga4MeetID } from '../config';
 
-const bijgewerkt = '10 augustus 2026';
+const bijgewerkt = '12 augustus 2026';
 ---
 
 <BasisLayout
@@ -15,10 +15,12 @@ const bijgewerkt = '10 augustus 2026';
 
     <h2>Kort samengevat</h2>
     {
-      advertentiesActief ? (
+      ga4MeetID || advertentiesActief ? (
         <p>
-          Deze site plaatst alleen advertentiecookies, en alleen als je daar toestemming voor geeft.
-          Weiger je, dan gebeurt er niets en blijft de site gewoon werken.
+          Deze site plaatst cookies <strong>alleen als je daar toestemming voor geeft</strong>. Tot
+          dat moment worden de bijbehorende scripts niet uitgevoerd en niet opgehaald. Weiger je, dan
+          gebeurt er niets en blijft alles gewoon leesbaar — er zit geen enkel voordeel aan
+          accepteren en geen enkel nadeel aan weigeren.
         </p>
       ) : (
         <p>
@@ -40,7 +42,7 @@ const bijgewerkt = '10 augustus 2026';
 
     <h2>Welke cookies er zijn</h2>
     {
-      advertentiesActief ? (
+      ga4MeetID || advertentiesActief ? (
         <div class="tabel-omhulsel">
           <table>
             <thead>
@@ -55,15 +57,25 @@ const bijgewerkt = '10 augustus 2026';
               <tr>
                 <td>mochiglow-toestemming</td>
                 <td>Deze site</td>
-                <td>Onthoudt jouw keuze in het toestemmingsvenster, zodat die niet elk bezoek opnieuw gevraagd wordt.</td>
+                <td>Onthoudt jouw keuze in het toestemmingsvenster, zodat die niet elk bezoek opnieuw gevraagd wordt. Deze cookie is nodig om je keuze te kunnen respecteren en wordt altijd geplaatst zodra je gekozen hebt.</td>
                 <td>180 dagen</td>
               </tr>
-              <tr>
-                <td>Diverse (Google)</td>
-                <td>Google AdSense</td>
-                <td>Advertenties tonen en meten. Worden pas geplaatst ná jouw toestemming.</td>
-                <td>Zie het privacybeleid van Google</td>
-              </tr>
+              {ga4MeetID && (
+                <tr>
+                  <td>_ga, _ga_{ga4MeetID.replace(/^G-/, '')}</td>
+                  <td>Google Analytics</td>
+                  <td>Meet welke pagina's gelezen worden en of je een terugkerende bezoeker bent. Worden pas geplaatst ná jouw toestemming.</td>
+                  <td>Tot 2 jaar</td>
+                </tr>
+              )}
+              {advertentiesActief && (
+                <tr>
+                  <td>Diverse (Google)</td>
+                  <td>Google AdSense</td>
+                  <td>Advertenties tonen en meten. Worden pas geplaatst ná jouw toestemming.</td>
+                  <td>Zie het privacybeleid van Google</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
@@ -78,11 +90,18 @@ const bijgewerkt = '10 augustus 2026';
 
     <h2>Je keuze aanpassen</h2>
     {
-      advertentiesActief ? (
-        <p>
-          Je kunt je keuze op elk moment wijzigen of intrekken via het toestemmingsvenster. Daarnaast
-          kun je in je browserinstellingen cookies verwijderen of blokkeren.
-        </p>
+      ga4MeetID || advertentiesActief ? (
+        <>
+          <p>
+            Je kunt je keuze op elk moment wijzigen of intrekken. Daarnaast kun je in je
+            browserinstellingen cookies verwijderen of blokkeren.
+          </p>
+          <p>
+            <button type="button" class="knop knop--stil" onclick="if(window.klaro)klaro.show()">
+              Cookie-instellingen openen
+            </button>
+          </p>
+        </>
       ) : (
         <p>
           Er valt op dit moment niets aan te passen, omdat er niets geplaatst wordt. Je kunt in je

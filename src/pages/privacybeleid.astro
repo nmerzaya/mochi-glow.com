@@ -1,8 +1,8 @@
 ---
 import BasisLayout from '../layouts/BasisLayout.astro';
-import { site, advertentiesActief } from '../config';
+import { site, advertentiesActief, ga4MeetID } from '../config';
 
-const bijgewerkt = '10 augustus 2026';
+const bijgewerkt = '12 augustus 2026';
 ---
 
 <BasisLayout
@@ -55,17 +55,48 @@ const bijgewerkt = '10 augustus 2026';
     </p>
 
     <h3>Statistieken</h3>
-    <p>
-      Er is op dit moment <strong>geen</strong> bezoekersstatistiek of analytics actief. Er wordt dus
-      niet bijgehouden welke pagina's je bekijkt of waar je vandaan komt.
-    </p>
+    {
+      ga4MeetID ? (
+        <>
+          <p>
+            Deze site gebruikt <strong>Google Analytics 4</strong> om te meten welke artikelen
+            gelezen worden. Dat gebeurt <strong>alleen als je daar toestemming voor geeft</strong>.
+            Zolang je die niet hebt gegeven, wordt het script niet geladen en gaat er niets naar
+            Google — ook je IP-adres niet.
+          </p>
+          <p>
+            Geef je toestemming, dan verwerkt Google gegevens over je bezoek: welke pagina's je
+            bekijkt, hoe lang, via welke route je binnenkwam, en bij benadering waar je vandaan komt.
+            Het IP-adres wordt daarbij ingekort. Google is voor deze verwerking een zelfstandige
+            partij met een eigen privacybeleid; er kunnen gegevens buiten de EU verwerkt worden.
+          </p>
+          <p>
+            Je keuze staat in een cookie op je eigen apparaat en geldt een half jaar. Je kunt hem op
+            elk moment wijzigen of intrekken via het <a href="/cookiebeleid">cookiebeleid</a>.
+            Weigeren heeft geen enkel gevolg voor het lezen van de artikelen.
+          </p>
+        </>
+      ) : (
+        <p>
+          Er is op dit moment <strong>geen</strong> bezoekersstatistiek of analytics actief. Er wordt
+          dus niet bijgehouden welke pagina's je bekijkt of waar je vandaan komt.
+        </p>
+      )
+    }
 
     <h3>Lettertypen en externe bestanden</h3>
     <p>
-      Deze site laadt geen lettertypen, scripts of afbeeldingen van externe partijen. Dat is een
-      bewuste keuze: bij het laden van bijvoorbeeld een lettertype van een externe server wordt je
-      IP-adres naar die partij gestuurd, ook als je verder niets doet. Alles wat nodig is om deze
-      site te tonen, komt van deze site zelf.
+      De lettertypen, afbeeldingen en scripts die deze site nodig heeft om te tonen, komen allemaal
+      van deze site zelf. Dat is een bewuste keuze: bij het laden van bijvoorbeeld een lettertype van
+      een externe server wordt je IP-adres naar die partij gestuurd, ook als je verder niets doet.
+      {
+        ga4MeetID && (
+          <>
+            {' '}De enige uitzondering is het hierboven genoemde statistiekscript, en dat wordt
+            uitsluitend geladen nadat je daar toestemming voor hebt gegeven.
+          </>
+        )
+      }
     </p>
 
     <h3>Advertenties</h3>
@@ -105,8 +136,10 @@ const bijgewerkt = '10 augustus 2026';
     <p>
       Voor het technisch uitleveren van de site en het afhandelen van e-mail is de grondslag
       gerechtvaardigd belang: zonder die verwerking kan de site niet functioneren en kan een vraag
-      niet beantwoord worden. Voor advertentiecookies is de grondslag toestemming, die je kunt geven
-      en weer intrekken.
+      niet beantwoord worden. Voor statistiek- en advertentiecookies is de grondslag toestemming, die
+      je kunt geven en weer intrekken. Die toestemming wordt vooraf gevraagd: de bijbehorende
+      scripts staan in een vorm die de browser niet uitvoert en worden pas geladen nadat je gekozen
+      hebt.
     </p>
 
     <h2>Bewaartermijnen</h2>

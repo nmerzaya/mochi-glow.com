@@ -1,38 +1,68 @@
 ---
-import { advertentiesActief } from '../config';
+import { advertentiesActief, ga4MeetID } from '../config';
 
 /**
  * Cookietoestemming via Klaro (BSD-3-Clause, zelfgehost — geen CDN, geen externe
- * verbinding).
+ * verbinding voor de banner zelf).
  *
- * Twee bewuste keuzes:
+ * Drie bewuste keuzes:
  *
- * 1. Zolang `advertentiesActief` in `src/config.ts` op `false` staat, laadt deze
- *    site geen enkel script dat toestemming vereist, en verschijnt er dus ook geen
- *    toestemmingsvenster. Een banner tonen voor cookies die niet geplaatst worden
- *    wekt ten onrechte de indruk dat er getrackt wordt.
+ * 1. Het venster verschijnt alleen als er werkelijk iets te kiezen valt: zodra
+ *    `ga4MeetID` gevuld is of `advertentiesActief` aanstaat. Staat allebei uit,
+ *    dan laadt deze site geen enkel script dat toestemming vereist en is een
+ *    banner misleidend — die wekt de indruk dat er getrackt wordt.
  *
- * 2. De scripts staan op `is:inline` en worden vanaf `/klaro/` geserveerd in plaats
- *    van geïmporteerd, omdat Astro geïmporteerde scripts ook bundelt wanneer het
- *    component niet gerenderd wordt. Zo staat er nu werkelijk nul JavaScript op de
- *    site. `scripts/kopieer-klaro.mjs` zet de bestanden klaar.
+ * 2. `default: false` en `required: false` op elke dienst: niets staat vooraf
+ *    aan. Onder de AVG is toestemming pas geldig als ze actief gegeven is, dus
+ *    een vooraf aangevinkt hokje telt niet. `mustConsent: false` houdt de site
+ *    leesbaar zonder keuze — wie niets kiest, krijgt niets geladen.
  *
- * Aanzetten na goedkeuring van AdSense (Fase 4 in TAKEN.md): `advertentiesActief`
- * op `true`. Het advertentiescript hoort dan als `type="text/plain"` met
- * `data-name="adsense"` in de pagina te staan; de browser voert het dan niet uit
- * tot Klaro het vrijgeeft.
+ * 3. De weigerknop staat er even prominent bij als de accepteerknop
+ *    (`hideDeclineAll: false`). Weigeren moeilijker maken dan accepteren is een
+ *    ontwerppatroon dat sinds de DSA expliciet verboden is; zie `onderzoek/09`,
+ *    par. 4.6.
+ *
+ * De scripts staan op `is:inline` en worden vanaf `/klaro/` geserveerd in plaats
+ * van geïmporteerd, omdat Astro geïmporteerde scripts ook bundelt wanneer het
+ * component niet gerenderd wordt. `scripts/kopieer-klaro.mjs` zet ze klaar.
+ *
+ * Een dienst hier moet dezelfde naam hebben als het `data-name` op het
+ * bijbehorende `type="text/plain"`-script, anders geeft Klaro het nooit vrij.
  */
+
+const diensten = [
+  ga4MeetID && {
+    name: 'google-analytics',
+    title: 'Google Analytics',
+    purposes: ['statistieken'],
+    description:
+      'Meet welke artikelen gelezen worden. Google plaatst hiervoor cookies en verwerkt gegevens over je bezoek, waaronder je IP-adres.',
+    default: false,
+    required: false,
+  },
+  advertentiesActief && {
+    name: 'adsense',
+    title: 'Google AdSense',
+    purposes: ['advertenties'],
+    description:
+      'Toont advertenties. Google kan hiervoor cookies plaatsen en gegevens over je bezoek verwerken.',
+    default: false,
+    required: false,
+  },
+].filter(Boolean);
+
+const toon = diensten.length > 0;
 ---
 
 {
-  advertentiesActief && (
+  toon && (
     <>
       <link rel="stylesheet" href="/klaro/klaro.css" />
       <div id="klaro" />
 
-      <script is:inline>
-        window.klaroConfig = {
-          version: 1,
+      <script is:inline set:html={`window.klaroConfig = ${JSON.stringify(
+        {
+          version: 2,
           elementID: 'klaro',
           storageMethod: 'cookie',
           cookieName: 'mochiglow-toestemming',
@@ -46,38 +76,38 @@ import { advertentiesActief } from '../config';
           translations: {
             nl: {
               consentNotice: {
+                title: 'Cookies',
                 description:
-                  'Mochi Glow wil advertentiecookies plaatsen om de kosten te dekken. Weigeren kan, zonder gevolgen voor het lezen.',
+                  'Mochi Glow gebruikt cookies om te meten welke artikelen gelezen worden. Weigeren kan, zonder gevolgen voor het lezen.',
                 learnMore: 'Zelf kiezen',
               },
               consentModal: {
                 title: 'Cookies op Mochi Glow',
                 description:
-                  'Deze site draait op advertenties. Daar horen cookies bij. Je mag ze weigeren; de artikelen blijven gewoon leesbaar.',
+                  'Hieronder staat per onderdeel wat het doet. Niets staat vooraf aan; wat je weigert, wordt niet geladen.',
               },
-              purposes: { advertenties: 'Advertenties' },
+              purposes: {
+                statistieken: { title: 'Statistieken' },
+                advertenties: { title: 'Advertenties' },
+              },
               ok: 'Accepteren',
               decline: 'Weigeren',
               acceptAll: 'Alles accepteren',
               acceptSelected: 'Selectie opslaan',
               save: 'Opslaan',
               close: 'Sluiten',
-              privacyPolicy: { name: 'cookiebeleid', text: 'Meer hierover staat in het {privacyPolicy}.' },
+              service: { disableAll: { title: 'Alles aan of uit' } },
+              privacyPolicy: {
+                name: 'cookiebeleid',
+                text: 'Meer hierover staat in het {privacyPolicy}.',
+              },
             },
           },
-          services: [
-            {
-              name: 'adsense',
-              title: 'Google AdSense',
-              purposes: ['advertenties'],
-              description:
-                'Toont advertenties. Google kan hiervoor cookies plaatsen en gegevens over je bezoek verwerken.',
-              default: false,
-              required: false,
-            },
-          ],
-        };
-      </script>
+          services: diensten,
+        },
+        null,
+        0,
+      )};`} />
 
       <script is:inline defer src="/klaro/klaro-no-translations.js" />
     </>

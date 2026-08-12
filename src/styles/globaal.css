@@ -1475,6 +1475,116 @@ main {
 }
 
 /* ------------------------------------------------------------------ *
+   Het toestemmingsvenster
+
+   Klaro levert een eigen, donker uitgevoerd venster mee. Dat werkt, maar het
+   ziet eruit als een vreemd onderdeel dat over de site heen ligt — en juist dit
+   venster is het eerste wat een nieuwe bezoeker ziet. Hieronder krijgt het de
+   letters, kleuren en vormen van de rest van de site.
+
+   Eén regel is niet esthetisch maar juridisch: weigeren moet even makkelijk en
+   even zichtbaar zijn als accepteren. Een weigerknop die kleiner, grijzer of
+   verstopter is dan de accepteerknop is een ontwerppatroon dat sinds artikel 25
+   van de DSA verboden is (zie onderzoek/09, par. 4.6). Beide knoppen hebben
+   daarom dezelfde maat en hetzelfde gewicht; alleen de kleur verschilt.
+ * ------------------------------------------------------------------ */
+
+.klaro .cookie-notice,
+.klaro .cookie-modal .cm-modal {
+  font-family: var(--font-tekst);
+  background: var(--kleur-vlies) !important;
+  color: var(--kleur-inkt) !important;
+  border: 1px solid var(--kleur-rand);
+  border-radius: var(--rond-speels);
+  box-shadow: var(--schaduw-hoog);
+}
+
+.klaro .cookie-notice {
+  max-width: 30rem;
+}
+
+/*
+  De beschrijving staat bij Klaro in een `span` zonder klasse, met een eigen
+  bijna-witte kleur uit het donkere standaardthema. Een regel op `.cn-body`
+  alleen raakt die niet — vandaar dat de afstammelingen hier expliciet
+  meegenomen worden, met uitzondering van wat zijn eigen kleur hoort te houden
+  (links en knoppen).
+*/
+.klaro .cookie-notice .cn-body,
+.klaro .cookie-notice .cn-body *:not(a):not(button):not(.cm-btn),
+.klaro .cookie-modal .cm-modal p,
+.klaro .cookie-modal .cm-modal li,
+.klaro .cookie-modal .cm-modal span:not(.slider):not(.cm-list-title) {
+  font-size: var(--tekst-m);
+  line-height: 1.6;
+  color: var(--kleur-inkt-half) !important;
+}
+
+.klaro .cookie-modal .cm-modal h1,
+.klaro .cookie-modal .cm-modal h2 {
+  font-family: var(--font-kop);
+  font-variation-settings: var(--as-kop-klein);
+  font-weight: 560;
+  color: var(--kleur-inkt) !important;
+}
+
+.klaro .cm-btn {
+  font-family: var(--font-meting);
+  font-size: var(--tekst-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-meting);
+  border-radius: var(--rond-vol);
+  padding: 0.7em 1.4em;
+  border: 1px solid transparent;
+  transition:
+    background var(--overgang-snel) var(--soepel),
+    border-color var(--overgang-snel) var(--soepel);
+}
+
+/* Accepteren: gevuld. */
+.klaro .cm-btn.cm-btn-success,
+.klaro .cm-btn.cm-btn-accept-all,
+.klaro .cm-btn.cm-btn-accept {
+  background: var(--kleur-orchidee) !important;
+  color: #fff !important;
+}
+
+/* Weigeren: zelfde maat, omlijnd in plaats van gevuld. Niet kleiner, niet grijzer. */
+.klaro .cm-btn.cm-btn-decline,
+.klaro .cm-btn.cn-decline {
+  background: transparent !important;
+  color: var(--kleur-inkt) !important;
+  border-color: var(--kleur-rand);
+}
+
+.klaro .cm-btn.cm-btn-decline:hover,
+.klaro .cm-btn.cn-decline:hover {
+  background: var(--kleur-grond-diep) !important;
+}
+
+.klaro .cookie-notice .cn-learn-more,
+.klaro .cookie-modal a {
+  color: var(--kleur-orchidee) !important;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* De schakelaars per dienst in het uitgebreide venster. */
+.klaro .cm-list-input:checked + .cm-list-label .slider {
+  background-color: var(--kleur-orchidee) !important;
+}
+
+.klaro .cm-powered-by {
+  display: none;
+}
+
+@media (max-width: 40rem) {
+  .klaro .cookie-notice {
+    max-width: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
    Voettekst
  * ------------------------------------------------------------------ */
 

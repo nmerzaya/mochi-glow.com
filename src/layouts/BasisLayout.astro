@@ -1,6 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
-import { site } from '../config';
+import { site, ga4MeetID } from '../config';
 import Kop from '../components/Kop.astro';
 import Voet from '../components/Voet.astro';
 import CookieToestemming from '../components/CookieToestemming.astro';
@@ -138,6 +138,47 @@ const gestructureerdeData = {
     <meta name="theme-color" content="#f2eff5" />
 
     <script type="application/ld+json" set:html={JSON.stringify(gestructureerdeData)} />
+
+    {/*
+      Google Analytics 4 — bewust NIET het knip-en-plakfragment van Google.
+
+      Beide scripts staan op `type="text/plain"`, waardoor de browser ze niet
+      uitvoert. Klaro zet ze pas om naar echte scripts zodra de bezoeker
+      toestemming geeft voor "statistieken"; weigert iemand, dan wordt gtag.js
+      nooit opgehaald en gaat er geen byte naar Google.
+
+      Dat is geen overdreven voorzichtigheid maar de wettelijke volgorde: onder
+      de ePrivacy-richtlijn en de AVG mag een analysecookie pas ná toestemming
+      geplaatst worden. Het originele fragment laadt meteen en zou de site vanaf
+      de eerste bezoeker in overtreding brengen.
+
+      `data-name` moet exact overeenkomen met de dienstnaam in
+      `CookieToestemming.astro`, anders geeft Klaro het script nooit vrij.
+    */}
+    {
+      ga4MeetID && (
+        <>
+          <script
+            type="text/plain"
+            data-name="google-analytics"
+            data-type="application/javascript"
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeetID}`}
+          />
+          <script
+            type="text/plain"
+            data-name="google-analytics"
+            data-type="application/javascript"
+            set:html={`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${ga4MeetID}', { anonymize_ip: true });
+            `}
+          />
+        </>
+      )
+    }
 
     {/* Pagina's kunnen hier extra head-inhoud plaatsen, zoals Article-structuurdata. */}
     <slot name="hoofd" />

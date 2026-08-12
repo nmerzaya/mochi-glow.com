@@ -29,6 +29,35 @@ export const site = {
 export const advertentiesActief = false;
 
 /**
+ * Google Analytics 4 — het meet-ID, of `null` om statistieken helemaal uit te zetten.
+ *
+ * ── Waarom dit niet gewoon het knip-en-plakfragment van Google is ────────────
+ *
+ * Het fragment dat Google geeft, laadt `gtag.js` meteen bij het openen van de
+ * pagina. Dat mag hier niet, om twee redenen die los van elkaar al beslissend
+ * zijn.
+ *
+ * 1. **Juridisch.** GA4 zet cookies en stuurt gegevens, waaronder het IP-adres,
+ *    naar Google. Onder de ePrivacy-richtlijn en de AVG mag dat pas ná
+ *    toestemming — niet ervoor, en niet op basis van "verder surfen geldt als
+ *    akkoord". Het fragment ongewijzigd plaatsen is een overtreding vanaf de
+ *    eerste bezoeker.
+ * 2. **Deze site in het bijzonder.** `/privacybeleid` en `/cookiebeleid` stelden
+ *    letterlijk dat er geen analytics en geen enkele cookie was. Een site die
+ *    haar eigen privacybeleid tegenspreekt, verliest precies datgene waar ze
+ *    het van moet hebben (`onderzoek/08`, par. 4.2: de lezer wantrouwt deze
+ *    categorie al). Beide pagina's zijn bij deze wijziging aangepast.
+ *
+ * Daarom staat het script als `type="text/plain"` met `data-name="google-analytics"`
+ * in `BasisLayout.astro`. De browser voert het dan niet uit; Klaro zet het pas
+ * om naar een echt script zodra de bezoeker toestemming geeft. Weigert iemand,
+ * dan wordt er niets geladen en gaat er niets naar Google.
+ *
+ * Zet op `null` en er verdwijnt weer elk extern verzoek van de site.
+ */
+export const ga4MeetID: string | null = 'G-NEXD4R5HL2';
+
+/**
  * De twee pijlers, op één plek.
  *
  * Hiervoor stonden deze namen als losse tekenreeksen door de hele site heen —
