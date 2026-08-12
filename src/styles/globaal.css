@@ -344,12 +344,23 @@ main {
     display: none;
   }
 
+  /*
+    Op een telefoon wikkelt het menu over twee regels in plaats van horizontaal
+    te schuiven.
+
+    Hier stond `flex-wrap: nowrap` met `overflow-x: auto`. Gemeten op een scherm
+    van 390 pixels: de vijf items zijn samen 455 pixels breed en de balk 329, dus
+    er verscheen een schuifbalk en "Over" viel buiten beeld. Een menu-item dat je
+    alleen vindt door zijwaarts te vegen, bestaat voor de meeste bezoekers niet —
+    en een zichtbare schuifbalk dwars door de koptekst is precies het soort
+    afwerking dat een site goedkoop laat lijken.
+
+    Vijf korte labels passen prima op twee regels; dan staat alles er gewoon.
+  */
   .nav {
     width: 100%;
-    gap: var(--ruimte-4);
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
+    gap: var(--ruimte-3) var(--ruimte-4);
+    flex-wrap: wrap;
   }
 
   .nav a {
