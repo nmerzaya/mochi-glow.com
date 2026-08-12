@@ -1316,6 +1316,21 @@ main {
   margin-bottom: var(--ruimte-8);
 }
 
+/*
+  De inleiding boven een vragenlijst wordt gecentreerd, want daaronder staat
+  `.test` (52rem, gecentreerd). Links uitgelijnd boven een gecentreerde
+  vragenlijst gaf een knik in de bladspiegel: de kop begon ergens anders dan de
+  vraag eronder.
+
+  Op de overzichtspagina's blijft de inleiding juist wél links staan — daar deelt
+  hij zijn linkerrand met het raster eronder, en dan is links uitlijnen geen
+  scheefheid maar precies de uitlijning.
+*/
+.hero--midden {
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
 .hero h1 {
   font-size: var(--tekst-5xl);
   margin-bottom: var(--ruimte-5);
@@ -1377,8 +1392,20 @@ main {
    Prozapagina's
  * ------------------------------------------------------------------ */
 
+/*
+  De tekstpagina's — over, contact, de juridische pagina's, 404.
+
+  `max-width` stond hier zonder centrering, waardoor de kolom tegen de linkerrand
+  van een pagina van 1360 pixels geplakt zat en de rechterhelft leeg bleef. Dat
+  leest niet als een redactionele keuze maar als een pagina die half af is.
+
+  `margin-inline: auto` zet hem in het midden. Dat is voor een lopend verhaal
+  ook de rustigste plek: de ogen hoeven per regel niet terug te springen naar een
+  rand die ergens anders ligt dan het optische midden van het scherm.
+*/
 .prozapagina {
   max-width: var(--breedte-lees);
+  margin-inline: auto;
   padding-top: var(--ruimte-8);
 }
 
@@ -1509,10 +1536,25 @@ main {
   De voortgang is een rij streepjes, geen doorlopende balk. Je kunt zien
   hoeveel vragen er zijn en waar je bent — een balk verbergt dat eerste juist.
 */
+/*
+  De voortgangsbalk is een `<ol>`, en dat vroeg om twee dingen die hier ontbraken.
+
+  Zonder `list-style: none` en een genulde `padding` tekende de browser gewoon
+  zijn opsommingstekens: er stond letterlijk "1. 2. 3. 4. 5. 6. 7. 8." in
+  Fraunces naast de streepjes. En de algemene regel `li + li { margin-top }`
+  verderop in dit bestand duwde in een flexrij elk volgend streepje een stukje
+  omlaag, waardoor de balk als een trapje aflag in plaats van als een lijn.
+
+  Beide zijn hieronder afgevangen. `.stappen` deed dit al goed; `.trap` was
+  vergeten.
+*/
 .trap {
   display: flex;
+  align-items: center;
   gap: 4px;
-  margin-bottom: var(--ruimte-4);
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--ruimte-4);
 }
 
 .trap__streep {
@@ -1521,6 +1563,11 @@ main {
   background: var(--kleur-rand);
   border-radius: var(--rond-vol);
   transition: background var(--overgang-traag) var(--soepel);
+}
+
+.trap li + li,
+.trap__streep + .trap__streep {
+  margin-top: 0;
 }
 
 .trap__streep[data-staat='gedaan'] {
@@ -1703,6 +1750,79 @@ main {
   wél op hun plaats: een routine ís een volgorde, en welke stap voor welke komt
   is precies de informatie waar iemand voor komt.
 */
+/* ------------------------------------------------------------------ *
+   Het routineoverzicht
+
+   Deze zeven klassen gaf `Vragenlijst.astro` af zonder dat er ergens opmaak
+   voor bestond: `.routines`, `.routines__inleiding`, `.routines__voorbehoud`,
+   `.routines__opnieuw`, `.routine__vlak`, `.stap__claim`, `.stap__claim-label`
+   en `.optie__tekst`. Zelfde soort gat als bij de stroom — het component was er,
+   de opmaak niet.
+ * ------------------------------------------------------------------ */
+
+/*
+  Dezelfde breedte en centrering als `.test` hierboven. De uitslag verschijnt op
+  de plek waar net nog de vraag stond; als die twee niet dezelfde bladspiegel
+  hebben, springt de pagina zichtbaar opzij op het moment dat de test klaar is.
+*/
+.routines {
+  max-width: 52rem;
+  margin: var(--ruimte-9) auto 0;
+}
+
+.routines__inleiding {
+  max-width: var(--breedte-ruim);
+  margin-bottom: var(--ruimte-8);
+}
+
+.routines__voorbehoud {
+  margin-top: var(--ruimte-8);
+}
+
+.routines__opnieuw {
+  margin-top: var(--ruimte-7);
+}
+
+/* Het beeld boven een routine; dezelfde verhouding als een kaart in de stroom. */
+.routine__vlak {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--rond-l);
+  margin-bottom: var(--ruimte-5);
+  background: var(--kleur-grond-diep);
+}
+
+/* De tekst naast het bolletje in een antwoordoptie. */
+.optie__tekst {
+  font-family: var(--font-tekst);
+  line-height: 1.4;
+}
+
+/*
+  De toegestane EU-claim onder een stap. Dit is geen sierlijk kadertje maar een
+  juridisch citaat: het staat er in de letterlijk toegestane bewoording en mag
+  niet geparafraseerd worden (zie onderzoek/07, par. 4.4). Vandaar de behandeling
+  van een citaat — ingesprongen, met een streep ernaast — zodat zichtbaar is dat
+  dit aangehaalde tekst is en geen eigen belofte.
+*/
+.stap__claim {
+  margin: var(--ruimte-3) 0 0;
+  padding-left: var(--ruimte-4);
+  border-left: 2px solid var(--kleur-jade);
+  font-size: var(--tekst-m);
+  color: var(--kleur-inkt-half);
+}
+
+.stap__claim-label {
+  display: block;
+  font-family: var(--font-meting);
+  font-size: var(--tekst-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--spatie-meting);
+  color: var(--kleur-jade);
+  margin-bottom: var(--ruimte-1);
+}
+
 .stappen {
   list-style: none;
   padding: 0;
