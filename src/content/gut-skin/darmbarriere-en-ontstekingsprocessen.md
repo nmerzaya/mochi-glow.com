@@ -5,7 +5,8 @@ publicatiedatum: 2026-08-05
 auteur: Noor
 gezondheidsclaims: true
 accent: paars
-motief: golven
+afbeelding: ../../assets/artikelen/darmbarriere-en-ontstekingsprocessen.jpg
+alt: 'Een dichte wand van kleine ronde kiezels die strak tegen elkaar liggen, met één opening ertussen.'
 tags:
   - darmbarriere
   - ontsteking
@@ -42,6 +43,8 @@ De systematische review uit *Dermatology Reports* uit 2022 die vier huidaandoeni
 
 En dan komt, opnieuw, de kanttekening van de auteurs zelf: weinig studies per aandoening, sterk verschillende opzet en populaties, en bij constitutioneel eczeem tegenstrijdige uitkomsten.
 
+![Macro-opname van geweven linnen met één losgetrokken draad.](../../assets/artikelen/darmbarriere-en-ontstekingsprocessen-2.jpg)
+
 ## Hoe je dit überhaupt meet
 
 Het is nuttig om te weten hoe onderzoekers doorlaatbaarheid vaststellen, want dat verklaart meteen waarom de uitkomsten zo lastig te vergelijken zijn.
@@ -64,6 +67,8 @@ De sprong die in de populaire uitleg wordt gemaakt, bestaat uit vier stappen die
 Elke pijl in die keten is een aanname. Bij mensen met een vastgestelde darmaandoening is stap 1 vaak aantoonbaar. Bij iemand zonder klachten die zich afvraagt of het misschien de oorzaak is van een onrustige huid, is stap 1 doorgaans niet gemeten — en de stappen daarna evenmin.
 
 Er is nog iets. Verhoogde doorlaatbaarheid wordt bij aandoeningen aangetroffen, maar het is meestal niet duidelijk of het de oorzaak is of het gevolg. Een ontstekingsproces kan de barrière beïnvloeden. Dan zie je hetzelfde meetresultaat, met de causaliteit precies andersom.
+
+![Granaatappelpitten dicht opeen in hun bleke vlies, close-up.](../../assets/artikelen/darmbarriere-en-ontstekingsprocessen-3.jpg)
 
 ## Waarom de term zelf in de weg zit
 

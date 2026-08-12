@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Context voor Claude Code bij het werken in deze projectmap. Lees dit bestand eerst, samen met `PLAN.md`, `ARCHITECTUUR.md` en `TAKEN.md`.
+Context voor Claude Code bij het werken in deze projectmap. Lees dit bestand eerst, samen met `PLAN.md`, `ARCHITECTUUR.md` en `TAKEN.md`. `HERZIENING.md` beschrijft de herziening van augustus 2026 en is op 2026-08-12 volledig uitgevoerd; het is bewaard als verslag, niet als opdracht, en is niet langer leidend boven de rest.
 
 ## Project
 
@@ -20,13 +20,17 @@ Volledige onderbouwing van alle keuzes staat in de map `onderzoek/` (zie onderaa
 
 De site is compleet en bouwt lokaal (28 pagina's), maar staat nog niet online. Er is een lokale git-repo met één commit; er is nog **geen** GitHub-remote en nog **geen** Cloudflare Pages-project. `DEPLOY.md` beschrijft die stappen; ze vragen allemaal om accounts en inloggegevens van de eigenaar.
 
-De contentbatch is er: **16 artikelen**, tien in `src/content/ingredienten/` en zes in `src/content/gut-skin/`. Daarmee is de ondergrens uit `PLAN.md` (15-20) gehaald.
+De contentbatch is er: **28 artikelen**, vijftien in `src/content/ingredienten/` en dertien in `src/content/gut-skin/`. Daarmee is de ondergrens uit `PLAN.md` (15-20) ruim gehaald.
 
-Daarnaast is er sinds de herziening van augustus 2026 een interactief onderdeel: `/routine`, een vragenlijst van vijf vragen die uitkomt op één van vijf routines. Zonder JavaScript is diezelfde pagina een routine-overzicht. De onderbouwing van die herziening — kleur, beeld, geloofwaardigheid, vragenlijstvorm en beweging — staat in `onderzoek/06-kleur-beeld-en-interactie.md`.
+De twee pijlers heten voor de lezer **"Wat zit erin?"** en **"Huid van binnenuit"**; de collectienamen (`ingredienten`, `gut-skin`) en de URL's zijn ongewijzigd gebleven, want die wijzigen breekt links en indexering. Alle labels staan in `pijlers` in `src/config.ts`.
+
+Daarnaast zijn er twee interactieve onderdelen, allebei gebouwd op hetzelfde `Vragenlijst.astro`: `/routine` (vijf vragen, uitkomst is één van vijf routines) en `/eetritme` (zes vragen over wanneer je eet, uitkomst is één van vijf ritmes). Zonder JavaScript is elk van die pagina's een overzicht van alle uitkomsten. De onderbouwing van de eerste herziening — kleur, beeld, geloofwaardigheid, vragenlijstvorm en beweging — staat in `onderzoek/06-kleur-beeld-en-interactie.md`; die van de tweede in `onderzoek/07-herziening-beeld-en-voedingspijler.md`.
+
+`HERZIENING.md` is uitgevoerd en afgerond op 2026-08-12; het bestand is niet langer leidend boven de rest.
 
 Het domein is `mochi-glow.com`, geregistreerd via Cloudflare. De site heette in een eerdere fase "Mochi Skin" op `mochiskin.nl`; die naam komt nog voor in `onderzoek/04-vormgeving-en-eisen.md`, en dat blijft zo — onderzoeksbestanden worden niet met terugwerkende kracht aangepast.
 
-Nog open vóór livegang: `repo:` in `public/admin/config.yml`, het verifiëren van `data/toegestane-claims.json`, de publisher-ID in `public/ads.txt`, en `advertentiesActief` in `src/config.ts`. Alle vier staan met uitleg in `DEPLOY.md`.
+Nog open vóór livegang: de publisher-ID in `public/ads.txt` en `advertentiesActief` in `src/config.ts`. Allebei hangen ze af van goedkeuring door AdSense en staan ze met uitleg in `DEPLOY.md`. De andere twee punten zijn afgerond: `repo:` in `public/admin/config.yml` wijst naar `nmerzaya/mochi-glow.com`, en `data/toegestane-claims.json` is op 2026-08-12 geverifieerd (zie `onderzoek/07`, par. 4.4).
 
 ## Commando's
 
@@ -46,15 +50,26 @@ Er zijn **geen tests en geen linter**. Dat is een openstaande keuze, niet iets d
 
 Dit is het belangrijkste om te begrijpen aan dit project. De site staat in een niche waar de meeste voor de hand liggende beweringen wettelijk verboden zijn. Die regels zijn daarom afgedwongen op drie plekken die samen gelezen moeten worden:
 
-1. **`scripts/check-compliance.mjs`** — draait als eerste stap van elke build en weigert een artikel bij therapeutische taal, gesuggereerde eigen tests, niet-toegestane darmclaims, claims die niet letterlijk in `data/toegestane-claims.json` staan, minder dan 800 woorden, of minder dan 2 bronnen bij `gezondheidsclaims: true`. Een overtreding is dus niet te publiceren. De patronen zijn bewust streng: liever een terechte weigering te veel dan een overtreding te weinig.
+1. **`scripts/check-compliance.mjs`** — draait als eerste stap van elke build en weigert een artikel bij therapeutische taal, gesuggereerde eigen tests, niet-toegestane darmclaims, claims die niet letterlijk in `data/toegestane-claims.json` staan, minder dan 800 woorden, minder dan 2 bronnen bij `gezondheidsclaims: true`, of een verkeerd aantal beelden in de tekst (regel 8b: één tot drie, met alt-tekst, en verwijzend naar `src/assets/`). Het controleert ook `src/data/routinetest.ts` en `src/data/eetritme.ts`, want die teksten worden net zo gelezen als een alinea. Een overtreding is dus niet te publiceren. De patronen zijn bewust streng: liever een terechte weigering te veel dan een overtreding te weinig — een gewoon Nederlands woord als "behandelt" of "draagt bij aan" slaat ook aan, en dan is herschrijven het juiste antwoord, geen uitzondering.
 2. **`src/content.config.ts`** — het schema stuurt gedrag, het is geen administratie. `affiliate: true` laat `ArtikelLayout.astro` de disclosure automatisch als eerste blok plaatsen; `gezondheidsclaims: true` zet de medische disclaimer aan; `productType` bepaalt welk wettelijk regime geldt.
 3. **`src/config.ts`** — alle sitebrede teksten en namen op één plek, plus de vlag `advertentiesActief`.
 
 De ontsnappingsklep is `taalUitzonderingen` in de frontmatter: een artikel dat een verboden term beschrijvend gebruikt (bijvoorbeeld om uit te leggen dat een crème niets mag "genezen") declareert die term mét reden van minimaal 15 tekens. Zo blijft een uitzondering zichtbaar en toetsbaar in plaats van stilzwijgend. Voeg nooit een term toe aan de uitzonderingen om een terechte melding weg te krijgen.
 
-### De gut-skin-pijler is op schemaniveau niet-commercieel
+### De gut-skin-pijler kent twee sporen, en niets ertussenin
 
-`affiliate` en `productType` zijn in die collectie `z.literal(false)` respectievelijk `z.literal('geen')` — geen boolean. Dat is geen stijlkeuze: de NVWA rekent een verwijzing naar wetenschappelijke of medische publicaties zélf tot een ontoelaatbare medische claim op een pagina die een levensmiddel aanprijst. Door in die pijler niets te verkopen, mogen die artikelen wél naar onderzoek linken. Bij `productType: 'voeding-supplement'` slaat de controle daarom aan op links naar medische domeinen, en toont `Bronnenlijst.astro` de bronnen zonder klikbare link. Maak `affiliate` in gut-skin nooit alsnog instelbaar.
+De NVWA rekent een verwijzing naar wetenschappelijke of medische publicaties zélf tot een ontoelaatbare medische claim op een pagina die een levensmiddel aanprijst. Tot augustus 2026 was die pijler daarom op schemaniveau niet-commercieel. Sinds `onderzoek/07` par. 4.3 is dat een eigenschap van het artikel in plaats van de pijler, met precies twee toegestane combinaties:
+
+| spoor | `productType` | `affiliate` | mag naar onderzoek verwijzen |
+|---|---|---|---|
+| wetenschap | `geen` | `false` | ja |
+| commercieel | `voeding-supplement` | mag `true` | **nee** |
+
+Alles daartussenin is een fout en geen keuze; schema én controlescript weigeren het. Bij `voeding-supplement` slaat de controle aan op links naar medische domeinen, op onderzoeksverwijzingen in wóórden (ook in de zichtbare titel van een bron), en toont `Bronnenlijst.astro` de bronnen zonder klikbare link.
+
+**Let op de siteniveau-toets.** DV8-03 geldt voor de website, niet voor de pagina: een commercieel voedingsartikel over een onderwerp waarover elders op de site mét onderzoekslinks geschreven wordt, brengt de site als geheel in overtreding — ook al klopt elke pagina op zichzelf. Het controlescript toetst dat op `tags`. Geef een commercieel voedingsartikel dus nooit een tag die al op een artikel met medische bronnen staat. Dat is de reden dat het commerciële spoor over vitamine E gaat en niet over vitamine C.
+
+De onderzoeksverwijzingsregel is bewust **niet** met `taalUitzonderingen` te overrulen: de ontsnappingsklep is het juiste spoor kiezen.
 
 ## Stack
 
@@ -82,9 +97,12 @@ Wijk hier niet van af zonder `ARCHITECTUUR.md` → "Waarom geen andere opties" t
 
 **Volgorde van werken:** eerst de technische basis en verplichte pagina's, dán de eerste contentbatch (15-20 artikelen), en pas dáárna affiliate-programma's en AdSense aanvragen. Niet eerder aanvragen — een te vroege, afgewezen aanvraag (vooral bij Amazon Associates) kan niet opnieuw beoordeeld worden; je moet dan volledig opnieuw solliciteren. Zie `TAKEN.md` voor de exacte fasering.
 
-**Afbeeldingen (bijgewerkt besluit, was: alleen SVG-illustraties):** de site gebruikt nu wél beeld — gezichten en producten — omdat de eerdere SVG-only aanpak te weinig voorstelde. Primaire bron is **Pollinations.ai** (open source, gratis, geen API-key nodig, aan te roepen via een simpele URL — zie `ARCHITECTUUR.md`); Claude Code roept dit zelf aan tijdens het bouwen/schrijven van content. Twee harde regels blijven staan, ook met AI-beeld:
-1. Een AI-gegenereerd gezicht voor de persona ("Noor") mag nooit gepresenteerd worden alsof het een echte foto van een bestaand persoon is — een duidelijk gestileerde illustratie/avatar is prima, een pseudo-realistische "portretfoto" niet.
-2. Productafbeeldingen zijn bij voorkeur echte pers-/marketingbeelden van het merk zelf (gebruikelijk en toegestaan bij affiliate-content), geen AI-nabootsing van een specifiek, linkbaar product — dat zou misleidend zijn over wat een lezer daadwerkelijk koopt. AI-beeld is dus vooral voor sfeerbeeld, illustraties en de persona-avatar.
+**Afbeeldingen:** de site gebruikt uitsluitend fotografie, gegenereerd met **Pollinations.ai** via `scripts/genereer-beeld.mjs`. De SVG-illustraties van vóór augustus 2026 zijn volledig verwijderd, niet bewaard als terugval — zie `onderzoek/07`, par. 4.1. Drie harde regels:
+1. **Geen gezichten.** Niet van de persona ("Noor") en niet van modellen. Wel: grondstoffen, bereiding, textuur, en huid zonder gezicht (onderarm, schouder, hand).
+2. Productafbeeldingen zijn bij voorkeur echte pers-/marketingbeelden van het merk zelf (gebruikelijk en toegestaan bij affiliate-content), geen AI-nabootsing van een specifiek, linkbaar product — dat zou misleidend zijn over wat een lezer daadwerkelijk koopt.
+3. Beeld toont een concreet ding uit het artikel, nooit het beloofde effect. Een korrel rijst mag, een stralende huid niet. Dezelfde regel als voor de tekst.
+
+Praktisch: het script draait handmatig (`node scripts/genereer-beeld.mjs`), nooit als onderdeel van de build — de site zelf verbindt nooit met pollinations.ai, want dat zou de invariant "geen externe verzoeken" breken. Eén vaste stijlzin voor alle beelden, zodat de reeks samenhangt; varieer die niet per artikel. `POLLINATIONS_TOKEN` uit `.env` geeft een ruimer aanvraagtempo maar **géén hogere resolutie** — dat is gemeten, zie `onderzoek/07` par. 4.2. `src/assets/HERKOMST.md` wordt door het script geschreven en legt per beeld de herkomst vast.
 
 ## Invarianten bij het bouwen
 
@@ -93,20 +111,20 @@ Wijk hier niet van af zonder `ARCHITECTUUR.md` → "Waarom geen andere opties" t
 - Klaro blokkeert standaard; advertentie- en analyticsscripts laden pas na toestemming, als `type="text/plain"` met `data-name="adsense"`.
 - Geen externe verzoeken vanaf de site: geen CDN's, geen externe lettertypen, geen tracking. Dat is een AVG-keuze, niet alleen een prestatiekeuze.
 - `uitgelicht: true` wérkt nu: de homepage kiest het nieuwste artikel met die vlag en valt terug op het nieuwste artikel überhaupt als niemand hem heeft gezet. De uitgelichte plek is dus nooit leeg.
-- **Gewijzigd, nog te bouwen:** `ArtikelBeeld.astro` genereerde tot nu toe uitsluitend eigen, inline SVG-illustraties in de accentkleur (motief uit het `motief`-veld, of anders deterministisch uit de slug; kaart en artikel delen hetzelfde zaad; gevulde vormen wit op de zachte accentkleur, niet accentkleurig maken anders vallen ze weg). Dat mechanisme blijft bestaan als stijlkeuze/fallback, maar is niet langer de enige beeldbron — zie de bijgewerkte `Afbeeldingen`-afspraak hierboven. Dit is nog **niet geïmplementeerd**: `ArtikelBeeld.astro` (of een nieuw component ernaast) moet ook een AI-gegenereerde afbeelding kunnen tonen, en `src/content.config.ts` heeft vermoedelijk een nieuw veld nodig om het beeldpad vast te leggen.
+- **Beeld is verplicht en heeft geen terugval.** `ArtikelBeeld.astro` bestaat niet meer; `Beeld.astro` toont één echte afbeelding en kiest alleen nog de uitsnedes per gebruikssituatie (`kaart`, `kop`, `breed`). Omdat er geen terugval is, is `afbeelding` in het schema verplicht — een vergeten beeld hoort een bouwfout te geven, geen gat op de pagina. Elk artikel heeft daarnaast twee beelden in de lopende tekst als gewone `![alt](../../assets/artikelen/…)`-verwijzingen; `npm run check` bewaakt dat het er één tot drie zijn, dat ze alt-tekst hebben en dat het pad naar `src/assets/` wijst (alleen dan optimaliseert Astro ze).
+- **Het `accent`-veld kleurt het vlak achter het beeld**, via `.accent-* .item__vlak` en `.accent-*.artikel__beeld` in `globaal.css`. Die regels stonden een tijd op `.kaart__vlak`/`.uitgelicht__vlak`, klassen die na de opmaakherziening niet meer bestonden — waardoor het veld stilzwijgend niets deed. Verplaats ze mee als de kaartopmaak weer verandert.
 - Tekstkleuren in `src/styles/tokens.css` zijn getoetst op WCAG 2.2 AA. De `-zacht`-varianten zijn uitsluitend voor vlakken en randen, nooit voor tekst. Dat geldt ook voor de drie `--kleur-glans-*`-tinten: die zijn er voor verloopvlakken en halen geen enkele contrasteis.
-- **De speelse laag heeft een grens, en die is opzettelijk.** `--rond-speels` en `--kleur-accent-warm` horen uitsluitend op vier plekken: de header van de homepage, de routinetest, badges/pillen en de lopende band. Broodtekst, artikelpagina's, kaarten en tabellen blijven redactioneel. De onderbouwing staat in `onderzoek/06`, par. 4.3; de reden dat het als invariant is opgeschreven, is dat dit project al één keer eerder ongemerkt van vormgevingsrichting wisselde (`onderzoek/04` par. 4.1 koos speels, commit 5f38fc9 draaide dat om).
-- **De routinetest (`/routine`) mag geen diagnose stellen en niets verkopen.** Vragen gaan over hoe de huid aanvoelt en wat iemand prettig vindt, nooit over een aandoening; uitkomsten beloven geen effect en noemen geen merken of producten. Zodra er wél een product in komt, geldt de disclosureplicht ook op die pagina.
-- **Alle tekst van de routinetest staat in `src/data/routinetest.ts`, en nergens anders.** `scripts/check-compliance.mjs` leest dat bestand en haalt elke tekenreeks erin langs dezelfde verboden-taalpatronen als de artikelen. Zet je testteksten rechtstreeks in een `.astro`-bestand, dan ontsnappen ze aan die controle.
-- **De lopende band mag alleen bewegen als hij te stoppen is.** Hij valt onder WCAG 2.2 SC 2.2.2 (start vanzelf, duurt langer dan vijf seconden, staat naast andere inhoud) en heeft daarom een echte pauzeknop; de CSS zet de animatie pas aan als het script `data-actief` heeft gezet. `prefers-reduced-motion` alléén is niet genoeg — de W3C-toelichting noemt die mediaquery niet als manier om aan het criterium te voldoen.
-- De routinetest slaat niets op: geen cookie, geen localStorage, geen netwerkverzoek. Dat staat zo in het privacybeleid, dus het moet zo blijven.
+- **De speelse laag heeft een grens, en die is opzettelijk.** `--rond-speels` en `--kleur-accent-warm` horen uitsluitend op de header van de homepage, de twee vragenlijsten en badges/pillen. Broodtekst, artikelpagina's, kaarten en tabellen blijven redactioneel. De onderbouwing staat in `onderzoek/06`, par. 4.3; de reden dat het als invariant is opgeschreven, is dat dit project al één keer eerder ongemerkt van vormgevingsrichting wisselde (`onderzoek/04` par. 4.1 koos speels, commit 5f38fc9 draaide dat om).
+- **Geen enkele animatie start vanzelf.** De lopende band is bij de herziening van augustus 2026 verdwenen; wat overblijft is één scroll-gestuurde onthulling (`@keyframes onthullen` in `globaal.css`), die door de lezer wordt aangedreven en achter `prefers-reduced-motion: no-preference` staat. Komt er ooit weer beweging die vanzelf begint en langer dan vijf seconden duurt, dan valt die onder WCAG 2.2 SC 2.2.2 en heeft hij een echte pauzeknop nodig — `prefers-reduced-motion` alléén is daarvoor niet genoeg, want de W3C-toelichting noemt die mediaquery niet als manier om aan het criterium te voldoen.
+- **De vragenlijsten (`/routine` en `/eetritme`) mogen geen diagnose stellen en niets verkopen.** Vragen gaan over hoe de huid aanvoelt, wat iemand prettig vindt en hoe een dag eruitziet — nooit over een aandoening; uitkomsten beloven geen effect en noemen geen merken of producten. Zodra er wél een product in komt, geldt de disclosureplicht ook op die pagina.
+- **Alle tekst van de vragenlijsten staat in `src/data/routinetest.ts` en `src/data/eetritme.ts`, en nergens anders.** `scripts/check-compliance.mjs` leest beide bestanden en haalt elke tekenreeks erin langs dezelfde verboden-taalpatronen als de artikelen, inclusief de claimcontrole. Zet je die teksten rechtstreeks in een `.astro`-bestand, dan ontsnappen ze aan die controle. Beide pagina's delen één component, `Vragenlijst.astro`.
+- De vragenlijsten slaan niets op: geen cookie, geen localStorage, geen netwerkverzoek. Dat staat zo in het privacybeleid, dus het moet zo blijven.
 
 ## Openstaande placeholders vóór livegang
 
 Deze staan bewust op een tijdelijke waarde en moeten ingevuld worden; ze zijn ook in `README.md` opgesomd:
 
 - `public/admin/config.yml` → `repo: GEBRUIKERSNAAM/mochi-glow` invullen zodra de GitHub-repo bestaat.
-- `data/toegestane-claims.json` → elke claim nalezen in het officiële EU-register en `geverifieerd` op `true` zetten. Zolang die vlag `false` is, waarschuwt de controle bij elk gebruik van een goedgekeurde claim.
 - `public/ads.txt` → publisher-ID invullen ná goedkeuring van AdSense.
 - `src/config.ts` → `advertentiesActief` op `true` bij livegang van advertenties.
 
@@ -136,7 +154,8 @@ Bevat het volledige onderzoek dat aan dit project ten grondslag ligt:
 - `03-tegenspraak.md` — expliciete tegenspraak-check per deelvraag, incl. één deelvraag waar bewust niets tegensprekends is gevonden (met onderbouwing).
 - `04-vormgeving-en-eisen.md` — vormgeving, E-E-A-T, claims op voeding/supplementen en toegankelijkheid. **Par. 4.3 is de bron voor de taalregels in `check-compliance.mjs`**; par. 4.1 voor de ontwerptokens.
 - `05-bronnen-contentbatch.md` — de bronnen achter de zestien artikelen.
-- `06-kleur-beeld-en-interactie.md` — kleur, beeld, geloofwaardigheid, vragenlijstvorm en beweging. Bron voor de speelse laag in `tokens.css`, voor `Hero.astro`, `Lopendeband.astro` en de routinetest. **Belangrijkste uitkomst is een negatief resultaat:** kleurpsychologie levert geen bruikbare regels om een palet uit af te leiden, want het effect van een kleur hangt aantoonbaar van de context af. Onderbouw een kleurkeuze hier dus nooit met "kleur X staat voor Y".
+- `06-kleur-beeld-en-interactie.md` — kleur, beeld, geloofwaardigheid, vragenlijstvorm en beweging. Bron voor de speelse laag in `tokens.css` en voor de routinetest. **Belangrijkste uitkomst is een negatief resultaat:** kleurpsychologie levert geen bruikbare regels om een palet uit af te leiden, want het effect van een kleur hangt aantoonbaar van de context af. Onderbouw een kleurkeuze hier dus nooit met "kleur X staat voor Y".
+- `07-herziening-beeld-en-voedingspijler.md` — de beeldpijplijn en de splitsing van de tweede pijler. **Par. 4.1** is de bron voor het beeldbeleid (aangehaald vanuit `Beeld.astro` en `content.config.ts`), **par. 4.3** voor het twee-sporenmodel en de siteniveau-toets, **par. 4.4** voor de claimverificatie. Bevat twee weerlegde aannames: een Pollinations-token verhoogt de resolutie níét, en de claimlijst bleek grotendeels geparafraseerd in plaats van geciteerd.
 
 De nummering springt van `01` naar `03`; er is geen `02-`-bestand en geen enkel document verwijst ernaar — er ontbreekt dus niets.
 

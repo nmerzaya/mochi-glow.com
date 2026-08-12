@@ -5,7 +5,8 @@ publicatiedatum: 2026-08-07
 auteur: Noor
 gezondheidsclaims: true
 accent: perzik
-motief: blad
+afbeelding: ../../assets/artikelen/voeding-en-huid.jpg
+alt: 'Een ondiepe keramieken schaal met gemengde granen en zaden, naast een handvol verse bladgroente.'
 tags:
   - voeding
   - darm-huid-as
@@ -44,6 +45,8 @@ Dus leunt het meeste voedingsonderzoek op waarnemingen: je vraagt grote groepen 
 
 Bij huid komt daar iets bovenop: de uitkomst is moeilijk te meten. Hoe scoor je "een betere huid"? Wie beoordeelt dat, met welke maatstaf, en weet die beoordelaar in welke groep iemand zat? Als dat niet stevig is geregeld, meet je vooral verwachting.
 
+![Een houten plank met gesneden rauwe groenten, van boven gezien bij daglicht.](../../assets/artikelen/voeding-en-huid-2.jpg)
+
 ## Wat je in de praktijk tegenkomt
 
 Een paar patronen die het waard zijn te herkennen.
@@ -65,6 +68,8 @@ Alleen gezondheidsclaims die officieel zijn toegelaten, mogen gebruikt worden, e
 Wat er níét op staat, is even leerzaam. In 2011 rondde EFSA de beoordeling af van bijna drieduizend claims. Alles rond probiotica sneuvelde, onder meer omdat aanvragers niet aangaven om welk micro-organisme het precies ging. Er bestaat daardoor tot op heden geen toegelaten Europese claim over darmflora of microbioom.
 
 Dat betekent iets ongemakkelijks voor de manier waarop dit onderwerp doorgaans wordt gepresenteerd: een groot deel van wat je erover leest, zou op een verpakking verboden zijn.
+
+![Olijfolie die in een dunne straal in een klein wit schaaltje wordt geschonken.](../../assets/artikelen/voeding-en-huid-3.jpg)
 
 ## Wat overblijft
 

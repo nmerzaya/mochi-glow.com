@@ -1,7 +1,24 @@
 ---
 import { datumOpmaak } from '../config';
 import Beeld from './Beeld.astro';
-import type { Motief } from './ArtikelBeeld.astro';
+import Bronnenmeter from './Bronnenmeter.astro';
+import type { Bron } from '../lib/bronnen';
+
+/**
+ * Eén artikel in een overzicht.
+ *
+ * Drie formaten, want een tijdschrift zet niet alles even groot neer. Welk
+ * formaat waar komt, bepaalt de pagina die dit component gebruikt; de opmaak
+ * per formaat staat in `globaal.css` onder "De stroom".
+ *
+ *   spread   het openingsstuk: beeld en tekst naast elkaar, om en om gespiegeld
+ *   breed    een liggend blok over de halve breedte
+ *   kaart    het gewone staande kaartje
+ *
+ * De hele kaart is klikbaar via een uitgerekt pseudo-element op de titellink.
+ * Dat is één link in de toegankelijkheidsboom in plaats van drie die naar
+ * dezelfde plek gaan.
+ */
 
 interface Props {
   titel: string;
@@ -10,15 +27,15 @@ interface Props {
   publicatiedatum: Date;
   accent?: 'roze' | 'paars' | 'perzik' | 'mint';
   affiliate?: boolean;
-  /** Overschrijft de illustratie; standaard wordt die uit de slug afgeleid. */
-  motief?: Motief;
-  /** Het kapitalenlabel boven de kop, bijvoorbeeld "Skincare". */
+  /** Het kapitalenlabel boven de kop, bijvoorbeeld "Wat zit erin?". */
   rubriek?: string;
-  /** Groot uitgelicht formaat voor het eerste artikel op een overzicht. */
-  groot?: boolean;
-  /** Echte foto; is die er, dan vervangt hij de illustratie. */
-  afbeelding?: ImageMetadata;
-  alt?: string;
+  formaat?: 'spread' | 'breed' | 'kaart';
+  afbeelding: ImageMetadata;
+  alt: string;
+  /** Voedt de bronnenmeter onder de kaart. */
+  bronnen?: readonly Bron[];
+  /** Alleen waar voor het eerste beeld op een pagina. */
+  eerst?: boolean;
 }
 
 const {
@@ -28,51 +45,34 @@ const {
   publicatiedatum,
   accent = 'roze',
   affiliate = false,
-  motief,
   rubriek,
-  groot = false,
+  formaat = 'kaart',
   afbeelding,
   alt,
+  bronnen = [],
+  eerst = false,
 } = Astro.props;
 
-/*
-  Het zaad is de slug en niet de volledige URL, zodat de kaart en het artikel
-  zelf dezelfde illustratie krijgen — anders ziet een lezer die doorklikt ineens
-  iets anders.
-*/
-const slug = url.split('/').filter(Boolean).pop() ?? titel;
+const beeldVariant = formaat === 'spread' ? 'kop' : 'kaart';
 ---
 
-{
-  groot ? (
-    <article class={`uitgelicht accent-${accent}`}>
-      <div class="uitgelicht__vlak">
-        <Beeld afbeelding={afbeelding} alt={alt} motief={motief} accent={accent} zaad={slug} variant="kop" />
-      </div>
-      <div>
-        {rubriek && <span class="rubriek">{rubriek}</span>}
-        <h2 class="uitgelicht__titel"><a href={url}>{titel}</a></h2>
-        <p class="uitgelicht__intro">{beschrijving}</p>
-        <div class="kaart__voet">
+<article class={`item item--${formaat} accent-${accent}`}>
+  <div class="item__vlak">
+    <Beeld afbeelding={afbeelding} alt={alt} variant={beeldVariant} eerst={eerst} />
+  </div>
+
+  <div class="item__tekst">
+    {rubriek && <span class="rubriek">{rubriek}</span>}
+    <h3 class="item__titel"><a href={url}>{titel}</a></h3>
+    <p class="item__intro">{beschrijving}</p>
+    <div class="item__voet">
+      <Bronnenmeter bronnen={bronnen} />
+      {
+        formaat !== 'kaart' && (
           <time datetime={publicatiedatum.toISOString()}>{datumOpmaak.format(publicatiedatum)}</time>
-          {affiliate && <span class="etiket">advertentie</span>}
-        </div>
-      </div>
-    </article>
-  ) : (
-    <li>
-      <article class={`kaart accent-${accent}`}>
-        <div class="kaart__vlak">
-          <Beeld afbeelding={afbeelding} alt={alt} motief={motief} accent={accent} zaad={slug} variant="kaart" />
-        </div>
-        {rubriek && <span class="rubriek">{rubriek}</span>}
-        <h3 class="kaart__titel"><a href={url}>{titel}</a></h3>
-        <p class="kaart__tekst">{beschrijving}</p>
-        <div class="kaart__voet">
-          <time datetime={publicatiedatum.toISOString()}>{datumOpmaak.format(publicatiedatum)}</time>
-          {affiliate && <span class="etiket">advertentie</span>}
-        </div>
-      </article>
-    </li>
-  )
-}
+        )
+      }
+      {affiliate && <span class="etiket">advertentie</span>}
+    </div>
+  </div>
+</article>

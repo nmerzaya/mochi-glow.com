@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: paars
-motief: kiem
+afbeelding: ../../assets/artikelen/galactomyces.jpg
+alt: 'Een glazen kolf met troebel rijstferment waarin fijne belletjes opstijgen, op een sleets houten aanrecht.'
 inci: Galactomyces Ferment Filtrate
 tags:
   - galactomyces
@@ -40,6 +41,8 @@ In 2023 verscheen in het *Journal of Clinical Medicine* een opvallende studie. D
 
 Twaalf maanden is lang voor cosmetisch onderzoek. Het overgrote deel van de studies in deze sector duurt vier tot twaalf weken. Op dat punt onderscheidt dit werk zich echt.
 
+![Macro-opname van kojirijst, bleke donzige korrels uitgespreid in een ondiepe houten bak.](../../assets/artikelen/galactomyces-2.jpg)
+
 ## En nu het probleem
 
 Kijk je naar wie het onderzoek deed, dan verandert het beeld.
@@ -59,6 +62,8 @@ Op deze site worden geen producten getest. Wat hier gebeurt, is lezen wat er gep
 Bij veel ingrediënten is dat lastig na te gaan. Bij dit ingrediënt staat het gewoon in de publicatie, en dan hoort het ook in een artikel als dit te staan — niet als beschuldiging, maar als context waarmee je de uitkomst kunt wegen.
 
 Wat je hiermee kunt: als je ergens leest dat Galactomyces "klinisch onderzocht" is, klopt dat. De vervolgvraag is wie het onderzocht heeft. Die vraag hoort standaard te zijn, en is het zelden.
+
+![Melkachtig filtraat dat door een fijne doek in een eenvoudige glazen beker wordt geschonken.](../../assets/artikelen/galactomyces-3.jpg)
 
 ## Wat een product hierover mag beweren
 

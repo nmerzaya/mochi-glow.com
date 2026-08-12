@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: mint
-motief: blad
+afbeelding: ../../assets/artikelen/centella-asiatica.jpg
+alt: 'Een pol ronde waternavelblaadjes met gekartelde randen, nat van de dauw, op donkere vochtige aarde.'
 inci: Centella Asiatica Extract
 tags:
   - centella
@@ -44,6 +45,8 @@ Dat onderscheid doet ertoe. Een product met "Centella Asiatica Extract" bevat ee
 
 Je ziet daarnaast de term "TECA" of "madecassol" langskomen. Dat verwijst naar een gestandaardiseerd mengsel van die triterpenen, dat in sommige landen een geregistreerde medische toepassing kent — en dat is precies waar het verwarrend wordt.
 
+![Gedroogde centellablaadjes en dunne steeltjes los in een ondiepe, ongeglazuurde keramieken schaal.](../../assets/artikelen/centella-asiatica-2.jpg)
+
 ## De juridische spagaat
 
 Hier zit de kern van waarom je online zulke stellige verhalen leest en op de verpakking zulke voorzichtige.
@@ -63,6 +66,8 @@ Bij het eerste gaat het om laboratoriumonderzoek waarin cellen die collageen pro
 Twee kanttekeningen zijn hier belangrijk, en ze gelden voor bijna alle onderzoek naar cosmetische ingrediënten. Ten eerste: veel van dit werk is gedaan op gekweekte cellen of op dieren, en de stap naar een menselijk gezicht is groot. Ten tweede: de concentraties in onderzoek liggen vaak hoger dan wat in een gewone crème zit.
 
 Wat wel breed wordt teruggevonden, is dat centella-extracten mild zijn en zelden irritatie geven. Dat klinkt minder spannend dan de claims die je online tegenkomt, maar voor iemand met een snel reagerende huid is "doet weinig verkeerd" een reële eigenschap.
+
+![Eén doorschijnend groen blad tegen zacht licht gehouden, met de fijne nerven zichtbaar.](../../assets/artikelen/centella-asiatica-3.jpg)
 
 ## Cica en de "damaged barrier"-marketing
 

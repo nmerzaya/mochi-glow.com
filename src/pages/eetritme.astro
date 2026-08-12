@@ -1,0 +1,31 @@
+---
+import BasisLayout from '../layouts/BasisLayout.astro';
+import Vragenlijst from '../components/Vragenlijst.astro';
+import { eetritme } from '../data/eetritme';
+
+const beschrijving =
+  'Zes vragen over de vorm van je dag — wanneer je eet, hoe het op tafel komt, hoe vast het ligt — en daarna een ritmeprofiel met de voedingsgroepen die daarbij passen. Geen diagnose, geen dieet.';
+---
+
+<BasisLayout titel="Jouw eetritme" beschrijving={beschrijving}>
+  {/* Zie de toelichting op /routine: dit moet vóór het eerste renderen bekend zijn. */}
+  <script slot="hoofd" is:inline>
+    document.documentElement.dataset.js = 'aan';
+  </script>
+
+  <div class="hero">
+    <span class="rubriek">{eetritme.vragen.length} vragen · twee minuten</span>
+    <h1>Wat is jouw eetritme?</h1>
+    <p class="hero__intro">
+      Niet welk type je bent — wanneer je eet. Ontbijt je, of begin je met koffie? Staat de warme
+      maaltijd om zes uur op tafel of om half elf? Die vorm bepaalt in de praktijk meer over wat er
+      op een dag wél en niet langskomt dan welke lijst met superfoods ook.
+    </p>
+  </div>
+
+  <Vragenlijst
+    lijst={eetritme}
+    overzichtKop="De vijf ritmes"
+    overzichtIntro="Hieronder staan ze alle vijf, met per ritme de voedingsgroepen die erbij passen en op welk moment. Werkt JavaScript in je browser, dan staat hierboven een vragenlijst die je naar één ervan brengt."
+  />
+</BasisLayout>

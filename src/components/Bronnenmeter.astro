@@ -1,0 +1,82 @@
+---
+import { tel, samenvatting, type Bron } from '../lib/bronnen';
+
+/**
+ * De bronnenmeter.
+ *
+ * Een streep in drie kleuren die laat zien waar de onderbouwing van een artikel
+ * vandaan komt. Jade is primair, amber is vakmedia, roos is tertiair. Hoe meer
+ * jade, hoe dichter het artikel bij de bron zelf staat.
+ *
+ * Waarom dit het kenmerkende element van de site is: elke beautysite kan
+ * schrijven dat ze zorgvuldig is. Deze kan het laten zien, want de gegevens
+ * staan al in de frontmatter en de streep wordt eruit berekend. Een artikel met
+ * één blogbron krijgt dus onvermijdelijk een rode streep, ook als de tekst
+ * eromheen prachtig is. Dat is het punt.
+ *
+ * De meter is voor een schermlezer één zin en geen grafiek: de streep zelf
+ * staat op aria-hidden, de samenvatting ernaast is de toegankelijke versie.
+ */
+
+interface Props {
+  bronnen?: readonly Bron[];
+  /** `regel` staat onder een kaart, `blok` boven een artikel met legenda erbij. */
+  variant?: 'regel' | 'blok';
+}
+
+const { bronnen = [], variant = 'regel' } = Astro.props;
+
+const telling = tel(bronnen);
+const tekst = samenvatting(telling);
+
+/* Elke bron krijgt een even breed segment; de streep is dus een telling, geen schatting. */
+const delen = [
+  ...Array.from({ length: telling.a }, () => 'a'),
+  ...Array.from({ length: telling.b }, () => 'b'),
+  ...Array.from({ length: telling.c }, () => 'c'),
+];
+---
+
+{
+  variant === 'blok' ? (
+    <div class="meter-blok">
+      <p class="rubriek rubriek--stil" style="margin: 0">
+        Waar dit artikel op steunt
+      </p>
+      <div class="meter" aria-hidden="true">
+        {delen.length === 0 ? (
+          <span class="meter__deel meter__deel--leeg" />
+        ) : (
+          delen.map((soort) => (
+            <span class={`meter__deel meter__deel--${soort}`} style={`flex: 1`} />
+          ))
+        )}
+      </div>
+      <ul class="meter-blok__legenda">
+        <li>
+          <span class="meter-blok__stip" style="background: var(--kleur-jade)" />
+          {telling.a} primair
+        </li>
+        <li>
+          <span class="meter-blok__stip" style="background: var(--kleur-amber)" />
+          {telling.b} vakmedia
+        </li>
+        <li>
+          <span class="meter-blok__stip" style="background: var(--kleur-roos)" />
+          {telling.c} tertiair
+        </li>
+      </ul>
+    </div>
+  ) : (
+    <span class="meter-regel">
+      <span class="meter" aria-hidden="true">
+        {delen.length === 0 ? (
+          <span class="meter__deel meter__deel--leeg" />
+        ) : (
+          delen.map((soort) => <span class={`meter__deel meter__deel--${soort}`} style="flex: 1" />)
+        )}
+      </span>
+      <span>{tekst}</span>
+    </span>
+  )
+}

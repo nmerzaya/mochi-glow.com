@@ -1,0 +1,60 @@
+---
+import ArtikelKaart from './ArtikelKaart.astro';
+import type { Bron } from '../lib/bronnen';
+
+/**
+ * Een reeks artikelen in tijdschriftritme.
+ *
+ * Hiervoor stond overal hetzelfde raster van gelijke kaartjes. Dat leest als een
+ * zoekresultaat: alles even belangrijk, en dus niets. Een tijdschrift kiest —
+ * één stuk krijgt de opening, twee krijgen een halve pagina, de rest staat in een
+ * kolom.
+ *
+ * Het ritme is een herhaling van vijf: twee brede blokken naast elkaar, dan drie
+ * smalle. Op een raster van zes kolommen vult dat precies uit (2 × 3 en 3 × 2),
+ * zodat er nooit een gat aan het eind van een rij valt, hoeveel artikelen er ook
+ * zijn. Het eerste artikel staat daarbuiten en krijgt de volle breedte.
+ *
+ * De volgorde is dus niet ingevoerd maar berekend. Komt er een artikel bij, dan
+ * schuift het ritme mee.
+ */
+
+export interface StroomItem {
+  titel: string;
+  beschrijving: string;
+  url: string;
+  publicatiedatum: Date;
+  accent?: 'roze' | 'paars' | 'perzik' | 'mint';
+  affiliate?: boolean;
+  rubriek?: string;
+  afbeelding: ImageMetadata;
+  alt: string;
+  bronnen?: readonly Bron[];
+}
+
+interface Props {
+  items: StroomItem[];
+  /** Het eerste artikel de volle breedte geven. Uit op de homepage, waar de hero die rol al heeft. */
+  opening?: boolean;
+}
+
+const { items, opening = true } = Astro.props;
+
+function formaatVoor(index: number): 'spread' | 'breed' | 'kaart' {
+  if (opening && index === 0) return 'spread';
+  const plek = (opening ? index - 1 : index) % 5;
+  return plek < 2 ? 'breed' : 'kaart';
+}
+---
+
+<div class="stroom">
+  {
+    items.map((item, i) => (
+      <ArtikelKaart
+        {...item}
+        formaat={formaatVoor(i)}
+        eerst={i === 0 && opening}
+      />
+    ))
+  }
+</div>

@@ -5,7 +5,8 @@ publicatiedatum: 2026-08-06
 auteur: Noor
 gezondheidsclaims: true
 accent: mint
-motief: ringen
+afbeelding: ../../assets/artikelen/probiotica-en-de-europese-regels.jpg
+alt: 'Een lege glazen petrischaal op een lichtgrijs bureau, naast een dichtgevouwen blanco document.'
 tags:
   - probiotica
   - regelgeving
@@ -44,6 +45,8 @@ Dat is een fundamenteel punt, geen vormfout. "Probiotica" is geen stof. Het is e
 
 De tweede veelgenoemde reden was dat niet werd aangetoond dat het geclaimde effect gunstig is voor een lichaamsfunctie — of dat er überhaupt een oorzakelijk verband was aangetoond.
 
+![Rijen eenvoudige glazen potten zonder etiket op een houten plank.](../../assets/artikelen/probiotica-en-de-europese-regels-2.jpg)
+
 ## De praktische gevolgen
 
 De uitkomst is dat er tot op vandaag geen toegelaten Europese gezondheidsclaim bestaat over probiotica, darmflora of microbioom. Daaruit volgt een aantal dingen die veel mensen verrassen.
@@ -61,6 +64,8 @@ Belangrijk om helder te houden: dat een claim is afgewezen, betekent niet dat he
 Dat is een verschil dat beide kanten op eerlijk moet blijven. Wie zegt "de wetenschap heeft aangetoond dat het niet werkt", zit er net zo goed naast als wie zegt "het is bewezen effectief".
 
 Het onderzoek gaat ook gewoon door. De acne-review uit *Microorganisms* uit 2022 noemt orale toepassingen veelbelovend en pleit voor voortzetting van het onderzoek, juist omdat de gangbare aanpak van acne zwaar kan zijn. Maar diezelfde auteurs stellen vast dat het klinische onderzoek beperkt is. Veelbelovend is geen synoniem voor aangetoond.
+
+![Een houten stempel en een inktkussen op een blanco papieren formulier.](../../assets/artikelen/probiotica-en-de-europese-regels-3.jpg)
 
 ## Hoe je dit zelf gebruikt
 

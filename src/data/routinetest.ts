@@ -3,304 +3,329 @@
  *
  * Alle tekst van de test staat hier, en nergens anders. Dat is geen
  * netheidskwestie: `scripts/check-compliance.mjs` leest dit bestand en haalt
- * elke zin erin langs dezelfde verboden-taalpatronen als de artikelen. Zet je
- * testteksten in een `.astro`-bestand, dan ontsnappen ze aan die controle.
+ * elke tekenreeks erin langs dezelfde verboden-taalpatronen als de artikelen.
+ * Zet je testteksten in een `.astro`-bestand, dan ontsnappen ze aan die
+ * controle.
  *
- * Drie regels die het ontwerp hiervan sturen (onderzoek/06, par. 4.4):
+ * De regels waaraan deze lijst moet voldoen staan bij de types, in
+ * `src/lib/vragenlijst.ts`. Kort: geen vraag over een aandoening, geen uitkomst
+ * die iets belooft, geen merken.
  *
- * 1. Geen vraag gaat over een aandoening. Vragen gaan over hoe de huid
- *    aanvoelt en wat iemand prettig vindt. Een vraag naar acne, eczeem of
- *    rosacea zou hiervan een diagnose-instrument maken, en dat is precies wat
- *    de regels uit onderzoek/04, par. 4.3 verbieden.
- * 2. Geen uitkomst belooft een effect. De uitkomst is een leeswijzer: welke
- *    stappen bestaan er, en waar staat het artikel dat erover gaat.
- * 3. Geen merken, geen productnamen, geen affiliate-links. Die fase begint
- *    pas later (TAKEN.md, Fase 4) en zou de disclosureplicht meebrengen — ook
- *    op deze pagina.
+ * Over de antwoorden: die zijn kort gehouden, twee tot vier woorden. Een test
+ * met acht vragen mag niet aanvoelen als acht alinea's lezen — je scant vier
+ * woorden, kiest, en bent door.
  */
 
-import type { Motief } from '../components/ArtikelBeeld.astro';
-
-export type ProfielId = 'comfort' | 'balans' | 'rust' | 'glans' | 'stevigheid';
-
-export interface Antwoord {
-  id: string;
-  tekst: string;
-  /** Punten per profiel. Een antwoord mag ook nergens punten aan geven. */
-  punten: Partial<Record<ProfielId, number>>;
-}
-
-export interface Vraag {
-  id: string;
-  vraag: string;
-  hulp?: string;
-  antwoorden: Antwoord[];
-}
-
-export interface Stap {
-  naam: string;
-  tekst: string;
-  /** Optionele verwijzing naar het artikel dat over deze stap of dit ingrediënt gaat. */
-  artikel?: { titel: string; pad: string };
-}
-
-export interface Profiel {
-  id: ProfielId;
-  naam: string;
-  /** Eén zin die beschrijft wat dit profiel is — geen belofte over wat het doet. */
-  samenvatting: string;
-  accent: 'roze' | 'paars' | 'perzik' | 'mint';
-  motief: Motief;
-  stappen: Stap[];
-}
+import type { Onderdeel, Vragenlijst } from '../lib/vragenlijst';
 
 /*
-  Vijf vragen. Uit DV13-01 (onderzoek/06) blijkt dat afhaken oploopt met het
-  aantal vragen, met de scherpste stijging tot een stuk of vijftien. Ver onder
-  die grens blijven kost hier niets: meer vragen zouden de uitkomst niet
-  preciezer maken, want er zijn maar vijf profielen om tussen te kiezen.
+  Acht vragen. Uit DV13-01 (onderzoek/06) blijkt dat afhaken oploopt met het
+  aantal vragen, met de scherpste stijging tot een stuk of vijftien; acht korte
+  vragen blijft daar ruim onder en levert een uitkomst op die ergens op steunt.
 */
-export const vragen: Vraag[] = [
+const vragen = [
   {
     id: 'gevoel',
-    vraag: 'Hoe voelt je huid ongeveer een uur nadat je hem gewassen hebt?',
+    vraag: 'Hoe voelt je huid een uur na het wassen?',
     hulp: 'Zonder dat je er iets op hebt gedaan.',
     antwoorden: [
-      { id: 'strak', tekst: 'Strak, alsof er iets overheen moet', punten: { comfort: 3 } },
-      { id: 'rustig', tekst: 'Gewoon prettig — niet strak, niet glanzend', punten: { glans: 1, stevigheid: 1 } },
-      { id: 'tzone', tekst: 'Glanzend op voorhoofd en neus, elders niet', punten: { balans: 3 } },
-      { id: 'warm', tekst: 'Warm of rood, mijn huid reageert snel', punten: { rust: 3 } },
+      { id: 'strak', tekst: 'Strak', punten: { comfort: 3 } },
+      { id: 'prettig', tekst: 'Prettig', punten: { glans: 1, stevigheid: 1 } },
+      { id: 'tzone', tekst: 'Glanzend op de T-zone', punten: { balans: 3 } },
+      { id: 'warm', tekst: 'Warm of rood', punten: { rust: 3 } },
     ],
   },
   {
-    id: 'product',
-    vraag: 'Waar let je op als je iets nieuws uitzoekt?',
+    id: 'spiegel',
+    vraag: 'Waar zou je het liefst op letten?',
     antwoorden: [
-      { id: 'licht', tekst: 'Dat het licht aanvoelt en snel intrekt', punten: { balans: 2, glans: 1 } },
-      { id: 'rijk', tekst: 'Dat het rijk en verzachtend aanvoelt', punten: { comfort: 3 } },
-      { id: 'kort', tekst: 'Dat er zo min mogelijk in zit', punten: { rust: 3 } },
-      { id: 'bron', tekst: 'Dat er onderzoek achter het ingrediënt zit', punten: { stevigheid: 2, glans: 1 } },
+      { id: 'dof', tekst: 'Een doffe teint', punten: { glans: 3 } },
+      { id: 'droog', tekst: 'Droge plekjes', punten: { comfort: 3 } },
+      { id: 'olie', tekst: 'Glans in de loop van de dag', punten: { balans: 3 } },
+      { id: 'veerkracht', tekst: 'Veerkracht', punten: { stevigheid: 3 } },
     ],
   },
   {
     id: 'stappen',
-    vraag: "Hoeveel stappen wil je 's avonds realistisch gezien doen?",
-    hulp: 'Niet wat je zou moeten willen — wat je echt volhoudt.',
+    vraag: "Hoeveel stappen doe je 's avonds echt?",
+    hulp: 'Niet wat je zou willen — wat je volhoudt.',
     antwoorden: [
-      { id: 'twee', tekst: 'Twee of drie, meer niet', punten: { rust: 2, balans: 1 } },
-      { id: 'vier', tekst: 'Een stuk of vier', punten: { comfort: 1, glans: 1 } },
-      { id: 'veel', tekst: 'Zoveel als nodig, ik vind het een fijn moment', punten: { stevigheid: 2, glans: 1 } },
-      { id: 'weet-niet', tekst: 'Geen idee, daarom doe ik deze test', punten: {} },
+      { id: 'twee', tekst: 'Twee', punten: { rust: 3 } },
+      { id: 'drie', tekst: 'Drie of vier', punten: { balans: 1, comfort: 1 } },
+      { id: 'vijf', tekst: 'Vijf of meer', punten: { stevigheid: 2, glans: 1 } },
+      { id: 'wisselt', tekst: 'Wisselt sterk', punten: {} },
+    ],
+  },
+  {
+    id: 'nieuw',
+    vraag: 'Hoe reageert je huid op iets nieuws?',
+    antwoorden: [
+      { id: 'rustig', tekst: 'Rustig', punten: { stevigheid: 1, glans: 1 } },
+      { id: 'soms', tekst: 'Soms prikkend', punten: { comfort: 1, rust: 1 } },
+      { id: 'snel', tekst: 'Snel rood', punten: { rust: 3 } },
+      { id: 'onbekend', tekst: 'Geen idee', punten: {} },
+    ],
+  },
+  {
+    id: 'textuur',
+    vraag: 'Welke textuur werkt voor jou?',
+    antwoorden: [
+      { id: 'gel', tekst: 'Gel', punten: { balans: 3 } },
+      { id: 'lotion', tekst: 'Lotion', punten: { glans: 1, balans: 1 } },
+      { id: 'creme', tekst: 'Rijke crème', punten: { comfort: 3 } },
+      { id: 'olie', tekst: 'Olie', punten: { comfort: 1, stevigheid: 1 } },
+    ],
+  },
+  {
+    id: 'zon',
+    vraag: 'Hoeveel ben je overdag buiten?',
+    antwoorden: [
+      { id: 'veel', tekst: 'Bijna dagelijks', punten: { glans: 1, stevigheid: 1 } },
+      { id: 'soms', tekst: 'Een paar keer per week', punten: {} },
+      { id: 'weinig', tekst: 'Zelden', punten: {} },
     ],
   },
   {
     id: 'aantrekking',
-    vraag: 'Wat spreekt je het meest aan aan Koreaanse huidverzorging?',
+    vraag: 'Wat trekt je aan in Koreaanse routines?',
     antwoorden: [
-      { id: 'glans', tekst: 'Die egale, glanzende look', punten: { glans: 3 } },
-      { id: 'rust', tekst: 'De rust: weinig producten, weinig prikkels', punten: { rust: 3 } },
-      { id: 'laagjes', tekst: 'Het laagjes opbouwen en de texturen', punten: { comfort: 2, stevigheid: 1 } },
-      { id: 'ingredient', tekst: 'De ingrediënten en wat erover bekend is', punten: { stevigheid: 2, balans: 1 } },
+      { id: 'glans', tekst: 'De glans', punten: { glans: 3 } },
+      { id: 'rust', tekst: 'De rust', punten: { rust: 3 } },
+      { id: 'laagjes', tekst: 'De laagjes', punten: { comfort: 2, stevigheid: 1 } },
+      { id: 'ingredient', tekst: 'De ingrediënten', punten: { stevigheid: 2, balans: 1 } },
     ],
   },
   {
-    id: 'wens',
-    vraag: 'Waar zou je een routine het liefst op willen afstemmen?',
+    id: 'tijd',
+    vraag: 'Hoeveel tijd wil je eraan kwijt zijn?',
     antwoorden: [
-      { id: 'comfort', tekst: 'Dat mijn huid de hele dag comfortabel aanvoelt', punten: { comfort: 3 } },
-      { id: 'mat', tekst: 'Dat mijn huid er in de loop van de dag minder glanzend uitziet', punten: { balans: 3 } },
-      { id: 'wakker', tekst: 'Dat mijn huid er wakkerder uitziet', punten: { glans: 3 } },
-      { id: 'steviger', tekst: 'Dat mijn huid steviger aanvoelt', punten: { stevigheid: 3 } },
-      { id: 'simpel', tekst: 'Dat ik er zo min mogelijk over hoef na te denken', punten: { rust: 3 } },
+      { id: 'kort', tekst: 'Zo min mogelijk', punten: { rust: 3 } },
+      { id: 'normaal', tekst: 'Een paar minuten', punten: { balans: 1, comfort: 1 } },
+      { id: 'lang', tekst: 'Het mag een moment zijn', punten: { stevigheid: 2, glans: 1 } },
     ],
   },
 ];
 
 const artikel = (slug: string, titel: string) => ({ titel, pad: `/ingredienten/${slug}` });
 
-/*
-  Vijf routines. De volgorde van de stappen is de gangbare volgorde in
-  Koreaanse routines — dun naar dik, waterig naar olieachtig — en de stappen
-  beschrijven wat een productcategorie ís, niet wat hij zou doen.
+const reinigenOchtend: Onderdeel = {
+  label: 'Ochtend',
+  naam: 'Reinigen met water',
+  tekst:
+    "'s Ochtends ligt er alleen wat er 's nachts op is gekomen. Water of een milde reiniger is dan genoeg; twee keer per dag stevig wassen is voor de meeste huiden meer dan nodig.",
+};
 
-  Zonnebrand staat overal als laatste ochtendstap. Dat is geen aanbeveling die
-  uit de antwoorden volgt, maar de enige stap die in elke routine hetzelfde is.
+const zon: Onderdeel = {
+  label: 'Ochtend',
+  naam: 'Zonnebrand',
+  tekst:
+    'De laatste stap van de ochtend, over alles heen. Dit is de enige stap die in alle vijf de routines hetzelfde is, en de enige waarvan het effect buiten kijf staat.',
+};
+
+/*
+  Vijf routines. De volgorde is de gangbare Koreaanse volgorde — dun naar dik,
+  waterig naar olieachtig — en elk onderdeel beschrijft wát een productcategorie
+  is en waarom hij op die plek staat, niet wat hij zou doen.
 */
-export const profielen: Profiel[] = [
+const profielen = [
   {
     id: 'comfort',
     naam: 'Comfort',
     samenvatting:
-      'Je huid voelt snel strak, en je zoekt vooral texturen die dat gevoel wegnemen. Deze routine is opgebouwd rond ingrediënten die water vasthouden en rond de vetten die in de hoornlaag zelf voorkomen.',
-    accent: 'perzik',
-    motief: 'druppel',
-    stappen: [
+      'Je huid trekt strak en je zoekt vooral texturen die dat gevoel wegnemen. Deze routine is opgebouwd rond stoffen die water vasthouden en rond de vetten die in de hoornlaag zelf voorkomen.',
+    accent: 'perzik' as const,
+    beeld: 'hyaluronzuur',
+    beeldAlt: 'Een waterdruppel op een doorschijnend vlak, met het licht erachter.',
+    onderdelen: [
+      reinigenOchtend,
       {
+        label: 'Avond',
         naam: 'Milde reiniging',
         tekst:
-          'Een reiniger die niet schuimt of maar licht schuimt. Hoe strakker je huid na het wassen aanvoelt, hoe meer er is afgehaald dan alleen vuil.',
+          'Een reiniger die niet of nauwelijks schuimt. Vuistregel: hoe strakker je huid na het wassen aanvoelt, hoe meer er is meegegaan dan alleen vuil.',
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Toner of essence',
         tekst:
-          'Een waterige laag op de nog vochtige huid. Rijstextract komt in deze categorie veel voor.',
+          'Een waterige laag op de nog vochtige huid, zodat de lagen erna iets hebben om op te liggen. Rijstextract komt in deze categorie veel voor.',
         artikel: artikel('rijstextract', 'Rijstextract'),
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Serum met hyaluronzuur',
         tekst:
-          'Hyaluronzuur bindt water. Over molecuulgrootte wordt veel beweerd; wat daarvan onderbouwd is, staat in het artikel.',
+          'Hyaluronzuur bindt water. Over molecuulgrootte wordt van alles beweerd; wat daarvan onderbouwd is en wat niet, staat in het artikel.',
         artikel: artikel('hyaluronzuur', 'Hyaluronzuur'),
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Crème met ceramiden',
         tekst:
-          'Ceramiden zijn lipiden die van nature in de hoornlaag zitten. Wat ze daar doen en wat dat betekent voor een crème, staat in het artikel.',
+          'Ceramiden zijn lipiden die van nature in de hoornlaag zitten. De crème is de laag die de waterige lagen eronder afsluit — daarom komt hij als laatste van de verzorging.',
         artikel: artikel('ceramiden', 'Ceramiden'),
       },
-      {
-        naam: "Zonnebrand, 's ochtends",
-        tekst: 'De laatste stap van de ochtendroutine, elke dag opnieuw.',
-      },
+      zon,
     ],
   },
   {
     id: 'balans',
     naam: 'Balans',
     samenvatting:
-      'Je huid glanst in de loop van de dag, maar niet overal en niet altijd. Deze routine houdt de texturen licht en legt het accent op één goed onderzocht ingrediënt.',
-    accent: 'mint',
-    motief: 'golven',
-    stappen: [
+      'Je huid glanst in de loop van de dag, maar niet overal en niet altijd. Deze routine houdt de texturen licht en legt het accent op één van de best onderzochte ingrediënten uit de categorie.',
+    accent: 'mint' as const,
+    beeld: 'niacinamide',
+    beeldAlt: 'Fijn wit poeder in een glazen schaaltje op licht linnen.',
+    onderdelen: [
+      reinigenOchtend,
       {
-        naam: 'Reiniging in twee stappen',
+        label: 'Avond',
+        naam: 'Reinigen in twee stappen',
         tekst:
-          "Eerst iets op oliebasis, daarna een waterige reiniger. Vooral relevant als je overdag zonnebrand of make-up draagt.",
+          'Eerst iets op oliebasis, daarna een waterige reiniger. Olie pakt wat op olie lijkt — zonnebrand en make-up — en water doet de rest. Draag je overdag geen van beide, dan is één stap genoeg.',
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Lichte toner',
-        tekst: 'Een dunne laag, zonder dat er een film op je huid achterblijft.',
+        tekst: 'Een dunne laag die intrekt zonder dat er een film achterblijft.',
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Serum met niacinamide',
         tekst:
-          'Niacinamide is een van de best onderzochte ingrediënten in deze categorie. Wat het onderzoek erover zegt — en waar het ophoudt — staat in het artikel.',
+          'Niacinamide is een van de weinige ingrediënten in deze hoek waar behoorlijk wat naar gekeken is. Wat dat oplevert — en waar het ophoudt — staat in het artikel.',
         artikel: artikel('niacinamide', 'Niacinamide'),
       },
       {
-        naam: 'Lichte gel of emulsie',
-        tekst: 'Dunner dan een crème, met dezelfde plek in de volgorde.',
+        label: 'Ochtend en avond',
+        naam: 'Gel of lichte emulsie',
+        tekst:
+          'Dezelfde plek in de volgorde als een crème, alleen dunner. Een vette huid heeft net zo goed een afsluitende laag nodig; die hoeft alleen niet zwaar te zijn.',
       },
-      {
-        naam: "Zonnebrand, 's ochtends",
-        tekst: 'De laatste stap van de ochtendroutine, elke dag opnieuw.',
-      },
+      zon,
     ],
   },
   {
     id: 'rust',
     naam: 'Rust',
     samenvatting:
-      'Je huid reageert snel en je houdt van weinig stappen. Deze routine is de kortste van de vijf: vier stappen, en verder zo min mogelijk verandering tegelijk.',
-    accent: 'mint',
-    motief: 'blad',
-    stappen: [
+      'Je huid reageert snel en je houdt van weinig stappen. Dit is de kortste routine van de vijf: vier stappen, en verder zo min mogelijk tegelijk veranderen.',
+    accent: 'mint' as const,
+    beeld: 'centella-asiatica',
+    beeldAlt: 'Ronde bladeren van waternavel, nat van de dauw, op donkere aarde.',
+    onderdelen: [
+      reinigenOchtend,
       {
-        naam: 'Reiniging met water of een milde reiniger',
-        tekst: "'s Ochtends is water vaak genoeg; 's avonds een reiniger die niet strak trekt.",
+        label: 'Avond',
+        naam: 'Milde reiniging',
+        tekst: 'Eén reiniger, elke avond dezelfde, die je huid niet strak achterlaat.',
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Eén verzorgende laag',
         tekst:
-          'Centella asiatica komt in deze categorie veel voor. Wat cica is en wat erover onderzocht is, staat in het artikel.',
+          'Centella asiatica komt in deze categorie veel voor. Bij een huid die snel reageert is één laag die bevalt meer waard dan drie die je nog aan het uitproberen bent.',
         artikel: artikel('centella-asiatica', 'Centella asiatica'),
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Crème',
-        tekst: 'Eén crème, elke dag dezelfde. Bij een gevoelige huid is voorspelbaarheid meer waard dan variatie.',
-      },
-      {
-        naam: "Zonnebrand, 's ochtends",
         tekst:
-          'De laatste stap van de ochtendroutine. Minerale filters worden vaak als prettiger ervaren, maar dat verschilt per persoon.',
+          'Eén crème, elke dag dezelfde. Voeg iets nieuws hooguit één keer per twee weken toe, anders weet je bij een reactie niet waar hij vandaan kwam.',
       },
+      zon,
     ],
   },
   {
     id: 'glans',
     naam: 'Glans',
     samenvatting:
-      'Je vindt je huid vooral dof ogen en de glanzende look is precies waarom je naar K-beauty kijkt. Deze routine draait om de twee ingrediënten waar die look het vaakst aan wordt opgehangen.',
-    accent: 'roze',
-    motief: 'ringen',
-    stappen: [
+      'Je vindt je huid vooral dof ogen, en die glanzende look is precies waarom je naar K-beauty kijkt. Deze routine draait om de twee ingrediënten waar die look het vaakst aan wordt opgehangen.',
+    accent: 'roze' as const,
+    beeld: 'galactomyces',
+    beeldAlt: 'Een glazen kan met troebel rijstferment waarin fijne belletjes opstijgen.',
+    onderdelen: [
+      reinigenOchtend,
       {
-        naam: 'Reiniging in twee stappen',
-        tekst: 'Eerst op oliebasis, daarna waterig — de gangbare opzet als je overdag zonnebrand draagt.',
+        label: 'Avond',
+        naam: 'Reinigen in twee stappen',
+        tekst:
+          'Eerst op oliebasis, daarna waterig — de gangbare opzet als je overdag zonnebrand draagt.',
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Ferment-essence',
         tekst:
-          'Galactomyces is het bekendste ferment in deze categorie, en tegelijk het ingrediënt met het grootste belangenprobleem in zijn eigen onderzoek.',
+          'Galactomyces is het bekendste ferment in deze hoek. Het is ook het ingrediënt met het grootste belangenprobleem in zijn eigen dossier, en dat is precies waarom het artikel bestaat.',
         artikel: artikel('galactomyces', 'Galactomyces'),
       },
       {
-        naam: "Serum met vitamine C, 's ochtends",
+        label: 'Ochtend',
+        naam: 'Serum met vitamine C',
         tekst:
-          'Vitamine C is instabiel, en dat is het hele verhaal bij dit ingrediënt. Wat dat praktisch betekent, staat in het artikel.',
+          "Vitamine C is instabiel, en dat is bij dit ingrediënt het hele verhaal. Daarom 's ochtends, en daarom let je op de verpakking.",
         artikel: artikel('vitamine-c', 'Vitamine C'),
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Lichte crème',
-        tekst: 'Genoeg om de laag eronder vast te houden, niet zo zwaar dat je huid er anders van aanvoelt.',
+        tekst:
+          'Genoeg om de lagen eronder vast te houden, niet zo zwaar dat je huid anders aanvoelt.',
       },
-      {
-        naam: "Zonnebrand, 's ochtends",
-        tekst: 'De laatste stap van de ochtendroutine, elke dag opnieuw.',
-      },
+      zon,
     ],
   },
   {
     id: 'stevigheid',
     naam: 'Stevigheid',
     samenvatting:
-      'Je let op veerkracht en je vindt de routine zelf een prettig moment. Deze routine heeft de meeste stappen, en de twee ingrediënten erin zijn ook de twee waar de meeste vragen over te stellen zijn.',
-    accent: 'paars',
-    motief: 'vlecht',
-    stappen: [
+      'Je let op veerkracht en je vindt de routine zelf een prettig moment. Dit is de langste routine, en de twee ingrediënten erin zijn ook de twee waar de meeste vragen bij te stellen zijn.',
+    accent: 'paars' as const,
+    beeld: 'snail-mucin',
+    beeldAlt: 'Een glanzende spiraalschelp van bovenaf op natte leisteen.',
+    onderdelen: [
+      reinigenOchtend,
       {
-        naam: 'Reiniging in twee stappen',
+        label: 'Avond',
+        naam: 'Reinigen in twee stappen',
         tekst: 'Eerst op oliebasis, daarna waterig.',
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Toner',
-        tekst: 'Een waterige laag op de nog vochtige huid.',
+        tekst: 'Een waterige laag op de nog vochtige huid, als basis voor de lagen erna.',
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Serum met snail mucin',
         tekst:
-          'Slakkenfiltraat werd om een opmerkelijke reden populair. Wat het is en wat erover bekend is, staat in het artikel.',
+          'Slakkenfiltraat werd om een opmerkelijke reden populair, en die reden had weinig met bewijs te maken. Wat het is en wat er wél over bekend is, staat in het artikel.',
         artikel: artikel('snail-mucin', 'Snail mucin'),
       },
       {
+        label: 'Avond',
         naam: 'Ampul met PDRN',
         tekst:
-          'PDRN komt uit een heel andere hoek dan de cosmetica. Waar het bewijs vandaan komt — en over welke toedieningsvorm dat bewijs gaat — staat in het artikel.',
+          'PDRN komt uit een heel andere hoek dan de cosmetica. Lees vooral het stuk over wélke toedieningsvorm bekeken is — dat is niet die van een ampul op je huid.',
         artikel: artikel('pdrn', 'PDRN en zalm-DNA'),
       },
       {
+        label: 'Ochtend en avond',
         naam: 'Crème met ceramiden',
         tekst: 'De afsluitende laag, met de lipiden die ook in de hoornlaag zelf voorkomen.',
         artikel: artikel('ceramiden', 'Ceramiden'),
       },
-      {
-        naam: "Zonnebrand, 's ochtends",
-        tekst: 'De laatste stap van de ochtendroutine, elke dag opnieuw.',
-      },
+      zon,
     ],
   },
 ];
 
-/** Vaste tekst onder elke uitkomst. Staat hier zodat de compliance-controle hem meeneemt. */
-export const uitkomstVoorbehoud =
-  'Dit is een leeswijzer, geen huidadvies. De uitkomst volgt uit vijf voorkeursvragen en niet uit een beoordeling van je huid. Twijfel je over iets, dan is een huidtherapeut of arts de aangewezen persoon — niet een vragenlijst.';
+export const routinetest: Vragenlijst = {
+  sleutel: 'routine',
+  vragen,
+  profielen,
+  onderdeelNaam: 'stappen',
+  slotknop: 'Toon mijn stappenplan',
+  voorbehoud:
+    'Dit is een leeswijzer, geen huidadvies. De uitkomst volgt uit acht voorkeursvragen en niet uit een beoordeling van je huid. Twijfel je ergens over, dan is een huidtherapeut of arts de aangewezen persoon — niet een vragenlijst.',
+};

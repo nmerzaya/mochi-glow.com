@@ -127,8 +127,8 @@ Loop dit lijstje na zodra de site draait:
 - [ ] `https://mochi-glow.com/sitemap-index.xml` geeft een sitemap terug.
 - [ ] `https://mochi-glow.com/rss.xml` geeft de feed terug.
 - [ ] `/admin` toont het inlogscherm van Sveltia CMS en je kunt inloggen met GitHub.
-- [ ] Een artikelpagina toont de illustratie, de bronnenlijst en — bij een gut-skin-artikel —
-      de medische disclaimer.
+- [ ] Een artikelpagina toont het beeld bovenaan, twee beelden in de lopende tekst, de bronnenlijst
+      en — bij een gut-skin-artikel — de medische disclaimer.
 - [ ] Er verschijnt **geen** cookiemelding. Dat hoort zo: zolang `advertentiesActief` in
       `src/config.ts` op `false` staat, laadt de site geen enkel script dat toestemming vereist.
 - [ ] Meld de site aan bij [Google Search Console](https://search.google.com/search-console)
@@ -143,11 +143,12 @@ aanvraag bij Amazon Associates kan niet opnieuw beoordeeld worden.
 
 Wat nog openstaat voordat je iets aanvraagt:
 
-- **`data/toegestane-claims.json`** — elke claim nalezen in het
-  [EU-register](https://ec.europa.eu/food/food-feed-portal/screen/health-claims/eu-register) en
-  daarna `geverifieerd` op `true` zetten. Zolang die op `false` staat, waarschuwt de controle bij
-  elk gebruik van een goedgekeurde claim. Dat register is een JavaScript-toepassing die niet
-  automatisch te controleren is; dit is handwerk in een browser.
+- ~~**`data/toegestane-claims.json`**~~ — **afgerond op 2026-08-12.** Alle bewoordingen zijn
+  nageslagen tegen de geconsolideerde tekst van Verordening (EU) nr. 432/2012 en `geverifieerd` staat
+  op `true`. Twaalf van de zestien claims en vijf van de zes darmclaims bleken niet letterlijk te
+  kloppen en zijn gecorrigeerd; de verantwoording staat in `onderzoek/07`, par. 4.4. Het EU-register
+  zelf is een JavaScript-toepassing die niet automatisch uit te lezen is — de verordening is daarom
+  via het Publicatiebureau opgehaald, en dat is de vaststellende wetgeving zelf.
 - **`public/ads.txt`** — publisher-ID invullen, maar pas ná goedkeuring van AdSense.
 - **`src/config.ts`** — `advertentiesActief` op `true` zetten op het moment dat er
   daadwerkelijk een advertentiescript op de site staat, niet eerder.

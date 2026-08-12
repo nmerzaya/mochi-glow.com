@@ -9,14 +9,19 @@ backend:
   branch: main
 
 publish_mode: editorial_workflow
-media_folder: public/images
-public_folder: /images
+
+# Beeld hoort in src/assets/, niet in public/. Alleen daar haalt Astro het door
+# astro:assets en komt er WebP in meerdere breedtes uit; wat in public/ staat gaat
+# ongemoeid en op volle grootte naar elke telefoon. public_folder is het pad zoals
+# het in de frontmatter belandt, en dat is relatief aan het markdown-bestand.
+media_folder: src/assets/artikelen
+public_folder: ../../assets/artikelen
 
 locale: nl
 
 collections:
   - name: ingredienten
-    label: Ingrediënten
+    label: Wat zit erin?
     label_singular: Ingrediëntartikel
     description: >-
       Pijler 1. Hier mogen affiliate-links staan. Let op het veld "Soort product":
@@ -58,24 +63,18 @@ collections:
         default: roze
         options: [roze, paars, perzik, mint]
       - name: afbeelding
-        label: Foto
+        label: Beeld bovenaan
         widget: image
-        required: false
         hint: >-
-          Een echte foto vervangt de illustratie op de kaart, het overzicht en boven het
-          artikel. Laat leeg om de illustratie te gebruiken. Liefst liggend en minstens
-          1600 pixels breed; de site maakt zelf de kleinere formaten.
+          Verplicht. Wordt gebruikt op de kaart, op het overzicht en boven het artikel.
+          Liggend en minstens 1600 pixels breed; de site maakt zelf de kleinere formaten.
+          De beelden ín de tekst zet je in het artikel zelf, niet hier.
       - name: alt
-        label: Beschrijving van de foto
+        label: Beschrijving van het beeld
         widget: string
-        required: false
-        hint: Verplicht zodra er een foto is. Beschrijf wat er te zien is, voor wie de foto niet kan zien.
-      - name: motief
-        label: Illustratie
-        widget: select
-        required: false
-        hint: Wordt alleen gebruikt als er geen foto is. Laat leeg om er automatisch een te kiezen.
-        options: [druppel, blad, korrels, golven, bloem, ringen, vlecht, kiem]
+        hint: >-
+          Verplicht, minstens 10 tekens. Beschrijf wat er te zien is, voor wie het beeld
+          niet kan zien.
       - { name: uitgelicht, label: Uitgelicht, widget: boolean, default: false, required: false }
       - { name: tags, label: Tags, widget: list, required: false }
       - name: bronnen
@@ -105,11 +104,15 @@ collections:
       - { name: body, label: Artikel, widget: markdown }
 
   - name: gut-skin
-    label: Darm & huid
-    label_singular: Darm-huid-artikel
+    label: Huid van binnenuit
+    label_singular: Artikel over voeding en huid
     description: >-
-      Pijler 2. Bewust niet commercieel: hier mogen géén affiliate-links staan, zodat
-      deze artikelen wél naar wetenschappelijk onderzoek mogen verwijzen.
+      Pijler 2, met twee sporen. WETENSCHAP: soort product op "Niet van toepassing"
+      en geen affiliate-links — zo'n artikel mag vrij naar onderzoek verwijzen.
+      COMMERCIEEL: soort product op "Voeding of supplement", affiliate-links
+      toegestaan — maar dan mag er nergens meer naar onderzoek verwezen worden, ook
+      niet in woorden, en gelden alleen de letterlijk goedgekeurde EU-claims. Iets
+      ertussenin bestaat niet en wordt door de build geweigerd.
     folder: src/content/gut-skin
     create: true
     slug: '{{slug}}'
@@ -125,30 +128,43 @@ collections:
       - { name: bijgewerkt, label: Bijgewerkt op, widget: datetime, format: 'YYYY-MM-DD', time_format: false, required: false }
       - { name: auteur, label: Auteur, widget: string, default: Noor }
       - { name: gezondheidsclaims, label: Raakt gezondheidsonderwerpen, widget: boolean, default: true }
+      - name: productType
+        label: Spoor
+        widget: select
+        default: geen
+        hint: >-
+          Dit bepaalt alles. "Niet van toepassing" is het wetenschapsspoor: verwijzen naar
+          onderzoek mag, verkopen niet. "Voeding of supplement" is het commerciële spoor:
+          affiliate-links mogen, maar verwijzen naar onderzoek mag dan nergens meer — ook
+          niet in woorden als "uit een studie blijkt".
+        options:
+          - { label: 'Niet van toepassing — wetenschapsspoor', value: geen }
+          - { label: 'Voeding of supplement — commercieel spoor (Verordening 1924/2006)', value: voeding-supplement }
+      - name: affiliate
+        label: Bevat affiliate-links
+        widget: boolean
+        default: false
+        hint: >-
+          Alleen mogelijk als het spoor op "Voeding of supplement" staat. Zet dit aan en de
+          reclame-disclosure verschijnt automatisch als eerste blok van het artikel.
       - name: accent
         label: Accentkleur
         widget: select
         default: mint
         options: [roze, paars, perzik, mint]
       - name: afbeelding
-        label: Foto
+        label: Beeld bovenaan
         widget: image
-        required: false
         hint: >-
-          Een echte foto vervangt de illustratie op de kaart, het overzicht en boven het
-          artikel. Laat leeg om de illustratie te gebruiken. Liefst liggend en minstens
-          1600 pixels breed; de site maakt zelf de kleinere formaten.
+          Verplicht. Wordt gebruikt op de kaart, op het overzicht en boven het artikel.
+          Liggend en minstens 1600 pixels breed; de site maakt zelf de kleinere formaten.
+          De beelden ín de tekst zet je in het artikel zelf, niet hier.
       - name: alt
-        label: Beschrijving van de foto
+        label: Beschrijving van het beeld
         widget: string
-        required: false
-        hint: Verplicht zodra er een foto is. Beschrijf wat er te zien is, voor wie de foto niet kan zien.
-      - name: motief
-        label: Illustratie
-        widget: select
-        required: false
-        hint: Wordt alleen gebruikt als er geen foto is. Laat leeg om er automatisch een te kiezen.
-        options: [druppel, blad, korrels, golven, bloem, ringen, vlecht, kiem]
+        hint: >-
+          Verplicht, minstens 10 tekens. Beschrijf wat er te zien is, voor wie het beeld
+          niet kan zien.
       - { name: uitgelicht, label: Uitgelicht, widget: boolean, default: false, required: false }
       - { name: tags, label: Tags, widget: list, required: false }
       - name: bronnen

@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: perzik
-motief: ringen
+afbeelding: ../../assets/artikelen/vitamine-c.jpg
+alt: 'Een doorgesneden citrusvrucht, macro, met de partjes doorschijnend tegen het licht.'
 inci: Ascorbic Acid
 tags:
   - vitamine C
@@ -43,6 +44,8 @@ Het probleem is dat het dat ook doet als er geen huid in de buurt is. In een fle
 
 Het aardige is dat je dit zelf kunt zien. Een oplossing van vitamine C verkleurt bij oxidatie van kleurloos naar geel, en vervolgens naar oranjebruin. Is je serum donker geworden, dan is de stof grotendeels omgezet. Dat is geen esthetisch mankement maar een aflezing van de scheikunde.
 
+![Een klein amberkleurig glazen flesje op een vensterbank dat een lange schaduw werpt.](../../assets/artikelen/vitamine-c-2.jpg)
+
 ## Wat formuleerders ertegen doen
 
 Er is een reeks strategieën, en je kunt ze bijna allemaal terugzien aan het product.
@@ -66,6 +69,8 @@ Het idee erachter is steeds hetzelfde: door een groep aan het molecuul te koppel
 Die laatste zin bevat de aanname waar alles op rust, en precies daar wijst het overzichtsartikel uit 2023 op een probleem. De auteurs stellen vast dat het onderzoek naar deze derivaten overwegend in vitro is — in celkweken en proefopstellingen. In-vivo-onderzoek is er wel, maar dat loopt sterk uiteen in opzet en aanpak. Hun conclusie is dat er studies nodig zijn naar stabiliteit, veiligheid en vooral werkzaamheid bij mensen, met voldoende deelnemers en gestandaardiseerde maatstaven, voordat je derivaten fatsoenlijk met ascorbinezuur kunt vergelijken.
 
 Kortom: dat een derivaat stabieler is in het flesje, is goed onderbouwd. Dat het daarna doet wat puur ascorbinezuur zou doen, is dat aanzienlijk minder.
+
+![Wit kristalpoeder dat uit een gevouwen papieren zakje op grijze steen valt.](../../assets/artikelen/vitamine-c-3.jpg)
 
 ## Wat er wel en niet geclaimd mag worden
 

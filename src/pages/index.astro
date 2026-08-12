@@ -1,11 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import BasisLayout from '../layouts/BasisLayout.astro';
-import ArtikelKaart from '../components/ArtikelKaart.astro';
-import Hero from '../components/Hero.astro';
-import Lopendeband from '../components/Lopendeband.astro';
-import { site } from '../config';
-import { vragen } from '../data/routinetest';
+import Beeld from '../components/Beeld.astro';
+import Stroom from '../components/Stroom.astro';
+import Cijferband from '../components/Cijferband.astro';
+import { site, pijlers } from '../config';
+import { telAlles } from '../lib/bronnen';
+import { routinetest } from '../data/routinetest';
+import { eetritme } from '../data/eetritme';
 
 const opDatum = (a: { data: { publicatiedatum: Date } }, b: { data: { publicatiedatum: Date } }) =>
   b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime();
@@ -13,140 +15,170 @@ const opDatum = (a: { data: { publicatiedatum: Date } }, b: { data: { publicatie
 const alleIngredienten = (await getCollection('ingredienten')).sort(opDatum);
 const alleGutSkin = (await getCollection('gut-skin')).sort(opDatum);
 
-/*
-  Het uitgelichte artikel is voortaan echt te sturen: staat er ergens
-  `uitgelicht: true`, dan wint het nieuwste daarvan. Staat het nergens, dan valt
-  de site terug op het nieuwste artikel überhaupt, zodat de plek nooit leeg is.
-
-  Tot deze wijziging deed dat veld niets — het stond in het schema en in de
-  CMS-interface, maar werd nergens uitgelezen. Dat was een valstrik voor wie
-  later via het CMS iets wil uitlichten.
-*/
 const gecombineerd = [
-  ...alleIngredienten.map((artikel) => ({ artikel, pad: 'ingredienten', rubriek: 'Skincare' })),
-  ...alleGutSkin.map((artikel) => ({ artikel, pad: 'gut-skin', rubriek: 'Voeding & huid' })),
+  ...alleIngredienten.map((artikel) => ({ artikel, pijler: pijlers.ingredienten })),
+  ...alleGutSkin.map((artikel) => ({ artikel, pijler: pijlers['gut-skin'] })),
 ].sort((a, b) => opDatum(a.artikel, b.artikel));
 
+/* `uitgelicht: true` wint; staat het nergens, dan wint het nieuwste artikel. */
 const uitgelicht = gecombineerd.find((item) => item.artikel.data.uitgelicht) ?? gecombineerd[0];
-const ingredienten = alleIngredienten.filter((a) => a.id !== uitgelicht?.artikel.id).slice(0, 6);
-const gutSkin = alleGutSkin.filter((a) => a.id !== uitgelicht?.artikel.id).slice(0, 3);
 
-/* De eerste vraag van de routinetest staat ook op de homepage: wie hier al kiest, begint niet meer bij nul. */
-const eersteVraag = vragen[0];
+const naarItem = (artikel: (typeof gecombineerd)[number]['artikel'], pijler: (typeof pijlers)[keyof typeof pijlers]) => ({
+  ...artikel.data,
+  url: `${pijler.pad}/${artikel.id}`,
+  rubriek: pijler.naam,
+});
+
+const ingredienten = alleIngredienten
+  .filter((a) => a.id !== uitgelicht?.artikel.id)
+  .slice(0, 5)
+  .map((a) => naarItem(a, pijlers.ingredienten));
+
+const gutSkin = alleGutSkin
+  .filter((a) => a.id !== uitgelicht?.artikel.id)
+  .slice(0, 5)
+  .map((a) => naarItem(a, pijlers['gut-skin']));
+
+/*
+  De cijfers over de site worden geteld, niet ingevuld. Komt er een artikel bij,
+  dan verandert de opening van de homepage vanzelf mee — en kan hij ook nooit
+  gunstiger uitvallen dan de bronnenlijsten toestaan.
+*/
+const totaal = telAlles(gecombineerd.map((item) => item.artikel.data.bronnen ?? []));
+
+const eersteVraag = routinetest.vragen[0];
 ---
 
 <BasisLayout titel={site.naam} beschrijving={site.beschrijving}>
-  <Hero />
-
-  <Lopendeband />
-
-  <section class="verleider onthul">
-    <div class="verleider__tekst">
-      <span class="rubriek">Routinetest · vijf vragen</span>
-      <h2>{eersteVraag.vraag}</h2>
-      <p>
-        Kies hier je antwoord, dan sla je de eerste vraag over. Er wordt niets opgeslagen en er
-        wordt niet om een e-mailadres gevraagd.
+  {/*
+    De opening. Alle informatie staat als echte tekst in de HTML en het contrast
+    komt van het verloopvlak, niet van het beeld — de eis uit onderzoek/06,
+    par. 4.2: de header moet volledig werken als je het beeld wegdenkt.
+  */}
+  <section class="opening">
+    <div class="opening__woord">
+      <p class="rubriek">
+        {gecombineerd.length} artikelen · {totaal.totaal} bronnen · geen enkel product getest
       </p>
+      <h1 class="opening__kop">Bijna alles wat je leest over skincare is <em>verkoop</em>.</h1>
+      <p class="opening__intro">
+        Dit niet. Per ingrediënt staat hier wat het is, wat erover bekend is en waar die kennis
+        ophoudt — met de vindplaats erbij, zodat je het zelf kunt nakijken.
+      </p>
+      <div class="opening__knoppen">
+        <a class="knop" href={pijlers.ingredienten.pad}>Wat zit erin?</a>
+        <a class="knop knop--stil" href="/routine">Doe de routinetest</a>
+      </div>
     </div>
-    <ul class="verleider__opties">
-      {
-        eersteVraag.antwoorden.map((antwoord) => (
-          <li>
-            <a class="verleider__optie" href={`/routine?start=${antwoord.id}`}>
-              {antwoord.tekst}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+
+    {
+      uitgelicht && (
+        <a
+          class={`opening__beeld accent-${uitgelicht.artikel.data.accent}`}
+          href={`${uitgelicht.pijler.pad}/${uitgelicht.artikel.id}`}
+        >
+          <Beeld
+            afbeelding={uitgelicht.artikel.data.afbeelding}
+            alt={uitgelicht.artikel.data.alt}
+            variant="kop"
+            eerst
+          />
+          <span class="opening__bijschrift">
+            <span class="rubriek">Nieuw · {uitgelicht.pijler.naam}</span>
+            <span class="opening__titel">{uitgelicht.artikel.data.titel}</span>
+          </span>
+        </a>
+      )
+    }
   </section>
 
-  {
-    uitgelicht && (
-      <ArtikelKaart
-        groot
-        titel={uitgelicht.artikel.data.titel}
-        beschrijving={uitgelicht.artikel.data.beschrijving}
-        url={`/${uitgelicht.pad}/${uitgelicht.artikel.id}`}
-        publicatiedatum={uitgelicht.artikel.data.publicatiedatum}
-        accent={uitgelicht.artikel.data.accent}
-        motief={uitgelicht.artikel.data.motief}
-        afbeelding={uitgelicht.artikel.data.afbeelding}
-        alt={uitgelicht.artikel.data.alt}
-        rubriek={uitgelicht.rubriek}
-      />
-    )
-  }
+  <Cijferband
+    artikelen={gecombineerd.length}
+    bronnen={totaal.totaal}
+    aandeelPrimair={totaal.aandeelPrimair}
+  />
 
   <section class="sectie">
     <div class="sectie__kop">
-      <h2>Skincare</h2>
-      <a href="/ingredienten">Alle ingrediënten</a>
+      <h2>{pijlers.ingredienten.naam}</h2>
+      <a href={pijlers.ingredienten.pad}>Alle {alleIngredienten.length}</a>
     </div>
     {
       ingredienten.length === 0 ? (
         <p>Binnenkort meer.</p>
       ) : (
-        <ul class="kaartenraster">
-          {ingredienten.map((artikel) => (
-            <ArtikelKaart
-              titel={artikel.data.titel}
-              beschrijving={artikel.data.beschrijving}
-              url={`/ingredienten/${artikel.id}`}
-              publicatiedatum={artikel.data.publicatiedatum}
-              accent={artikel.data.accent}
-              motief={artikel.data.motief}
-              afbeelding={artikel.data.afbeelding}
-              alt={artikel.data.alt}
-              affiliate={artikel.data.affiliate}
-              rubriek="Skincare"
-            />
-          ))}
-        </ul>
+        <Stroom items={ingredienten} opening={false} />
+      )
+    }
+  </section>
+
+  {/*
+    De twee vragenlijsten, asymmetrisch: de routinetest krijgt de ruimte en toont
+    zijn eerste vraag meteen, zodat je hem hier al kunt beginnen. Het eetritme
+    staat ernaast als kaart. Twee gelijke blokken naast elkaar zouden ze allebei
+    tot widget maken.
+  */}
+  <section class="tweeluik">
+    <div class="tweeluik__hoofd onthul">
+      <span class="rubriek">Routinetest · {routinetest.vragen.length} vragen</span>
+      <h2>{eersteVraag.vraag}</h2>
+      <p>
+        Antwoord hier en je slaat de eerste vraag over. Aan het eind krijg je een stappenplan te
+        zien, geen productlijst. Er wordt niets opgeslagen en niet om je e-mailadres gevraagd.
+      </p>
+      <ul class="tweeluik__opties">
+        {
+          eersteVraag.antwoorden.map((antwoord) => (
+            <li>
+              <a class="tweeluik__optie" href={`/routine?start=${antwoord.id}`}>
+                {antwoord.tekst}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <a class="tweeluik__zij onthul" href="/eetritme">
+      <span class="rubriek">Nieuw · {eetritme.vragen.length} vragen</span>
+      <h2>Jouw eetritme</h2>
+      <p>
+        Niet welk type je bent, maar wanneer je eet. Zes vragen over de vorm van je dag, en daarna
+        welke voedingsgroepen daarbij passen.
+      </p>
+      <span class="tweeluik__pijl" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="sectie">
+    <div class="sectie__kop">
+      <h2>{pijlers['gut-skin'].naam}</h2>
+      <a href={pijlers['gut-skin'].pad}>Alle {alleGutSkin.length}</a>
+    </div>
+    {
+      gutSkin.length === 0 ? (
+        <p>Binnenkort meer.</p>
+      ) : (
+        <Stroom items={gutSkin} opening={false} />
       )
     }
   </section>
 
   <section class="sectie">
     <div class="sectie__kop">
-      <h2>Voeding &amp; huid</h2>
-      <a href="/gut-skin">Alles bekijken</a>
+      <h2>Hoe dit werkt</h2>
+      <a href="/redactionele-richtlijnen">De werkwijze</a>
     </div>
-    {
-      gutSkin.length === 0 ? (
-        <p>Binnenkort meer.</p>
-      ) : (
-        <ul class="kaartenraster">
-          {gutSkin.map((artikel) => (
-            <ArtikelKaart
-              titel={artikel.data.titel}
-              beschrijving={artikel.data.beschrijving}
-              url={`/gut-skin/${artikel.id}`}
-              publicatiedatum={artikel.data.publicatiedatum}
-              accent={artikel.data.accent}
-              motief={artikel.data.motief}
-              afbeelding={artikel.data.afbeelding}
-              alt={artikel.data.alt}
-              rubriek="Voeding & huid"
-            />
-          ))}
-        </ul>
-      )
-    }
-  </section>
-
-  <section class="sectie">
-    <div class="prozapagina" style="text-align: center">
-      <span class="rubriek rubriek--stil">De werkwijze</span>
-      <h2 style="margin-top: 0">Geen beloftes, wel bronnen</h2>
+    <div class="uitleg">
       <p>
-        Elk artikel vat samen wat er gepubliceerd is, met de vindplaats erbij, en zegt erbij waar het
-        bewijs dun is. Dat laatste is meestal het stuk dat wegvalt — en juist het stuk waar je iets
-        aan hebt.
+        Ik koop geen producten en test dus niets. Wat ik wél doe: opzoeken wat er over een
+        ingrediënt gepubliceerd is, dat samenvatten in gewoon Nederlands, en erbij zetten hoe sterk
+        de onderbouwing is. De gekleurde streep onder elk artikel telt letterlijk de bronnen — groen
+        is origineel onderzoek of wetgeving, oranje is vakmedia, rood is een blog.
       </p>
       <p>
-        <a class="knop knop--stil" href="/redactionele-richtlijnen">Zo komen deze artikelen tot stand</a>
+        Soms is de eerlijke uitkomst dat er nauwelijks iets bekend is. Dan staat dat er ook. Dat is
+        het stuk dat in reclame altijd wegvalt, en meestal het stuk waar je het meest aan hebt.
       </p>
     </div>
   </section>

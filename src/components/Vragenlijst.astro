@@ -1,0 +1,300 @@
+---
+import Beeld from './Beeld.astro';
+import type { Vragenlijst } from '../lib/vragenlijst';
+
+/**
+ * Een vragenlijst, in twee standen.
+ *
+ * Zonder JavaScript staan alle uitkomsten gewoon onder elkaar en is de pagina
+ * een naslagwerk. Met JavaScript verdwijnen ze en komt de vragenlijst ervoor in
+ * de plaats, die aan het eind precies één uitkomst weer tevoorschijn haalt.
+ *
+ * Er staat dus maar één versie van elke uitkomst in de HTML: het script bouwt
+ * niets op, het toont en verbergt alleen. Geen sjabloon in JavaScript, geen
+ * innerHTML, en geen manier waarop de twee standen uit elkaar kunnen lopen.
+ *
+ * Dit component bediende eerst alleen de routinetest. Sinds het eetritme erbij
+ * kwam, staat de tekst volledig in de datamodules (`src/data/*.ts`) en zit hier
+ * alleen nog de werking — anders waren er twee bijna gelijke bestanden van
+ * driehonderd regels ontstaan, die onvermijdelijk uit elkaar gaan lopen.
+ */
+
+interface Props {
+  lijst: Vragenlijst;
+  /** Kop boven de lijst met alle uitkomsten in de stand zonder JavaScript. */
+  overzichtKop: string;
+  overzichtIntro: string;
+}
+
+const { lijst, overzichtKop, overzichtIntro } = Astro.props;
+const { sleutel, vragen, profielen, onderdeelNaam, slotknop, voorbehoud } = lijst;
+
+/*
+  Statisch inlezen zodat Astro de beelden kan optimaliseren; een pad dat pas
+  tijdens het draaien bekend is, kan dat niet.
+*/
+const beelden = import.meta.glob<{ default: ImageMetadata }>('../assets/artikelen/*.jpg', {
+  eager: true,
+});
+const beeldVan = (slug: string) => beelden[`../assets/artikelen/${slug}.jpg`]?.default;
+---
+
+<div class="met-js test" data-test data-slotknop={slotknop}>
+  <ol class="trap" aria-hidden="true">
+    {vragen.map((_, i) => <li class="trap__streep" data-streep={i} data-staat={i === 0 ? 'nu' : ''} />)}
+  </ol>
+  <p class="test__teller" aria-live="polite">
+    Vraag <span data-teller>1</span> van {vragen.length}
+  </p>
+
+  <form data-formulier>
+    {
+      vragen.map((v, i) => (
+        <fieldset class="vraag" data-vraag={i} hidden={i !== 0}>
+          <legend class="vraag__kop" tabindex="-1">
+            {v.vraag}
+          </legend>
+          {v.hulp && <p class="vraag__hulp">{v.hulp}</p>}
+          <ul class="opties">
+            {v.antwoorden.map((a) => (
+              <li>
+                <label class="optie">
+                  <input
+                    class="optie__radio"
+                    type="radio"
+                    name={`${sleutel}-${v.id}`}
+                    value={a.id}
+                    data-punten={JSON.stringify(a.punten)}
+                  />
+                  <span class="optie__tekst">{a.tekst}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </fieldset>
+      ))
+    }
+
+    <div class="test__knoppen">
+      <button type="button" class="knop knop--stil" data-terug hidden>Vorige</button>
+      <button type="button" class="knop" data-verder>Volgende</button>
+    </div>
+    <p class="test__melding" data-melding hidden>Kies eerst een antwoord.</p>
+  </form>
+</div>
+
+<div class="met-js uitslag" data-uitslag hidden>
+  <div class="uitslag__kop">
+    <span class="rubriek">Jouw uitkomst</span>
+    <h2 class="uitslag__titel" tabindex="-1" data-uitslag-kop></h2>
+    <p class="uitslag__waarom" data-waarom></p>
+  </div>
+</div>
+
+<section class="routines">
+  <div class="zonder-js routines__inleiding">
+    <h2>{overzichtKop}</h2>
+    <p class="hero__intro">{overzichtIntro}</p>
+  </div>
+
+  {
+    profielen.map((p) => (
+      <article class={`routine accent-${p.accent}`} id={p.id} data-profiel={p.id} data-naam={p.naam}>
+        <div class="routine__vlak">
+          <Beeld afbeelding={beeldVan(p.beeld)} alt={p.beeldAlt} variant="kop" />
+        </div>
+        <div class="routine__kop">
+          <h3>{p.naam}</h3>
+          <span class="etiket">
+            {p.onderdelen.length} {onderdeelNaam}
+          </span>
+        </div>
+        <p class="routine__intro">{p.samenvatting}</p>
+        <ol class="stappen">
+          {p.onderdelen.map((s) => (
+            <li class="stap">
+              <p class="stap__moment">{s.label}</p>
+              <h4 class="stap__naam">{s.naam}</h4>
+              <div class="stap__tekst">
+                <p>{s.tekst}</p>
+                {/*
+                  Een goedgekeurde claim wordt als citaat getoond en niet als onze
+                  eigen zin. Dat is geen opmaakgrapje: de bewoording is letterlijk
+                  voorgeschreven, en zo is ook zichtbaar dat het een aanhaling is.
+                */}
+                {s.claim && (
+                  <p class="stap__claim">
+                    <span class="stap__claim-label">Toegestane EU-claim</span>
+                    {s.claim}
+                  </p>
+                )}
+                {s.artikel && (
+                  <a class="stap__link" href={s.artikel.pad}>
+                    {s.artikel.titel} lezen →
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </article>
+    ))
+  }
+
+  <p class="melding routines__voorbehoud">{voorbehoud}</p>
+
+  <p class="met-js routines__opnieuw">
+    <button type="button" class="knop knop--stil" data-opnieuw>Opnieuw beginnen</button>
+  </p>
+</section>
+
+<script>
+  /*
+    Bewust zonder import van de datamodule: alle tekst staat al in de HTML op
+    deze pagina. Importeren zou hem een tweede keer meesturen in de bundel. De
+    profielen worden daarom uit de DOM gelezen.
+  */
+  const test = document.querySelector<HTMLElement>('[data-test]');
+  const formulier = document.querySelector<HTMLFormElement>('[data-formulier]');
+  const uitslag = document.querySelector<HTMLElement>('[data-uitslag]');
+  const uitslagKop = document.querySelector<HTMLElement>('[data-uitslag-kop]');
+  const waarom = document.querySelector<HTMLElement>('[data-waarom]');
+  const teller = document.querySelector<HTMLElement>('[data-teller]');
+  const melding = document.querySelector<HTMLElement>('[data-melding]');
+  const knopVerder = document.querySelector<HTMLButtonElement>('[data-verder]');
+  const knopTerug = document.querySelector<HTMLButtonElement>('[data-terug]');
+  const knopOpnieuw = document.querySelector<HTMLButtonElement>('[data-opnieuw]');
+  const strepen = Array.from(document.querySelectorAll<HTMLElement>('[data-streep]'));
+  const groepen = Array.from(document.querySelectorAll<HTMLFieldSetElement>('[data-vraag]'));
+  const routines = Array.from(document.querySelectorAll<HTMLElement>('[data-profiel]'));
+  const profielIds = routines
+    .map((r) => r.dataset.profiel)
+    .filter((id): id is string => Boolean(id));
+
+  if (test && formulier && uitslag && uitslagKop && waarom && teller && knopVerder && knopTerug) {
+    const laatste = groepen.length - 1;
+    const slotknop = test.dataset.slotknop || 'Toon mijn uitkomst';
+    let nu = 0;
+
+    const toon = (index: number) => {
+      nu = index;
+      groepen.forEach((groep, i) => (groep.hidden = i !== index));
+      strepen.forEach((streep, i) => {
+        streep.dataset.staat = i < index ? 'gedaan' : i === index ? 'nu' : '';
+      });
+      teller.textContent = String(index + 1);
+      knopTerug.hidden = index === 0;
+      knopVerder.textContent = index === laatste ? slotknop : 'Volgende';
+      if (melding) melding.hidden = true;
+      groepen[index]?.querySelector<HTMLElement>('.vraag__kop')?.focus();
+    };
+
+    const gekozen = (index: number) =>
+      groepen[index]?.querySelector<HTMLInputElement>('input:checked') ?? null;
+
+    const bereken = () => {
+      const score: Record<string, number> = {};
+      for (const groep of groepen) {
+        const keuze = groep.querySelector<HTMLInputElement>('input:checked');
+        if (!keuze) continue;
+        const punten = JSON.parse(keuze.dataset.punten || '{}') as Record<string, number>;
+        for (const [profiel, aantal] of Object.entries(punten)) {
+          score[profiel] = (score[profiel] ?? 0) + aantal;
+        }
+      }
+
+      let winnaar = profielIds[0];
+      let hoogste = -1;
+      for (const id of profielIds) {
+        const punten = score[id] ?? 0;
+        if (punten > hoogste) {
+          hoogste = punten;
+          winnaar = id;
+        }
+      }
+
+      /* Gelijkspel gaat naar de eerste vraag: die weegt het zwaarst. */
+      const eerste = gekozen(0);
+      if (eerste) {
+        const eerstePunten = JSON.parse(eerste.dataset.punten || '{}') as Record<string, number>;
+        const gelijk = profielIds.filter((id) => (score[id] ?? 0) === hoogste);
+        if (gelijk.length > 1) {
+          const voorkeur = gelijk.find((id) => (eerstePunten[id] ?? 0) > 0);
+          if (voorkeur) winnaar = voorkeur;
+        }
+      }
+
+      return winnaar;
+    };
+
+    const toonUitslag = (profiel: string, verplaatsFocus = true) => {
+      test.hidden = true;
+      uitslag.hidden = false;
+
+      const gekozenProfiel = routines.find((r) => r.dataset.profiel === profiel);
+      uitslagKop.textContent = gekozenProfiel?.dataset.naam ?? 'Je uitkomst';
+
+      const antwoorden = groepen
+        .map((groep) => groep.querySelector<HTMLInputElement>('input:checked'))
+        .filter((keuze): keuze is HTMLInputElement => keuze !== null)
+        .map((keuze) => keuze.closest('label')?.querySelector('.optie__tekst')?.textContent?.trim())
+        .filter((tekst): tekst is string => Boolean(tekst));
+
+      waarom.textContent = antwoorden.length
+        ? `Je koos: ${antwoorden.join(' · ')}`
+        : 'Je kwam hier via een link, dus dit volgt niet uit ingevulde antwoorden.';
+
+      routines.forEach((r) => r.classList.toggle('routine--getoond', r.dataset.profiel === profiel));
+      history.replaceState(null, '', `#${profiel}`);
+      if (verplaatsFocus) uitslagKop.focus();
+    };
+
+    knopVerder.addEventListener('click', () => {
+      if (!gekozen(nu)) {
+        if (melding) melding.hidden = false;
+        return;
+      }
+      if (nu === laatste) toonUitslag(bereken());
+      else toon(nu + 1);
+    });
+
+    knopTerug.addEventListener('click', () => toon(Math.max(0, nu - 1)));
+
+    /*
+      Een antwoord kiezen brengt je meteen naar de volgende vraag: acht keer op
+      "Volgende" drukken is zeven keer te vaak. De laatste vraag wacht wel, want
+      daar hoort een bewuste laatste klik bij. De korte vertraging is er zodat je
+      je eigen keuze nog even ziet oplichten voordat het scherm wisselt.
+    */
+    formulier.addEventListener('change', () => {
+      if (melding) melding.hidden = true;
+      if (nu < laatste) window.setTimeout(() => toon(nu + 1), 200);
+    });
+
+    knopOpnieuw?.addEventListener('click', () => {
+      formulier.reset();
+      routines.forEach((r) => r.classList.remove('routine--getoond'));
+      uitslag.hidden = true;
+      test.hidden = false;
+      history.replaceState(null, '', location.pathname);
+      toon(0);
+    });
+
+    /* Binnenkomen zonder de lijst te doen: via een gedeelde uitkomst (#glans) of
+       via de eerste vraag die al op de homepage is beantwoord (?start=strak). */
+    const uitHash = location.hash.replace('#', '');
+    const start = new URLSearchParams(location.search).get('start');
+
+    if (profielIds.includes(uitHash)) {
+      toonUitslag(uitHash, false);
+    } else if (start) {
+      const invoer = groepen[0]?.querySelector<HTMLInputElement>(
+        `input[value="${CSS.escape(start)}"]`,
+      );
+      if (invoer) {
+        invoer.checked = true;
+        toon(1);
+      }
+    }
+  }
+</script>

@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: mint
-motief: korrels
+afbeelding: ../../assets/artikelen/snail-mucin.jpg
+alt: 'Een glanzende spiraalschelp recht van boven gezien op natte donkere leisteen.'
 inci: Snail Secretion Filtrate
 tags:
   - snail mucin
@@ -44,6 +45,8 @@ Wat je op een verpakking wél kunt tegenkomen zijn keurmerken of vermeldingen ov
 
 Het is ook goed om te weten dat er inmiddels laboratoriumvarianten bestaan die de samenstelling proberen na te bootsen zonder slakken. Die staan onder andere namen op de ingrediëntenlijst.
 
+![Macro-opname van een heldere, stroperige baan over donker glas, die een dunne streep licht vangt.](../../assets/artikelen/snail-mucin-2.jpg)
+
 ## Wat het onderzoek laat zien
 
 Het meeste onderzoek naar slakkenfiltraat gaat over hydratatie en over de textuur van de huid. Dat is niet toevallig: de bestanddelen die erin zitten, zijn stoffen die water vasthouden. Hyaluronzuur en glycosaminoglycanen kunnen een veelvoud van hun eigen gewicht aan water binden, en glycoproteïnen vormen een film die verdamping vertraagt.
@@ -61,6 +64,8 @@ Het valt op dat merken over dit ingrediënt vooral schrijven over "een gladdere,
 In de Europese Unie stelt Verordening 655/2013 gemeenschappelijke criteria vast waaraan claims over cosmetische producten moeten voldoen. Twee daarvan zijn hier relevant: een claim moet waarheidsgetrouw zijn en moet onderbouwd kunnen worden met bewijs. Daarnaast mag een cosmetisch product geen medische werking toeschrijven aan zichzelf.
 
 Het gevolg is dat een merk wel mag zeggen dat een product de huid hydrateert — dat is meetbaar en aantoonbaar — maar niet dat het een huidaandoening aanpakt. Dat verschil tussen wat op de doos staat en wat er in enthousiaste online berichten staat, is dus geen bescheidenheid maar wetgeving. En het is een bruikbaar kompas: hoe verder een bewering afstaat van wat het merk zelf op de verpakking durft te zetten, hoe voorzichtiger je ermee moet zijn.
+
+![Vochtige groene bladeren in laag zacht licht, met waterdruppels op het oppervlak.](../../assets/artikelen/snail-mucin-3.jpg)
 
 ## Waar je op kunt letten
 

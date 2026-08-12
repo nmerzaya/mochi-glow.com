@@ -3,9 +3,9 @@ import BasisLayout from './BasisLayout.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import MedischeDisclaimer from '../components/MedischeDisclaimer.astro';
 import Bronnenlijst from '../components/Bronnenlijst.astro';
+import Bronnenmeter from '../components/Bronnenmeter.astro';
 import Beeld from '../components/Beeld.astro';
-import type { Motief } from '../components/ArtikelBeeld.astro';
-import { site, datumOpmaak } from '../config';
+import { site, datumOpmaak, pijlers, type PijlerSleutel } from '../config';
 
 interface Bron {
   titel: string;
@@ -26,12 +26,9 @@ interface Props {
   tags: string[];
   accent: 'roze' | 'paars' | 'perzik' | 'mint';
   inci?: string;
-  pijler: 'ingredienten' | 'gut-skin';
-  /** Slug van het artikel; bepaalt welke illustratie het krijgt. */
-  zaad: string;
-  motief?: Motief;
-  afbeelding?: ImageMetadata;
-  alt?: string;
+  pijler: PijlerSleutel;
+  afbeelding: ImageMetadata;
+  alt: string;
 }
 
 const {
@@ -48,8 +45,6 @@ const {
   accent,
   inci,
   pijler,
-  zaad,
-  motief,
   afbeelding,
   alt,
 } = Astro.props;
@@ -62,8 +57,7 @@ const {
 */
 const bronLinksToegestaan = productType !== 'voeding-supplement';
 
-const pijlerNaam = pijler === 'ingredienten' ? 'Skincare' : 'Voeding & huid';
-const pijlerPad = pijler === 'ingredienten' ? '/ingredienten' : '/gut-skin';
+const { naam: pijlerNaam, pad: pijlerPad } = pijlers[pijler];
 
 const gestructureerdeData = {
   '@context': 'https://schema.org',
@@ -130,8 +124,17 @@ const gestructureerdeData = {
       </div>
     </header>
 
-    <div class={`artikel__beeld accent-${accent}`} style={`background: var(--kleur-${accent}-zacht)`}>
-      <Beeld afbeelding={afbeelding} alt={alt} motief={motief} accent={accent} zaad={zaad} variant="kop" />
+    <div class={`artikel__beeld accent-${accent}`}>
+      <Beeld afbeelding={afbeelding} alt={alt} variant="breed" eerst />
+    </div>
+
+    {/*
+      De bronnenmeter staat vóór de tekst en niet erna. Een lezer mag weten
+      waar dit stuk op steunt voordat hij het leest, niet pas nadat hij
+      overtuigd is.
+    */}
+    <div class="artikel__meter">
+      <Bronnenmeter bronnen={bronnen} variant="blok" />
     </div>
 
     {/* Automatisch, niet handmatig: zo kan de disclosure niet vergeten worden. */}
@@ -144,11 +147,9 @@ const gestructureerdeData = {
 
     {
       tags.length > 0 && (
-        <p style="margin-top: var(--ruimte-7)">
+        <p class="artikel__tags">
           {tags.map((tag) => (
-            <span class="etiket" style="margin-right: .4rem">
-              {tag}
-            </span>
+            <span class="etiket">{tag}</span>
           ))}
         </p>
       )
@@ -156,8 +157,8 @@ const gestructureerdeData = {
 
     <Bronnenlijst bronnen={bronnen} linksToegestaan={bronLinksToegestaan} />
 
-    <p style="margin-top: var(--ruimte-7)">
-      <a class="knop knop--stil" href={pijlerPad}>Meer over {pijlerNaam.toLowerCase()}</a>
+    <p class="artikel__terug">
+      <a class="knop knop--stil" href={pijlerPad}>Meer uit {pijlerNaam}</a>
     </p>
   </article>
 </BasisLayout>

@@ -3,9 +3,10 @@
 Nederlandstalige contentsite over K-beauty-ingrediënten en de verbinding tussen darm en huid.
 Statisch gebouwd met Astro, zonder externe verzoeken en zonder tracking.
 
-> **Status:** inhoudelijk compleet, nog niet online. 16 artikelen over twee pijlers, alle verplichte
-> pagina's, en een build die slaagt. Het domein `mochi-glow.com` is geregistreerd; de repo staat nog
-> niet op GitHub en er is nog geen hosting gekoppeld.
+> **Status:** inhoudelijk compleet, nog niet online. 28 artikelen over twee pijlers, twee
+> vragenlijsten (`/routine` en `/eetritme`), alle verplichte pagina's, en een build die slaagt. Het
+> domein `mochi-glow.com` is geregistreerd; de repo staat nog niet op GitHub en er is nog geen hosting
+> gekoppeld.
 >
 > **Om live te gaan: volg `DEPLOY.md`.** Begin bij stap 0 — die schermt je e-mailadres af voordat er
 > iets publiek wordt.
@@ -70,11 +71,9 @@ Elke keuze in dit project komt voort uit het onderzoek in `onderzoek/`. Lees `CL
 
 ## Nog te doen voor livegang
 
-De volledige route staat in **`DEPLOY.md`**. Kort samengevat blijven deze vier waarden nog open:
+De volledige route staat in **`DEPLOY.md`**. Kort samengevat blijven deze twee waarden nog open, en
+allebei pas ná goedkeuring door AdSense:
 
-- `public/admin/config.yml`: veld `repo` invullen zodra de GitHub-repo bestaat.
-- `data/toegestane-claims.json`: elke claim nalezen in het officiële EU-register en `geverifieerd` op
-  `true` zetten.
 - `public/ads.txt`: publisher-ID invullen ná goedkeuring van AdSense.
 - `src/config.ts`: `advertentiesActief` op `true` zetten wanneer advertenties live gaan — pas dan
   verschijnt het toestemmingsvenster.

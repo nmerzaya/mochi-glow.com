@@ -1,0 +1,43 @@
+---
+/**
+ * De cijferband onder de opening van de homepage.
+ *
+ * Hier stond eerst een lopende tekstband. Die is weg: iets dat langsschuift
+ * vraagt aandacht zonder iets terug te geven, en het moest bovendien een
+ * pauzeknop hebben om aan WCAG 2.2.2 te voldoen — een knop om iets te stoppen
+ * dat niemand had aangezet.
+ *
+ * Wat ervoor in de plaats komt, staat stil en zegt wél iets: de vier getallen
+ * waar deze site op staat of valt. Drie ervan worden geteld uit de artikelen.
+ * Het vierde is nul en blijft nul, en is daarmee misschien wel het eerlijkste
+ * cijfer op de pagina.
+ */
+
+interface Props {
+  artikelen: number;
+  bronnen: number;
+  aandeelPrimair: number;
+}
+
+const { artikelen, bronnen, aandeelPrimair } = Astro.props;
+
+const cellen = [
+  { getal: String(artikelen), label: 'artikelen' },
+  { getal: String(bronnen), label: 'bronnen erbij' },
+  { getal: `${aandeelPrimair}%`, label: 'primaire bron' },
+  { getal: '0', label: 'producten getest' },
+];
+---
+
+<dl class="cijfers">
+  {
+    cellen.map((cel) => (
+      <div class="cijfers__cel">
+        <dd class="cijfers__getal" style="margin: 0">
+          {cel.getal}
+        </dd>
+        <dt class="cijfers__label">{cel.label}</dt>
+      </div>
+    ))
+  }
+</dl>

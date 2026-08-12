@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: mint
-motief: golven
+afbeelding: ../../assets/artikelen/ceramiden.jpg
+alt: 'Macro-opname van gestapelde doorschijnende laagjes, als dunne plaatjes mica van opzij gezien.'
 inci: Ceramide NP
 tags:
   - ceramiden
@@ -44,6 +45,8 @@ Ceramide NP — vroeger Ceramide 3 genoemd — is de variant die je het vaakst t
 
 Wat je hieruit vooral kunt meenemen: "bevat ceramiden" is een minder precieze mededeling dan het lijkt, omdat de subklassen niet uitwisselbaar zijn. In de hoornlaag zijn er honderden varianten beschreven; een crème bevat er doorgaans één tot drie.
 
+![Close-up van droge, schilferende huid op de rug van een hand in scherend licht.](../../assets/artikelen/ceramiden-2.jpg)
+
 ## Wat een product ermee kan, en wat niet
 
 Hier moet ik voorzichtig formuleren, en dat is niet uit overdreven angst maar omdat de regels dit precies afbakenen.
@@ -61,6 +64,8 @@ Een terugkerend punt in het onderzoek naar hoornlaaglipiden is dat het niet om �
 Dat verklaart waarom formuleerders die serieus met dit ingrediënt werken, zelden alleen een ceramide toevoegen. Je ziet ze vrijwel altijd in gezelschap van cholesterol en een vetzuur, en soms in een specifieke verhouding waar het merk over uitweidt.
 
 Of die specifieke verhouding in een specifiek product daadwerkelijk uitmaakt voor jouw huid, is een vraag die je van een etiket niet kunt beantwoorden.
+
+![Een dikke veeg witte balsem over lichte steen, die langs één rand het licht vangt.](../../assets/artikelen/ceramiden-3.jpg)
 
 ## Wat je op het etiket ziet
 

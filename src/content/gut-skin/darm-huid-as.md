@@ -5,7 +5,8 @@ publicatiedatum: 2026-08-10
 auteur: Noor
 gezondheidsclaims: true
 accent: mint
-motief: vlecht
+afbeelding: ../../assets/artikelen/darm-huid-as.jpg
+alt: 'Twee gladde rivierstenen op licht zand, verbonden door één strakgespannen draad.'
 tags:
   - darm-huid-as
   - microbioom
@@ -44,6 +45,8 @@ Daar hoort meteen de belangrijkste kanttekening bij, en die komt van de auteurs 
 
 Dat is geen verstopte voetnoot. Dat is de conclusie.
 
+![Een lange opgerolde streng natuurtouw op een linnen laken, van boven gezien.](../../assets/artikelen/darm-huid-as-2.jpg)
+
 ## Het gat tussen samenhang en oorzaak
 
 Hier zit het scharnierpunt van het hele onderwerp, en het is de moeite waard om er even bij stil te staan.
@@ -63,6 +66,8 @@ In de Europese Unie mag je over voedingsmiddelen en supplementen alleen gezondhe
 Het gevolg daarvan is streng en wordt vaak verkeerd begrepen: er bestaat op dit moment geen enkele toegestane Europese gezondheidsclaim over probiotica, darmflora of microbioom. Het woord "probiotisch" op een verpakking geldt zelf al als een gezondheidsclaim. Dat is niet de mening van deze site, dat is het geldende kader.
 
 Voor de artikelen hier betekent dat iets concreets. Je zult hier lezen wat onderzoekers hebben gemeten en wat zij daarover schrijven. Je zult hier niet lezen dat iets goed is voor je darmen, want dat mag niemand in Nederland beweren, en het zou bovendien meer zekerheid suggereren dan er is.
+
+![Macro-opname van een varenblad dat zich ontrolt, van achteren belicht.](../../assets/artikelen/darm-huid-as-3.jpg)
 
 ## Wat je hier wél aan hebt
 

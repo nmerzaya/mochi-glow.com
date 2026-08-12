@@ -2,106 +2,142 @@
   Mochi Glow — ontwerptokens
   ==========================
 
-  Redactionele richting, geen "cute". De referentie is de vormgeving van
-  beautytijdschriften: een hoog-contrast serif voor koppen, een rustige sans voor
-  lopende tekst, veel wit, en kleur die spaarzaam wordt ingezet.
+  De richting heet "het laboratorium van zachte dingen".
 
-  Waarom systeemlettertypen en geen webfont: een extern lettertype laadt vanaf de
-  server van een derde partij en stuurt daarmee het IP-adres van elke bezoeker
-  mee. Dat botst met het privacybeleid van deze site. De stacks hieronder pakken
-  op elk platform een echte redactionele letter en vallen netjes terug.
+  Waar dit vandaan komt: deze site verkoopt geen producten en geen beloftes. Wat
+  zij als enige heeft, is dat ze opschrijft wáár het bewijs ophoudt. Het meest
+  kenmerkende voorwerp in haar wereld is dus geen potje serum maar een
+  meetinstrument. Daarom is de opmaak opgebouwd uit instrumentachtige middelen —
+  een raster, cijfers in monospace, geijkte streepjes — en ligt daar kleur
+  overheen die zacht en verzadigd is in plaats van klinisch.
 
-  Alle tekstkleuren zijn getoetst op WCAG 2.2 AA (>= 4.5:1). De "-zacht"
-  varianten zijn uitsluitend voor vlakken en randen, nooit voor tekst.
+  Wat hier bewust NIET staat, en waarom:
+
+  - Geen crèmewitte achtergrond met een hoog-contrast modeserif (Didot, Bodoni)
+    en een terracotta accent. Dat was de vorige richting. Het is ook precies de
+    combinatie waar vrijwel elk gegenereerd ontwerp op uitkomt, ongeacht het
+    onderwerp — en daarmee leest het als een sjabloon in plaats van als een merk.
+  - De grond is niet bijna-wit maar heeft echte kleur: een bleke lila. Daardoor
+    lezen de witte vlakken erop als vlakken die zwéven, en niet als gaten.
+  - De inkt is geen zwart maar een diep indigo-aubergine. Zwart op wit is de
+    standaardinstelling van elk document ter wereld; dit is een keuze.
+
+  Alle tekstkleuren zijn doorgerekend op WCAG 2.2 AA (>= 4,5:1). De "-vlak"
+  varianten zijn uitsluitend voor achtergronden en randen, nooit voor tekst.
 */
 
 :root {
-  /* --- Basis: warm wit, geen crème-roze --- */
-  --kleur-achtergrond: #fbfaf8;
-  --kleur-oppervlak: #ffffff;
-  --kleur-rand: #e6e2dc;
-  --kleur-rand-zacht: #f0ece6;
+  /* --- Grond en vlakken --------------------------------------------- */
+  --kleur-grond: #f2eff5; /* bleke lila, de basis waar alles op ligt */
+  --kleur-grond-diep: #e7e2ee; /* een trap donkerder, voor secties die terugvallen */
+  --kleur-vlies: #ffffff; /* vlakken die boven de grond zweven */
+  --kleur-rand: #ddd6e6;
+  --kleur-rand-fijn: #eae5f0;
 
-  /* --- Tekst --- */
-  --kleur-inkt: #16130f; /* ~17:1 */
-  --kleur-inkt-zacht: #6b635a; /* ~5,6:1 */
-  --kleur-inkt-flauw: #8c8377; /* alleen voor secundaire tekst op 14px+ */
+  /* --- Inkt ---------------------------------------------------------- */
+  --kleur-inkt: #171226; /* indigo-aubergine, ~16:1 op de grond */
+  --kleur-inkt-half: #574d6b; /* ~5,9:1 */
+  --kleur-inkt-stil: #675c7c; /* 4,9:1 op de donkerste grond die voorkomt */
 
-  /* --- Accent: één tint, spaarzaam --- */
-  --kleur-accent: #8c2f4a;
-  --kleur-accent-diep: #5e1f31;
-  --kleur-accent-zacht: #f7e9ec;
-
-  /*
-    Tweede accent, warm. Uitsluitend voor dingen waar je iets kúnt doen: de
-    routinetest, badges, gekozen antwoorden. Een link in lopende tekst blijft
-    --kleur-accent, zodat kleur binnen de site één ding blijft betekenen.
-
-    Let op wat hier níet aan ten grondslag ligt: er bestaat geen kleurpsychologie
-    waaruit je een tint kunt afleiden. Zie onderzoek/06, par. 3a en 4.1 — dezelfde
-    kleur levert in hetzelfde experiment tegengesteld gedrag op, afhankelijk van
-    de context. De keuze is dus functioneel (doen versus lezen) en gebonden aan
-    de contrasteis, niet aan een beweerde betekenis van warm rood.
-
-    Gemeten op --kleur-achtergrond: 5,2:1 — ruim boven de AA-grens van 4,5:1.
-  */
-  --kleur-accent-warm: #b04a3d;
-  --kleur-accent-warm-diep: #8a3529;
-  --kleur-accent-warm-zacht: #fbeae4;
+  /* --- Merk ---------------------------------------------------------- */
+  --kleur-orchidee: #6b2c64; /* het accent: alles wat je kunt aanraken */
+  --kleur-orchidee-diep: #4c1d47;
+  --kleur-orchidee-vlak: #f3e9f2;
 
   /*
-    Glans: drie zachte tinten die uitsluitend als verloopvlak dienen — de hero,
-    het testblok, de lopende band. Nooit als tekstkleur; ze halen geen enkele
-    contrasteis.
-  */
-  --kleur-glans-1: #fdeee7;
-  --kleur-glans-2: #f7e4ea;
-  --kleur-glans-3: #ece6f2;
+    --- De bewijsschaal ---
 
-  /* --- Categoriekleuren: alleen voor vlakken achter illustraties --- */
-  --kleur-roze: #8c2f4a;
-  --kleur-paars: #4b3a6b;
+    Drie kleuren die één ding betekenen en verder niets: hoe hard is de
+    onderbouwing onder een artikel. Ze worden nergens decoratief ingezet, want
+    dan verliezen ze hun betekenis.
+
+    jade   = primaire bron (A) — origineel onderzoek, wetgeving, toezichthouder
+    amber  = secundaire bron (B) — vakmedia
+    roos   = tertiaire bron (C) — blogs, community
+  */
+  --kleur-jade: #0e6355;
+  --kleur-amber: #8a5a0c;
+  --kleur-roos: #a42f52;
+
+  --kleur-jade-vlak: #dcebe6;
+  --kleur-amber-vlak: #f4e9d8;
+  --kleur-roos-vlak: #f6e3e8;
+
+  /* --- Rubriekkleuren: de tint achter een illustratie ---------------- */
+  --kleur-roze: #a42f52;
+  --kleur-paars: #58348a;
   --kleur-perzik: #96501f;
-  --kleur-mint: #1f5c4c;
+  --kleur-mint: #0e6355;
 
-  --kleur-roze-zacht: #f3e4e8;
-  --kleur-paars-zacht: #e9e5f0;
-  --kleur-perzik-zacht: #f7e8db;
-  --kleur-mint-zacht: #e0ede8;
+  --kleur-roze-vlak: #f7e5ea;
+  --kleur-paars-vlak: #eae4f4;
+  --kleur-perzik-vlak: #f7e9db;
+  --kleur-mint-vlak: #dfece8;
 
-  /* --- Functioneel --- */
-  --kleur-let-op: #7a4310;
-  --kleur-let-op-zacht: #fdf4e9;
+  /* --- Waarschuwing -------------------------------------------------- */
+  --kleur-let-op: #8a5a0c;
+  --kleur-let-op-vlak: #f9f1e3;
 
   /*
-    --- Typografie ---
+    --- De speelse laag ---
 
-    Kop: hoog-contrast serif. Didot staat op macOS, Bodoni MT op Windows; beide
-    geven de klassieke modetijdschrift-letter. Georgia vangt de rest op.
+    Deze twee tokens hebben een grens, en die is opzettelijk. Ze horen op precies
+    vier plekken: de twee vragenlijsten, de badges en pillen, en de opening van de
+    homepage. Broodtekst, artikelpagina's, kaarten en tabellen blijven redactioneel.
+
+    De reden dat dit als regel is opgeschreven en niet als smaak: dit project is al
+    één keer ongemerkt van vormgevingsrichting gewisseld (onderzoek/04 par. 4.1
+    koos speels, commit 5f38fc9 draaide dat om). Zonder een vastgelegde grens
+    vervaagt hij opnieuw. Zie onderzoek/06, par. 4.3.
+
+    --kleur-accent-warm is uitsluitend voor vlakken en randen. Hij haalt geen
+    enkele contrasteis en mag dus nooit tekstkleur worden.
   */
-  --font-display: Didot, 'Bodoni MT', 'Playfair Display', 'Hoefler Text', Garamond, Georgia, serif;
-  --font-kop: var(--font-display);
-  --font-tekst: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-label: var(--font-tekst);
+  --rond-speels: 20px;
+  --kleur-accent-warm: #e9c9b0;
+  --kleur-accent-warm-vlak: #faf0e8;
 
-  --tekst-xs: 0.75rem;
-  --tekst-s: 0.875rem;
-  --tekst-m: 1.0625rem;
-  --tekst-l: 1.1875rem;
-  --tekst-xl: 1.5rem;
-  --tekst-2xl: 2rem;
-  --tekst-3xl: 2.75rem;
-  --tekst-4xl: 3.75rem;
+  /*
+    --- Letters ---
+
+    Er worden geen webfonts geladen: dat zou een verbinding met een derde partij
+    opzetten en het IP-adres van elke bezoeker meesturen. Alles hieronder staat
+    al op het apparaat van de lezer.
+
+    De koppeling is omgedraaid ten opzichte van wat gebruikelijk is. Normaal
+    krijgt een blog een serif-kop en een sans-broodtekst; hier is het een strakke
+    sans voor koppen en een serif voor het lezen. Dat leest hedendaags in plaats
+    van deftig, en het geeft de lange stukken onderzoek de rust van een boek.
+
+    De monospace is de derde stem, en de belangrijkste van de drie: die is voor
+    alles wat een méting is — aantallen bronnen, INCI-namen, data, percentages,
+    labels. Cijfers in een monospace lezen als afgelezen, niet als beweerd.
+  */
+  --font-kop: 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system,
+    BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-tekst: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
+  --font-meting: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  --tekst-xs: 0.6875rem;
+  --tekst-s: 0.8125rem;
+  --tekst-m: 1rem;
+  --tekst-l: 1.125rem;
+  --tekst-xl: 1.375rem;
+  --tekst-2xl: 1.75rem;
+  --tekst-3xl: 2.5rem;
+  --tekst-4xl: 3.5rem;
   --tekst-5xl: 5rem;
+  --tekst-6xl: 7.5rem;
 
-  --regelhoogte-tekst: 1.75;
-  --regelhoogte-kop: 1.08;
+  --regelhoogte-tekst: 1.7;
+  --regelhoogte-kop: 1.02;
 
-  /* Kapitalenlabels krijgen ruime letterafstand; koppen juist krappe. */
-  --spatie-label: 0.14em;
-  --spatie-kop: -0.02em;
+  /* Koppen staan krap, metingen ruim. Dat verschil maakt de twee stemmen hoorbaar. */
+  --spatie-kop: -0.035em;
+  --spatie-meting: 0.1em;
 
-  /* --- Ritme --- */
+  /* --- Ritme --------------------------------------------------------- */
   --ruimte-1: 0.25rem;
   --ruimte-2: 0.5rem;
   --ruimte-3: 0.75rem;
@@ -111,67 +147,64 @@
   --ruimte-7: 3rem;
   --ruimte-8: 4.5rem;
   --ruimte-9: 7rem;
+  --ruimte-10: 10rem;
 
   /*
     --- Vorm ---
-    Vrijwel recht. Ronde hoeken lezen als speels; redactioneel werk is strak.
+
+    Bijna recht. De ronding zit in het beeld en in de illustraties, niet in de
+    kaders eromheen; een afgeronde doos om alles heen is precies wat een pagina
+    kinderlijk maakt.
   */
   --rond-s: 2px;
-  --rond-m: 3px;
-  --rond-l: 4px;
+  --rond-m: 4px;
+  --rond-l: 8px;
   --rond-vol: 999px;
 
-  /*
-    De speelse uitzondering, en het is er één met een grens.
+  --schaduw-laag: 0 1px 2px rgba(23, 18, 38, 0.04), 0 6px 18px rgba(23, 18, 38, 0.05);
+  --schaduw-hoog: 0 2px 6px rgba(23, 18, 38, 0.05), 0 24px 60px rgba(23, 18, 38, 0.1);
 
-    onderzoek/06, par. 4.3 legt vast waar speelsheid mag zitten: de hero, de
-    routinetest, badges en pillen, en de lopende band. Daarbuiten niet — broodtekst,
-    artikelpagina's, kaarten en tabellen blijven strak, omdat de duiding die een
-    lezer aan vormgeving geeft over ingeloste verwachtingen gaat (DV12-01) en een
-    gezondheidsonderwerp andere verwachtingen wekt dan een merk dat iets verkoopt.
-
-    Gebruik --rond-speels dus alleen op die vier plekken. Zodra het op een kaart
-    of in een artikel opduikt, is de scheiding stilzwijgend verdwenen — en dat is
-    precies hoe dit project al één keer eerder van vormgevingsrichting wisselde.
-  */
-  --rond-speels: 18px;
-
-  --schaduw-zacht: 0 1px 2px rgba(22, 19, 15, 0.03), 0 8px 28px rgba(22, 19, 15, 0.05);
-  --schaduw-diep: 0 2px 6px rgba(22, 19, 15, 0.05), 0 18px 50px rgba(22, 19, 15, 0.09);
-
-  /*
-    --- Beweging ---
-    Eén ritme voor de hele site, zodat beweging niet per component wordt verzonnen.
-    Alles hieronder valt weg bij prefers-reduced-motion (zie onderaan dit bestand).
-  */
-  --overgang-snel: 160ms;
-  --overgang-zacht: 420ms;
+  /* --- Beweging ------------------------------------------------------ */
+  --overgang-snel: 140ms;
+  --overgang-traag: 460ms;
   --soepel: cubic-bezier(0.2, 0.7, 0.2, 1);
 
-  /* --- Breedtes --- */
-  --breedte-tekst: 64ch;
-  --breedte-pagina: 1280px;
-  --breedte-smal: 780px;
+  /* --- Breedtes ------------------------------------------------------ */
+  --breedte-lees: 62ch;
+  --breedte-pagina: 1360px;
+  --breedte-smal: 760px;
+  /*
+    De artikelpagina is breder dan de leeskolom, zodat beeld eruit kan breken.
+    Tekst blijft op --breedte-lees; --breedte-ruim is de tussenmaat waar een
+    beeld naartoe uitloopt, --breedte-artikel de buitenste grens.
+  */
+  --breedte-ruim: 62rem;
+  --breedte-artikel: 1080px;
+
+  /* De linkermarge waarin de metingen staan; op smalle schermen valt hij weg. */
+  --rail: 11rem;
 }
 
 /*
-  De site is bewust licht (zie onderzoek 04, par. 3a: een keuze tegen de bredere
-  "dark design"-trend in). Wie systeembreed donker heeft ingesteld krijgt daarom
-  geen omgekeerd palet, maar wel iets minder fel wit.
+  De site is bewust licht (zie onderzoek/04, par. 3a: een keuze tegen de bredere
+  "dark design"-trend in). Wie systeembreed donker heeft ingesteld, krijgt geen
+  omgekeerd palet maar wel iets minder felle vlakken.
 */
 @media (prefers-color-scheme: dark) {
   :root {
-    --kleur-achtergrond: #f5f3f0;
-    --kleur-oppervlak: #fffefd;
+    --kleur-grond: #ebe7f1;
+    --kleur-vlies: #fdfcff;
   }
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 64rem) {
   :root {
+    --tekst-6xl: 4rem;
     --tekst-5xl: 3.25rem;
     --tekst-4xl: 2.5rem;
     --tekst-3xl: 2rem;
-    --tekst-2xl: 1.625rem;
+    --tekst-2xl: 1.5rem;
+    --rail: 0rem;
   }
 }
 

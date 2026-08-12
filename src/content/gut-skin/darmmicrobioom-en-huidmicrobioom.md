@@ -5,7 +5,8 @@ publicatiedatum: 2026-08-09
 auteur: Noor
 gezondheidsclaims: true
 accent: paars
-motief: kiem
+afbeelding: ../../assets/artikelen/darmmicrobioom-en-huidmicrobioom.jpg
+alt: 'Twee ronde velden verstrooide maanzaadjes op wit papier, het ene dicht en het andere ijl.'
 tags:
   - microbioom
   - huidflora
@@ -39,6 +40,8 @@ Het overzichtsartikel in *BioEssays* uit 2016 waar dit onderwerp vaak op terugga
 
 Dat is een indirecte, meerstapsroute. Elke stap daarin is een plek waar het onderzoek nog onvolledig is.
 
+![Macro-opname van kefirkorrels in een doorzichtige glazen pot bij zacht daglicht.](../../assets/artikelen/darmmicrobioom-en-huidmicrobioom-2.jpg)
+
 ## Wat er gemeten wordt, en wat dat waard is
 
 De systematische review uit *Dermatology Reports* uit 2022 die vier huidaandoeningen naast elkaar zette, keek naar het **darm**microbioom bij mensen met acne, psoriasis, constitutioneel eczeem en netelroos. Bij die aandoeningen werden verschillen in samenstelling gevonden ten opzichte van vergelijkingsgroepen.
@@ -60,6 +63,8 @@ Het verwarren van de twee microbiomen leidt tot een paar hardnekkige misverstand
 **Een supplement slikken verandert je huidmicrobioom niet rechtstreeks.** Als er al iets gebeurt, verloopt dat via de omweg die hierboven staat: darm, bloedbaan, immuunsysteem, en dán pas eventueel de huid. Elke pijl in die keten is een aanname die per aandoening apart onderbouwd moet worden.
 
 **"Microbioomvriendelijk" is geen beschermde term.** Er is geen norm die vastlegt wat een product moet doen om zich zo te mogen noemen, en er is geen toets die je als koper kunt nalopen. Het zegt dus vooral iets over de marketingafdeling.
+
+![Close-up van de huidtextuur van een onderarm in laag scherend licht, fijn detail.](../../assets/artikelen/darmmicrobioom-en-huidmicrobioom-3.jpg)
 
 ## Wat dit betekent voor wat je leest
 

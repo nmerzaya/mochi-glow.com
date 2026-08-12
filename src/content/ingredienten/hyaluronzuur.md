@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: paars
-motief: druppel
+afbeelding: ../../assets/artikelen/hyaluronzuur.jpg
+alt: 'Eén waterdruppel op een strak doorschijnend vlak, die het licht erachter breekt.'
 inci: Sodium Hyaluronate
 tags:
   - hyaluronzuur
@@ -42,6 +43,8 @@ De eerste is dat "dieper" niet automatisch "beter" betekent. De bovenste huidlaa
 
 De tweede is dat er aanwijzingen zijn dat heel kleine hyaluronzuurfragmenten in het lichaam een andere biologische rol spelen dan de lange ketens — ze worden in onderzoek in verband gebracht met signalen die met weefselschade te maken hebben. Wat dat betekent voor een crème op een gezonde huid, is niet duidelijk, en het is een van de plekken waar de wetenschap eerlijk gezegd nog niet uit is.
 
+![Macro-opname van een heldere, stroperige gel die tussen twee vingertoppen tot een dunne draad wordt opgetrokken.](../../assets/artikelen/hyaluronzuur-2.jpg)
+
 ## Kan hyaluronzuur je huid uitdrogen?
 
 Dit is de bekendste waarschuwing, en hij verdient een genuanceerd antwoord.
@@ -59,6 +62,8 @@ Er is nog een detail dat zelden genoemd wordt: hyaluronzuur bindt water, maar he
 Bij hyaluronzuur zie je zelden percentages op de verpakking, en dat is terecht: het gaat hier om zeer kleine hoeveelheden. Meer dan ongeveer 1% maakt een formule stroperig en plakkerig zonder dat er iets bij gewonnen wordt. Een product dat pronkt met een hoog percentage hyaluronzuur belooft dus vooral een onprettige textuur.
 
 Wat wél informatief is: waar het op de ingrediëntenlijst staat. Bij humectanten die in lage concentraties worden gebruikt, is een positie onderaan volstrekt normaal en zegt die weinig over de kwaliteit.
+
+![Condensdruppels die langs koud glas naar beneden lopen, met zeer geringe scherptediepte.](../../assets/artikelen/hyaluronzuur-3.jpg)
 
 ## Wat merken erover mogen zeggen
 

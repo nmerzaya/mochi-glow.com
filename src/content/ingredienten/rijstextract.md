@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: roze
-motief: korrels
+afbeelding: ../../assets/artikelen/rijstextract.jpg
+alt: 'Ongekookte witte rijstkorrels verspreid over licht linnen, macro, met één korrel scherp in beeld.'
 inci: Oryza Sativa Extract
 tags:
   - rijstextract
@@ -44,6 +45,8 @@ Voor huidverzorging is het argument meestal dat kleinere moleculen makkelijker d
 
 De historische link met sake — rijstwijn — is hier geen toeval. Het waarnemen dat brouwers opvallend gladde handen hadden, is een van de vaakst herhaalde oorsprongsverhalen in de Aziatische cosmetica. Als waarneming is het aardig; als bewijs is het niets. Mensen die de hele dag met hun handen in vloeistof zitten, verschillen op meer manieren van de rest.
 
+![Troebel rijstwaswater in een wijde keramieken kom, recht van boven gezien.](../../assets/artikelen/rijstextract-2.jpg)
+
 ## Het onderzoek, en hoe je het moet lezen
 
 Het overzichtsartikel dat het vaakst wordt aangehaald, verscheen in 2022 in het *Journal of Cosmetic Dermatology*, onder de veelzeggende titel "Dermatological uses of rice products: Trend or true?" — trend of waar?
@@ -61,6 +64,8 @@ Verordening (EG) nr. 1223/2009 begrenst wat een verzorgingsproduct mag beweren. 
 Bij rijstextract is dat relevant omdat sommige aangehaalde onderzoekseigenschappen in de medische hoek liggen. Zulke bevindingen mogen wel beschreven worden in een artikel als dit — als samenvatting van onderzoek — maar ze mogen niet als belofte op een product staan.
 
 Het verschil zit hem in de rol: uitleggen wat er onderzocht is, is iets anders dan aanprijzen wat een potje gaat doen.
+
+![Fermenterende rijstmassa in een aardewerken pot met het houten deksel opzij geschoven.](../../assets/artikelen/rijstextract-3.jpg)
 
 ## Wat je op een etiket kunt nagaan
 

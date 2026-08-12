@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: roze
-motief: ringen
+afbeelding: ../../assets/artikelen/niacinamide.jpg
+alt: 'Fijn wit kristalpoeder opgehoopt in een klein glazen schaaltje op licht linnen.'
 inci: Niacinamide
 tags:
   - niacinamide
@@ -48,6 +49,8 @@ Belangrijk om te weten: een hoger percentage is niet automatisch een beter produ
 
 Dat is geen advies om iets te kopen of te laten staan, want ik test hier niets. Het is wel een reden om het percentage op de verpakking te lezen als informatie, niet als kwaliteitskeurmerk.
 
+![Close-up van de huidtextuur van een schouder in zacht scherend licht.](../../assets/artikelen/niacinamide-2.jpg)
+
 ## Wat wordt erover onderzocht?
 
 Niacinamide is een van de beter bestudeerde cosmetische ingrediënten. Het onderzoek richt zich grofweg op drie dingen: de gelijkmatigheid van de huidskleur, de vetproductie, en de barrièrefunctie van de huid.
@@ -67,6 +70,8 @@ Veel van het onderzoek naar cosmetische ingrediënten is gedaan met kleine deeln
 Daarnaast is er een verschil tussen wat een ingrediënt in een reageerbuis of op een gekweekt huidmodel doet, en wat het doet in een afgewerkt product op een echt gezicht. In dat afgewerkte product zitten nog tientallen andere stoffen, de zuurgraad is anders, de hoeveelheid is anders, en de gebruiker smeert het op een andere manier dan een onderzoeksprotocol voorschrijft.
 
 En dan is er nog een juridisch punt dat verrassend verhelderend werkt. In de Europese Unie mag een cosmetisch product volgens Verordening 1223/2009 geen therapeutische werking claimen. Een crème mag niets genezen, behandelen of herstellen — doet hij dat wel, dan is het volgens de wet geen cosmetica meer maar een geneesmiddel, met alle eisen van dien. Merken schrijven daarom "voor een egalere teint" en niet "tegen pigmentvlekken". Die formulering is geen marketingvaagheid uit luiheid; het is de grens van wat er wettelijk beloofd mag worden, en meestal ook een eerlijke weergave van wat er daadwerkelijk bekend is.
+
+![Een glazen pipet die één heldere druppel loslaat boven een effen glazen vlak.](../../assets/artikelen/niacinamide-3.jpg)
 
 ## Wat je hiermee kunt
 

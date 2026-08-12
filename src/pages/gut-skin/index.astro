@@ -1,61 +1,38 @@
 ---
 import { getCollection } from 'astro:content';
 import BasisLayout from '../../layouts/BasisLayout.astro';
-import ArtikelKaart from '../../components/ArtikelKaart.astro';
+import Stroom from '../../components/Stroom.astro';
+import { pijlers } from '../../config';
+
+const pijler = pijlers['gut-skin'];
 
 const artikelen = (await getCollection('gut-skin')).sort(
   (a, b) => b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime(),
 );
 
-const [eerste, ...rest] = artikelen;
+const items = artikelen.map((artikel) => ({
+  ...artikel.data,
+  url: `${pijler.pad}/${artikel.id}`,
+  rubriek: pijler.naam,
+}));
 ---
 
-<BasisLayout
-  titel="Voeding & huid"
-  beschrijving="Wat er wél en niet bekend is over het verband tussen voeding, darm en huid, samengevat uit gepubliceerd onderzoek."
->
+<BasisLayout titel={pijler.naam} beschrijving={pijler.intro}>
   <div class="hero">
-    <h1>Voeding &amp; huid</h1>
+    <span class="rubriek rubriek--stil">{artikelen.length} artikelen</span>
+    <h1>Huid van binnenuit</h1>
     <p class="hero__intro">
-      Over het verband tussen darm en huid wordt veel beweerd en weinig aangetoond. Deze artikelen
-      vatten samen wat er in het onderzoek staat, en zijn even expliciet over wat er níét uit blijkt.
+      Wat je eet en hoe je huid eraan toe is, hebben met elkaar te maken — alleen veel minder recht
+      toe recht aan dan de verpakkingen doen geloven. Hier staat wat daarvan onderbouwd is, en wat
+      er wettelijk over gezegd mag worden.
     </p>
   </div>
 
   {
-    !eerste ? (
+    items.length === 0 ? (
       <p>Er staan nog geen artikelen in deze rubriek.</p>
     ) : (
-      <>
-        <ArtikelKaart
-          groot
-          titel={eerste.data.titel}
-          beschrijving={eerste.data.beschrijving}
-          url={`/gut-skin/${eerste.id}`}
-          publicatiedatum={eerste.data.publicatiedatum}
-          accent={eerste.data.accent}
-          motief={eerste.data.motief}
-          afbeelding={eerste.data.afbeelding}
-          alt={eerste.data.alt}
-          rubriek="Voeding & huid"
-        />
-
-        <ul class="kaartenraster">
-          {rest.map((artikel) => (
-            <ArtikelKaart
-              titel={artikel.data.titel}
-              beschrijving={artikel.data.beschrijving}
-              url={`/gut-skin/${artikel.id}`}
-              publicatiedatum={artikel.data.publicatiedatum}
-              accent={artikel.data.accent}
-              motief={artikel.data.motief}
-              afbeelding={artikel.data.afbeelding}
-              alt={artikel.data.alt}
-              rubriek="Voeding & huid"
-            />
-          ))}
-        </ul>
-      </>
+      <Stroom items={items} />
     )
   }
 </BasisLayout>

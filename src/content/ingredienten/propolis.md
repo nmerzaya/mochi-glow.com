@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: perzik
-motief: bloem
+afbeelding: ../../assets/artikelen/propolis.jpg
+alt: 'Een afgebroken stuk honingraat met donkere amberkleurige hars in de cellen, van achteren belicht.'
 inci: Propolis Extract
 tags:
   - propolis
@@ -43,6 +44,8 @@ En dan volgt het punt dat het hele ingrediënt kenmerkt. Diezelfde review stelt 
 
 Lees dat nog eens. De samenstelling hangt af van welke bomen er in de buurt van de kast stonden, in welk land die kast stond, en in welke maand er geoogst is.
 
+![Ruwe brokken propolis, donker en wasachtig, in een klein uitgesneden houten kommetje.](../../assets/artikelen/propolis-2.jpg)
+
 ## Waarom dat meer uitmaakt dan bij andere ingrediënten
 
 Bij de meeste ingrediënten in een verzorgingsproduct weet je wat je hebt. Niacinamide is niacinamide, waar het ook vandaan komt. Hyaluronzuur verschilt in molecuulgrootte, maar het is een gedefinieerde stof.
@@ -60,6 +63,8 @@ Hier is het belangrijk om scherp te zijn, en dit is meteen de reden dat die term
 Onderzoek naar wat een stof in een laboratorium doet, is dus iets anders dan wat een crème mag beweren. Dat is geen slordigheid in de regelgeving maar de kern ervan: zodra een product een medische werking claimt, valt het onder een heel ander en veel strenger regime, met de bijbehorende bewijslast.
 
 Als je op een verkooppagina toch zulke bewoordingen tegenkomt, weet je dus twee dingen: het mag niet, en de verkoper heeft ofwel de regels niet gelezen ofwel besloten ze te negeren.
+
+![Dikke amberkleurige stroop die langzaam van de achterkant van een lepel loopt.](../../assets/artikelen/propolis-3.jpg)
 
 ## Waar je op kunt letten
 

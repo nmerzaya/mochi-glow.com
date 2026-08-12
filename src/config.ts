@@ -28,27 +28,60 @@ export const site = {
  */
 export const advertentiesActief = false;
 
-/*
-  Menu-items volgen de taal van de lezer, niet die van het contentmodel. De
-  onderliggende mappen heten nog `ingredienten` en `gut-skin`; dat zijn URL's en
-  die veranderen niet mee, om links en indexering niet te breken.
+/**
+ * De twee pijlers, op één plek.
+ *
+ * Hiervoor stonden deze namen als losse tekenreeksen door de hele site heen —
+ * in een ternary in `ArtikelLayout.astro`, twee keer in `index.astro`, in beide
+ * overzichtspagina's en nog een keer in de CMS-configuratie. Dat liep
+ * onvermijdelijk uit de pas: de CMS noemde de tweede pijler "Darm & huid"
+ * terwijl de site "Voeding & huid" toonde. Eén bron van waarheid voorkomt dat.
+ *
+ * De namen volgen de taal van de lezer, niet die van het contentmodel. De
+ * sleutel is de naam van de content collection, `pad` is de URL. Allebei blijven
+ * ze staan zoals ze zijn, ook nu de labels veranderen: een URL wijzigen breekt
+ * bestaande links en indexering, en dat weegt niet op tegen een mooiere naam.
+ *
+ * Waarom niet "Ingrediënten": dat leest als een productcatalogus, en er is hier
+ * niets te koop dat een catalogus rechtvaardigt. "Wat zit erin?" is dezelfde
+ * vraag die de lezer zelf stelt, en het is ook de kop van de homepage.
+ */
+export const pijlers = {
+  ingredienten: {
+    naam: 'Wat zit erin?',
+    pad: '/ingredienten',
+    intro:
+      'Wat een ingrediënt uit Koreaanse huidverzorging werkelijk is, wat het onderzoek ernaar laat zien, en waar dat onderzoek ophoudt.',
+  },
+  'gut-skin': {
+    naam: 'Huid van binnenuit',
+    pad: '/gut-skin',
+    intro:
+      'Over het verband tussen wat je eet en hoe je huid eraan toe is — wat daarvan onderbouwd is, en wat er wettelijk over gezegd mag worden.',
+  },
+} as const;
 
+export type PijlerSleutel = keyof typeof pijlers;
+
+/*
   Makeup en Lifestyle staan hier bewust nog niet in: daar is nog geen artikel
   voor, en een menu-item dat op een lege pagina uitkomt doet meer kwaad dan een
   kort menu.
 */
 export const hoofdnavigatie = [
-  { tekst: 'Skincare', pad: '/ingredienten' },
-  { tekst: 'Voeding & huid', pad: '/gut-skin' },
+  { tekst: pijlers.ingredienten.naam, pad: pijlers.ingredienten.pad },
+  { tekst: pijlers['gut-skin'].naam, pad: pijlers['gut-skin'].pad },
   { tekst: 'Routinetest', pad: '/routine' },
+  { tekst: 'Eetritme', pad: '/eetritme' },
   { tekst: 'Over', pad: '/over' },
 ] as const;
 
 export const voetnavigatie = {
   Rubrieken: [
-    { tekst: 'Skincare', pad: '/ingredienten' },
-    { tekst: 'Voeding & huid', pad: '/gut-skin' },
+    { tekst: pijlers.ingredienten.naam, pad: pijlers.ingredienten.pad },
+    { tekst: pijlers['gut-skin'].naam, pad: pijlers['gut-skin'].pad },
     { tekst: 'Routinetest', pad: '/routine' },
+    { tekst: 'Eetritme', pad: '/eetritme' },
     { tekst: 'RSS-feed', pad: '/rss.xml' },
   ],
   Redactie: [

@@ -7,8 +7,9 @@ Een gepubliceerde, werkende site op een eigen domein, gebouwd met de stack uit `
 - Een licht, clean, warm-vrouwelijk maar duidelijk design (geen drukte, focus op leesbaarheid en beeld).
 - Twee contentpijlers, elk met een eerste batch artikelen:
   - **K-beauty-ingrediënten** (commercieel): uitleg- en vergelijkingsartikelen over ingrediënten (bv. niacinamide, snail mucin, PDRN, centella), met affiliate-links naar K-beauty-retailers.
-  - **Gut-skin-wetenschap** (autoriteit): uitleg van de darm-huid-connectie op basis van gepubliceerd onderzoek, met duidelijke bronvermelding en zonder overclaims.
-- Minimaal 15-20 gepubliceerde artikelen (800+ woorden, origineel), verdeeld over beide pijlers — dit is de praktische ondergrens voor een kansrijke AdSense-aanvraag.
+  - **Gut-skin-wetenschap** (autoriteit): uitleg van de darm-huid-connectie op basis van gepubliceerd onderzoek, met duidelijke bronvermelding en zonder overclaims. Sinds de herziening van augustus 2026 draagt deze pijler ook een tweede, commercieel spoor over voeding en huid, strikt gescheiden van het wetenschapsspoor — zie `onderzoek/07`, par. 4.3.
+- Minimaal 15-20 gepubliceerde artikelen (800+ woorden, origineel), verdeeld over beide pijlers — dit is de praktische ondergrens voor een kansrijke AdSense-aanvraag. **Gehaald: er staan er 28.**
+- Twee interactieve vragenlijsten (`/routine` en `/eetritme`) die geen diagnose stellen, niets verkopen en niets opslaan.
 - Een pseudoniem persona: een naam en een korte, geloofwaardige "waarom dit onderwerp"-tekst op een Over-pagina, zonder foto's of privédetails.
 - Alle verplichte pagina's: privacybeleid, cookiebeleid, affiliate-disclaimer, algemene voorwaarden, contact.
 - Werkende cookie consent (Klaro) vóór er advertenties of trackingscripts actief zijn.

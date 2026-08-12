@@ -5,7 +5,8 @@ publicatiedatum: 2026-08-08
 auteur: Noor
 gezondheidsclaims: true
 accent: roze
-motief: ringen
+afbeelding: ../../assets/artikelen/acne-en-darmonderzoek.jpg
+alt: 'Twee lege glazen petrischalen naast elkaar op een lichtgrijs oppervlak.'
 tags:
   - acne
   - microbioom
@@ -44,6 +45,8 @@ De systematische review uit *Dermatology Reports* uit 2022 vond bij acne inderda
 
 Tot zover het goede nieuws.
 
+![Een stapel bedrukte pagina’s met dichte, onleesbare tekst, met zeer geringe scherptediepte.](../../assets/artikelen/acne-en-darmonderzoek-2.jpg)
+
 ## De beperkingen, van de onderzoekers zelf
 
 De review uit *Dermatology Reports* baseerde de conclusie over acne op vier onderzoeken. Vier. Met verschillende opzet, verschillende populaties en verschillende meetmethodes.
@@ -61,6 +64,8 @@ De eerste is inhoudelijk: vier onderzoeken met wisselende opzet, plus een review
 De tweede is juridisch, en die is absoluut. De Europese voedselveiligheidsautoriteit EFSA rondde in 2011 de beoordeling af van bijna drieduizend zogeheten *general function*-gezondheidsclaims. Claims rond probiotica werden afgewezen, onder meer omdat niet werd aangegeven om welk specifiek micro-organisme het ging, waardoor er geen verband te toetsen viel tussen een aanwijsbare stof en een aanwijsbaar effect.
 
 Sindsdien geldt: er is geen enkele toegelaten Europese gezondheidsclaim over probiotica, darmflora of microbioom. Het woord "probiotisch" op een verpakking wordt zelf al als gezondheidsclaim aangemerkt. Een Nederlandse site die zou schrijven dat een product met bepaalde bacteriën iets doet voor je huid, overtreedt daarmee de regels — ongeacht wat de auteur denkt te weten.
+
+![Close-up van de huidtextuur van een onderarm met fijne haartjes in zacht scherend licht.](../../assets/artikelen/acne-en-darmonderzoek-3.jpg)
 
 ## De samenvatting waar je iets aan hebt
 

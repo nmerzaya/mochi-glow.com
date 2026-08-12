@@ -7,7 +7,8 @@ affiliate: false
 productType: cosmetica
 gezondheidsclaims: false
 accent: paars
-motief: vlecht
+afbeelding: ../../assets/artikelen/pdrn.jpg
+alt: 'Macro-opname van zalmhuid met zilverachtig iriserende schubben, op geschaafd ijs.'
 inci: Sodium DNA
 tags:
   - pdrn
@@ -49,6 +50,8 @@ Er is een tweede horde, en die is fysiek. DNA-fragmenten zijn grote moleculen. D
 
 Dat maakt PDRN in een serum niet zinloos. Het maakt wel dat het onderzoek waarnaar merken verwijzen, over een andere toepassing gaat dan die zij verkopen.
 
+![Een slanke, lege glazen ampul op geborsteld koud staal.](../../assets/artikelen/pdrn-2.jpg)
+
 ## Wat er in Nederland wel en niet mag
 
 In de EU bepaalt niet de stof maar de presentatie en de werking onder welk regime een product valt. Iets wat wordt aangeboden om een aandoening aan te pakken, is een geneesmiddel of medisch hulpmiddel — met bijbehorende toelatingseisen. Iets wat wordt aangeboden om te reinigen, te verzorgen of het uiterlijk te veranderen, is cosmetica onder Verordening (EG) nr. 1223/2009.
@@ -68,6 +71,8 @@ Je komt verschillende termen tegen die op elkaar lijken.
 **Sodium DNA** is de INCI-naam die je op cosmetica-etiketten ziet. Dat is de naam die in de Europese ingrediëntenlijst hoort te staan; "PDRN" is een aanduiding die eerder in de marketing dan in de INCI-lijst thuishoort.
 
 Die laatste is nuttig om te weten. Als een product PDRN groot op de voorkant zet maar op de ingrediëntenlijst helemaal geen Sodium DNA of vergelijkbaar bestanddeel noemt, is dat een reden om nog eens goed te kijken.
+
+![Een gedraaid doorschijnend lint gel dat als een helix opkrult op donkere natte steen.](../../assets/artikelen/pdrn-3.jpg)
 
 ## Waarom het ineens overal zit
 
