@@ -2,7 +2,7 @@
 import { advertentiesActief, ga4MeetID } from '../config';
 
 /**
- * Cookietoestemming via Klaro (BSD-3-Clause, zelfgehost — geen CDN, geen externe
+ * Cookietoestemming via Klaro (BSD-3-Clause, zelfgehost, geen CDN, geen externe
  * verbinding voor de banner zelf).
  *
  * Drie bewuste keuzes:
@@ -10,12 +10,12 @@ import { advertentiesActief, ga4MeetID } from '../config';
  * 1. Het venster verschijnt alleen als er werkelijk iets te kiezen valt: zodra
  *    `ga4MeetID` gevuld is of `advertentiesActief` aanstaat. Staat allebei uit,
  *    dan laadt deze site geen enkel script dat toestemming vereist en is een
- *    banner misleidend — die wekt de indruk dat er getrackt wordt.
+ *    banner misleidend, die wekt de indruk dat er getrackt wordt.
  *
  * 2. `default: false` en `required: false` op elke dienst: niets staat vooraf
  *    aan. Onder de AVG is toestemming pas geldig als ze actief gegeven is, dus
  *    een vooraf aangevinkt hokje telt niet. `mustConsent: false` houdt de site
- *    leesbaar zonder keuze — wie niets kiest, krijgt niets geladen.
+ *    leesbaar zonder keuze, wie niets kiest, krijgt niets geladen.
  *
  * 3. De weigerknop staat er even prominent bij als de accepteerknop
  *    (`hideDeclineAll: false`). Weigeren moeilijker maken dan accepteren is een
@@ -69,7 +69,18 @@ const toon = diensten.length > 0;
           cookieExpiresAfterDays: 180,
           privacyPolicy: '/cookiebeleid',
           default: false,
-          mustConsent: false,
+          /*
+            Het venster staat midden in het scherm in plaats van als strook
+            onderaan. Klaro doet dat met `mustConsent`: dan toont hij de modal
+            met een waas erachter, in plaats van de smalle balk.
+
+            Dat mag alleen omdat weigeren hier net zo makkelijk is als
+            accepteren (`hideDeclineAll: false`) en de site na weigeren gewoon
+            volledig leesbaar blijft. Een venster dat de site pas vrijgeeft ná
+            toestemming zou een cookiemuur zijn, en dat is iets anders, en niet
+            toegestaan.
+          */
+          mustConsent: true,
           acceptAll: true,
           hideDeclineAll: false,
           lang: 'nl',
@@ -82,9 +93,9 @@ const toon = diensten.length > 0;
                 learnMore: 'Zelf kiezen',
               },
               consentModal: {
-                title: 'Cookies op Mochi Glow',
+                title: 'Eerst even dit 🍡',
                 description:
-                  'Hieronder staat per onderdeel wat het doet. Niets staat vooraf aan; wat je weigert, wordt niet geladen.',
+                  'Mochi Glow wil graag weten welke artikelen gelezen worden, meer niet. Hieronder staat per onderdeel wat het doet. Niets staat vooraf aan, en wat je weigert wordt ook echt niet geladen. Nee zeggen mag: je mist er niets door.',
               },
               purposes: {
                 statistieken: { title: 'Statistieken' },
@@ -124,7 +135,7 @@ const toon = diensten.length > 0;
         van Klaro. Dat is een bewuste keuze: de meegeleverde build
         (`klaro-no-translations.js`) zet alleen `window.klaro.__k` neer en heeft
         geen `getManager()`. Een eerdere versie van dit bestand ging daar wél van
-        uit en deed daardoor helemaal niets — de banner werkte, maar de meting
+        uit en deed daardoor helemaal niets, de banner werkte, maar de meting
         bleef geweigerd. De cookie is de enige afspraak die tussen Klaro-versies
         stabiel blijft.
 

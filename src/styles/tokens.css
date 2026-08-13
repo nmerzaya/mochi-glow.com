@@ -1,5 +1,5 @@
 /*
-  Mochi Glow — ontwerptokens
+  Mochi Glow, ontwerptokens
   ==========================
 
   De richting heet "het laboratorium van zachte dingen".
@@ -7,8 +7,7 @@
   Waar dit vandaan komt: deze site verkoopt geen producten en geen beloftes. Wat
   zij als enige heeft, is dat ze opschrijft wáár het bewijs ophoudt. Het meest
   kenmerkende voorwerp in haar wereld is dus geen potje serum maar een
-  meetinstrument. Daarom is de opmaak opgebouwd uit instrumentachtige middelen —
-  een raster, cijfers in monospace, geijkte streepjes — en ligt daar kleur
+  meetinstrument. Daarom is de opmaak opgebouwd uit instrumentachtige middelen, een raster, cijfers in monospace, geijkte streepjes, en ligt daar kleur
   overheen die zacht en verzadigd is in plaats van klinisch.
 
   Wat hier bewust NIET staat, en waarom:
@@ -16,7 +15,7 @@
   - Geen crèmewitte achtergrond met een hoog-contrast modeserif (Didot, Bodoni)
     en een terracotta accent. Dat was de vorige richting. Het is ook precies de
     combinatie waar vrijwel elk gegenereerd ontwerp op uitkomt, ongeacht het
-    onderwerp — en daarmee leest het als een sjabloon in plaats van als een merk.
+    onderwerp, en daarmee leest het als een sjabloon in plaats van als een merk.
   - De grond is niet bijna-wit maar heeft echte kleur: een bleke lila. Daardoor
     lezen de witte vlakken erop als vlakken die zwéven, en niet als gaten.
   - De inkt is geen zwart maar een diep indigo-aubergine. Zwart op wit is de
@@ -51,9 +50,9 @@
     onderbouwing onder een artikel. Ze worden nergens decoratief ingezet, want
     dan verliezen ze hun betekenis.
 
-    jade   = primaire bron (A) — origineel onderzoek, wetgeving, toezichthouder
-    amber  = secundaire bron (B) — vakmedia
-    roos   = tertiaire bron (C) — blogs, community
+    jade   = primaire bron (A), origineel onderzoek, wetgeving, toezichthouder
+    amber  = secundaire bron (B), vakmedia
+    roos   = tertiaire bron (C), blogs, community
   */
   --kleur-jade: #0e6355;
   --kleur-amber: #8a5a0c;
@@ -104,7 +103,7 @@
     gaat nog steeds geen enkel verzoek naar een derde partij; alleen staat er nu
     wél een eigen letter in plaats van wat het apparaat toevallig had.
 
-    Waarom dat de moeite waard was: onderzoek/09 par. 4.1 — vormgevingskwaliteit
+    Waarom dat de moeite waard was: onderzoek/09 par. 4.1, vormgevingskwaliteit
     is het eerste en zwaarste vertrouwensoordeel van een bezoeker, nog vóór de
     inhoud. Systeemletters lezen als een onopgemaakt document, en voor een site
     die volledig van geloofwaardigheid leeft is dat de duurste besparing die er
@@ -112,18 +111,18 @@
 
     Hier stond eerder een strakke sans voor koppen en een serif voor de tekst,
     met als argument dat de omgekeerde koppeling hedendaags leest in plaats van
-    deftig. Dat argument klopt nog steeds — alleen kwam die "strakke sans" in de
+    deftig. Dat argument klopt nog steeds, alleen kwam die "strakke sans" in de
     praktijk neer op Segoe UI of Helvetica, en dat leest niet hedendaags maar
     ongevormd. Vandaar twee serifs die elkaar niet in de weg zitten:
 
       Fraunces     de koppen. Warme old-style met een SOFT-as die de punten
-                   afrondt — precies de "zachte dingen" uit de richting hierboven
-                   — en een opsz-as die grote graden fijner tekent.
+                   afrondt, precies de "zachte dingen" uit de richting hierboven
+                   en een opsz-as die grote graden fijner tekent.
       Newsreader   de broodtekst. Lager contrast, getekend voor schermen. Naast
                    Fraunces leest het als de rustige stem naast de sprekende.
 
     De monospace is de derde stem, en de belangrijkste van de drie: die is voor
-    alles wat een méting is — aantallen bronnen, INCI-namen, data, percentages,
+    alles wat een méting is, aantallen bronnen, INCI-namen, data, percentages,
     labels. Cijfers in een monospace lezen als afgelezen, niet als beweerd.
   */
   --font-kop: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
@@ -132,7 +131,7 @@
 
   /*
     De variabele assen. `opsz` moet mee met de graad, anders ziet een kop van
-    zeven rem er hetzelfde uit als een kop van één rem — alleen groter, en dat is
+    zeven rem er hetzelfde uit als een kop van één rem, alleen groter, en dat is
     precies wat een letter goedkoop maakt. Een echte optische maatvoering maakt
     grote tekst fijner en kleine tekst steviger.
   */

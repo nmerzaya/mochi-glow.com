@@ -1,5 +1,5 @@
 /*
-  Mochi Glow — lettertypen
+  Mochi Glow, lettertypen
   ========================
 
   De bestanden staan in `public/fonts/` en worden door deze site zelf
@@ -12,7 +12,7 @@
   met een derde partij laat opzetten, inclusief IP-adres. Hier komt het bestand
   van hetzelfde domein als de pagina: geen derde partij, niets te lekken.
 
-  Waarom het de moeite waard was: onderzoek/09 par. 4.1 — ontwerpkwaliteit is het
+  Waarom het de moeite waard was: onderzoek/09 par. 4.1, ontwerpkwaliteit is het
   eerste en zwaarste vertrouwensoordeel dat een bezoeker velt, nog vóór hij de
   inhoud leest. Systeemletters lezen als een onopgemaakt document.
 
@@ -22,7 +22,7 @@
 */
 
 /* ------------------------------------------------------------------ *
-   Fraunces — de koppen
+   Fraunces, de koppen
 
    Een warme old-style met twee assen die hier daadwerkelijk gebruikt worden:
    `opsz` past de vormen aan de graad aan (grote koppen krijgen fijnere details,
@@ -39,7 +39,7 @@
 }
 
 /* ------------------------------------------------------------------ *
-   Newsreader — de broodtekst
+   Newsreader, de broodtekst
 
    Getekend om op een scherm gelezen te worden. Het contrast tussen dik en dun
    ligt lager dan bij Fraunces, zodat de twee naast elkaar niet met elkaar
@@ -54,7 +54,7 @@
 }
 
 /* ------------------------------------------------------------------ *
-   IBM Plex Mono — de metingen
+   IBM Plex Mono, de metingen
 
    Twee vaste gewichten in plaats van een variabele as: er zijn er maar twee
    nodig, en twee kleine bestanden zijn samen lichter dan één variabel bestand.

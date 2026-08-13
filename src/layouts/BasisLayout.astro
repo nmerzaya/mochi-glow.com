@@ -33,13 +33,13 @@ const {
 } = Astro.props;
 
 const canoniek = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
-const volledigeTitel = titel === site.naam ? `${site.naam} — ${site.tagline}` : `${titel} | ${site.naam}`;
+const volledigeTitel = titel === site.naam ? `${site.naam}, ${site.tagline}` : `${titel} | ${site.naam}`;
 
 /*
   De deelkaart.
 
   Elke gedeelde link kwam tot nu toe als een lege kaart binnen: er stond geen
-  enkele `og:image` op de site. Dat is niet alleen lelijk — `onderzoek/08`
+  enkele `og:image` op de site. Dat is niet alleen lelijk, `onderzoek/08`
   par. 4.3 laat zien dat zoekverkeer structureel is weggevallen en dat delen en
   terugkeren overblijven als route naar de lezer. Dan is de kaart die iemand in
   WhatsApp of LinkedIn ziet geen detail maar het visitekaartje.
@@ -102,8 +102,8 @@ const gestructureerdeData = {
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     {/*
-      Het merkteken. SVG voor alles wat het aankan — één bestand, elke graad
-      scherp — met een PNG ernaast voor de rest. iOS negeert een SVG-icoon
+      Het merkteken. SVG voor alles wat het aankan, één bestand, elke graad
+      scherp, met een PNG ernaast voor de rest. iOS negeert een SVG-icoon
       volledig en heeft de apple-touch-icon nodig.
     */}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -118,7 +118,7 @@ const gestructureerdeData = {
       De twee die de eerste schermvulling bepalen, worden voorgeladen. Zonder dit
       begint de browser er pas aan nadat hij de CSS heeft ontleed, en dat is
       precies de vertraging die je als flikkerende tekst ziet. `crossorigin` is
-      ook bij dezelfde herkomst verplicht bij lettertypen — laat je het weg, dan
+      ook bij dezelfde herkomst verplicht bij lettertypen, laat je het weg, dan
       haalt de browser het bestand een tweede keer op.
     */}
     <link
@@ -148,13 +148,13 @@ const gestructureerdeData = {
       vrijgaf ná toestemming. Privacytechnisch is dat het strengst, maar het
       heeft één praktisch gevolg: Google ziet de tag dan niet. De controle van
       Google zoekt naar een uitvoerbaar gtag-script, en een geblokkeerd script
-      is er geen — vandaar de melding "tag niet gevonden", ook al stond hij wel
+      is er geen, vandaar de melding "tag niet gevonden", ook al stond hij wel
       degelijk in de HTML.
 
       Consent Mode v2 is Google's eigen antwoord daarop, en het is de opzet die
       voor Europese sites bedoeld is. De volgorde is wat hem werkbaar maakt:
 
-      1. Eerst wordt `consent default` op *denied* gezet — vóór gtag.js geladen
+      1. Eerst wordt `consent default` op *denied* gezet, vóór gtag.js geladen
          wordt. Zolang dat geldt, plaatst Google geen enkele analytics- of
          advertentiecookie en worden er geen identifiers verstuurd.
       2. Dán pas laadt gtag.js. De tag is daarmee zichtbaar en meetbaar voor
@@ -168,8 +168,8 @@ const gestructureerdeData = {
       Er gaat nu bij het openen van de pagina een verzoek naar
       googletagmanager.com, en daarmee het IP-adres van de bezoeker. Dat gebeurde
       in de vorige opzet niet. Het blijft binnen wat Consent Mode v2 voor de EU
-      voorschrijft — geen cookies, geen identifiers, alleen geaggregeerde
-      signalen — maar het is een stap minder streng dan volledig blokkeren.
+      voorschrijft, geen cookies, geen identifiers, alleen geaggregeerde
+      signalen, maar het is een stap minder streng dan volledig blokkeren.
 
       Wie dat niet wil: `ga4MeetID` in `src/config.ts` op `null` zetten. Dan
       verdwijnt elk extern verzoek weer van de site.

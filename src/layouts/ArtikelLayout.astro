@@ -91,6 +91,13 @@ const gestructureerdeData = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(gestructureerdeData)} slot="hoofd" />
 
+  {/*
+    De leesbalk. Puur decoratief, hij zegt hetzelfde als de scrollbalk ernaast, dus `aria-hidden`, en hij staat buiten het artikel zodat hij niet meeleest in
+    de leesvolgorde. De vulling gebeurt in CSS met een scroll()-tijdlijn; zonder
+    ondersteuning of bij `prefers-reduced-motion` blijft het een leeg element.
+  */}
+  <div class="leesbalk" aria-hidden="true"></div>
+
   <article class="artikel">
     {/*
       Opmaak van een tijdschriftartikel: rubrieklabel, kop, inleiding, dan pas

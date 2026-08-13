@@ -6,9 +6,9 @@
 
    Drie stemmen, en ze doen alle drie iets anders:
 
-     kop      strakke sans, groot en krap    — wat dit is
-     tekst    serif, rustig                  — waarom dat zo is
-     meting   monospace, wijd gespatieerd    — hoe hard we dat weten
+     kop      strakke sans, groot en krap, wat dit is
+     tekst    serif, rustig, waarom dat zo is
+     meting   monospace, wijd gespatieerd, hoe hard we dat weten
 
    De derde is de belangrijkste. Overal waar op deze site een aantal, een
    bronsoort, een datum of een INCI-naam staat, staat die in de monospace. Dat
@@ -68,7 +68,7 @@ body {
   redactionele titel. De terughoudendheid is hier het premium-signaal.
 
   `font-variant-numeric: lining-nums` zet in koppen de cijfers weer op volle
-  hoogte — een oudstijlcijfer met een staart is prachtig in lopende tekst en
+  hoogte, een oudstijlcijfer met een staart is prachtig in lopende tekst en
   rommelig in een titel.
 */
 h1,
@@ -228,7 +228,7 @@ main {
 }
 
 /* ------------------------------------------------------------------ *
-   De meting — het monospace label
+   De meting, het monospace label
 
    Overal waar iets afgelezen is in plaats van beweerd.
  * ------------------------------------------------------------------ */
@@ -351,8 +351,7 @@ main {
     Hier stond `flex-wrap: nowrap` met `overflow-x: auto`. Gemeten op een scherm
     van 390 pixels: de vijf items zijn samen 455 pixels breed en de balk 329, dus
     er verscheen een schuifbalk en "Over" viel buiten beeld. Een menu-item dat je
-    alleen vindt door zijwaarts te vegen, bestaat voor de meeste bezoekers niet —
-    en een zichtbare schuifbalk dwars door de koptekst is precies het soort
+    alleen vindt door zijwaarts te vegen, bestaat voor de meeste bezoekers niet, en een zichtbare schuifbalk dwars door de koptekst is precies het soort
     afwerking dat een site goedkoop laat lijken.
 
     Vijf korte labels passen prima op twee regels; dan staat alles er gewoon.
@@ -369,7 +368,7 @@ main {
 }
 
 /* ------------------------------------------------------------------ *
-   De bronnenmeter — het kenmerkende element van deze site
+   De bronnenmeter, het kenmerkende element van deze site
 
    Een geijkt streepje dat laat zien waar de onderbouwing van een artikel
    vandaan komt: hoeveel primaire bronnen (A), hoeveel vakmedia (B), hoeveel
@@ -471,7 +470,7 @@ main {
 
    Het beeld loopt aan de rechterkant door tot de rand van het scherm. Dat is
    het verschil tussen een pagina met een plaatje erop en een pagina die
-   ergens begint — en het kost niets, want de tekst houdt zijn eigen kolom.
+   ergens begint, en het kost niets, want de tekst houdt zijn eigen kolom.
 
    Eén eis stuurt de rest (onderzoek/06, par. 4.2): de opening moet volledig
    werken als je het beeld wegdenkt. Kop, intro en knoppen staan daarom als
@@ -497,7 +496,7 @@ main {
   Leading en tracking zijn ruimer dan bij de vorige sans. Een serif van deze
   graad met -0,045em valt dicht: de schreven raken elkaar en het woordbeeld
   verdwijnt. En 0,94 regelhoogte werkte alleen zolang de letter geen staarten
-  had — Fraunces heeft ze wel.
+  had, Fraunces heeft ze wel.
 */
 .opening__kop {
   font-size: clamp(2.5rem, 5.2vw, 4.75rem);
@@ -601,7 +600,7 @@ main {
 }
 
 /* ------------------------------------------------------------------ *
-   Cijferband — staat waar eerst de lopende tekstband stond
+   Cijferband, staat waar eerst de lopende tekstband stond
 
    Dezelfde plek, maar het beweegt niet meer en het zegt iets. Een band die
    langsschuift vraagt aandacht zonder iets te geven; deze geeft de vier
@@ -722,11 +721,11 @@ main {
 }
 
 /* ------------------------------------------------------------------ *
-   De stroom — artikelen in tijdschriftritme
+   De stroom, artikelen in tijdschriftritme
 
    Hier stonden de blokken `.kaart*` en `.uitgelicht*` uit de vorige opmaak.
    Die zijn verwijderd toen `Stroom.astro` en `ArtikelKaart.astro` op `.item*`
-   overgingen — maar de vervangende opmaak is er destijds nooit gekomen. De
+   overgingen, maar de vervangende opmaak is er destijds nooit gekomen. De
    componenten gaven `.stroom`, `.item`, `.item__vlak`, `.item__tekst`,
    `.item__titel`, `.item__intro` en `.item__voet` af terwijl geen van die
    klassen ergens beschreven stond.
@@ -738,8 +737,8 @@ main {
 
    Het raster telt zes kolommen, zodat de drie formaten er precies in opgaan:
    een spread vult alle zes, een breed blok drie (de halve pagina) en een kaart
-   twee (de derde). `Stroom.astro` rekent dezelfde verdeling uit — 2 × 3 en
-   3 × 2 — zodat er nooit een gat aan het eind van een rij valt.
+   twee (de derde). `Stroom.astro` rekent dezelfde verdeling uit, 2 × 3 en
+   3 × 2, zodat er nooit een gat aan het eind van een rij valt.
  * ------------------------------------------------------------------ */
 
 .stroom {
@@ -763,7 +762,7 @@ main {
 
 /*
   De spread: beeld en tekst naast elkaar over de volle breedte. De tekstkolom
-  is de smallere van de twee — een openingsstuk leest als beeld met een
+  is de smallere van de twee, een openingsstuk leest als beeld met een
   onderschrift, niet als twee gelijke helften.
 */
 .item--spread {
@@ -785,7 +784,7 @@ main {
   Hier stond een regel die elke tweede spread spiegelde. Verwijderd: `Stroom.astro`
   geeft per pagina hoogstens één spread af (alleen het eerste artikel, en alleen
   als `opening` aanstaat), dus die regel kon nooit afgaan. Precies het soort dode
-  opmaak dat dit bestand eerder al aan een dood adres hield — niet opnieuw
+  opmaak dat dit bestand eerder al aan een dood adres hield, niet opnieuw
   invoeren zonder dat er meerdere spreads bestaan.
 */
 
@@ -927,7 +926,7 @@ main {
 }
 
 /* ------------------------------------------------------------------ *
-   Het tweeluik — de twee vragenlijsten op de homepage
+   Het tweeluik, de twee vragenlijsten op de homepage
 
    Asymmetrisch en niet in twee gelijke helften: twee even grote blokken naast
    elkaar maken van allebei een widget. De routinetest krijgt de ruimte en toont
@@ -1026,7 +1025,7 @@ main {
 }
 
 /* ------------------------------------------------------------------ *
-   Uitleg — het blok "hoe dit werkt" onder aan de homepage
+   Uitleg, het blok "hoe dit werkt" onder aan de homepage
  * ------------------------------------------------------------------ */
 
 .uitleg {
@@ -1050,7 +1049,7 @@ main {
 /*
   Accentvlakken achter het beeld.
 
-  Deze regels wezen naar `.kaart__vlak` en `.uitgelicht__vlak` — klassen uit de
+  Deze regels wezen naar `.kaart__vlak` en `.uitgelicht__vlak`, klassen uit de
   vorige opmaak die geen enkel component meer afgeeft. Het `accent`-veld in de
   frontmatter deed daardoor nergens meer iets, terwijl het schema belooft dat het
   "het vlak achter het beeld" kleurt. Nu gekoppeld aan de selectors die er wél
@@ -1059,7 +1058,7 @@ main {
 
   Het vlak is zichtbaar zolang het beeld laadt en langs de randen van een beeld
   dat het kader niet volledig vult. Het is een teken in de opmaak, geen
-  eigenschap van de foto zelf — die is voor alle artikelen in dezelfde stijl
+  eigenschap van de foto zelf, die is voor alle artikelen in dezelfde stijl
   gemaakt, zonder kleurvariatie.
 */
 .accent-roze .item__vlak,
@@ -1088,7 +1087,7 @@ main {
 
   Tot augustus 2026 stond het op `.beeld--foto`, omdat een beeld toen een foto óf
   een gegenereerde SVG-illustratie kon zijn. Die illustraties zijn weg en
-  `Beeld.astro` geeft die klasse niet meer af — waardoor er nergens nog
+  `Beeld.astro` geeft die klasse niet meer af, waardoor er nergens nog
   `object-fit` gold. Met `width: 100%` en `height: 100%` in een vlak met een
   vaste `aspect-ratio` betekent dat: elk beeld op elke kaart en boven elk artikel
   werd uitgerekt naar de verhouding van zijn kader.
@@ -1102,7 +1101,7 @@ main {
 }
 
 /*
-  Hier stond een korrelfilter over de eigen SVG-illustraties — wat een vlakke
+  Hier stond een korrelfilter over de eigen SVG-illustraties, wat een vlakke
   digitale vorm laat lezen als drukwerk. Het is verwijderd samen met die
   illustraties: het testte op `:not(:has(.beeld--foto))`, en sinds die klasse
   niet meer bestaat was die test altijd waar. De korrel lag dus over élke foto,
@@ -1166,7 +1165,7 @@ main {
 
 /*
   Drie omhulsels die het artikel afgeeft en die geen opmaak hadden. Ze deden
-  daardoor niets verkeerds — de inhoud stond er gewoon — maar het ritme klopte
+  daardoor niets verkeerds, de inhoud stond er gewoon, maar het ritme klopte
   niet: de bronnenmeter plakte tegen de eerste alinea en de etiketten onderaan
   liepen zonder tussenruimte in de knop eronder over.
 */
@@ -1217,7 +1216,7 @@ main {
   margin-top: 0;
 }
 
-/* De eerste alinea groter — een klassieke redactionele regel die nog steeds werkt. */
+/* De eerste alinea groter, een klassieke redactionele regel die nog steeds werkt. */
 .artikel__inhoud > p:first-of-type {
   font-size: 1.18em;
   line-height: 1.6;
@@ -1251,7 +1250,7 @@ main {
     Zonder dit gebeurt er niets zichtbaars. De algemene regel `img { max-width:
     100% }` bovenaan dit bestand houdt het beeld op de breedte van de tekstkolom,
     waardoor de negatieve marges hem wel naar links trekken maar hij niet mag
-    groeien — het beeld schoof dan scheef in plaats van uit te breken.
+    groeien, het beeld schoof dan scheef in plaats van uit te breken.
   */
   max-width: none;
   margin: var(--ruimte-8) calc(-1 * var(--uitbraak));
@@ -1291,7 +1290,7 @@ main {
   als eerste blok van een artikel met affiliate-links (RSM per 1 juli 2026) en
   moet als mededeling te onderscheiden zijn van de redactie eromheen.
 
-  Het medisch voorbehoud krijgt de let-op-kleur — dezelfde die elders op de site
+  Het medisch voorbehoud krijgt de let-op-kleur, dezelfde die elders op de site
   "lees dit nog eens" betekent.
 */
 .melding--disclosure {
@@ -1377,7 +1376,7 @@ main {
   vragenlijst gaf een knik in de bladspiegel: de kop begon ergens anders dan de
   vraag eronder.
 
-  Op de overzichtspagina's blijft de inleiding juist wél links staan — daar deelt
+  Op de overzichtspagina's blijft de inleiding juist wél links staan, daar deelt
   hij zijn linkerrand met het raster eronder, en dan is links uitlijnen geen
   scheefheid maar precies de uitlijning.
 */
@@ -1448,7 +1447,7 @@ main {
  * ------------------------------------------------------------------ */
 
 /*
-  De tekstpagina's — over, contact, de juridische pagina's, 404.
+  De tekstpagina's, over, contact, de juridische pagina's, 404.
 
   `max-width` stond hier zonder centrering, waardoor de kolom tegen de linkerrand
   van een pagina van 1360 pixels geplakt zat en de rechterhelft leeg bleef. Dat
@@ -1478,7 +1477,7 @@ main {
    Het toestemmingsvenster
 
    Klaro levert een eigen, donker uitgevoerd venster mee. Dat werkt, maar het
-   ziet eruit als een vreemd onderdeel dat over de site heen ligt — en juist dit
+   ziet eruit als een vreemd onderdeel dat over de site heen ligt, en juist dit
    venster is het eerste wat een nieuwe bezoeker ziet. Hieronder krijgt het de
    letters, kleuren en vormen van de rest van de site.
 
@@ -1506,7 +1505,7 @@ main {
 /*
   De beschrijving staat bij Klaro in een `span` zonder klasse, met een eigen
   bijna-witte kleur uit het donkere standaardthema. Een regel op `.cn-body`
-  alleen raakt die niet — vandaar dat de afstammelingen hier expliciet
+  alleen raakt die niet, vandaar dat de afstammelingen hier expliciet
   meegenomen worden, met uitzondering van wat zijn eigen kleur hoort te houden
   (links en knoppen).
 */
@@ -1651,7 +1650,10 @@ main {
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .onthul {
-      animation: onthullen linear both;
+      animation-name: onthullen;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-duration: auto;
       animation-timeline: view();
       animation-range: entry 0% entry 42%;
     }
@@ -1699,7 +1701,7 @@ main {
 
 /*
   De voortgang is een rij streepjes, geen doorlopende balk. Je kunt zien
-  hoeveel vragen er zijn en waar je bent — een balk verbergt dat eerste juist.
+  hoeveel vragen er zijn en waar je bent, een balk verbergt dat eerste juist.
 */
 /*
   De voortgangsbalk is een `<ol>`, en dat vroeg om twee dingen die hier ontbraken.
@@ -1777,17 +1779,33 @@ main {
 }
 
 /*
-  De antwoorden zijn kort — twee tot vier woorden — dus ze passen naast
+  De antwoorden zijn kort, twee tot vier woorden, dus ze passen naast
   elkaar. Dat maakt de test snel: je scant vier woorden in plaats van vier
   zinnen, en je bent in tien seconden bij de volgende vraag.
+
+  Hoogstens twee kolommen, en niet meer `auto-fit`. Dat legde op een breed
+  scherm vier antwoorden op één rij van vier, en bij drie of vijf antwoorden
+  bleef er een gat aan het eind staan, precies het rafelige beeld dat op
+  desktop opviel. Vier antwoorden worden nu twee bij twee; een oneven laatste
+  vult de rij uit zodat er nooit een halve rij overblijft.
 */
 .opties {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  grid-template-columns: 1fr;
   gap: var(--ruimte-3);
   list-style: none;
   padding: 0;
   margin: 0 0 var(--ruimte-6);
+}
+
+@media (min-width: 40rem) {
+  .opties {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .opties > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
 }
 
 .opties li + li {
@@ -1833,6 +1851,101 @@ main {
 .optie:has(.optie__radio:focus-visible) {
   outline: 2px solid var(--kleur-orchidee);
   outline-offset: 3px;
+}
+
+/* ── Contactformulier ─────────────────────────────────────────────────────
+   Dezelfde vormtaal als de antwoordkaarten van de vragenlijsten: zachte rand,
+   vlies als vlak, orchidee zodra je erin staat. Een formulier dat eruitziet als
+   een standaard browserformulier zou hier opvallen als een vreemd onderdeel.
+*/
+.formulier {
+  display: grid;
+  gap: var(--ruimte-4);
+  margin: var(--ruimte-6) 0 var(--ruimte-8);
+}
+
+.formulier__rij {
+  display: grid;
+  gap: var(--ruimte-4);
+}
+
+@media (min-width: 40rem) {
+  .formulier__rij {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.veld {
+  display: grid;
+  gap: var(--ruimte-2);
+}
+
+.veld__naam {
+  font-family: var(--font-kop);
+  font-size: var(--tekst-m);
+  font-weight: 500;
+}
+
+.veld__bijzin {
+  font-family: var(--font-tekst);
+  font-weight: 400;
+  color: var(--kleur-inkt-half);
+}
+
+.veld__invoer {
+  width: 100%;
+  padding: var(--ruimte-3) var(--ruimte-4);
+  background: var(--kleur-vlies);
+  border: 1px solid var(--kleur-rand);
+  border-radius: var(--rond-l);
+  font-family: var(--font-tekst);
+  font-size: var(--tekst-m);
+  color: var(--kleur-inkt);
+  transition: border-color var(--overgang-snel) var(--soepel),
+    background var(--overgang-snel) var(--soepel);
+}
+
+.veld__invoer:hover {
+  border-color: var(--kleur-orchidee);
+}
+
+.veld__invoer:focus-visible {
+  outline: 2px solid var(--kleur-orchidee);
+  outline-offset: 2px;
+  border-color: var(--kleur-orchidee);
+  background: var(--kleur-papier);
+}
+
+.veld__invoer--groot {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+/*
+  De verzendknop staat in een grid en rekte daardoor over de volle breedte mee.
+  Een knop van zeshonderd pixels leest als een banner, niet als een knop.
+*/
+.formulier .knop {
+  justify-self: start;
+}
+
+.formulier__klein {
+  font-size: var(--tekst-s);
+  color: var(--kleur-inkt-half);
+  margin: 0;
+}
+
+/*
+  De honingpot. Niet `display: none`, sommige bots slaan juist alles over wat
+  verborgen is. Uit beeld schuiven werkt beter, en `aria-hidden` houdt hem weg
+  bij een schermlezer.
+*/
+.honingpot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
 
 .test__knoppen {
@@ -1907,7 +2020,25 @@ main {
   font-size: var(--tekst-l);
   color: var(--kleur-inkt-half);
   max-width: 52ch;
+  margin-bottom: var(--ruimte-5);
+}
+
+/*
+  Het verhaal bij een uitkomst. Leest als gewone broodtekst en niet als een
+  samenvattend blokje: dit is het stuk waarin iemand zichzelf moet herkennen,
+  en dat werkt niet in de toon van een uitslagformulier.
+*/
+.routine__verhaal {
+  max-width: 60ch;
   margin-bottom: var(--ruimte-7);
+}
+
+.routine__verhaal p {
+  margin-bottom: var(--ruimte-4);
+}
+
+.routine__verhaal p:last-child {
+  margin-bottom: 0;
 }
 
 /*
@@ -1921,7 +2052,7 @@ main {
    Deze zeven klassen gaf `Vragenlijst.astro` af zonder dat er ergens opmaak
    voor bestond: `.routines`, `.routines__inleiding`, `.routines__voorbehoud`,
    `.routines__opnieuw`, `.routine__vlak`, `.stap__claim`, `.stap__claim-label`
-   en `.optie__tekst`. Zelfde soort gat als bij de stroom — het component was er,
+   en `.optie__tekst`. Zelfde soort gat als bij de stroom, het component was er,
    de opmaak niet.
  * ------------------------------------------------------------------ */
 
@@ -1967,25 +2098,33 @@ main {
   De toegestane EU-claim onder een stap. Dit is geen sierlijk kadertje maar een
   juridisch citaat: het staat er in de letterlijk toegestane bewoording en mag
   niet geparafraseerd worden (zie onderzoek/07, par. 4.4). Vandaar de behandeling
-  van een citaat — ingesprongen, met een streep ernaast — zodat zichtbaar is dat
+  van een citaat, ingesprongen, met een streep ernaast, zodat zichtbaar is dat
   dit aangehaalde tekst is en geen eigen belofte.
 */
 .stap__claim {
+  position: relative;
   margin: var(--ruimte-3) 0 0;
   padding-left: var(--ruimte-4);
   border-left: 2px solid var(--kleur-jade);
   font-size: var(--tekst-m);
+  font-style: italic;
   color: var(--kleur-inkt-half);
 }
 
-.stap__claim-label {
-  display: block;
-  font-family: var(--font-meting);
-  font-size: var(--tekst-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--spatie-meting);
+/*
+  Het etiket "Toegestane EU-claim" stond hier eerst boven. Dat is beheerderstaal;
+  een lezer heeft er niets aan. Het aanhalingsteken en de streep laten net zo
+  goed zien dat dit een aanhaling is en geen eigen belofte.
+*/
+.stap__claim::before {
+  content: '“';
+  position: absolute;
+  left: var(--ruimte-2);
+  top: -0.15em;
+  font-family: var(--font-kop);
+  font-size: 1.6em;
+  line-height: 1;
   color: var(--kleur-jade);
-  margin-bottom: var(--ruimte-1);
 }
 
 .stappen {
@@ -2182,5 +2321,449 @@ main {
   .artikel__beeld,
   .cijfers {
     display: none;
+  }
+}
+
+/* ══ Cookievenster (Klaro) ══════════════════════════════════════════════════
+
+   Klaro brengt zijn eigen `klaro.css` mee. Dat ziet er nergens naar deze site
+   uit, donkerblauw, hoekig, en met een knop die niets met de rest te maken
+   heeft. Hieronder wordt dat overschreven zodat het venster bij Mochi Glow
+   hoort in plaats van bij een willekeurige tool.
+
+   Dit is bewust de plek waar de speelse laag verder gaat dan `onderzoek/06`
+   par. 4.3 beschreef: op verzoek van de eigenaar (2026-08-13) mogen
+   `--rond-speels` en `--kleur-accent-warm` ook hier staan. Het is een venster
+   dat je één keer ziet en waarin je iets moet beslissen, dat mag vriendelijk
+   zijn. De invariant in CLAUDE.md is daarop bijgewerkt.
+
+   Wat níét mag veranderen: weigeren blijft even zichtbaar en even makkelijk als
+   accepteren. Beide knoppen hebben dezelfde grootte en hetzelfde gewicht; alleen
+   de kleur verschilt. Een grijze, kleine weigerknop naast een grote gekleurde
+   accepteerknop is sinds de DSA verboden (onderzoek/09, par. 4.6).
+*/
+
+.klaro .cm-bg {
+  background: rgba(23, 18, 38, 0.45);
+  backdrop-filter: blur(3px);
+}
+
+.klaro .cookie-modal .cm-modal {
+  background: var(--kleur-papier);
+  color: var(--kleur-inkt);
+  border-radius: var(--rond-speels);
+  box-shadow: var(--schaduw-hoog);
+  border: 1px solid var(--kleur-accent-warm);
+  max-width: 34rem;
+}
+
+/* Een warme rand bovenlangs, dezelfde als op de kop van de homepage. */
+.klaro .cookie-modal .cm-modal::before {
+  content: '';
+  display: block;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--kleur-accent-warm),
+    var(--kleur-orchidee-vlak),
+    var(--kleur-accent-warm)
+  );
+}
+
+.klaro .cm-modal .cm-header {
+  border-bottom: 1px solid var(--kleur-rand);
+  padding: var(--ruimte-6) var(--ruimte-6) var(--ruimte-4);
+}
+
+.klaro .cookie-modal .cm-modal .cm-header h1.title {
+  font-family: var(--font-kop);
+  font-size: var(--tekst-xl);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--kleur-inkt);
+}
+
+.klaro .cm-modal .cm-header p,
+.klaro .cm-modal .cm-body {
+  font-family: var(--font-tekst);
+  font-size: var(--tekst-m);
+  color: var(--kleur-inkt-half);
+}
+
+.klaro .cm-modal .cm-body {
+  padding: var(--ruimte-5) var(--ruimte-6);
+}
+
+.klaro .cm-modal .cm-list-title,
+.klaro .cm-modal .cm-list-label .cm-list-title {
+  font-family: var(--font-kop);
+  color: var(--kleur-inkt);
+}
+
+.klaro .cm-modal .cm-footer {
+  border-top: 1px solid var(--kleur-rand);
+  padding: var(--ruimte-5) var(--ruimte-6) var(--ruimte-6);
+}
+
+.klaro .cm-btn {
+  border-radius: var(--rond-l);
+  padding: var(--ruimte-3) var(--ruimte-5);
+  font-family: var(--font-kop);
+  font-size: var(--tekst-m);
+  font-weight: 500;
+  transition: transform var(--overgang-snel) var(--soepel),
+    background var(--overgang-snel) var(--soepel);
+}
+
+.klaro .cm-btn:hover {
+  transform: translateY(-1px);
+}
+
+/*
+  De selectors hieronder zijn expres zwaarder dan ze op het oog hoeven te zijn.
+  Klaro's eigen `klaro.css` stylet deze knoppen via `.cookie-modal .cm-btn.…`,
+  en dat wint van een kortere regel. De eerste versie hiervan liet de weigerknop
+  daardoor als kale tekst staan naast twee gevulde knoppen, precies het patroon
+  dat hierboven verboden wordt verklaard. Verlaag deze specificiteit dus niet.
+*/
+.klaro .cookie-modal .cm-modal .cm-btn.cm-btn-success {
+  background: var(--kleur-orchidee);
+  color: var(--kleur-papier);
+  border: 1px solid var(--kleur-orchidee);
+  text-decoration: none;
+}
+
+/* Weigeren: zelfde maat, zelfde gewicht, alleen rustiger van kleur. */
+.klaro .cookie-modal .cm-modal .cm-btn.cm-btn-decline,
+.klaro .cookie-modal .cm-modal .cm-btn.cm-btn-danger,
+.klaro .cookie-modal .cm-modal .cm-btn.cn-decline {
+  background: var(--kleur-vlies);
+  color: var(--kleur-inkt);
+  border: 1px solid var(--kleur-rand);
+  text-decoration: none;
+  opacity: 1;
+}
+
+/*
+  "Selectie opslaan" draagt bij Klaro zowel `cm-btn-success` als `cm-btn-info`.
+  Een aparte opmaak voor `cm-btn-info` kleurde die knop daarom mee als
+  tekstlink. Alleen de knoppen die *niet* ook een bevestigknop zijn, krijgen de
+  rustige variant.
+*/
+.klaro .cookie-modal .cm-modal .cm-btn.cm-btn-info:not(.cm-btn-success) {
+  background: transparent;
+  color: var(--kleur-orchidee);
+}
+
+.klaro .cm-modal a {
+  color: var(--kleur-orchidee);
+}
+
+/*
+  Het venster komt binnen met een klein zetje omhoog. Kort, eenmalig en
+  door de bezoeker uitgelokt (hij opende de pagina), dus geen kwestie voor
+  WCAG 2.2 SC 2.2.2, dat gaat over beweging die langer dan vijf seconden
+  vanzelf doorloopt.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  .klaro .cookie-modal .cm-modal {
+    animation: venster-omhoog 320ms var(--soepel) both;
+  }
+}
+
+@keyframes venster-omhoog {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ══ Meer beweging, binnen dezelfde grens ═══════════════════════════════════
+
+   Toegevoegd op 2026-08-13 op verzoek van de eigenaar: de site mocht speelser
+   en levendiger. De grens uit de invarianten blijft daarbij overeind, en die is
+   scherper dan hij klinkt.
+
+   WCAG 2.2 SC 2.2.2 gaat over beweging die **vanzelf begint én langer dan vijf
+   seconden doorloopt**. Zoiets heeft een echte pauzeknop nodig; `prefers-reduced-
+   motion` alleen is daarvoor niet genoeg. Alles hieronder valt er buiten, en dat
+   is met opzet:
+
+   - de onthullingen en de inzoom worden door de scroll aangedreven, de lezer is
+     de motor, zet hij zijn muis stil dan staat het beeld stil;
+   - de hover-effecten beginnen pas bij aanwijzen;
+   - de voortgangsbalk beweegt alleen na een klik, en duurt 400 ms.
+
+   Er staat dus nog steeds geen enkele animatie op deze site die uit zichzelf
+   begint. Komt die er ooit wel, dan hoort er een pauzeknop bij.
+*/
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /*
+      Kaarten en sectiekoppen komen omhoog zodra ze in beeld schuiven. Elk
+      element heeft zijn eigen tijdlijn, dus de kaarten van een rij komen
+      vanzelf na elkaar binnen, een trapje zonder dat er per kaart een
+      vertraging ingesteld hoeft te worden.
+    */
+    .stroom > .item,
+    .kaartenraster > li,
+    .sectie__kop {
+      animation-name: onthullen;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-duration: auto;
+      animation-timeline: view();
+      animation-range: entry 0% entry 38%;
+    }
+
+    /*
+      Het openingsbeeld zoomt langzaam uit terwijl je de pagina afscrollt. Geen
+      losse animatie maar een stand die aan de scrollpositie hangt: scroll je
+      terug, dan gaat de beweging mee terug.
+    */
+    .opening__beeld img {
+      animation-name: beeld-inzoom;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-duration: auto;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+
+@keyframes beeld-inzoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/*
+  Beeld in een kaart komt bij aanwijzen iets naar voren. Klein gehouden: een
+  kaart die te veel beweegt leest als een advertentie, en dat is precies het
+  register waar deze site vanaf wil blijven (onderzoek/09, par. 4.6).
+*/
+@media (prefers-reduced-motion: no-preference) {
+  .item__vlak .beeld img,
+  .item__vlak img {
+    transition: transform 600ms var(--soepel);
+  }
+
+  .item:hover .item__vlak .beeld img,
+  .item:hover .item__vlak img {
+    transform: scale(1.04);
+  }
+
+  /* De trap van de vragenlijst loopt door in plaats van te springen. */
+  .trap__streep {
+    transition: background-color 400ms var(--soepel), transform 400ms var(--soepel);
+  }
+}
+
+/* ══ De levendige laag ══════════════════════════════════════════════════════
+
+   Uitgebreid op verzoek van de eigenaar (2026-08-13): de site mocht duidelijk
+   meer bewegen. Hieronder staat die tweede ronde, en de grens waarbinnen het
+   blijft is nog steeds die uit de invarianten.
+
+   WCAG 2.2 SC 2.2.2 gaat over beweging die **vanzelf begint én langer dan vijf
+   seconden loopt**. Alles hieronder valt daarbuiten:
+
+   - het openingsblok komt bij het laden binnen in 700 ms en staat dan stil;
+   - al het overige hangt aan de scrollpositie of aan de muis;
+   - de leesbalk beweegt alleen omdat de lezer zelf scrollt.
+
+   Elke regel staat achter `prefers-reduced-motion: no-preference`. Wie beweging
+   heeft uitgezet, krijgt precies de stilstaande site van hiervoor.
+*/
+
+@media (prefers-reduced-motion: no-preference) {
+  /*
+    Het openingsblok komt bij het laden getrapt binnen: eerst het rubrieklabel,
+    dan de kop, dan de intro, dan de knoppen. Eenmalig, kort, en het eindigt in
+    de gewone stand, een bezoeker die traag laadt ziet hooguit de eindstand.
+  */
+  .opening__woord > * {
+    animation: binnenkomen 700ms var(--soepel) both;
+  }
+
+  .opening__woord > *:nth-child(1) { animation-delay: 60ms; }
+  .opening__woord > *:nth-child(2) { animation-delay: 150ms; }
+  .opening__woord > *:nth-child(3) { animation-delay: 250ms; }
+  .opening__woord > *:nth-child(4) { animation-delay: 350ms; }
+
+  /* Menu: het streepje groeit vanuit het midden in plaats van te verschijnen. */
+  .nav a {
+    position: relative;
+    border-bottom-color: transparent !important;
+  }
+
+  .nav a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    height: 1px;
+    background: var(--kleur-orchidee);
+    transition: left var(--overgang-snel) var(--soepel), right var(--overgang-snel) var(--soepel);
+  }
+
+  .nav a:hover::after,
+  .nav a[aria-current='page']::after {
+    left: 0;
+    right: 0;
+  }
+
+  /* De titel van een kaart krijgt een streep die meeloopt met de muis. */
+  .item__titel a {
+    background-image: linear-gradient(var(--kleur-orchidee), var(--kleur-orchidee));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 320ms var(--soepel);
+  }
+
+  .item:hover .item__titel a,
+  .item__titel a:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* De keuzeknoppen op de homepage vullen zich bij aanwijzen. */
+  .tweeluik__optie {
+    transition: background 260ms var(--soepel), color 260ms var(--soepel),
+      transform 260ms var(--soepel);
+  }
+
+  .tweeluik__optie:hover {
+    transform: translateY(-2px);
+  }
+
+  /* De pijl in het tweeluik schuift mee. */
+  .tweeluik__pijl {
+    transition: transform 300ms var(--soepel);
+  }
+
+  .tweeluik__zij:hover .tweeluik__pijl {
+    transform: translateX(6px);
+  }
+
+  /* Een vraag in de vragenlijst schuift in beeld in plaats van te knipperen. */
+  .vraag:not([hidden]) {
+    animation: vraag-in 320ms var(--soepel) both;
+  }
+
+  /* De uitslag komt met iets meer nadruk binnen dan een gewone vraag. */
+  .uitslag:not([hidden]) {
+    animation: binnenkomen 520ms var(--soepel) both;
+  }
+}
+
+@keyframes binnenkomen {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes vraag-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /*
+      De bronnenmeter onder een kaart groeit uit het niets zodra hij in beeld
+      komt. Het is het enige element op een kaart dat een getal uitbeeldt, dus
+      het is ook het enige dat iets wint bij beweging.
+    */
+    .meter__deel {
+      animation-name: meter-groeien;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-duration: auto;
+      animation-timeline: view();
+      animation-range: entry 10% entry 60%;
+      transform-origin: left center;
+    }
+
+    /* Beeld in een artikel schuift iets trager mee dan de tekst eromheen. */
+    .artikel__beeld img {
+      animation-name: beeld-parallax;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-duration: auto;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+
+@keyframes meter-groeien {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes beeld-parallax {
+  from {
+    transform: translateY(-2%) scale(1.05);
+  }
+  to {
+    transform: translateY(2%) scale(1.05);
+  }
+}
+
+/* ── Leesbalk boven aan een artikel ────────────────────────────────────────
+   Volledig door de scroll aangedreven en zonder JavaScript: `scroll()` als
+   tijdlijn betekent dat de balk de scrollpositie ís, niet dat hij hem naspeelt.
+   Browsers die het niet kennen tonen simpelweg geen balk.
+*/
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .leesbalk {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      transform-origin: left center;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, var(--kleur-accent-warm), var(--kleur-orchidee));
+      z-index: 60;
+      animation-name: leesbalk-vullen;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-duration: auto;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+@keyframes leesbalk-vullen {
+  to {
+    transform: scaleX(1);
   }
 }

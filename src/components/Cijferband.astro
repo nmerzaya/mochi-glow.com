@@ -4,28 +4,34 @@
  *
  * Hier stond eerst een lopende tekstband. Die is weg: iets dat langsschuift
  * vraagt aandacht zonder iets terug te geven, en het moest bovendien een
- * pauzeknop hebben om aan WCAG 2.2.2 te voldoen — een knop om iets te stoppen
+ * pauzeknop hebben om aan WCAG 2.2.2 te voldoen, een knop om iets te stoppen
  * dat niemand had aangezet.
  *
- * Wat ervoor in de plaats komt, staat stil en zegt wél iets: de vier getallen
- * waar deze site op staat of valt. Drie ervan worden geteld uit de artikelen.
- * Het vierde is nul en blijft nul, en is daarmee misschien wel het eerlijkste
- * cijfer op de pagina.
+ * De vierde cel was "0 producten getest". Die is er op 2026-08-13 uit gehaald:
+ * een nul opvoeren als prestatie leest niet als eerlijkheid maar als een site
+ * die zich verontschuldigt. Wat de site wél doet, is genoeg.
+ *
+ * De getallen tellen op zodra ze in beeld komen. Dat is beweging die de lezer
+ * zelf aandrijft door te scrollen, hooguit een seconde duurt en daarna staat, * dus geen kwestie voor WCAG 2.2 SC 2.2.2, dat over doorlopende beweging gaat.
+ * Zonder JavaScript, en bij `prefers-reduced-motion: reduce`, staat het
+ * eindgetal er meteen. Het staat ook als echte tekst in de HTML, dus een
+ * zoekmachine of schermlezer ziet nooit een teller die bij nul begint.
  */
 
 interface Props {
   artikelen: number;
   bronnen: number;
   aandeelPrimair: number;
+  ingredienten: number;
 }
 
-const { artikelen, bronnen, aandeelPrimair } = Astro.props;
+const { artikelen, bronnen, aandeelPrimair, ingredienten } = Astro.props;
 
 const cellen = [
-  { getal: String(artikelen), label: 'artikelen' },
-  { getal: String(bronnen), label: 'bronnen erbij' },
-  { getal: `${aandeelPrimair}%`, label: 'primaire bron' },
-  { getal: '0', label: 'producten getest' },
+  { getal: artikelen, achtervoegsel: '', label: 'artikelen' },
+  { getal: bronnen, achtervoegsel: '', label: 'bronnen erbij' },
+  { getal: aandeelPrimair, achtervoegsel: '%', label: 'primaire bron' },
+  { getal: ingredienten, achtervoegsel: '', label: 'ingrediënten uitgezocht' },
 ];
 ---
 
@@ -33,11 +39,60 @@ const cellen = [
   {
     cellen.map((cel) => (
       <div class="cijfers__cel">
-        <dd class="cijfers__getal" style="margin: 0">
+        <dd
+          class="cijfers__getal"
+          style="margin: 0"
+          data-telop={cel.getal}
+          data-achtervoegsel={cel.achtervoegsel}
+        >
           {cel.getal}
+          {cel.achtervoegsel}
         </dd>
         <dt class="cijfers__label">{cel.label}</dt>
       </div>
     ))
   }
 </dl>
+
+<script>
+  /*
+    Tellen zodra de band in beeld komt, en daarna nooit meer. Er is bewust geen
+    terugval naar een timer: komt de band nooit in beeld, dan is er ook niets te
+    animeren en staat het juiste getal er gewoon.
+  */
+  const rustig = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const getallen = Array.from(document.querySelectorAll<HTMLElement>('[data-telop]'));
+
+  if (getallen.length && !rustig.matches && 'IntersectionObserver' in window) {
+    const duur = 900;
+
+    const tel = (el: HTMLElement) => {
+      const doel = Number(el.dataset.telop ?? '0');
+      const achter = el.dataset.achtervoegsel ?? '';
+      const start = performance.now();
+
+      const stap = (nu: number) => {
+        const deel = Math.min((nu - start) / duur, 1);
+        /* Snel beginnen, zacht uitlopen, anders oogt het als een laadbalk. */
+        const soepel = 1 - Math.pow(1 - deel, 3);
+        el.textContent = `${Math.round(doel * soepel)}${achter}`;
+        if (deel < 1) requestAnimationFrame(stap);
+      };
+
+      requestAnimationFrame(stap);
+    };
+
+    const kijker = new IntersectionObserver(
+      (invallen) => {
+        for (const inval of invallen) {
+          if (!inval.isIntersecting) continue;
+          tel(inval.target as HTMLElement);
+          kijker.unobserve(inval.target);
+        }
+      },
+      { threshold: 0.6 },
+    );
+
+    for (const el of getallen) kijker.observe(el);
+  }
+</script>
