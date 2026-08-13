@@ -7,7 +7,7 @@
  *
  * Waarom die invalshoek en niet "welk huidtype ben jij": een huidtype is geen
  * eigenschap die een vragenlijst kan vaststellen, en elke site heeft er al een.
- * Een ritme kun je wél gewoon opschrijven — je weet zelf of je ontbijt — en het
+ * Een ritme kun je wél gewoon opschrijven, je weet zelf of je ontbijt, en het
  * is het enige aanknopingspunt dat deze pijler eerlijk heeft.
  *
  * Alle tekst staat hier en nergens anders, omdat `scripts/check-compliance.mjs`
@@ -20,7 +20,7 @@
  *    ingevoerd, en zegt welke voedingsgroepen bij zo'n dagindeling in de
  *    praktijk vaak buiten beeld blijven. Dat is een observatie over een
  *    dagindeling, geen uitspraak over een lichaam.
- * 2. Hij belooft niets. Nergens staat wat een groep zou doen — alleen wat het
+ * 2. Hij belooft niets. Nergens staat wat een groep zou doen, alleen wat het
  *    is en wanneer het past.
  * 3. Waar een voedingsstof genoemd wordt, staat er uitsluitend de letterlijke
  *    goedgekeurde bewoording bij, overgenomen uit `data/toegestane-claims.json`.
@@ -105,7 +105,7 @@ const lezen = (slug: string, titel: string) => ({ titel, pad: `/gut-skin/${slug}
 /*
   Vijf ritmes. Elk onderdeel beschrijft een voedingsgroep: wat het is en op welk
   moment van zo'n dag het past. Waar een voedingsstof genoemd wordt, staat de
-  goedgekeurde bewoording er letterlijk bij — in het veld `claim`, zodat hij in
+  goedgekeurde bewoording er letterlijk bij, in het veld `claim`, zodat hij in
   de opmaak ook zichtbaar als citaat behandeld kan worden en niet als onze eigen
   bewering leest.
 */
@@ -115,6 +115,11 @@ const profielen = [
     naam: 'Het vroege ritme',
     samenvatting:
       'Je zwaartepunt ligt in de eerste helft van de dag: je ontbijt echt, en je warme maaltijd staat er vaak al voor de avond valt. Dat is een indeling waarin de meeste voedingsgroepen vanzelf langskomen; wat er hier misgaat, gaat meestal laat op de avond mis.',
+    verhaal: [
+      'Jij bent iemand die de dag begint met eten, niet met uitstellen. Tegen de tijd dat anderen hun eerste koffie op hebben, heb jij al een ontbijt achter de kiezen, en tegen de tijd dat het buiten donker wordt, staat de afwas alweer in het rek.',
+      'Het mooie daarvan: de meeste dingen die je op een dag wilt eten, passen er vanzelf in. Je hoeft niets te verzetten. Er is één moment waar het bij dit ritme bijna altijd knelt, en dat is de avond. Niet omdat er iets misgaat, maar omdat de trek pas komt als er niets meer klaarstaat, en de keuze dan valt op wat het dichtst bij ligt.',
+      'Dus als je één ding meeneemt: leg iets klaar voor dat late uur. Een handvol noten, een stuk fruit, wat yoghurt. Niet als regel, gewoon zodat er iets is.',
+    ],
     accent: 'perzik' as const,
     beeld: 'biotine',
     beeldAlt: 'Bruine eieren in een draadmandje, met één ei gebroken in een wit kommetje.',
@@ -130,7 +135,7 @@ const profielen = [
         label: 'Ochtend',
         naam: 'Volkoren graan',
         tekst:
-          'Brood, havermout of muesli van volkoren graan bevat de zemel — de buitenste laag van de korrel, die bij wit meel wordt weggeslepen. Dat is ook de laag waar de vezels in zitten.',
+          'Brood, havermout of muesli van volkoren graan bevat de zemel, de buitenste laag van de korrel, die bij wit meel wordt weggeslepen. Dat is ook de laag waar de vezels in zitten.',
         claim: 'Haverkorrelvezels dragen bij tot een vergroting van de fecale bulk',
       },
       {
@@ -144,7 +149,7 @@ const profielen = [
         label: 'Later op de dag',
         naam: 'De avond',
         tekst:
-          'Bij een vroeg zwaartepunt is de avond het gat. Wat daar terechtkomt is vaker zoet dan bij welk ander ritme ook — niet omdat het slecht gaat, maar omdat de honger dan pas komt en er niets klaarstaat.',
+          'Bij een vroeg zwaartepunt is de avond het gat. Wat daar terechtkomt is vaker zoet dan bij welk ander ritme ook, niet omdat het slecht gaat, maar omdat de honger dan pas komt en er niets klaarstaat.',
         artikel: lezen('suiker-en-glycatie', 'Suiker en glycatie'),
       },
     ],
@@ -153,7 +158,12 @@ const profielen = [
     id: 'laat',
     naam: 'Het late ritme',
     samenvatting:
-      'Je begint de dag met weinig en haalt het later in. Dat is een volstrekt gangbaar patroon; het praktische gevolg is alleen dat alles wat je op een dag eet, in een kortere tijdspanne moet passen — en dat er dus makkelijker iets buiten valt.',
+      'Je begint de dag met weinig en haalt het later in. Dat is een volstrekt gangbaar patroon; het praktische gevolg is alleen dat alles wat je op een dag eet, in een kortere tijdspanne moet passen, en dat er dus makkelijker iets buiten valt.',
+    verhaal: [
+      'Ontbijten is niets voor jou. Koffie wel, en verder komt het later wel. Pas in de loop van de middag word je wakker als eter, en tegen de avond heb je er zin in, dan wordt het ook echt wat.',
+      'Daar is niets mis mee, en je hoeft er ook geen ochtendmens van te worden. Het enige gevolg is rekenkundig: alles wat je op een dag wilt eten, moet in minder uren passen. Dan valt er sneller iets buiten de boot, meestal de groente, en meestal zonder dat je het merkt.',
+      'Wat bij dit ritme prettig werkt, is niet vroeger beginnen maar bewuster stapelen: zorg dat je eerste échte eetmoment meteen meer is dan brood. En hou de laatste hap wat verder van je bed af, gewoon omdat je dan lekkerder slaapt.',
+    ],
     accent: 'paars' as const,
     beeld: 'gefermenteerde-soja',
     beeldAlt: 'Traditionele Koreaanse aardewerken potten op een stenen terras in ochtendlicht.',
@@ -183,7 +193,7 @@ const profielen = [
         label: 'Voor het slapen',
         naam: 'Het laatste uur',
         tekst:
-          'Laat eten en slecht slapen worden vaak in één adem genoemd. Wat daar wel en niet over vaststaat — en hoe mager dat laatste is — staat in het artikel.',
+          'Laat eten en slecht slapen worden vaak in één adem genoemd. Wat daar wel en niet over vaststaat, en hoe mager dat laatste is, staat in het artikel.',
         artikel: lezen('slaap-en-huid', 'Slaap en huid'),
       },
     ],
@@ -192,7 +202,12 @@ const profielen = [
     id: 'onderweg',
     naam: 'Het ritme onderweg',
     samenvatting:
-      'Je eet rond je dag heen in plaats van andersom: staand, achter je werk, of tussen twee dingen door. Dit ritme heeft één praktisch kenmerk dat alle andere overheerst — wat er niet klaarligt, wordt niet gegeten.',
+      'Je eet rond je dag heen in plaats van andersom: staand, achter je werk, of tussen twee dingen door. Dit ritme heeft één praktisch kenmerk dat alle andere overheerst, wat er niet klaarligt, wordt niet gegeten.',
+    verhaal: [
+      'Jouw dag bepaalt wanneer je eet, niet andersom. Een lunch is iets dat je met één hand doet terwijl de andere nog aan het werk is, en de vraag "wat wil ik eten" wordt in de praktijk beantwoord door wat er toevallig binnen handbereik lag.',
+      'Bij dit ritme heeft plannen wat je gaat eten weinig zin. Wat wél verschil maakt, is wat er in je tas zit voordat je de deur uitgaat. Alles wat daar zit, eet je. Alles wat daar niet zit, wordt onderweg iets uit een verpakking.',
+      'De hele kunst zit dus in dat ene moment aan het aanrecht, tien seconden voor vertrek. Een bakje noten, een appel, een reep van iets dat je zelf kunt uitspreken. Meer is het niet, en meer hoeft het bij jou ook niet te zijn.',
+    ],
     accent: 'roze' as const,
     beeld: 'zink-in-je-eten',
     beeldAlt: 'Pompoenpitten en cashewnoten uit een papieren zak, uitgestrooid op licht linnen.',
@@ -229,7 +244,12 @@ const profielen = [
     id: 'vast',
     naam: 'Het vaste ritme',
     samenvatting:
-      'Je eet op vaste momenten, meestal vers, en meestal aan tafel. Dat is de indeling waar het minst aan te sleutelen valt — de winst zit hier niet in meer structuur maar in meer variatie binnen de structuur die er al staat.',
+      'Je eet op vaste momenten, meestal vers, en meestal aan tafel. Dat is de indeling waar het minst aan te sleutelen valt, de winst zit hier niet in meer structuur maar in meer variatie binnen de structuur die er al staat.',
+    verhaal: [
+      'Bij jou staat het eten op tijd op tafel, en meestal heb je het zelf gemaakt. Je weet op woensdagochtend ongeveer al wat je die avond eet. Dat klinkt saai als je het opschrijft, maar in de praktijk is het precies waar de meeste mensen jaloers op zijn.',
+      'Voor jou valt er dan ook weinig te repareren. De enige valkuil van een goed ritme is dat het een sleur wordt: dezelfde vijf maaltijden, dezelfde twee groenten, week in week uit. Niet verkeerd, wel eenzijdig.',
+      'Voor jou is de leukste opdracht dus geen strengere: ruil er eens iets in. Dezelfde maaltijd, andere groente. Een keer een graan dat je nog nooit gekookt hebt. Je structuur staat toch wel, die kan best wat avontuur hebben.',
+    ],
     accent: 'mint' as const,
     beeld: 'voeding-en-huid',
     beeldAlt: 'Een ondiepe keramische schaal met granen en zaden naast een handvol verse groenten.',
@@ -268,6 +288,11 @@ const profielen = [
     naam: 'Het wisselende ritme',
     samenvatting:
       'Er zit geen vaste vorm in je dagen, en dat is geen tekortkoming maar een gegeven. Bij dit ritme werkt een schema niet; wat wel werkt, is een korte lijst dingen die altijd in huis zijn, ongeacht hoe de dag loopt.',
+    verhaal: [
+      'Geen twee dagen hetzelfde. De ene dag eet je om zes uur, de volgende om elf. Soms kook je uitgebreid, soms sta je om half tien nog met de koelkastdeur open te kijken of er iets is.',
+      'Elk schema dat je ooit geprobeerd hebt, hield het een week vol. Dat ligt niet aan jou en ook niet aan het schema: een plan dat uitgaat van vaste dagen heeft bij jou gewoon niets om zich aan vast te houden.',
+      'Wat bij jou wél overeind blijft, is de kast. Niet een weekmenu, maar vier dingen die er altijd zijn en niet bederven, havermout, noten, een pot peulvruchten, iets uit de vriezer. Dan is een rare dag hooguit een rare dag, en geen lege.',
+    ],
     accent: 'paars' as const,
     beeld: 'vitamine-e-op-je-bord',
     beeldAlt: 'Zonnebloempitten uit een gevouwen papieren zakje op lichte steen.',
@@ -309,5 +334,5 @@ export const eetritme: Vragenlijst = {
   onderdeelNaam: 'groepen',
   slotknop: 'Toon mijn ritme',
   voorbehoud:
-    'Dit is een leeswijzer, geen voedingsadvies en geen beoordeling van je gezondheid. De uitkomst volgt uit zes vragen over je dagindeling en zegt niets over jouw lichaam. Zit je met een klacht, een dieet of een tekort, dan is een diëtist of arts de aangewezen persoon — niet een vragenlijst.',
+    'Dit is een leeswijzer, geen voedingsadvies en geen beoordeling van je gezondheid. De uitkomst volgt uit zes vragen over je dagindeling en zegt niets over jouw lichaam. Zit je met een klacht, een dieet of een tekort, dan is een diëtist of arts de aangewezen persoon, niet een vragenlijst.',
 };

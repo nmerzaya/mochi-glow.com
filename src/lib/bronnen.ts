@@ -2,8 +2,7 @@
  * Rekenwerk over de bronnenlijsten.
  *
  * Elk artikel heeft in zijn frontmatter al een lijst bronnen met een type:
- * A (primair — origineel onderzoek, wetgeving, toezichthouder), B (secundair —
- * vakmedia) of C (tertiair — blogs en community). Die indeling stond er tot nu
+ * A (primair, origineel onderzoek, wetgeving, toezichthouder), B (secundair, * vakmedia) of C (tertiair, blogs en community). Die indeling stond er tot nu
  * toe alleen voor de bronnenlijst onderaan.
  *
  * Hier wordt hij ook iets waard boven de streep: uit dezelfde gegevens volgt

@@ -1,0 +1,25 @@
+---
+import BasisLayout from '../layouts/BasisLayout.astro';
+import { pijlers } from '../config';
+
+/*
+  Waar het contactformulier na verzenden op uitkomt. Web3Forms stuurt anders naar
+  een bedankpagina op hún domein, dat voelt alsof je de site uitgezet wordt.
+*/
+---
+
+<BasisLayout
+  titel="Bericht verstuurd"
+  beschrijving="Je bericht is aangekomen."
+  verbergVoorZoekmachines={true}
+>
+  <div class="prozapagina">
+    <p class="rubriek">Gelukt</p>
+    <h1>Je bericht is onderweg</h1>
+    <p>Dank je wel. Ik lees het zelf en antwoord meestal binnen een paar dagen.</p>
+    <p>
+      Ondertussen: <a href={pijlers.ingredienten.pad}>{pijlers.ingredienten.naam}</a> of
+      <a href={pijlers['gut-skin'].pad}>{pijlers['gut-skin'].naam}</a>.
+    </p>
+  </div>
+</BasisLayout>

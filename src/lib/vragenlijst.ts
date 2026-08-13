@@ -1,7 +1,7 @@
 /**
  * De vorm van een vragenlijst op deze site.
  *
- * Er zijn er twee — de routinetest en het eetritme — en ze werken hetzelfde:
+ * Er zijn er twee, de routinetest en het eetritme, en ze werken hetzelfde:
  * een reeks korte vragen, punten per antwoord, en aan het eind precies één
  * uitkomst die uit een lijst met onderdelen bestaat. Alleen de teksten
  * verschillen. Die staan in `src/data/routinetest.ts` en `src/data/eetritme.ts`,
@@ -18,7 +18,7 @@
  *    eczeem of een darmklacht zou hier een diagnose-instrument van maken, en dat
  *    is precies wat de regels uit `onderzoek/04`, par. 4.3 verbieden.
  * 2. Geen uitkomst belooft een effect. Een onderdeel beschrijft wát iets is en
- *    waarom het op die plek staat — nooit wat het zou doen.
+ *    waarom het op die plek staat, nooit wat het zou doen.
  * 3. Geen merken, geen productnamen, geen affiliate-links. Komt daar ooit een
  *    product in, dan geldt de disclosureplicht ook op die pagina.
  * 4. Waar een voedingsstof genoemd wordt, uitsluitend in de letterlijke
@@ -47,7 +47,7 @@ export interface Vraag {
 /**
  * Eén blok in een uitkomst: een stap in een routine, of een groep op een bord.
  *
- * De twee lijsten hadden hier oorspronkelijk elk hun eigen vorm — `moment` en
+ * De twee lijsten hadden hier oorspronkelijk elk hun eigen vorm, `moment` en
  * `naam` bij de routine, iets vergelijkbaars bij het eetritme. Dat leverde twee
  * bijna gelijke componenten op. Eén vorm met een vrij label dekt beide.
  */
@@ -59,7 +59,7 @@ export interface Onderdeel {
   tekst: string;
   /**
    * Letterlijke, goedgekeurde EU-claim. Alleen invullen met een tekenreeks die
-   * exact zo in `data/toegestane-claims.json` staat — de compliance-controle
+   * exact zo in `data/toegestane-claims.json` staat, de compliance-controle
    * vergelijkt woord voor woord.
    */
   claim?: string;
@@ -69,8 +69,21 @@ export interface Onderdeel {
 export interface Profiel {
   id: string;
   naam: string;
-  /** Eén zin die beschrijft wat dit profiel is — geen belofte over wat het oplevert. */
+  /** Eén zin die beschrijft wat dit profiel is, geen belofte over wat het oplevert. */
   samenvatting: string;
+  /**
+   * Het verhaal bij de uitkomst: een paar korte alinea's die beschrijven hoe zo'n
+   * dag eruitziet en wat er praktisch bij past.
+   *
+   * Toegevoegd omdat een uitkomst die uit één samenvattende zin en daarna een
+   * lijst bestaat, leest als een uitslagformulier. Iemand die zes vragen heeft
+   * beantwoord wil eerst herkenning en dan pas een lijst.
+   *
+   * De regels blijven onverkort gelden: geen belofte over een effect, geen
+   * aandoening, geen merk. Het verschil zit in de toon, niet in wat er beweerd
+   * wordt.
+   */
+  verhaal?: string[];
   accent: Accent;
   /** Slug van het beeld in src/assets/artikelen/, zonder extensie. */
   beeld: string;

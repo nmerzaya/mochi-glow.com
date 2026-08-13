@@ -12,7 +12,7 @@
  * die iets belooft, geen merken.
  *
  * Over de antwoorden: die zijn kort gehouden, twee tot vier woorden. Een test
- * met acht vragen mag niet aanvoelen als acht alinea's lezen — je scant vier
+ * met acht vragen mag niet aanvoelen als acht alinea's lezen, je scant vier
  * woorden, kiest, en bent door.
  */
 
@@ -48,7 +48,7 @@ const vragen = [
   {
     id: 'stappen',
     vraag: "Hoeveel stappen doe je 's avonds echt?",
-    hulp: 'Niet wat je zou willen — wat je volhoudt.',
+    hulp: 'Niet wat je zou willen, wat je volhoudt.',
     antwoorden: [
       { id: 'twee', tekst: 'Twee', punten: { rust: 3 } },
       { id: 'drie', tekst: 'Drie of vier', punten: { balans: 1, comfort: 1 } },
@@ -123,8 +123,8 @@ const zon: Onderdeel = {
 };
 
 /*
-  Vijf routines. De volgorde is de gangbare Koreaanse volgorde — dun naar dik,
-  waterig naar olieachtig — en elk onderdeel beschrijft wát een productcategorie
+  Vijf routines. De volgorde is de gangbare Koreaanse volgorde, dun naar dik,
+  waterig naar olieachtig, en elk onderdeel beschrijft wát een productcategorie
   is en waarom hij op die plek staat, niet wat hij zou doen.
 */
 const profielen = [
@@ -162,7 +162,7 @@ const profielen = [
         label: 'Ochtend en avond',
         naam: 'Crème met ceramiden',
         tekst:
-          'Ceramiden zijn lipiden die van nature in de hoornlaag zitten. De crème is de laag die de waterige lagen eronder afsluit — daarom komt hij als laatste van de verzorging.',
+          'Ceramiden zijn lipiden die van nature in de hoornlaag zitten. De crème is de laag die de waterige lagen eronder afsluit, daarom komt hij als laatste van de verzorging.',
         artikel: artikel('ceramiden', 'Ceramiden'),
       },
       zon,
@@ -182,7 +182,7 @@ const profielen = [
         label: 'Avond',
         naam: 'Reinigen in twee stappen',
         tekst:
-          'Eerst iets op oliebasis, daarna een waterige reiniger. Olie pakt wat op olie lijkt — zonnebrand en make-up — en water doet de rest. Draag je overdag geen van beide, dan is één stap genoeg.',
+          'Eerst iets op oliebasis, daarna een waterige reiniger. Olie pakt wat op olie lijkt, zonnebrand en make-up, en water doet de rest. Draag je overdag geen van beide, dan is één stap genoeg.',
       },
       {
         label: 'Ochtend en avond',
@@ -193,7 +193,7 @@ const profielen = [
         label: 'Ochtend en avond',
         naam: 'Serum met niacinamide',
         tekst:
-          'Niacinamide is een van de weinige ingrediënten in deze hoek waar behoorlijk wat naar gekeken is. Wat dat oplevert — en waar het ophoudt — staat in het artikel.',
+          'Niacinamide is een van de weinige ingrediënten in deze hoek waar behoorlijk wat naar gekeken is. Wat dat oplevert, en waar het ophoudt, staat in het artikel.',
         artikel: artikel('niacinamide', 'Niacinamide'),
       },
       {
@@ -250,7 +250,7 @@ const profielen = [
         label: 'Avond',
         naam: 'Reinigen in twee stappen',
         tekst:
-          'Eerst op oliebasis, daarna waterig — de gangbare opzet als je overdag zonnebrand draagt.',
+          'Eerst op oliebasis, daarna waterig, de gangbare opzet als je overdag zonnebrand draagt.',
       },
       {
         label: 'Ochtend en avond',
@@ -306,7 +306,7 @@ const profielen = [
         label: 'Avond',
         naam: 'Ampul met PDRN',
         tekst:
-          'PDRN komt uit een heel andere hoek dan de cosmetica. Lees vooral het stuk over wélke toedieningsvorm bekeken is — dat is niet die van een ampul op je huid.',
+          'PDRN komt uit een heel andere hoek dan de cosmetica. Lees vooral het stuk over wélke toedieningsvorm bekeken is, dat is niet die van een ampul op je huid.',
         artikel: artikel('pdrn', 'PDRN en zalm-DNA'),
       },
       {
@@ -327,5 +327,5 @@ export const routinetest: Vragenlijst = {
   onderdeelNaam: 'stappen',
   slotknop: 'Toon mijn stappenplan',
   voorbehoud:
-    'Dit is een leeswijzer, geen huidadvies. De uitkomst volgt uit acht voorkeursvragen en niet uit een beoordeling van je huid. Twijfel je ergens over, dan is een huidtherapeut of arts de aangewezen persoon — niet een vragenlijst.',
+    'Dit is een leeswijzer, geen huidadvies. De uitkomst volgt uit acht voorkeursvragen en niet uit een beoordeling van je huid. Twijfel je ergens over, dan is een huidtherapeut of arts de aangewezen persoon, niet een vragenlijst.',
 };

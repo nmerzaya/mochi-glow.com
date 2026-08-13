@@ -4,7 +4,7 @@ import Vragenlijst from '../components/Vragenlijst.astro';
 import { eetritme } from '../data/eetritme';
 
 const beschrijving =
-  'Zes vragen over de vorm van je dag — wanneer je eet, hoe het op tafel komt, hoe vast het ligt — en daarna een ritmeprofiel met de voedingsgroepen die daarbij passen. Geen diagnose, geen dieet.';
+  'Zes vragen over de vorm van je dag, wanneer je eet, hoe het op tafel komt, hoe vast het ligt, en daarna jouw ritme, met wat daar praktisch bij past. Geen dieet, geen schema.';
 ---
 
 <BasisLayout titel="Jouw eetritme" beschrijving={beschrijving}>
@@ -17,9 +17,9 @@ const beschrijving =
     <span class="rubriek">{eetritme.vragen.length} vragen · twee minuten</span>
     <h1>Wat is jouw eetritme?</h1>
     <p class="hero__intro">
-      Niet welk type je bent — wanneer je eet. Ontbijt je, of begin je met koffie? Staat de warme
-      maaltijd om zes uur op tafel of om half elf? Die vorm bepaalt in de praktijk meer over wat er
-      op een dag wél en niet langskomt dan welke lijst met superfoods ook.
+      Niet wát je eet, maar wannéér. Ontbijt je, of begin je met koffie? Staat het eten om zes uur
+      op tafel of om half elf? Zes vragen, en je krijgt jouw ritme terug, inclusief het moment
+      waar het bij zo'n dag meestal knelt, en wat daar praktisch bij past.
     </p>
   </div>
 

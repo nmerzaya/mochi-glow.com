@@ -15,7 +15,7 @@ import type { Vragenlijst } from '../lib/vragenlijst';
  *
  * Dit component bediende eerst alleen de routinetest. Sinds het eetritme erbij
  * kwam, staat de tekst volledig in de datamodules (`src/data/*.ts`) en zit hier
- * alleen nog de werking — anders waren er twee bijna gelijke bestanden van
+ * alleen nog de werking, anders waren er twee bijna gelijke bestanden van
  * driehonderd regels ontstaan, die onvermijdelijk uit elkaar gaan lopen.
  */
 
@@ -110,6 +110,18 @@ const beeldVan = (slug: string) => beelden[`../assets/artikelen/${slug}.jpg`]?.d
           </span>
         </div>
         <p class="routine__intro">{p.samenvatting}</p>
+        {/*
+          Het verhaal staat vóór de lijst, want dat is de volgorde waarin het
+          gelezen wordt: eerst herkennen dat het over jou gaat, dan pas kijken
+          wat je ermee doet.
+        */}
+        {p.verhaal && (
+          <div class="routine__verhaal">
+            {p.verhaal.map((alinea) => (
+              <p>{alinea}</p>
+            ))}
+          </div>
+        )}
         <ol class="stappen">
           {p.onderdelen.map((s) => (
             <li class="stap">
@@ -121,13 +133,15 @@ const beeldVan = (slug: string) => beelden[`../assets/artikelen/${slug}.jpg`]?.d
                   Een goedgekeurde claim wordt als citaat getoond en niet als onze
                   eigen zin. Dat is geen opmaakgrapje: de bewoording is letterlijk
                   voorgeschreven, en zo is ook zichtbaar dat het een aanhaling is.
+
+                  Het label erboven zei eerst "Toegestane EU-claim". Dat is taal
+                  voor wie de site bouwt, niet voor wie hem leest: een bezoeker
+                  weet niet wat een toegestane claim is en hoeft dat ook niet te
+                  weten. De aanhaling blijft, letterlijk, want dat is voorgeschreven
+                  maar het citaatteken en de streep doen nu het werk dat het
+                  etiket deed.
                 */}
-                {s.claim && (
-                  <p class="stap__claim">
-                    <span class="stap__claim-label">Toegestane EU-claim</span>
-                    {s.claim}
-                  </p>
-                )}
+                {s.claim && <p class="stap__claim">{s.claim}</p>}
                 {s.artikel && (
                   <a class="stap__link" href={s.artikel.pad}>
                     {s.artikel.titel} lezen →

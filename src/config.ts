@@ -21,7 +21,7 @@ export const site = {
  * Staat er al een advertentiescript op de site?
  *
  * Zolang dit `false` is, laadt Mochi Glow géén enkel script dat toestemming
- * vereist en verschijnt er dus ook geen toestemmingsvenster — een banner tonen
+ * vereist en verschijnt er dus ook geen toestemmingsvenster, een banner tonen
  * voor cookies die niet geplaatst worden is misleidend. Zet dit op `true` op het
  * moment dat AdSense is goedgekeurd (Fase 4 in TAKEN.md); vanaf dat moment
  * blokkeert Klaro het advertentiescript tot de bezoeker toestemming geeft.
@@ -29,7 +29,7 @@ export const site = {
 export const advertentiesActief = false;
 
 /**
- * Google Analytics 4 — het meet-ID, of `null` om statistieken helemaal uit te zetten.
+ * Google Analytics 4, het meet-ID, of `null` om statistieken helemaal uit te zetten.
  *
  * ── Waarom dit niet gewoon het knip-en-plakfragment van Google is ────────────
  *
@@ -39,7 +39,7 @@ export const advertentiesActief = false;
  *
  * 1. **Juridisch.** GA4 zet cookies en stuurt gegevens, waaronder het IP-adres,
  *    naar Google. Onder de ePrivacy-richtlijn en de AVG mag dat pas ná
- *    toestemming — niet ervoor, en niet op basis van "verder surfen geldt als
+ *    toestemming, niet ervoor, en niet op basis van "verder surfen geldt als
  *    akkoord". Het fragment ongewijzigd plaatsen is een overtreding vanaf de
  *    eerste bezoeker.
  * 2. **Deze site in het bijzonder.** `/privacybeleid` en `/cookiebeleid` stelden
@@ -58,10 +58,27 @@ export const advertentiesActief = false;
 export const ga4MeetID: string | null = 'G-NEXD4R5HL2';
 
 /**
+ * Toegangssleutel voor het contactformulier (Web3Forms), of `null`.
+ *
+ * De site is statisch en heeft geen server, dus een formulier heeft een externe
+ * ontvanger nodig. Web3Forms neemt de inzending aan en mailt hem door naar
+ * `site.contactEmail`. Een gratis sleutel vraag je aan op web3forms.com met je
+ * e-mailadres; er hoort geen account bij.
+ *
+ * Dit is een bewuste, begrensde uitzondering op "geen externe verzoeken": er
+ * gaat pas iets naar buiten als een bezoeker zélf op verzenden drukt. Bij het
+ * laden van de pagina gebeurt er niets. Wat er verstuurd wordt, naam, e-mail
+ * en bericht, staat beschreven in `/privacybeleid`.
+ *
+ * Zolang dit `null` is, toont `/contact` gewoon het e-mailadres in plaats van
+ * een formulier dat nergens aankomt.
+ */
+export const web3formsSleutel: string | null = 'c5d671ae-7229-48b8-98e4-4d25db8256cd';
+
+/**
  * De twee pijlers, op één plek.
  *
- * Hiervoor stonden deze namen als losse tekenreeksen door de hele site heen —
- * in een ternary in `ArtikelLayout.astro`, twee keer in `index.astro`, in beide
+ * Hiervoor stonden deze namen als losse tekenreeksen door de hele site heen, * in een ternary in `ArtikelLayout.astro`, twee keer in `index.astro`, in beide
  * overzichtspagina's en nog een keer in de CMS-configuratie. Dat liep
  * onvermijdelijk uit de pas: de CMS noemde de tweede pijler "Darm & huid"
  * terwijl de site "Voeding & huid" toonde. Eén bron van waarheid voorkomt dat.
@@ -80,48 +97,66 @@ export const pijlers = {
     naam: 'Wat zit erin?',
     pad: '/ingredienten',
     intro:
-      'Wat een ingrediënt uit Koreaanse huidverzorging werkelijk is, wat het onderzoek ernaar laat zien, en waar dat onderzoek ophoudt.',
+      'Snail mucin, centella, niacinamide: wat het is, waar het vandaan komt, en wat je er realistisch van mag verwachten.',
   },
   'gut-skin': {
     naam: 'Huid van binnenuit',
     pad: '/gut-skin',
     intro:
-      'Over het verband tussen wat je eet en hoe je huid eraan toe is — wat daarvan onderbouwd is, en wat er wettelijk over gezegd mag worden.',
+      'Wat je eet en hoe je slaapt doen mee met je huid. Hier lees je wat daarvan écht onderbouwd is, en wat er alleen maar vaak beweerd wordt.',
+  },
+  beauty: {
+    naam: 'Tips & routines',
+    pad: '/beauty',
+    intro:
+      'De praktijk: in welke volgorde je dingen opbrengt, waarom er in Korea twee keer gereinigd wordt, en welke gewoontes het verschil maken.',
   },
 } as const;
 
 export type PijlerSleutel = keyof typeof pijlers;
 
 /*
-  Makeup en Lifestyle staan hier bewust nog niet in: daar is nog geen artikel
-  voor, en een menu-item dat op een lege pagina uitkomt doet meer kwaad dan een
-  kort menu.
+  Makeup staat hier bewust nog niet in: daar is nog geen artikel voor, en een
+  menu-item dat op een lege pagina uitkomt doet meer kwaad dan een kort menu.
 */
 export const hoofdnavigatie = [
   { tekst: pijlers.ingredienten.naam, pad: pijlers.ingredienten.pad },
   { tekst: pijlers['gut-skin'].naam, pad: pijlers['gut-skin'].pad },
+  { tekst: pijlers.beauty.naam, pad: pijlers.beauty.pad },
   { tekst: 'Routinetest', pad: '/routine' },
   { tekst: 'Eetritme', pad: '/eetritme' },
-  { tekst: 'Over', pad: '/over' },
 ] as const;
 
+/*
+  "Over" staat sinds 2026-08-13 niet meer in het hoofdmenu. De pagina zelf bestaat
+  nog wel, Google verwacht bij de AdSense-beoordeling dat duidelijk is wie er
+  achter een site zit, en in een gezondheidsniche weegt dat zwaar, maar hij is
+  herschreven voor de lezer in plaats van voor de beheerder, en hij hoort bij de
+  voetteksten en niet tussen de rubrieken.
+
+  De affiliate-disclaimer is helemaal verdwenen. Er is op dit moment geen enkele
+  affiliate-link op de site, dus die pagina beschreef iets wat niet bestond.
+  Komt de eerste link er wel, dan verschijnt de disclosure automatisch als eerste
+  zin van dát artikel (zie `disclosureTekst` hieronder), dat is wat de RSM sinds
+  1 juli 2026 eist, en een losse pagina in de voettekst voldoet daar niet aan.
+*/
 export const voetnavigatie = {
   Rubrieken: [
     { tekst: pijlers.ingredienten.naam, pad: pijlers.ingredienten.pad },
     { tekst: pijlers['gut-skin'].naam, pad: pijlers['gut-skin'].pad },
+    { tekst: pijlers.beauty.naam, pad: pijlers.beauty.pad },
     { tekst: 'Routinetest', pad: '/routine' },
     { tekst: 'Eetritme', pad: '/eetritme' },
     { tekst: 'RSS-feed', pad: '/rss.xml' },
   ],
   Redactie: [
-    { tekst: 'Over', pad: '/over' },
+    { tekst: 'Wat je hier vindt', pad: '/over' },
     { tekst: 'Werkwijze', pad: '/redactionele-richtlijnen' },
     { tekst: 'Contact', pad: '/contact' },
   ],
   Juridisch: [
     { tekst: 'Privacybeleid', pad: '/privacybeleid' },
     { tekst: 'Cookiebeleid', pad: '/cookiebeleid' },
-    { tekst: 'Affiliate-disclaimer', pad: '/affiliate-disclaimer' },
     { tekst: 'Algemene voorwaarden', pad: '/algemene-voorwaarden' },
   ],
 } as const;

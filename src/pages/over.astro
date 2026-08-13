@@ -1,75 +1,64 @@
 ---
 import BasisLayout from '../layouts/BasisLayout.astro';
-import { site } from '../config';
+import { site, pijlers } from '../config';
+
+/*
+  Dit was een "over mij"-pagina met een persoonlijk verhaal en een opsomming van
+  wat er allemaal níét gedaan wordt. Sinds 2026-08-13 is dat teruggebracht tot
+  één korte pagina die vertelt wat je hier vindt.
+
+  Waarom hij niet helemaal weg is: Google kijkt bij de AdSense-beoordeling of
+  duidelijk is wie er achter een site zit, en in een gezondheids- en beautyniche
+  weegt dat zwaarder dan elders (`onderzoek/09`, par. 4.1: vormgeving en
+  herkenbaarheid dragen het vertrouwensoordeel). Hij staat daarom niet meer in
+  het hoofdmenu, alleen onderaan bij de voetteksten.
+*/
 ---
 
 <BasisLayout
-  titel="Over"
-  beschrijving="Waarom Mochi Glow bestaat, hoe de artikelen tot stand komen, en wat je hier bewust niet zult vinden."
+  titel="Wat je hier vindt"
+  beschrijving="Koreaanse huidverzorging uitgelegd: wat er in je producten zit, wat voeding ermee te maken heeft, en twee tests die je op weg helpen."
 >
   <div class="prozapagina">
-    <span class="rubriek rubriek--stil">Over</span>
-    <h1>Waarom deze site bestaat</h1>
-
+    <p class="rubriek">Welkom</p>
+    <h1>Wat je hier vindt</h1>
     <p>
-      Ik ben ingrediëntenlijsten gaan lezen omdat ik het niet meer kon volgen. Elk product beloofde
-      iets, elke video zei iets anders, en zodra ik probeerde te achterhalen of het klopte, kwam ik
-      uit bij een webshop die me hetzelfde product wilde verkopen. Wat ik zocht — wat ís dit
-      ingrediënt, en hoe weten we wat we denken te weten — stond er zelden bij.
-    </p>
-    <p>
-      Wat begon als aantekeningen voor mezelf werd deze site. Het uitgangspunt is simpel: uitleggen
-      wat een ingrediënt is, samenvatten wat erover onderzocht is, en erbij zetten waar dat onderzoek
-      ophoudt. Dat laatste valt meestal weg, en het is juist het stuk waar je iets aan hebt.
+      {site.naam} gaat over Koreaanse huidverzorging, en dan niet over welk potje het populairst is,
+      maar over wat er ín zit en wat dat doet. Want zodra je dát weet, kies je zelf beter dan welk
+      lijstje ook voor je kan doen.
     </p>
 
-    <h2>Hoe de artikelen tot stand komen</h2>
+    <h2>Twee dingen om te lezen</h2>
     <p>
-      Elk artikel gaat terug op gepubliceerde bronnen: Europese regelgeving, stofdatabanken en
-      peer-reviewed onderzoek. Die bronnen staan onderaan het artikel, met vermelding of het om een
-      primaire, secundaire of tertiaire bron gaat. Ze zijn allemaal geopend en gecontroleerd op het
-      moment van schrijven.
+      <strong><a href={pijlers.ingredienten.pad}>{pijlers.ingredienten.naam}</a></strong> neemt de
+      ingrediënten door die steeds terugkomen op een Koreaans etiket: centella, niacinamide,
+      galactomyces, snail mucin. Wat het is, waar het vandaan komt, en wat het onderzoek er wel en
+      niet over zegt.
     </p>
     <p>
-      Waar een onderzoek is uitgevoerd door de partij die het product verkoopt, staat dat erbij. Waar
-      het bewijs over een andere toedieningsvorm gaat dan waar het artikel over gaat, staat dat er
-      ook bij. Dat soort details bepaalt wat een uitkomst waard is.
-    </p>
-
-    <h2>Wat ik niet ben</h2>
-    <p>
-      Ik ben geen arts, dermatoloog, diëtist of huidtherapeut, en ik heb geen medische opleiding.
-      Alles hier is een samenvatting van openbaar beschikbaar onderzoek en officiële informatie,
-      geschreven door iemand die goed leest en netjes bronvermeldt.
-    </p>
-    <p>
-      Gebruik deze site dus als startpunt om je beter te informeren, niet als vervanging van iemand
-      die naar jouw huid of jouw klachten kan kijken.
+      <strong><a href={pijlers['gut-skin'].pad}>{pijlers['gut-skin'].naam}</a></strong> gaat over het
+      andere deel van het verhaal: wat je eet, hoe je slaapt, en hoe dat meespeelt. Geen
+      wonderdieet, wel wat er werkelijk over bekend is, en hoe je het in een gewone week past.
     </p>
 
-    <h2>Wat je hier niet vindt</h2>
-    <ul>
-      <li>
-        <strong>Geen producttests.</strong> Er worden hier geen producten gekocht om te testen, dus
-        je leest hier nooit dat iets "bij mij werkte". Dat zou ik niet kunnen waarmaken.
-      </li>
-      <li>
-        <strong>Geen beloftes over resultaat.</strong> Cosmetica mag in de EU geen medische werking
-        claimen, en ik ga dat ook niet impliciet doen.
-      </li>
-      <li>
-        <strong>Geen overgeschreven persberichten.</strong> Als een bewering nergens op terug te
-        voeren is, komt hij er niet in.
-      </li>
-    </ul>
-
+    <h2>En twee tests</h2>
     <p>
-      Meer over de werkwijze staat in de
-      <a href="/redactionele-richtlijnen">redactionele richtlijnen</a>. Vragen en correcties zijn
-      welkom via <a href="/contact">contact</a> — als er iets fout staat, pas ik het aan en zet ik
-      erbij dat het is aangepast.
+      De <a href="/routine">routinetest</a> vraagt hoe je huid aanvoelt en waar je zin in hebt, en
+      komt uit op een routine in stappen. Het <a href="/eetritme">eetritme</a> doet hetzelfde voor je
+      dag: wanneer je eet, hoe dat voelt, en wat daarbij past. Allebei in een minuutje gedaan, en
+      allebei bedoeld als startpunt, niet als oordeel over je huid.
     </p>
 
-    <p><small>{site.naam} — {site.tagline}</small></p>
+    <h2>Wie dit schrijft</h2>
+    <p>
+      Ik schrijf onder de naam {site.auteur}. Ik ben geen arts en geen huidtherapeut; ik lees
+      onderzoek, vat het samen in gewoon Nederlands en zet erbij hoe stevig het staat. Bij twijfel
+      over je huid of gezondheid is een echte behandelaar de aangewezen persoon.
+    </p>
+    <p>
+      Wil je weten hoe die artikelen tot stand komen, dan staat dat op
+      <a href="/redactionele-richtlijnen">de werkwijzepagina</a>. En zit er iets fout, mis je een
+      onderwerp of wil je samenwerken? <a href="/contact">Laat het weten</a>, ik lees alles zelf.
+    </p>
   </div>
 </BasisLayout>

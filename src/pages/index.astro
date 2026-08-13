@@ -14,10 +14,12 @@ const opDatum = (a: { data: { publicatiedatum: Date } }, b: { data: { publicatie
 
 const alleIngredienten = (await getCollection('ingredienten')).sort(opDatum);
 const alleGutSkin = (await getCollection('gut-skin')).sort(opDatum);
+const alleBeauty = (await getCollection('beauty')).sort(opDatum);
 
 const gecombineerd = [
   ...alleIngredienten.map((artikel) => ({ artikel, pijler: pijlers.ingredienten })),
   ...alleGutSkin.map((artikel) => ({ artikel, pijler: pijlers['gut-skin'] })),
+  ...alleBeauty.map((artikel) => ({ artikel, pijler: pijlers.beauty })),
 ].sort((a, b) => opDatum(a.artikel, b.artikel));
 
 /* `uitgelicht: true` wint; staat het nergens, dan wint het nieuwste artikel. */
@@ -39,9 +41,14 @@ const gutSkin = alleGutSkin
   .slice(0, 5)
   .map((a) => naarItem(a, pijlers['gut-skin']));
 
+const beauty = alleBeauty
+  .filter((a) => a.id !== uitgelicht?.artikel.id)
+  .slice(0, 5)
+  .map((a) => naarItem(a, pijlers.beauty));
+
 /*
   De cijfers over de site worden geteld, niet ingevuld. Komt er een artikel bij,
-  dan verandert de opening van de homepage vanzelf mee — en kan hij ook nooit
+  dan verandert de opening van de homepage vanzelf mee, en kan hij ook nooit
   gunstiger uitvallen dan de bronnenlijsten toestaan.
 */
 const totaal = telAlles(gecombineerd.map((item) => item.artikel.data.bronnen ?? []));
@@ -52,18 +59,18 @@ const eersteVraag = routinetest.vragen[0];
 <BasisLayout titel={site.naam} beschrijving={site.beschrijving}>
   {/*
     De opening. Alle informatie staat als echte tekst in de HTML en het contrast
-    komt van het verloopvlak, niet van het beeld — de eis uit onderzoek/06,
+    komt van het verloopvlak, niet van het beeld, de eis uit onderzoek/06,
     par. 4.2: de header moet volledig werken als je het beeld wegdenkt.
   */}
   <section class="opening">
     <div class="opening__woord">
       <p class="rubriek">
-        {gecombineerd.length} artikelen · {totaal.totaal} bronnen · geen enkel product getest
+        {gecombineerd.length} artikelen · {totaal.totaal} bronnen · 2 tests
       </p>
-      <h1 class="opening__kop">Bijna alles wat je leest over skincare is <em>verkoop</em>.</h1>
+      <h1 class="opening__kop">Weten wat er <em>in je potje</em> zit.</h1>
       <p class="opening__intro">
-        Dit niet. Per ingrediënt staat hier wat het is, wat erover bekend is en waar die kennis
-        ophoudt — met de vindplaats erbij, zodat je het zelf kunt nakijken.
+        Koreaanse huidverzorging staat vol ingrediënten waar je nog nooit van gehoord hebt. Hier
+        lees je wat ze zijn, wat je voeding ermee te maken heeft, en wat er écht over bekend is, met de vindplaats erbij, zodat je het zelf kunt nakijken.
       </p>
       <div class="opening__knoppen">
         <a class="knop" href={pijlers.ingredienten.pad}>Wat zit erin?</a>
@@ -96,6 +103,7 @@ const eersteVraag = routinetest.vragen[0];
     artikelen={gecombineerd.length}
     bronnen={totaal.totaal}
     aandeelPrimair={totaal.aandeelPrimair}
+    ingredienten={alleIngredienten.length}
   />
 
   <section class="sectie">
@@ -166,15 +174,29 @@ const eersteVraag = routinetest.vragen[0];
 
   <section class="sectie">
     <div class="sectie__kop">
+      <h2>{pijlers.beauty.naam}</h2>
+      <a href={pijlers.beauty.pad}>Alle {alleBeauty.length}</a>
+    </div>
+    {
+      beauty.length === 0 ? (
+        <p>Binnenkort meer.</p>
+      ) : (
+        <Stroom items={beauty} opening={false} />
+      )
+    }
+  </section>
+
+  <section class="sectie">
+    <div class="sectie__kop">
       <h2>Hoe dit werkt</h2>
       <a href="/redactionele-richtlijnen">De werkwijze</a>
     </div>
     <div class="uitleg">
       <p>
-        Ik koop geen producten en test dus niets. Wat ik wél doe: opzoeken wat er over een
-        ingrediënt gepubliceerd is, dat samenvatten in gewoon Nederlands, en erbij zetten hoe sterk
-        de onderbouwing is. De gekleurde streep onder elk artikel telt letterlijk de bronnen — groen
-        is origineel onderzoek of wetgeving, oranje is vakmedia, rood is een blog.
+        Achter elk ingrediënt zit onderzoek, en dat lees ik voor je door: wat er over gepubliceerd
+        is, samengevat in gewoon Nederlands, met erbij hoe sterk de onderbouwing eigenlijk is. De
+        gekleurde streep onder elk artikel telt letterlijk de bronnen, groen is origineel onderzoek
+        of wetgeving, oranje is vakmedia, rood is een blog.
       </p>
       <p>
         Soms is de eerlijke uitkomst dat er nauwelijks iets bekend is. Dan staat dat er ook. Dat is

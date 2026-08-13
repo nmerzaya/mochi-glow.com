@@ -1,54 +1,102 @@
 ---
 import BasisLayout from '../layouts/BasisLayout.astro';
-import { site } from '../config';
+import { site, web3formsSleutel } from '../config';
+
+/*
+  Een formulier in plaats van alleen een mailadres, want dit is de pagina waar
+  samenwerkingen binnenkomen en een mailto-link kost een drempel die je daar niet
+  wilt.
+
+  Zonder sleutel geen formulier: dan staat het e-mailadres er, en niets anders.
+  Een formulier dat bij verzenden in het niets verdwijnt is erger dan geen
+  formulier, de afzender denkt dat het bericht aangekomen is.
+*/
+const formulierWerkt = Boolean(web3formsSleutel);
 ---
 
 <BasisLayout
   titel="Contact"
-  beschrijving="Vragen, correcties of suggesties voor Mochi Glow? Zo neem je contact op."
+  beschrijving="Samenwerken met Mochi Glow, of iets aan te vullen op een artikel? Laat hier een bericht achter."
 >
   <div class="prozapagina">
-    <h1>Contact</h1>
+    <h1>Zeg eens hallo</h1>
     <p>
-      Vragen, correcties, of een bron die volgens jou ontbreekt of niet klopt: ik lees alles.
+      Werk je bij een merk, schrijf je zelf over huid en voeding, of heb je iets gelezen dat beter
+      kan? Laat een bericht achter, ik lees alles zelf.
     </p>
 
-    <h2>E-mail</h2>
-    <p>
-      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
-    </p>
-    <p>
-      Ik antwoord meestal binnen een paar dagen. Er staat bewust geen contactformulier op deze site:
-      een formulier vereist een externe dienst die gegevens van bezoekers verwerkt, en dat leek me
-      onnodig voor iets wat een e-mail ook kan.
-    </p>
+    {
+      formulierWerkt ? (
+        <form class="formulier" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value={web3formsSleutel} />
+          <input type="hidden" name="subject" value={`Nieuw bericht via ${site.naam}`} />
+          <input type="hidden" name="from_name" value={site.naam} />
+          <input type="hidden" name="redirect" value={new URL('/bedankt', site.url).href} />
+          {/*
+            Honeypot: onzichtbaar voor mensen, ingevuld door bots. Web3Forms
+            gooit de inzending dan weg. Geen captcha nodig, en dus ook geen
+            script van een derde partij dat bij het laden al meekijkt.
+          */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="honingpot"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
 
-    <h2>Waar ik graag over hoor</h2>
+          <div class="formulier__rij">
+            <label class="veld">
+              <span class="veld__naam">Je naam</span>
+              <input class="veld__invoer" type="text" name="naam" required autocomplete="name" />
+            </label>
+
+            <label class="veld">
+              <span class="veld__naam">E-mailadres</span>
+              <input class="veld__invoer" type="email" name="email" required autocomplete="email" />
+            </label>
+          </div>
+
+          <label class="veld">
+            <span class="veld__naam">
+              Merk of organisatie <span class="veld__bijzin">,  als je namens iemand schrijft</span>
+            </span>
+            <input class="veld__invoer" type="text" name="organisatie" autocomplete="organization" />
+          </label>
+
+          <label class="veld">
+            <span class="veld__naam">Waar gaat het over?</span>
+            <textarea class="veld__invoer veld__invoer--groot" name="bericht" rows="6" required />
+          </label>
+
+          <button class="knop" type="submit">Versturen</button>
+
+          <p class="formulier__klein">
+            Je naam, e-mailadres en bericht worden verstuurd via Web3Forms en komen bij mij in de
+            mail. Meer daarover in het <a href="/privacybeleid">privacybeleid</a>.
+          </p>
+        </form>
+      ) : (
+        <p class="melding">
+          Het formulier staat nog niet aan. Mail zolang naar{' '}
+          <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+        </p>
+      )
+    }
+
+    <h2>Waar ik blij van word</h2>
     <ul>
-      <li>Feitelijke fouten of verouderde informatie in een artikel.</li>
-      <li>Een bron die niet meer bestaat of iets anders zegt dan ik beweer.</li>
-      <li>Onderwerpen die je mist.</li>
-      <li>Onduidelijke uitleg — als iets niet te volgen is, is dat mijn fout, niet die van jou.</li>
+      <li>Samenwerkingen met merken die passen bij wat hier staat.</li>
+      <li>Onderwerpen die je mist, of een ingrediënt waar je meer over wilt weten.</li>
+      <li>Een bron die niet klopt of niet meer bestaat, graag zelfs.</li>
+      <li>Uitleg die niet te volgen was. Als iets onduidelijk is, ligt dat aan mij.</li>
     </ul>
 
-    <h2>Waar ik niet op kan ingaan</h2>
-    <ul>
-      <li>
-        <strong>Persoonlijk advies over jouw huid of gezondheid.</strong> Ik ben geen arts of
-        huidtherapeut en kan niet beoordelen wat bij jou past. Daarvoor moet je bij iemand zijn die
-        je persoonlijk kan zien.
-      </li>
-      <li>
-        <strong>Verzoeken om betaalde artikelen, gastblogs of linkplaatsingen.</strong> Die worden
-        niet geplaatst, ook niet als ze als "samenwerking" worden aangeboden.
-      </li>
-    </ul>
-
-    <h2>Voor merken en persbureaus</h2>
+    <h2>Wat ik niet kan doen</h2>
     <p>
-      Er worden geen producten aangenomen ter beoordeling. Deze site test niet en schrijft geen
-      reviews op basis van eigen gebruik; toegestuurde producten zouden daar niets aan veranderen en
-      worden niet geaccepteerd.
+      Persoonlijk advies over jouw huid of gezondheid. Ik ben geen arts of huidtherapeut en kan niet
+      beoordelen wat bij jou past, daarvoor wil je iemand die je echt kan zien.
     </p>
   </div>
 </BasisLayout>
