@@ -25,3 +25,13 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Hulpmiddel om de beeldreeks in een keer na te kijken; geen onderdeel van de site.
+contactblad.jpg
+
+# Logbestanden van de wekelijkse, onbewaakte Claude Code-run (scripts/wekelijkse-content.ps1).
+logs/
+
+# Werkmap voor de beeldkeuze: contactbladen met kandidaten en de keuzelijst.
+# Alleen het gekozen beeld belandt in src/assets/ en dus in de repo.
+beeldkeuze/

@@ -7,7 +7,7 @@
  *
  * Wat hier gemaakt wordt en waarom:
  *
- *   favicon.svg        met de hand geschreven, staat al in public/ — de bron.
+ *   favicon.svg        met de hand geschreven, staat al in public/, de bron.
  *   favicon-32.png     terugval voor browsers die geen SVG-icoon nemen.
  *   favicon-180.png    apple-touch-icon; iOS negeert SVG volledig.
  *   og-standaard.jpg   de kaart die verschijnt als iemand de site deelt.
@@ -33,7 +33,7 @@ const svg = await readFile(join(publiek, 'favicon.svg'));
 for (const maat of [32, 180]) {
   const uit = await sharp(svg, { density: 384 }).resize(maat, maat).png().toBuffer();
   await writeFile(join(publiek, `favicon-${maat}.png`), uit);
-  console.log(`✓ favicon-${maat}.png — ${Math.round(uit.length / 1024)} kB`);
+  console.log(`✓ favicon-${maat}.png, ${Math.round(uit.length / 1024)} kB`);
 }
 
 /* ── De deelkaart ──────────────────────────────────────────────────────── */
@@ -47,7 +47,7 @@ for (const maat of [32, 180]) {
   sharp rendert tekst via de lettertypen van het systeem, en welke dat zijn
   verschilt per machine. Een merknaam die op de ene computer in Fraunces en op de
   andere in Arial staat, is erger dan geen merknaam. Vandaar de naam als
-  uitgeschreven vormen — die zien er overal hetzelfde uit.
+  uitgeschreven vormen, die zien er overal hetzelfde uit.
 */
 const achtergrondKandidaten = [
   'rijstextract.jpg',
@@ -102,5 +102,5 @@ if (!bron) {
     .toBuffer();
 
   await writeFile(join(publiek, 'og-standaard.jpg'), kaart);
-  console.log(`✓ og-standaard.jpg — ${B}×${H}, ${Math.round(kaart.length / 1024)} kB`);
+  console.log(`✓ og-standaard.jpg, ${B}×${H}, ${Math.round(kaart.length / 1024)} kB`);
 }
