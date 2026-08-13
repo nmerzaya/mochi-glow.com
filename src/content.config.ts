@@ -39,7 +39,7 @@ const gedeeldeVelden = (image: ImageFunction) => ({
   bronnen: z.array(bron).default([]),
   /**
    * De kleur van dit artikel: kleurt het vlak achter het beeld, het
-   * rubrieklabel en de accenten op de kaart. Puur een teken in de opmaak — het
+   * rubrieklabel en de accenten op de kaart. Puur een teken in de opmaak, het
    * beeld zelf is voor alle artikelen in dezelfde stijl gemaakt, zonder
    * kleurvariatie per artikel, anders zou de reeks in vier families uiteenvallen.
    */
@@ -75,7 +75,7 @@ const gedeeldeVelden = (image: ImageFunction) => ({
    * dezelfde optimalisatie heen; `npm run check` bewaakt dat het er één tot drie
    * zijn en dat ze alt-tekst hebben.
    *
-   * `alt` is geen formaliteit maar een toegankelijkheidseis (WCAG 2.2 — zie
+   * `alt` is geen formaliteit maar een toegankelijkheidseis (WCAG 2.2, zie
    * onderzoek/04, par. 4.4).
    */
   afbeelding: image(),
@@ -83,7 +83,7 @@ const gedeeldeVelden = (image: ImageFunction) => ({
 });
 
 /**
- * Pijler 1 — K-beauty-ingrediënten. Commercieel; hier mogen affiliate-links staan.
+ * Pijler 1, K-beauty-ingrediënten. Commercieel; hier mogen affiliate-links staan.
  */
 const ingredienten = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/ingredienten' }),
@@ -111,14 +111,14 @@ const ingredienten = defineCollection({
             code: z.ZodIssueCode.custom,
             path: ['productType'],
             message:
-              'affiliate: true vereist een productType — cosmetica of voeding-supplement bepalen welk wettelijk regime geldt',
+              'affiliate: true vereist een productType, cosmetica of voeding-supplement bepalen welk wettelijk regime geldt',
           });
         }
       }),
 });
 
 /**
- * Pijler 2 — huid van binnenuit. Twee sporen in één collectie.
+ * Pijler 2, huid van binnenuit. Twee sporen in één collectie.
  *
  * Tot augustus 2026 stonden `affiliate` en `productType` hier op een vaste
  * waarde: de pijler kón niets verkopen. Dat was geen willekeur. De NVWA verbiedt
@@ -126,7 +126,7 @@ const ingredienten = defineCollection({
  * een site-onderdeel dat een levensmiddel aanprijst (DV8-03). Door daar niets te
  * verkopen mochten die artikelen wél vrij naar onderzoek verwijzen.
  *
- * Die keuze blijft geldig — alleen niet meer als eigenschap van de hele pijler,
+ * Die keuze blijft geldig, alleen niet meer als eigenschap van de hele pijler,
  * maar van het artikel. Er zijn precies twee toegestane sporen:
  *
  *   wetenschap    productType 'geen', affiliate false
@@ -158,10 +158,50 @@ const gutSkin = defineCollection({
             code: z.ZodIssueCode.custom,
             path: ['productType'],
             message:
-              'een artikel met affiliate-links in deze pijler prijst een levensmiddel aan en moet daarom productType: voeding-supplement hebben — daarmee vervalt het recht om naar onderzoek te verwijzen',
+              'een artikel met affiliate-links in deze pijler prijst een levensmiddel aan en moet daarom productType: voeding-supplement hebben, daarmee vervalt het recht om naar onderzoek te verwijzen',
           });
         }
       }),
 });
 
-export const collections = { ingredienten, 'gut-skin': gutSkin };
+/**
+ * Pijler 3, Beauty: tips en werkwijzen.
+ *
+ * Toegevoegd op 2026-08-13. Waar de eerste pijler uitlegt wát een ingrediënt is,
+ * gaat deze over de handeling: in welke volgorde je iets opbrengt, waarom er in
+ * Korea twee keer gereinigd wordt, wat een sheetmasker eigenlijk ís.
+ *
+ * Het schema is dat van de ingrediëntenpijler, met één verschil: `inci` hoort er
+ * niet bij, want een tip is geen stof. `productType` staat standaard op `geen`, * zolang een artikel geen specifiek product aanprijst, is er ook geen regime dat
+ * geldt. Zodra er wél een product met een affiliate-link in komt, dwingt dezelfde
+ * controle als bij de eerste pijler `cosmetica` af, en dan gelden Verordening
+ * 1223/2009 en 655/2013 onverkort: geen enkele belofte over werking.
+ *
+ * Let op wat dit betekent voor de taalcontrole: juist in tips ligt therapeutische
+ * taal op de loer ("kalmeert", "herstelt de barrière"). `npm run check` weigert
+ * die woorden hier net zo hard als elders. Beschrijf de handeling, niet het
+ * beloofde resultaat.
+ */
+const beauty = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/beauty' }),
+  schema: ({ image }) =>
+    z
+      .object({
+        ...gedeeldeVelden(image),
+        affiliate: z.boolean().default(false),
+        productType: z.enum(['cosmetica', 'geen']).default('geen'),
+        gezondheidsclaims: z.boolean().default(false),
+      })
+      .superRefine((data, ctx) => {
+        if (data.affiliate && data.productType === 'geen') {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ['productType'],
+            message:
+              'affiliate: true vereist productType: cosmetica, anders staat er een aanprijzing zonder dat het cosmeticaregime aanstaat',
+          });
+        }
+      }),
+});
+
+export const collections = { ingredienten, 'gut-skin': gutSkin, beauty };

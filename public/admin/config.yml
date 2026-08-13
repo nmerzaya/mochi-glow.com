@@ -1,7 +1,7 @@
-# Sveltia CMS — beheerinterface voor Mochi Glow
+# Sveltia CMS, beheerinterface voor Mochi Glow
 #
 # De velden hieronder komen exact overeen met het schema in src/content.config.ts.
-# Wijkt er iets af, dan faalt de build met een schemafout — dat is de bedoeling.
+# Wijkt er iets af, dan faalt de build met een schemafout, dat is de bedoeling.
 #
 backend:
   name: github
@@ -53,7 +53,7 @@ collections:
         default: geen
         options:
           - { label: 'Cosmetica (Verordening 1223/2009)', value: cosmetica }
-          - { label: 'Voeding of supplement (Verordening 1924/2006 — strenger)', value: voeding-supplement }
+          - { label: 'Voeding of supplement (Verordening 1924/2006, strenger)', value: voeding-supplement }
           - { label: 'Niet van toepassing', value: geen }
       - { name: gezondheidsclaims, label: Raakt gezondheidsonderwerpen, widget: boolean, default: false, hint: 'Zet de medische disclaimer aan. Vereist minimaal 2 bronnen.' }
       - { name: inci, label: INCI-naam, widget: string, required: false }
@@ -89,9 +89,9 @@ collections:
             label: Soort bron
             widget: select
             options:
-              - { label: 'A — primair of officieel', value: A }
-              - { label: 'B — secundair, vakmedia of onderzoek', value: B }
-              - { label: 'C — tertiair', value: C }
+              - { label: 'A, primair of officieel', value: A }
+              - { label: 'B, secundair, vakmedia of onderzoek', value: B }
+              - { label: 'C, tertiair', value: C }
       - name: taalUitzonderingen
         label: Uitzonderingen op de taalcontrole
         widget: list
@@ -108,9 +108,9 @@ collections:
     label_singular: Artikel over voeding en huid
     description: >-
       Pijler 2, met twee sporen. WETENSCHAP: soort product op "Niet van toepassing"
-      en geen affiliate-links — zo'n artikel mag vrij naar onderzoek verwijzen.
+      en geen affiliate-links, zo'n artikel mag vrij naar onderzoek verwijzen.
       COMMERCIEEL: soort product op "Voeding of supplement", affiliate-links
-      toegestaan — maar dan mag er nergens meer naar onderzoek verwezen worden, ook
+      toegestaan, maar dan mag er nergens meer naar onderzoek verwezen worden, ook
       niet in woorden, en gelden alleen de letterlijk goedgekeurde EU-claims. Iets
       ertussenin bestaat niet en wordt door de build geweigerd.
     folder: src/content/gut-skin
@@ -135,11 +135,11 @@ collections:
         hint: >-
           Dit bepaalt alles. "Niet van toepassing" is het wetenschapsspoor: verwijzen naar
           onderzoek mag, verkopen niet. "Voeding of supplement" is het commerciële spoor:
-          affiliate-links mogen, maar verwijzen naar onderzoek mag dan nergens meer — ook
+          affiliate-links mogen, maar verwijzen naar onderzoek mag dan nergens meer, ook
           niet in woorden als "uit een studie blijkt".
         options:
-          - { label: 'Niet van toepassing — wetenschapsspoor', value: geen }
-          - { label: 'Voeding of supplement — commercieel spoor (Verordening 1924/2006)', value: voeding-supplement }
+          - { label: 'Niet van toepassing, wetenschapsspoor', value: geen }
+          - { label: 'Voeding of supplement, commercieel spoor (Verordening 1924/2006)', value: voeding-supplement }
       - name: affiliate
         label: Bevat affiliate-links
         widget: boolean
@@ -179,9 +179,86 @@ collections:
             label: Soort bron
             widget: select
             options:
-              - { label: 'A — primair of officieel', value: A }
-              - { label: 'B — secundair, vakmedia of onderzoek', value: B }
-              - { label: 'C — tertiair', value: C }
+              - { label: 'A, primair of officieel', value: A }
+              - { label: 'B, secundair, vakmedia of onderzoek', value: B }
+              - { label: 'C, tertiair', value: C }
+      - name: taalUitzonderingen
+        label: Uitzonderingen op de taalcontrole
+        widget: list
+        required: false
+        summary: '{{fields.term}}'
+        fields:
+          - { name: term, label: Term, widget: string }
+          - { name: reden, label: Waarom is dit hier geen claim, widget: text }
+      - { name: body, label: Artikel, widget: markdown }
+
+  - name: beauty
+    label: Tips & routines
+    label_singular: Beauty-artikel
+    description: >-
+      Pijler 3. Gaat over de handeling: volgorde, gewoontes, werkwijzen. Zodra je
+      hier een affiliate-link plaatst, moet "Soort product" op cosmetica staan, dan gelden Verordening 1223/2009 en 655/2013 en mag er geen enkele belofte
+      over werking in staan.
+    folder: src/content/beauty
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: titel, label: Titel, widget: string, pattern: ['^.{10,80}$', 'Tussen 10 en 80 tekens.'] }
+      - name: beschrijving
+        label: Korte beschrijving
+        widget: text
+        pattern: ['^[\s\S]{50,200}$', 'Tussen 50 en 200 tekens.']
+      - { name: publicatiedatum, label: Publicatiedatum, widget: datetime, format: 'YYYY-MM-DD', time_format: false }
+      - { name: bijgewerkt, label: Bijgewerkt op, widget: datetime, format: 'YYYY-MM-DD', time_format: false, required: false }
+      - { name: auteur, label: Auteur, widget: string, default: Noor }
+      - name: affiliate
+        label: Bevat affiliate-links
+        widget: boolean
+        default: false
+        hint: 'Zet de reclame-disclosure automatisch als eerste blok boven het artikel.'
+      - name: productType
+        label: Soort product
+        widget: select
+        default: geen
+        options:
+          - { label: 'Cosmetica (Verordening 1223/2009)', value: cosmetica }
+          - { label: 'Niet van toepassing', value: geen }
+      - { name: gezondheidsclaims, label: Raakt gezondheidsonderwerpen, widget: boolean, default: false, hint: 'Zet de medische disclaimer aan. Vereist minimaal 2 bronnen.' }
+      - name: accent
+        label: Accentkleur
+        widget: select
+        default: roze
+        options: [roze, paars, perzik, mint]
+      - name: afbeelding
+        label: Beeld bovenaan
+        widget: image
+        media_library:
+          config:
+            multiple: false
+        hint: 'Verplicht. Kies een echte foto uit src/assets/artikelen, geen gegenereerd beeld.'
+      - name: alt
+        label: Beschrijving van het beeld
+        widget: string
+        pattern: ['^.{10,}$', 'Minimaal 10 tekens.']
+      - { name: uitgelicht, label: Uitgelicht, widget: boolean, default: false, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - name: bronnen
+        label: Bronnen
+        widget: list
+        required: false
+        summary: '{{fields.titel}}'
+        fields:
+          - { name: titel, label: Titel van de bron, widget: string }
+          - { name: url, label: Link, widget: string }
+          - name: type
+            label: Soort bron
+            widget: select
+            options:
+              - { label: 'A, primair of officieel', value: A }
+              - { label: 'B, secundair, vakmedia of onderzoek', value: B }
+              - { label: 'C, tertiair', value: C }
       - name: taalUitzonderingen
         label: Uitzonderingen op de taalcontrole
         widget: list

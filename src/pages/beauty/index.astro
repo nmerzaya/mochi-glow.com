@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BasisLayout from '../../layouts/BasisLayout.astro';
+import Stroom from '../../components/Stroom.astro';
+import { pijlers } from '../../config';
+
+const pijler = pijlers.beauty;
+
+const artikelen = (await getCollection('beauty')).sort(
+  (a, b) => b.data.publicatiedatum.getTime() - a.data.publicatiedatum.getTime(),
+);
+
+const items = artikelen.map((artikel) => ({
+  ...artikel.data,
+  url: `${pijler.pad}/${artikel.id}`,
+  rubriek: pijler.naam,
+}));
+---
+
+<BasisLayout titel={pijler.naam} beschrijving={pijler.intro}>
+  <div class="hero">
+    <span class="rubriek rubriek--stil">{artikelen.length} artikelen</span>
+    <h1>{pijler.naam}</h1>
+    <p class="hero__intro">
+      Je kunt alles weten over wat er in een potje zit en nog steeds niet weten in welke volgorde het
+      moet. Dit is het praktische deel: hoe een Koreaanse routine is opgebouwd, waarom bepaalde
+      gewoontes bestaan, en wat je gerust kunt overslaan.
+    </p>
+  </div>
+
+  {
+    items.length === 0 ? (
+      <p>Er staan nog geen artikelen in deze rubriek.</p>
+    ) : (
+      <Stroom items={items} />
+    )
+  }
+</BasisLayout>

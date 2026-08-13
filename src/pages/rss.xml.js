@@ -5,10 +5,12 @@ import { site } from '../config';
 export async function GET(context) {
   const ingredienten = await getCollection('ingredienten');
   const gutSkin = await getCollection('gut-skin');
+  const beauty = await getCollection('beauty');
 
   const items = [
     ...ingredienten.map((artikel) => ({ artikel, pad: 'ingredienten' })),
     ...gutSkin.map((artikel) => ({ artikel, pad: 'gut-skin' })),
+    ...beauty.map((artikel) => ({ artikel, pad: 'beauty' })),
   ]
     .sort((a, b) => b.artikel.data.publicatiedatum.getTime() - a.artikel.data.publicatiedatum.getTime())
     .map(({ artikel, pad }) => ({
@@ -21,7 +23,7 @@ export async function GET(context) {
     }));
 
   return rss({
-    title: `${site.naam} — ${site.tagline}`,
+    title: `${site.naam}, ${site.tagline}`,
     description: site.beschrijving,
     site: context.site ?? site.url,
     items,
