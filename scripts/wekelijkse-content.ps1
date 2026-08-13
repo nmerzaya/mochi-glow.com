@@ -1,4 +1,4 @@
-# Wekelijkse content — start Claude Code onbewaakt met scripts/wekelijkse-content-opdracht.md
+# Wekelijkse content, start Claude Code onbewaakt met scripts/wekelijkse-content-opdracht.md
 #
 # Bedoeld voor Windows Taakplanner, wekelijks, terwijl je pc aan en ingelogd
 # staat (Claude Code gebruikt je bestaande login, geen los API-sleutel nodig).

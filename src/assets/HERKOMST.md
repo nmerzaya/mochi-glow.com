@@ -5,7 +5,7 @@ Geschreven door `scripts/haal-stockbeeld.mjs`; niet met de hand bijwerken.
 ## Regels
 
 1. Beeld wordt één keer opgehaald en in de repo gezet. De site zelf verbindt
-   nooit met een externe beelddienst — dat zou de invariant "geen externe
+   nooit met een externe beelddienst, dat zou de invariant "geen externe
    verzoeken" breken.
 2. **Licentie.** Wikimedia-materiaal is uitsluitend CC0 of publiek domein.
    Pexels-materiaal valt onder de Pexels-licentie: gratis voor commercieel
@@ -18,7 +18,7 @@ Geschreven door `scripts/haal-stockbeeld.mjs`; niet met de hand bijwerken.
 
 ## Werkwijze
 
-- **Bronnen:** pexels. Pexels voorop met een gratis sleutel — dat is de enige
+- **Bronnen:** pexels. Pexels voorop met een gratis sleutel, dat is de enige
   route naar het origineel. Openverse levert voor rawpixel en StockSnap alleen
   previews van 1024 respectievelijk 960 px, ongeacht hoe groot het origineel is;
   elk URL-patroon naar een groter formaat gaf 404 (gemeten 2026-08-13). Wikimedia
@@ -29,7 +29,7 @@ Geschreven door `scripts/haal-stockbeeld.mjs`; niet met de hand bijwerken.
   houden.
 - **Nabewerking:** bijgesneden naar 16:9 op 2048 px breed met
   aandachtsgestuurde uitsnede, verzadiging naar 0,87, een kleine contraststap en
-  fijne korrel in soft-light — dezelfde gradatie voor alle beelden, zodat de
+  fijne korrel in soft-light, dezelfde gradatie voor alle beelden, zodat de
   reeks samenhangt.
 
 ## Beelden (93)
