@@ -21,7 +21,7 @@ taalUitzonderingen:
   - term: genezen
     reden: 'Wordt gebruikt in de opsomming van wat een cosmeticaproduct volgens Verordening 1223/2009 niet mag claimen, niet als eigenschap van een product.'
 bronnen:
-  - titel: 'CosIng — Centella Asiatica Extract, Europese databank van cosmetische ingrediënten'
+  - titel: 'CosIng, Centella Asiatica Extract, Europese databank van cosmetische ingrediënten'
     url: 'https://ec.europa.eu/growth/tools-databases/cosing/'
     type: A
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -35,7 +35,7 @@ Cica. Je ziet het op tubes met een groen blaadje erop, op producten die "repair"
 
 Centella asiatica is een kruipende plant die van nature groeit in vochtige gebieden in Azië. In het Nederlands wordt hij soms waternavel genoemd. De plant komt voor in traditionele geneeswijzen in onder meer India, China en Indonesië, waar hij al eeuwen wordt gebruikt.
 
-Die geschiedenis is interessant, maar hij is geen bewijs. Dat een plant lang gebruikt is, betekent dat mensen er lang vertrouwen in hadden — niet dat het werkt zoals gedacht. Traditie is een reden om iets te onderzoeken, geen vervanging van dat onderzoek.
+Die geschiedenis is interessant, maar hij is geen bewijs. Dat een plant lang gebruikt is, betekent dat mensen er lang vertrouwen in hadden, niet dat het werkt zoals gedacht. Traditie is een reden om iets te onderzoeken, geen vervanging van dat onderzoek.
 
 ## Wat er in zit
 
@@ -43,7 +43,7 @@ Het extract bevat een groep stoffen die triterpenen worden genoemd. De vier die 
 
 Dat onderscheid doet ertoe. Een product met "Centella Asiatica Extract" bevat een plantextract waarvan de samenstelling kan variëren met het groeigebied, het oogstmoment en de extractiemethode. Een product met een afzonderlijk genoemd triterpeen bevat een specifieke stof in een specifieke hoeveelheid. Dat laatste is beter te standaardiseren, en daardoor ook beter te onderzoeken.
 
-Je ziet daarnaast de term "TECA" of "madecassol" langskomen. Dat verwijst naar een gestandaardiseerd mengsel van die triterpenen, dat in sommige landen een geregistreerde medische toepassing kent — en dat is precies waar het verwarrend wordt.
+Je ziet daarnaast de term "TECA" of "madecassol" langskomen. Dat verwijst naar een gestandaardiseerd mengsel van die triterpenen, dat in sommige landen een geregistreerde medische toepassing kent, en dat is precies waar het verwarrend wordt.
 
 ![Gedroogde centellablaadjes en dunne steeltjes los in een ondiepe, ongeglazuurde keramieken schaal.](../../assets/artikelen/centella-asiatica-2.jpg)
 
@@ -53,9 +53,9 @@ Hier zit de kern van waarom je online zulke stellige verhalen leest en op de ver
 
 Gestandaardiseerde centella-extracten worden in verschillende landen gebruikt in producten die als geneesmiddel zijn geregistreerd, onder meer in wondverzorging. Dat is een andere categorie, met een ander toelatingstraject, andere concentraties, en toezicht dat past bij een geneesmiddel.
 
-Een cosmeticaproduct met centella is iets anders. In de Europese Unie definieert Verordening 1223/2009 cosmetica als producten bedoeld om te reinigen, te parfumeren, het uiterlijk te wijzigen, te beschermen of in goede staat te houden. Zodra een product een therapeutische werking claimt — genezen, behandelen, een aandoening aanpakken — valt het niet meer onder die definitie en gelden de veel zwaardere eisen voor geneesmiddelen.
+Een cosmeticaproduct met centella is iets anders. In de Europese Unie definieert Verordening 1223/2009 cosmetica als producten bedoeld om te reinigen, te parfumeren, het uiterlijk te wijzigen, te beschermen of in goede staat te houden. Zodra een product een therapeutische werking claimt, genezen, behandelen, een aandoening aanpakken, valt het niet meer onder die definitie en gelden de veel zwaardere eisen voor geneesmiddelen.
 
-Het gevolg: een merk mag over een cica-crème schrijven dat hij de huid kalmeert en verzacht, maar niet dat hij ontstekingsremmend werkt. Dat laatste is een farmacologische term, en het gebruik ervan zou het product juridisch in een andere categorie duwen. Als je die term toch tegenkomt bij een cosmeticaproduct, is dat een teken dat iemand de grens overschrijdt — niet dat het product beter is.
+Het gevolg: een merk mag over een cica-crème schrijven dat hij de huid kalmeert en verzacht, maar niet dat hij ontstekingsremmend werkt. Dat laatste is een farmacologische term, en het gebruik ervan zou het product juridisch in een andere categorie duwen. Als je die term toch tegenkomt bij een cosmeticaproduct, is dat een teken dat iemand de grens overschrijdt, niet dat het product beter is.
 
 ## Wat onderzocht is
 

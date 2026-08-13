@@ -15,10 +15,10 @@ tags:
   - slakkenfiltraat
   - hydratatie
 bronnen:
-  - titel: 'CosIng — Snail Secretion Filtrate, Europese databank van cosmetische ingrediënten'
+  - titel: 'CosIng, Snail Secretion Filtrate, Europese databank van cosmetische ingrediënten'
     url: 'https://ec.europa.eu/growth/tools-databases/cosing/'
     type: A
-  - titel: 'Verordening (EU) nr. 655/2013 — gemeenschappelijke criteria voor claims over cosmetische producten'
+  - titel: 'Verordening (EU) nr. 655/2013, gemeenschappelijke criteria voor claims over cosmetische producten'
     url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A32013R0655'
     type: A
 ---
@@ -41,7 +41,7 @@ Dit is het onderdeel waar de meeste vragen over gaan, en waar de meeste onduidel
 
 Er bestaan verschillende winningsmethoden. In sommige gevallen kruipen slakken over een oppervlak of net, waarna het achtergebleven slijm wordt opgevangen. In andere gevallen wordt de afscheiding actiever gestimuleerd. Die methoden verschillen aanzienlijk in hoe belastend ze voor het dier zijn, en fabrikanten zijn er niet altijd even open over.
 
-Wat je op een verpakking wél kunt tegenkomen zijn keurmerken of vermeldingen over dierenwelzijn, en soms een omschrijving van het proces op de website van het merk. Wat je er níet uit kunt afleiden is hoe het er in de praktijk aan toeging, want daar bestaat geen algemeen verplichte, controleerbare standaard voor. Wie hier waarde aan hecht — en dat is een legitieme afweging — zit dus met een informatieprobleem dat niet door de ingrediëntenlijst wordt opgelost.
+Wat je op een verpakking wél kunt tegenkomen zijn keurmerken of vermeldingen over dierenwelzijn, en soms een omschrijving van het proces op de website van het merk. Wat je er níet uit kunt afleiden is hoe het er in de praktijk aan toeging, want daar bestaat geen algemeen verplichte, controleerbare standaard voor. Wie hier waarde aan hecht, en dat is een legitieme afweging, zit dus met een informatieprobleem dat niet door de ingrediëntenlijst wordt opgelost.
 
 Het is ook goed om te weten dat er inmiddels laboratoriumvarianten bestaan die de samenstelling proberen na te bootsen zonder slakken. Die staan onder andere namen op de ingrediëntenlijst.
 
@@ -55,7 +55,7 @@ Dat mechanisme is redelijk goed te begrijpen en niet controversieel. Als je iets
 
 Waar het onderzoek dunner wordt, is bij de verdergaande beweringen. Rond dit ingrediënt circuleren claims over littekens, over rimpels, en over huidproblemen. Die claims steunen vaak op laboratoriumonderzoek waarin cellen in een schaaltje werden blootgesteld aan filtraat, of op kleine studies met een beperkt aantal deelnemers en een korte looptijd.
 
-Zulk onderzoek is niet waardeloos — het is vaak juist de eerste stap — maar het is wel iets anders dan bewijs dat het bij dagelijks gebruik op een gezicht een zichtbaar verschil maakt. En bij een ingrediënt waarvan de samenstelling per partij kan verschillen, is de vertaalslag van laboratorium naar badkamerplank extra wankel: het spul in de studie is niet noodzakelijk hetzelfde spul als in het flesje.
+Zulk onderzoek is niet waardeloos, het is vaak juist de eerste stap, maar het is wel iets anders dan bewijs dat het bij dagelijks gebruik op een gezicht een zichtbaar verschil maakt. En bij een ingrediënt waarvan de samenstelling per partij kan verschillen, is de vertaalslag van laboratorium naar badkamerplank extra wankel: het spul in de studie is niet noodzakelijk hetzelfde spul als in het flesje.
 
 ## Waarom de teksten op de verpakking zo voorzichtig zijn
 
@@ -63,7 +63,7 @@ Het valt op dat merken over dit ingrediënt vooral schrijven over "een gladdere,
 
 In de Europese Unie stelt Verordening 655/2013 gemeenschappelijke criteria vast waaraan claims over cosmetische producten moeten voldoen. Twee daarvan zijn hier relevant: een claim moet waarheidsgetrouw zijn en moet onderbouwd kunnen worden met bewijs. Daarnaast mag een cosmetisch product geen medische werking toeschrijven aan zichzelf.
 
-Het gevolg is dat een merk wel mag zeggen dat een product de huid hydrateert — dat is meetbaar en aantoonbaar — maar niet dat het een huidaandoening aanpakt. Dat verschil tussen wat op de doos staat en wat er in enthousiaste online berichten staat, is dus geen bescheidenheid maar wetgeving. En het is een bruikbaar kompas: hoe verder een bewering afstaat van wat het merk zelf op de verpakking durft te zetten, hoe voorzichtiger je ermee moet zijn.
+Het gevolg is dat een merk wel mag zeggen dat een product de huid hydrateert, dat is meetbaar en aantoonbaar, maar niet dat het een huidaandoening aanpakt. Dat verschil tussen wat op de doos staat en wat er in enthousiaste online berichten staat, is dus geen bescheidenheid maar wetgeving. En het is een bruikbaar kompas: hoe verder een bewering afstaat van wat het merk zelf op de verpakking durft te zetten, hoe voorzichtiger je ermee moet zijn.
 
 ![Vochtige groene bladeren bij zacht gelijkmatig daglicht, met waterdruppels op het oppervlak.](../../assets/artikelen/snail-mucin-3.jpg)
 

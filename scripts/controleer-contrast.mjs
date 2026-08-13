@@ -5,8 +5,8 @@
  *
  * tokens.css stelt dat alle tekstkleuren op WCAG 2.2 AA zijn doorgerekend. Dat
  * gold voor de combinaties die er tóen waren. Bij de merkherziening zijn er
- * nieuwe bijgekomen — een jade label op wit, en twee meldingen op een gekleurd
- * vlak — en een bewering die niet nagerekend is, is geen bewering.
+ * nieuwe bijgekomen, een jade label op wit, en twee meldingen op een gekleurd
+ * vlak, en een bewering die niet nagerekend is, is geen bewering.
  *
  * AA vraagt 4,5:1 voor gewone tekst en 3:1 voor grote tekst (>= 24px, of
  * >= 18,66px vet).

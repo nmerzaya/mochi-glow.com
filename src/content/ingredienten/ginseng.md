@@ -15,10 +15,10 @@ tags:
   - ginsenosiden
   - wortelextract
 bronnen:
-  - titel: 'Lim e.a. — Ginsenosides and their metabolites: a review of their pharmacological activities in the skin (Archives of Dermatological Research, 2015)'
+  - titel: 'Lim e.a. Ginsenosides and their metabolites: a review of their pharmacological activities in the skin (Archives of Dermatological Research, 2015)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/26024573/'
     type: B
-  - titel: 'Meng e.a. — Bibliometric analysis of the effects of ginseng on skin (Journal of Cosmetic Dermatology, 2022)'
+  - titel: 'Meng e.a. Bibliometric analysis of the effects of ginseng on skin (Journal of Cosmetic Dermatology, 2022)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/34520601/'
     type: B
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -36,7 +36,7 @@ Dat is deels cultuur en deels geschiedenis: ginseng is in Korea al eeuwenlang ee
 
 Op etiketten kom je een paar varianten tegen, en het verschil is niet kosmetisch.
 
-**Verse ginseng** is de ongehavende wortel. **Witte ginseng** is geschild en gedroogd. **Rode ginseng** — in Korea *hongsam* — is gestoomd en daarna gedroogd, waarbij de wortel roodbruin wordt.
+**Verse ginseng** is de ongehavende wortel. **Witte ginseng** is geschild en gedroogd. **Rode ginseng**, in Korea *hongsam*, is gestoomd en daarna gedroogd, waarbij de wortel roodbruin wordt.
 
 Dat stomen doet iets scheikundigs. Onder invloed van hitte breken de oorspronkelijke stoffen gedeeltelijk af tot andere, kleinere verbindingen. Rode ginseng heeft daardoor een merkbaar ander stoffenprofiel dan witte ginseng van dezelfde plant. Wie de twee als inwisselbaar beschouwt, slaat dat verschil over.
 
@@ -46,13 +46,13 @@ Let ook op de soort. *Panax ginseng* is Koreaanse of Aziatische ginseng; *Panax 
 
 ## Ginsenosiden
 
-De stoffen waar het om draait, heten ginsenosiden. Het zijn saponinen — zeepachtige verbindingen die in veel planten voorkomen — en er zijn er van deze soort meer dan honderd beschreven.
+De stoffen waar het om draait, heten ginsenosiden. Het zijn saponinen, zeepachtige verbindingen die in veel planten voorkomen, en er zijn er van deze soort meer dan honderd beschreven.
 
 Dat aantal is meteen het lastige. "Ginseng" op een etiket zegt niet welke ginsenosiden erin zitten, in welke verhouding, of hoeveel. Twee producten met hetzelfde INCI-woord kunnen scheikundig behoorlijk uit elkaar liggen, afhankelijk van de soort, de leeftijd van de wortel, de bewerking en de manier van extraheren.
 
 Het overzichtsartikel in *Archives of Dermatological Research* uit 2015 gaat specifiek over wat ginsenosiden in de huid doen, en het brengt een detail naar voren dat je in productteksten nooit tegenkomt: bij een aantal van deze stoffen zijn niet de oorspronkelijke verbindingen het actiefst, maar de afbraakproducten ervan. Bacteriën in de darm zetten ginsenosiden om in kleinere vormen, en juist die vormen zijn in onderzoek vaak werkzamer.
 
-Dat is voor een crème een ongemakkelijke constatering. De route die in dat onderzoek beschreven wordt, loopt via de spijsvertering — en die route bestaat niet als je het op je gezicht smeert.
+Dat is voor een crème een ongemakkelijke constatering. De route die in dat onderzoek beschreven wordt, loopt via de spijsvertering, en die route bestaat niet als je het op je gezicht smeert.
 
 ## Wat er over de huid gepubliceerd is
 
@@ -76,7 +76,7 @@ Bij ginseng is dat extra relevant omdat de plant een lange geschiedenis in de kr
 
 **Rood of wit?** Staat er *Red Ginseng* of *hongsam* bij, dan is de wortel gestoomd. Dat is een andere grondstof, geen marketingtoevoeging.
 
-**Waar in de lijst?** Bij een duur ingrediënt is dit de meest zeggende controle die er is. Ginseng dat na de conserveermiddelen staat, is er in zeer kleine hoeveelheid in verwerkt — genoeg voor de verpakking, niet genoeg om er veel van te verwachten.
+**Waar in de lijst?** Bij een duur ingrediënt is dit de meest zeggende controle die er is. Ginseng dat na de conserveermiddelen staat, is er in zeer kleine hoeveelheid in verwerkt, genoeg voor de verpakking, niet genoeg om er veel van te verwachten.
 
 **Extract of water?** *Panax Ginseng Root Water* is doorgaans veel verdunder dan een extract.
 

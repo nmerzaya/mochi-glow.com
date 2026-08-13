@@ -12,13 +12,13 @@ tags:
   - microbioom
   - onderzoek
 bronnen:
-  - titel: "O'Neill e.a. — The gut-skin axis in health and disease (BioEssays, 2016)"
+  - titel: "O'Neill e.a. The gut-skin axis in health and disease (BioEssays, 2016)"
     url: 'https://pubmed.ncbi.nlm.nih.gov/27554239/'
     type: B
-  - titel: 'Widhiati e.a. — The role of gut microbiome in inflammatory skin disorders: a systematic review (Dermatology Reports, 2022)'
+  - titel: 'Widhiati e.a. The role of gut microbiome in inflammatory skin disorders: a systematic review (Dermatology Reports, 2022)'
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8969879/'
     type: B
-  - titel: "EFSA — EFSA finalises the assessment of 'general function' health claims (2011)"
+  - titel: "EFSA, EFSA finalises the assessment of 'general function' health claims (2011)"
     url: 'https://www.efsa.europa.eu/en/press/news/110728'
     type: A
 ---
@@ -29,7 +29,7 @@ Er zit een echte wetenschappelijke kern achter dat idee. Er zit ook een flinke l
 
 ## Waar het begrip vandaan komt
 
-De term *gut-skin axis* — darm-huid-as — beschrijft het idee dat er communicatie bestaat tussen je darmstelsel en je huid. Niet als metafoor, maar als een reeks concrete routes: via het immuunsysteem, via stoffen die in de darm ontstaan en in de bloedbaan terechtkomen, en via de zenuwverbindingen tussen darm en hersenen.
+De term *gut-skin axis*, darm-huid-as, beschrijft het idee dat er communicatie bestaat tussen je darmstelsel en je huid. Niet als metafoor, maar als een reeks concrete routes: via het immuunsysteem, via stoffen die in de darm ontstaan en in de bloedbaan terechtkomen, en via de zenuwverbindingen tussen darm en hersenen.
 
 Een vaak aangehaald overzichtsartikel uit *BioEssays* uit 2016 zet die redenering netjes neer. De auteurs beschrijven darm en huid allebei als *interface-organen*: allebei vormen ze een grens tussen jou en de buitenwereld, allebei herbergen ze een eigen gemeenschap van micro-organismen, en allebei hebben ze een dichte laag immuunweefsel net onder het oppervlak. Hun kernpunt is dat een aantal darmaandoeningen opvallend vaak samengaat met huidaandoeningen, en dat stoffen die ontstaan uit voeding of uit darmbacteriën via de bloedbaan de huid kunnen bereiken.
 
@@ -39,7 +39,7 @@ Dat is een plausibel en interessant idee. Let goed op wat er precies staat: er b
 
 Om verder te komen dan "het is plausibel", kun je beter kijken naar overzichtsstudies die de losse onderzoeken bij elkaar vegen en wegen.
 
-Een systematische review uit *Dermatology Reports* uit 2022 deed dat voor vier huidaandoeningen: acne, psoriasis, atopische dermatitis (constitutioneel eczeem) en netelroos. De onderzoekers vonden dat bij al deze aandoeningen afwijkingen in de samenstelling van het darmmicrobioom worden beschreven — in de vakliteratuur *dysbiose* genoemd, wat simpelweg betekent dat de verhouding tussen bacteriesoorten afwijkt van wat bij vergelijkingsgroepen wordt gezien.
+Een systematische review uit *Dermatology Reports* uit 2022 deed dat voor vier huidaandoeningen: acne, psoriasis, atopische dermatitis (constitutioneel eczeem) en netelroos. De onderzoekers vonden dat bij al deze aandoeningen afwijkingen in de samenstelling van het darmmicrobioom worden beschreven, in de vakliteratuur *dysbiose* genoemd, wat simpelweg betekent dat de verhouding tussen bacteriesoorten afwijkt van wat bij vergelijkingsgroepen wordt gezien.
 
 Daar hoort meteen de belangrijkste kanttekening bij, en die komt van de auteurs zelf. Het aantal studies per aandoening is klein: voor acne ging het om vier onderzoeken, voor psoriasis om drie. De onderzochte groepen verschilden sterk van elkaar, net als de gebruikte methodes. En bij atopische dermatitis waren de resultaten ronduit tegenstrijdig. De auteurs schrijven letterlijk dat de rol van specifieke bacteriën als merkteken voor ontstekingsprocessen verder onderzoek vraagt.
 
@@ -51,7 +51,7 @@ Dat is geen verstopte voetnoot. Dat is de conclusie.
 
 Hier zit het scharnierpunt van het hele onderwerp, en het is de moeite waard om er even bij stil te staan.
 
-Stel dat je bij mensen met een bepaalde huidaandoening consequent een andere darmflora aantreft dan bij mensen zonder die aandoening. Dan heb je een *samenhang* gevonden. Wat je daarmee nog niet weet, is welke kant het op werkt. Zorgt die afwijkende darmflora voor de huidklachten? Of zorgt de aandoening — of de aanpak ervan, of het eetpatroon dat ermee samenhangt — juist voor die afwijkende darmflora? Of wordt allebei veroorzaakt door iets derde, zoals langdurige stress, slaaptekort of een ontstekingsproces dat elders begint?
+Stel dat je bij mensen met een bepaalde huidaandoening consequent een andere darmflora aantreft dan bij mensen zonder die aandoening. Dan heb je een *samenhang* gevonden. Wat je daarmee nog niet weet, is welke kant het op werkt. Zorgt die afwijkende darmflora voor de huidklachten? Of zorgt de aandoening, of de aanpak ervan, of het eetpatroon dat ermee samenhangt, juist voor die afwijkende darmflora? Of wordt allebei veroorzaakt door iets derde, zoals langdurige stress, slaaptekort of een ontstekingsproces dat elders begint?
 
 Onderzoek dat dit onderscheid kan maken, is duur en traag: je moet mensen langdurig volgen, of je moet ingrijpen bij de ene groep en niet bij de andere en vervolgens afwachten. Het meeste beschikbare onderzoek naar darm en huid is niet van dat type. Het zijn momentopnames, vaak met kleine groepen.
 
@@ -61,7 +61,7 @@ Wie een momentopname presenteert als een oorzaak, doet iets wat het onderzoek ni
 
 Er is een tweede reden waarom dit onderwerp op deze site voorzichtig wordt behandeld, en die is juridisch.
 
-In de Europese Unie mag je over voedingsmiddelen en supplementen alleen gezondheidsclaims doen die officieel zijn toegelaten. In 2011 rondde de Europese voedselveiligheidsautoriteit EFSA de beoordeling af van bijna drieduizend van dat soort claims. Claims over "probiotica" werden afgewezen, onder andere omdat de aanvragers niet aangaven om welk specifiek micro-organisme het ging — waardoor er geen verband te beoordelen viel tussen een aanwijsbare stof en een aanwijsbaar effect.
+In de Europese Unie mag je over voedingsmiddelen en supplementen alleen gezondheidsclaims doen die officieel zijn toegelaten. In 2011 rondde de Europese voedselveiligheidsautoriteit EFSA de beoordeling af van bijna drieduizend van dat soort claims. Claims over "probiotica" werden afgewezen, onder andere omdat de aanvragers niet aangaven om welk specifiek micro-organisme het ging, waardoor er geen verband te beoordelen viel tussen een aanwijsbare stof en een aanwijsbaar effect.
 
 Het gevolg daarvan is streng en wordt vaak verkeerd begrepen: er bestaat op dit moment geen enkele toegestane Europese gezondheidsclaim over probiotica, darmflora of microbioom. Het woord "probiotisch" op een verpakking geldt zelf al als een gezondheidsclaim. Dat is niet de mening van deze site, dat is het geldende kader.
 
@@ -71,7 +71,7 @@ Voor de artikelen hier betekent dat iets concreets. Je zult hier lezen wat onder
 
 ## Wat je hier wél aan hebt
 
-Als je dit onderwerp interessant vindt, is dat volkomen terecht — het ís interessant. De eerlijke samenvatting van de stand van zaken ziet er ongeveer zo uit:
+Als je dit onderwerp interessant vindt, is dat volkomen terecht, het ís interessant. De eerlijke samenvatting van de stand van zaken ziet er ongeveer zo uit:
 
 - Er zijn aannemelijke, beschreven routes waarlangs darm en huid elkaar zouden kunnen beïnvloeden.
 - Bij verschillende huidaandoeningen worden verschillen in darmflora gevonden ten opzichte van vergelijkingsgroepen.

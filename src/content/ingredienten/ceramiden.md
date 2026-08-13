@@ -15,7 +15,7 @@ tags:
   - huidbarriere
   - lipiden
 bronnen:
-  - titel: 'Wartewig & Neubert — Properties of ceramides and their impact on the stratum corneum structure, part 1 (Skin Pharmacology and Physiology, 2007)'
+  - titel: 'Wartewig & Neubert, Properties of ceramides and their impact on the stratum corneum structure, part 1 (Skin Pharmacology and Physiology, 2007)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/17587886/'
     type: B
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -29,7 +29,7 @@ Van alle ingrediënten die de laatste jaren populair zijn geworden, is dit missc
 
 De standaardvergelijking voor de bovenste huidlaag is een muur: de dode, afgeplatte cellen zijn de stenen, en de vetachtige stoffen ertussen zijn de specie. Die vergelijking is populair omdat hij ongewoon accuraat is.
 
-De specie bestaat uit drie hoofdgroepen: ceramiden, cholesterol en vrije vetzuren. Ze liggen niet als een willekeurige smurrie tussen de cellen, maar in geordende lagen — lamellen — die zich netjes stapelen.
+De specie bestaat uit drie hoofdgroepen: ceramiden, cholesterol en vrije vetzuren. Ze liggen niet als een willekeurige smurrie tussen de cellen, maar in geordende lagen, lamellen, die zich netjes stapelen.
 
 Het overzichtsartikel van Wartewig en Neubert in *Skin Pharmacology and Physiology* uit 2007 gaat precies over die ordening. De auteurs beschrijven hoe ceramiden negen subklassen omvatten en een cruciale rol spelen in de barrièrefunctie van de huid. Ze laten zien hoe verschillende ceramidetypen bij lichaamstemperatuur geordende structuren vormen met strak gepakte koolstofketens, en hoe die lipidenmatrix de belangrijkste route is die bepaalt hoe snel stoffen door de huid heen kunnen.
 
@@ -41,7 +41,7 @@ Op het etiket kom je namen tegen als Ceramide NP, Ceramide AP, Ceramide EOP of C
 
 De eerste letter zegt iets over het vetzuurdeel van het molecuul: N voor een gewoon vetzuur, A voor een variant met een extra zuurstofgroep, E voor een type met een gekoppelde, langere keten. De tweede letter slaat op het andere bouwblok: S voor sphingosine, P voor fytosphingosine, H voor een derde variant.
 
-Ceramide NP — vroeger Ceramide 3 genoemd — is de variant die je het vaakst tegenkomt in verzorgingsproducten. Dat is geen toeval: het is een van de beter beschikbare en stabielere varianten om te produceren.
+Ceramide NP, vroeger Ceramide 3 genoemd, is de variant die je het vaakst tegenkomt in verzorgingsproducten. Dat is geen toeval: het is een van de beter beschikbare en stabielere varianten om te produceren.
 
 Wat je hieruit vooral kunt meenemen: "bevat ceramiden" is een minder precieze mededeling dan het lijkt, omdat de subklassen niet uitwisselbaar zijn. In de hoornlaag zijn er honderden varianten beschreven; een crème bevat er doorgaans één tot drie.
 
@@ -51,7 +51,7 @@ Wat je hieruit vooral kunt meenemen: "bevat ceramiden" is een minder precieze me
 
 Hier moet ik voorzichtig formuleren, en dat is niet uit overdreven angst maar omdat de regels dit precies afbakenen.
 
-Een cosmetisch product mag volgens Verordening (EG) nr. 1223/2009 reinigen, parfumeren, het uiterlijk veranderen, beschermen, in goede staat houden of lichaamsgeuren corrigeren. Wat het niet mag, is een medische werking claimen of zich richten op een aandoening. Bij ceramiden ligt die grens dichtbij, omdat het onderzoek ernaar vaak in een medische context plaatsvindt — bijvoorbeeld bij constitutioneel eczeem, waarbij afwijkingen in het ceramideprofiel zijn beschreven.
+Een cosmetisch product mag volgens Verordening (EG) nr. 1223/2009 reinigen, parfumeren, het uiterlijk veranderen, beschermen, in goede staat houden of lichaamsgeuren corrigeren. Wat het niet mag, is een medische werking claimen of zich richten op een aandoening. Bij ceramiden ligt die grens dichtbij, omdat het onderzoek ernaar vaak in een medische context plaatsvindt, bijvoorbeeld bij constitutioneel eczeem, waarbij afwijkingen in het ceramideprofiel zijn beschreven.
 
 Wat wel te zeggen valt, feitelijk en zonder belofte: ceramiden zijn een bestanddeel van de lipidenmatrix van de hoornlaag; die matrix bepaalt mede hoe doorlaatbaar de huid is; en een verzorgingsproduct dat lipiden aanbrengt, brengt materiaal aan dat qua type overeenkomt met wat daar van nature zit.
 
@@ -81,4 +81,4 @@ Of die specifieke verhouding in een specifiek product daadwerkelijk uitmaakt voo
 
 Ceramiden zijn een van de weinige populaire ingrediënten waarbij de onderliggende biologie stevig en al lang beschreven is. Ze vormen samen met cholesterol en vetzuren de lipidenmatrix van de hoornlaag, en die matrix bepaalt in belangrijke mate hoe de huid zich als grens gedraagt.
 
-Wat een specifiek product met een specifieke ceramide bij jou doet, is een aparte vraag die het etiket niet beantwoordt — en die het onderzoek naar de stof zelf ook niet beantwoordt.
+Wat een specifiek product met een specifieke ceramide bij jou doet, is een aparte vraag die het etiket niet beantwoordt, en die het onderzoek naar de stof zelf ook niet beantwoordt.

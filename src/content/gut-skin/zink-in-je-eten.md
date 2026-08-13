@@ -14,24 +14,24 @@ tags:
   - mineralen
   - dagelijkse kost
 bronnen:
-  - titel: 'Verordening (EU) nr. 432/2012 — lijst van toegestane gezondheidsclaims'
+  - titel: 'Verordening (EU) nr. 432/2012, lijst van toegestane gezondheidsclaims'
     url: 'https://eur-lex.europa.eu/legal-content/NL/ALL/?uri=CELEX%3A32012R0432'
     type: A
   - titel: 'EU-register van voedings- en gezondheidsclaims'
     url: 'https://ec.europa.eu/food/food-feed-portal/screen/health-claims/eu-register'
     type: A
-  - titel: 'Voedingscentrum — Zink'
+  - titel: 'Voedingscentrum, Zink'
     url: 'https://www.voedingscentrum.nl/encyclopedie/zink.aspx'
     type: B
 ---
 
 Zink is het mineraal dat op de verpakking staat van vrijwel alles wat "huid, haar en nagels" belooft. Dat is geen toeval: het is een van de weinige stoffen waarvoor de Europese wetgever daadwerkelijk toestaat dat die woorden gebruikt worden.
 
-Wat op zo'n potje niet staat, is dat zink ook gewoon in eten zit — en dat de toegestane bewoording een stuk terughoudender is dan de verpakking suggereert.
+Wat op zo'n potje niet staat, is dat zink ook gewoon in eten zit, en dat de toegestane bewoording een stuk terughoudender is dan de verpakking suggereert.
 
 ## Wat er precies gezegd mag worden
 
-In de EU ligt vast welke gezondheidsclaims over voeding gebruikt mogen worden. Niet ongeveer: letterlijk. De vastgestelde lijst staat in Verordening (EU) nr. 432/2012, en wie een andere formulering kiest — ook een die hetzelfde lijkt te betekenen — gebruikt een claim die niet is toegelaten.
+In de EU ligt vast welke gezondheidsclaims over voeding gebruikt mogen worden. Niet ongeveer: letterlijk. De vastgestelde lijst staat in Verordening (EU) nr. 432/2012, en wie een andere formulering kiest, ook een die hetzelfde lijkt te betekenen, gebruikt een claim die niet is toegelaten.
 
 Voor zink zijn er vier die hier van belang zijn:
 
@@ -43,7 +43,7 @@ Voor zink zijn er vier die hier van belang zijn:
 
 > Zink draagt bij tot de bescherming van cellen tegen oxidatieve stress
 
-Lees ze nog eens, want er staat minder dan je op het eerste gezicht leest. Er staat "instandhouding van een normale huid" — het op peil houden van iets wat al normaal is. Er staat niet: mooier, gladder, rustiger, of sneller herstellend.
+Lees ze nog eens, want er staat minder dan je op het eerste gezicht leest. Er staat "instandhouding van een normale huid", het op peil houden van iets wat al normaal is. Er staat niet: mooier, gladder, rustiger, of sneller herstellend.
 
 Dat verschil is de kern van de hele claimwetgeving. Een voedingsstof mag een normale lichaamsfunctie ondersteunen. Zodra een tekst belooft dat er iets verbetert of dat een klacht verdwijnt, valt hij buiten wat is toegestaan.
 
@@ -63,7 +63,7 @@ Zink komt uit een breder rijtje dan de meeste mensen denken.
 
 **Peulvruchten.** Linzen, kikkererwten, bonen.
 
-**Volkoren graan.** De zemel — de buitenste laag van de korrel — bevat het meeste. Precies die laag wordt bij wit meel weggeslepen, waardoor witbrood er beduidend minder van overhoudt dan volkorenbrood.
+**Volkoren graan.** De zemel, de buitenste laag van de korrel, bevat het meeste. Precies die laag wordt bij wit meel weggeslepen, waardoor witbrood er beduidend minder van overhoudt dan volkorenbrood.
 
 **Zuivel en ei.** Bescheidener, maar ze tellen mee omdat ze bij veel mensen elke dag langskomen.
 
@@ -73,7 +73,7 @@ Hier zit een detail dat in de meeste lijstjes ontbreekt, en het is precies het s
 
 In volkoren graan, peulvruchten, noten en zaden zit fytinezuur. Die stof bindt zich in de darm aan mineralen, waaronder zink, waardoor een deel ervan het lichaam weer verlaat zonder opgenomen te zijn. Hetzelfde brood dat een goede bron van zink heet, levert dus minder op dan het cijfer op papier belooft.
 
-Dat is geen reden om volkoren te mijden — het gaat om de rest van het pakket. Wel is het de reden dat het bij plantaardig eten verstandig is om de bronnen te spreiden over de dag in plaats van erop te vertrouwen dat één portie het regelt.
+Dat is geen reden om volkoren te mijden, het gaat om de rest van het pakket. Wel is het de reden dat het bij plantaardig eten verstandig is om de bronnen te spreiden over de dag in plaats van erop te vertrouwen dat één portie het regelt.
 
 Er is ook iets aan te doen, en dat is oude keukenwijsheid met een reden erachter. Peulvruchten een nacht weken en het weekwater weggooien haalt een deel van het fytinezuur eruit. Hetzelfde geldt voor zuurdesem: bij het rijzen breekt een deel van die stof af, wat zuurdesembrood op dit punt gunstiger maakt dan snel gerezen brood.
 
@@ -81,7 +81,7 @@ Er is ook iets aan te doen, en dat is oude keukenwijsheid met een reden erachter
 
 ## Hoeveel, en waarom dat hier niet staat
 
-De aanbevolen dagelijkse hoeveelheid verschilt per leeftijd, per geslacht en bij zwangerschap, en ligt bij een volledig plantaardig eetpatroon hoger vanwege dat fytinezuur. Het Voedingscentrum houdt die getallen bij en is daarvoor de aangewezen plek — niet een site als deze.
+De aanbevolen dagelijkse hoeveelheid verschilt per leeftijd, per geslacht en bij zwangerschap, en ligt bij een volledig plantaardig eetpatroon hoger vanwege dat fytinezuur. Het Voedingscentrum houdt die getallen bij en is daarvoor de aangewezen plek, niet een site als deze.
 
 Wat wél de moeite waard is om te weten: meer is hier niet beter. Zink kent een bovengrens, en die is niet ruim. Langdurig veel meer binnenkrijgen dan nodig verstoort de opname van koper, een ander mineraal dat het lichaam nodig heeft. Bij deze stof is het rijtje "genoeg is genoeg" dus geen slap compromis maar het feitelijke advies.
 
@@ -89,7 +89,7 @@ Wat wél de moeite waard is om te weten: meer is hier niet beter. Zink kent een 
 
 Een supplement is een aanvulling op voeding, en zo ziet de wet het ook: als levensmiddel, niet als geneesmiddel. Daaruit volgt alles wat hierboven staat. Een potje mag melden dat de inhoud bijdraagt aan de instandhouding van een normale huid. Het mag niet beweren dat het iets oplost.
 
-Wie gevarieerd eet met noten, zaden, peulvruchten en volkoren graan, komt er in de praktijk doorgaans zonder potje. Wie daar om welke reden dan ook niet aan toekomt, kan een aanvulling overwegen — en doet er goed aan dat te bespreken met een huisarts of diëtist in plaats van met een verpakking.
+Wie gevarieerd eet met noten, zaden, peulvruchten en volkoren graan, komt er in de praktijk doorgaans zonder potje. Wie daar om welke reden dan ook niet aan toekomt, kan een aanvulling overwegen, en doet er goed aan dat te bespreken met een huisarts of diëtist in plaats van met een verpakking.
 
 ## Samengevat
 

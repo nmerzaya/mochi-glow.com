@@ -15,10 +15,10 @@ taalUitzonderingen:
   - term: behandeling van
     reden: 'Het artikel verwijst naar de medische aanpak van bestaande darmaandoeningen in de literatuur, niet naar een werking van een product.'
 bronnen:
-  - titel: "O'Neill e.a. — The gut-skin axis in health and disease (BioEssays, 2016)"
+  - titel: "O'Neill e.a. The gut-skin axis in health and disease (BioEssays, 2016)"
     url: 'https://pubmed.ncbi.nlm.nih.gov/27554239/'
     type: B
-  - titel: 'Widhiati e.a. — The role of gut microbiome in inflammatory skin disorders: a systematic review (Dermatology Reports, 2022)'
+  - titel: 'Widhiati e.a. The role of gut microbiome in inflammatory skin disorders: a systematic review (Dermatology Reports, 2022)'
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8969879/'
     type: B
 ---
@@ -64,7 +64,7 @@ De sprong die in de populaire uitleg wordt gemaakt, bestaat uit vier stappen die
 3. Daardoor komen stoffen in je bloedbaan die daar niet horen.
 4. Daardoor ontstaan jouw huidklachten.
 
-Elke pijl in die keten is een aanname. Bij mensen met een vastgestelde darmaandoening is stap 1 vaak aantoonbaar. Bij iemand zonder klachten die zich afvraagt of het misschien de oorzaak is van een onrustige huid, is stap 1 doorgaans niet gemeten — en de stappen daarna evenmin.
+Elke pijl in die keten is een aanname. Bij mensen met een vastgestelde darmaandoening is stap 1 vaak aantoonbaar. Bij iemand zonder klachten die zich afvraagt of het misschien de oorzaak is van een onrustige huid, is stap 1 doorgaans niet gemeten, en de stappen daarna evenmin.
 
 Er is nog iets. Verhoogde doorlaatbaarheid wordt bij aandoeningen aangetroffen, maar het is meestal niet duidelijk of het de oorzaak is of het gevolg. Een ontstekingsproces kan de barrière beïnvloeden. Dan zie je hetzelfde meetresultaat, met de causaliteit precies andersom.
 
@@ -72,7 +72,7 @@ Er is nog iets. Verhoogde doorlaatbaarheid wordt bij aandoeningen aangetroffen, 
 
 ## Waarom de term zelf in de weg zit
 
-"Lekkende darm" klinkt als een defect dat gerepareerd moet worden, en dat frame stuurt het gesprek. Het suggereert een aan- en uitknop: je darm lekt, of niet. Zo werkt het niet — doorlaatbaarheid is een regelbare eigenschap die voortdurend verandert.
+"Lekkende darm" klinkt als een defect dat gerepareerd moet worden, en dat frame stuurt het gesprek. Het suggereert een aan- en uitknop: je darm lekt, of niet. Zo werkt het niet, doorlaatbaarheid is een regelbare eigenschap die voortdurend verandert.
 
 Het frame maakt bovendien een markt mogelijk. Als je iets als een defect presenteert, kun je er een oplossing bij verkopen. Dat verklaart waarom je de term vooral tegenkomt op plekken waar iets te koop is, en zelden in de vakliteratuur, waar over *intestinale permeabiliteit* wordt geschreven zonder dat er een product aan vastzit.
 

@@ -15,10 +15,10 @@ tags:
   - ascorbinezuur
   - antioxidanten
 bronnen:
-  - titel: 'Vasques e.a. — Topical Application of Ascorbic Acid and its Derivatives: A Review Considering Clinical Trials (Current Medicinal Chemistry, 2023)'
+  - titel: 'Vasques e.a. Topical Application of Ascorbic Acid and its Derivatives: A Review Considering Clinical Trials (Current Medicinal Chemistry, 2023)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/36200216/'
     type: B
-  - titel: 'PubChem — Ascorbinezuur, stofinformatie en eigenschappen'
+  - titel: 'PubChem, Ascorbinezuur, stofinformatie en eigenschappen'
     url: 'https://pubchem.ncbi.nlm.nih.gov/compound/Ascorbic-acid'
     type: A
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -32,7 +32,7 @@ Dat instabiliteitsprobleem is niet een detail voor formuleerders. Het is het hel
 
 ## De stof zelf
 
-Ascorbinezuur is de chemische naam voor vitamine C, met de formule C6H8O6. Het is een klein molecuul dat goed oplost in water. Die twee eigenschappen — klein en wateroplosbaar — maken het interessant voor huidverzorging, en veroorzaken tegelijk de problemen.
+Ascorbinezuur is de chemische naam voor vitamine C, met de formule C6H8O6. Het is een klein molecuul dat goed oplost in water. Die twee eigenschappen, klein en wateroplosbaar, maken het interessant voor huidverzorging, en veroorzaken tegelijk de problemen.
 
 Wateroplosbaar betekent namelijk ook: gemakkelijk in aanraking met zuurstof in een waterige formule. En daar wringt het.
 
@@ -50,7 +50,7 @@ Het aardige is dat je dit zelf kunt zien. Een oplossing van vitamine C verkleurt
 
 Er is een reeks strategieën, en je kunt ze bijna allemaal terugzien aan het product.
 
-**Zuur houden.** Ascorbinezuur is stabieler bij een lage pH. Daarom zijn klassieke vitamine-C-serums vaak behoorlijk zuur — wat meteen verklaart waarom ze bij sommige mensen prikken.
+**Zuur houden.** Ascorbinezuur is stabieler bij een lage pH. Daarom zijn klassieke vitamine-C-serums vaak behoorlijk zuur, wat meteen verklaart waarom ze bij sommige mensen prikken.
 
 **Water eruit halen.** In een watervrije formule, bijvoorbeeld op basis van siliconen of olie, krijgt oxidatie veel minder kans. Zulke producten voelen anders aan, maar houden langer stand.
 
@@ -66,7 +66,7 @@ Op etiketten kom je namen tegen als *Sodium Ascorbyl Phosphate*, *Magnesium Asco
 
 Het idee erachter is steeds hetzelfde: door een groep aan het molecuul te koppelen, wordt het minder reactief en dus stabieler. In de huid zou het vervolgens weer omgezet moeten worden naar de werkzame vorm.
 
-Die laatste zin bevat de aanname waar alles op rust, en precies daar wijst het overzichtsartikel uit 2023 op een probleem. De auteurs stellen vast dat het onderzoek naar deze derivaten overwegend in vitro is — in celkweken en proefopstellingen. In-vivo-onderzoek is er wel, maar dat loopt sterk uiteen in opzet en aanpak. Hun conclusie is dat er studies nodig zijn naar stabiliteit, veiligheid en vooral werkzaamheid bij mensen, met voldoende deelnemers en gestandaardiseerde maatstaven, voordat je derivaten fatsoenlijk met ascorbinezuur kunt vergelijken.
+Die laatste zin bevat de aanname waar alles op rust, en precies daar wijst het overzichtsartikel uit 2023 op een probleem. De auteurs stellen vast dat het onderzoek naar deze derivaten overwegend in vitro is, in celkweken en proefopstellingen. In-vivo-onderzoek is er wel, maar dat loopt sterk uiteen in opzet en aanpak. Hun conclusie is dat er studies nodig zijn naar stabiliteit, veiligheid en vooral werkzaamheid bij mensen, met voldoende deelnemers en gestandaardiseerde maatstaven, voordat je derivaten fatsoenlijk met ascorbinezuur kunt vergelijken.
 
 Kortom: dat een derivaat stabieler is in het flesje, is goed onderbouwd. Dat het daarna doet wat puur ascorbinezuur zou doen, is dat aanzienlijk minder.
 
@@ -78,13 +78,13 @@ Hier wordt het regelgevend interessant, omdat vitamine C in twee werelden voorko
 
 Als **voedingsstof** bestaat er wél een officieel toegelaten Europese gezondheidsclaim die de huid noemt. De toegestane bewoording luidt: Vitamine C draagt bij tot de normale collageenvorming voor de normale werking van de huid. Die claim geldt voor voedingsmiddelen en supplementen, is gebonden aan voorwaarden over de hoeveelheid, en mag alleen in die vastgestelde formulering worden gebruikt.
 
-Als **cosmetisch ingrediënt** ligt het anders. Een crème valt onder Verordening (EG) nr. 1223/2009 en mag reinigen, verzorgen, beschermen en het uiterlijk veranderen — maar geen medische werking claimen. De toegestane voedingsclaim hierboven mag je dus niet zomaar op een serum plakken; dat is een claim uit een ander regime.
+Als **cosmetisch ingrediënt** ligt het anders. Een crème valt onder Verordening (EG) nr. 1223/2009 en mag reinigen, verzorgen, beschermen en het uiterlijk veranderen, maar geen medische werking claimen. De toegestane voedingsclaim hierboven mag je dus niet zomaar op een serum plakken; dat is een claim uit een ander regime.
 
 Dat onderscheid wordt in de praktijk vaak genegeerd, en het verklaart waarom je op verpakkingen zoveel vage formuleringen ziet: alles wat concreet genoeg is om te toetsen, is meestal ook concreet genoeg om verboden te zijn.
 
 ## Wat je kunt nagaan
 
-**Welke vorm staat er?** Puur *Ascorbic Acid* of een derivaat — dat is de belangrijkste vraag, want het bepaalt zowel de stabiliteit als hoeveel er over de werkzaamheid bekend is.
+**Welke vorm staat er?** Puur *Ascorbic Acid* of een derivaat, dat is de belangrijkste vraag, want het bepaalt zowel de stabiliteit als hoeveel er over de werkzaamheid bekend is.
 
 **Hoe is het verpakt?** Ondoorzichtig en luchtdicht is bij dit ingrediënt inhoudelijk relevant.
 

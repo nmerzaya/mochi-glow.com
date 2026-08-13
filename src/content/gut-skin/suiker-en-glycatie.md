@@ -12,15 +12,15 @@ tags:
   - glycatie
   - glykemische lading
 bronnen:
-  - titel: 'Gkogkolou en Böhm — Advanced glycation end products: Key players in skin aging? (Dermato-Endocrinology, 2012)'
+  - titel: 'Gkogkolou en Böhm, Advanced glycation end products: Key players in skin aging? (Dermato-Endocrinology, 2012)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/23467327/'
     type: B
-  - titel: 'Smith e.a. — A low-glycemic-load diet improves symptoms in acne vulgaris patients: a randomized controlled trial (American Journal of Clinical Nutrition, 2007)'
+  - titel: 'Smith e.a. A low-glycemic-load diet improves symptoms in acne vulgaris patients: a randomized controlled trial (American Journal of Clinical Nutrition, 2007)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/17616769/'
     type: B
 ---
 
-"Suiker veroudert je huid" is een van de stelligste zinnen in het hele schoonheidsvocabulaire. Er wordt meestal een wetenschappelijk klinkend woord bij geleverd — glycatie — en daarmee is de discussie doorgaans gesloten.
+"Suiker veroudert je huid" is een van de stelligste zinnen in het hele schoonheidsvocabulaire. Er wordt meestal een wetenschappelijk klinkend woord bij geleverd, glycatie, en daarmee is de discussie doorgaans gesloten.
 
 Het bijzondere is dat glycatie echt bestaat, echt in de huid plaatsvindt, en echt met veroudering samenhangt. De vraag is niet óf het proces bestaat. De vraag is of de stap van dat proces naar jouw suikerpot houdbaar is.
 
@@ -30,9 +30,9 @@ Glycatie is scheikunde, niet marketing. Een suikermolecuul plakt zich zonder tus
 
 Het is dezelfde soort reactie die brood zijn korst geeft en vlees zijn bruine kleur in de pan. In het lichaam gaat het alleen traag: over jaren in plaats van minuten.
 
-Waarom dat voor de huid uitmaakt, staat beschreven in een overzichtsartikel in *Dermato-Endocrinology* uit 2012. Collageen en elastine — de eiwitten die de huid stevigheid en veerkracht geven — gaan heel lang mee. Ze worden veel langzamer vervangen dan de meeste andere eiwitten in het lichaam. Juist die lange levensduur maakt ze een geschikt doelwit: hoe langer een eiwit blijft zitten, hoe meer tijd er is om zo'n verbinding op te lopen.
+Waarom dat voor de huid uitmaakt, staat beschreven in een overzichtsartikel in *Dermato-Endocrinology* uit 2012. Collageen en elastine, de eiwitten die de huid stevigheid en veerkracht geven, gaan heel lang mee. Ze worden veel langzamer vervangen dan de meeste andere eiwitten in het lichaam. Juist die lange levensduur maakt ze een geschikt doelwit: hoe langer een eiwit blijft zitten, hoe meer tijd er is om zo'n verbinding op te lopen.
 
-Wat er dan gebeurt, is dat die lange vezels aan elkaar gekoppeld raken. Het weefsel wordt stugger en minder elastisch. Bij mensen met diabetes, waar de bloedsuiker langdurig hoger staat, is dat proces duidelijk sneller zichtbaar — en dat is een van de sterkste aanwijzingen dat het verhaal in de kern klopt.
+Wat er dan gebeurt, is dat die lange vezels aan elkaar gekoppeld raken. Het weefsel wordt stugger en minder elastisch. Bij mensen met diabetes, waar de bloedsuiker langdurig hoger staat, is dat proces duidelijk sneller zichtbaar, en dat is een van de sterkste aanwijzingen dat het verhaal in de kern klopt.
 
 ![Lichte karamel in een pan, close-up van het oppervlak dat het licht vangt.](../../assets/artikelen/suiker-en-glycatie-2.jpg)
 
@@ -42,13 +42,13 @@ Tot hier is het stevig. Nu de sprong die in productteksten bijna altijd stilzwij
 
 Van "glycatie speelt een rol bij het verouderen van huidweefsel" naar "minder suiker eten geeft je een jongere huid" zitten een paar stappen die niet zijn ingevuld.
 
-**Eén: hoeveel van de AGE's in je huid komt door wat je eet?** Het lichaam vormt ze zelf uit de suiker die in het bloed circuleert, en die spiegel wordt door veel meer gestuurd dan door de suikerpot alleen. Daarnaast zitten er kant-en-klare AGE's in voeding — vooral in wat hard en droog verhit is, zoals gebraden vlees, korstjes en gefrituurd eten. Hoeveel daarvan de vertering overleeft en werkelijk in huidweefsel belandt, is niet goed vastgesteld.
+**Eén: hoeveel van de AGE's in je huid komt door wat je eet?** Het lichaam vormt ze zelf uit de suiker die in het bloed circuleert, en die spiegel wordt door veel meer gestuurd dan door de suikerpot alleen. Daarnaast zitten er kant-en-klare AGE's in voeding, vooral in wat hard en droog verhit is, zoals gebraden vlees, korstjes en gefrituurd eten. Hoeveel daarvan de vertering overleeft en werkelijk in huidweefsel belandt, is niet goed vastgesteld.
 
-**Twee: is het omkeerbaar?** De hele aantrekkingskracht van het idee zit in de belofte dat je er iets aan kunt doen. Maar deze eindproducten zijn juist stabiel — dat is wat "end product" betekent. Wat al gevormd is, verdwijnt niet doordat je vanaf morgen minder suiker eet.
+**Twee: is het omkeerbaar?** De hele aantrekkingskracht van het idee zit in de belofte dat je er iets aan kunt doen. Maar deze eindproducten zijn juist stabiel, dat is wat "end product" betekent. Wat al gevormd is, verdwijnt niet doordat je vanaf morgen minder suiker eet.
 
 **Drie: hoe meet je het?** Veel van wat er over AGE's en huid bekend is, komt uit laboratoriumopstellingen of uit vergelijkingen tussen mensen met en zonder diabetes. Dat is iets anders dan aantonen dat een gezond persoon die minder suiker eet, een meetbaar ander huidverouderingsverloop krijgt.
 
-Geen van deze drie punten maakt het idee onzin. Ze laten zien dat er tussen een goed beschreven scheikundig proces en een concreet voedingsadvies nog een flink gat zit — en dat het advies dat gat routineus overslaat.
+Geen van deze drie punten maakt het idee onzin. Ze laten zien dat er tussen een goed beschreven scheikundig proces en een concreet voedingsadvies nog een flink gat zit, en dat het advies dat gat routineus overslaat.
 
 ![Een afgescheurde snee geroosterd brood, korststructuur in scherend licht.](../../assets/artikelen/suiker-en-glycatie-3.jpg)
 

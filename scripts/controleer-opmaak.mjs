@@ -5,7 +5,7 @@
  *
  * Waarom dit bestaat: dit project heeft drie keer dezelfde fout gemaakt. Een
  * component werd herschreven, gaf nieuwe klassen af, en de bijbehorende opmaak
- * kwam er nooit. Dat faalt niet luidruchtig — de build slaagt, de HTML klopt,
+ * kwam er nooit. Dat faalt niet luidruchtig, de build slaagt, de HTML klopt,
  * en alleen wie de pagina opent ziet dat het raster weg is, dat elk beeld op
  * volle breedte staat of dat er "1. 2. 3." naast een voortgangsbalk hangt.
  *
@@ -31,7 +31,7 @@ const wortel = join(hier, '..');
 
   `met-js` en `zonder-js` schakelen zichtbaarheid via een data-attribuut op de
   html-tag; `onthul` is een haak voor de scroll-animatie. `beeld--` bestaat wel
-  in drie varianten maar stuurt alleen welke breedtes Astro uitsnijdt — dat is
+  in drie varianten maar stuurt alleen welke breedtes Astro uitsnijdt, dat is
   een eigenschap van het beeld, geen opmaak. `opening__woord` is een rasterkind
   dat aan de standaardplaatsing genoeg heeft.
 */
@@ -93,7 +93,7 @@ for (const pad of bronbestanden) {
 
 if (ontbreekt.size === 0) {
   console.log(
-    `Alle klassen hebben opmaak — ${bronbestanden.length} bestanden gecontroleerd tegen ` +
+    `Alle klassen hebben opmaak, ${bronbestanden.length} bestanden gecontroleerd tegen ` +
       `${gedefinieerd.size} gedefinieerde klassen.`,
   );
 } else {

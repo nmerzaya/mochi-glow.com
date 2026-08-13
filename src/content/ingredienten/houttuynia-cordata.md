@@ -15,10 +15,10 @@ tags:
   - plantextract
   - gevoelige huid
 bronnen:
-  - titel: 'Charachit e.a. — Hyperoside and Quercitrin in Houttuynia cordata Extract Attenuate UVB-Induced Human Keratinocyte Cell Damage (Antioxidants, 2022)'
+  - titel: 'Charachit e.a. Hyperoside and Quercitrin in Houttuynia cordata Extract Attenuate UVB-Induced Human Keratinocyte Cell Damage (Antioxidants, 2022)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/35204104/'
     type: B
-  - titel: 'Kwon e.a. — Protective Effects of Fermented Houttuynia cordata Against UVA and Oxidative Stress in Human Skin Keratinocytes (Applied Biochemistry and Biotechnology, 2023)'
+  - titel: 'Kwon e.a. Protective Effects of Fermented Houttuynia cordata Against UVA and Oxidative Stress in Human Skin Keratinocytes (Applied Biochemistry and Biotechnology, 2023)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/36495375/'
     type: B
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -26,13 +26,13 @@ bronnen:
     type: A
 ---
 
-Er is een plant die in Koreaanse toners en essences steeds vaker vooraan in de ingrediëntenlijst staat, en die in het Nederlands een naam heeft die niemand gebruikt: moerasanemoon. In productteksten heet hij *Houttuynia cordata*, of gewoon *heartleaf* — naar de hartvormige blaadjes.
+Er is een plant die in Koreaanse toners en essences steeds vaker vooraan in de ingrediëntenlijst staat, en die in het Nederlands een naam heeft die niemand gebruikt: moerasanemoon. In productteksten heet hij *Houttuynia cordata*, of gewoon *heartleaf*, naar de hartvormige blaadjes.
 
 In het Engels heeft de plant ook een minder charmante bijnaam: *fish mint*. Daar is een reden voor, en die reden is meteen het eerste dat je moet weten als je overweegt er iets van te kopen.
 
 ## De geur
 
-Verse houttuynia ruikt naar vis. Niet vaag, niet metaforisch — het is een uitgesproken geur die veroorzaakt wordt door een aldehyde in de vluchtige olie van de plant, en die is precies verwant aan de stoffen die je bij vis ruikt.
+Verse houttuynia ruikt naar vis. Niet vaag, niet metaforisch, het is een uitgesproken geur die veroorzaakt wordt door een aldehyde in de vluchtige olie van de plant, en die is precies verwant aan de stoffen die je bij vis ruikt.
 
 In Zuidoost-Azië wordt het blad rauw gegeten, en de geur hoort daar bij het product. In cosmetica is dat een probleem dat opgelost moet worden, en dat gebeurt op twee manieren: door een extractiemethode te kiezen waarbij de vluchtige olie grotendeels achterblijft, of door het te overstemmen met parfum.
 
@@ -40,7 +40,7 @@ Dat is nuttige informatie voor wie een product zoekt vanwege een gevoelige huid.
 
 ## Wat er in het blad zit
 
-De stoffen die in het onderzoek naar voren komen, zijn flavonoïden — plantstoffen die ook in veel ander bladgroen zitten. Twee namen kom je steeds tegen: quercitrine en hyperoside. Daarnaast bevat de plant polysachariden en de al genoemde vluchtige olie.
+De stoffen die in het onderzoek naar voren komen, zijn flavonoïden, plantstoffen die ook in veel ander bladgroen zitten. Twee namen kom je steeds tegen: quercitrine en hyperoside. Daarnaast bevat de plant polysachariden en de al genoemde vluchtige olie.
 
 Wat er in een extract belandt, hangt sterk af van het oplosmiddel. Een waterig extract haalt vooral de wateroplosbare flavonoïden en suikers eruit; een extract op alcohol trekt een andere verzameling los. *Houttuynia Cordata Extract* op een etiket zegt dus minder dan het lijkt.
 
@@ -50,13 +50,13 @@ Wat er in een extract belandt, hangt sterk af van het oplosmiddel. Een waterig e
 
 Hier is dit ingrediënt een schoolvoorbeeld, want het onderzoeksdossier is opvallend eenvormig.
 
-Een studie in *Antioxidants* uit 2022 keek naar quercitrine en hyperoside uit houttuynia-extract bij menselijke keratinocyten — de meest voorkomende cel in de opperhuid — die in een kweek waren blootgesteld aan uvb-licht. Een studie in *Applied Biochemistry and Biotechnology* uit 2023 deed iets vergelijkbaars met een gefermenteerd extract, bij uva-licht en bij waterstofperoxide.
+Een studie in *Antioxidants* uit 2022 keek naar quercitrine en hyperoside uit houttuynia-extract bij menselijke keratinocyten, de meest voorkomende cel in de opperhuid, die in een kweek waren blootgesteld aan uvb-licht. Een studie in *Applied Biochemistry and Biotechnology* uit 2023 deed iets vergelijkbaars met een gefermenteerd extract, bij uva-licht en bij waterstofperoxide.
 
 Beide beschrijven gunstige uitkomsten. En beide zijn celkweekonderzoek: cellen in een schaaltje, geen mensen met een gezicht.
 
-Dat onderscheid is bij dit ingrediënt belangrijker dan gemiddeld, want de opzet slaat precies de vraag over die er voor een consument toe doet. Een stof die op losse keratinocyten wordt gedruppeld, heeft direct contact met die cellen. Diezelfde stof in een toner moet eerst door de hoornlaag — een laag dode, met vet aan elkaar gekitte cellen die er speciaal voor is om te voorkomen dat er dingen naar binnen komen.
+Dat onderscheid is bij dit ingrediënt belangrijker dan gemiddeld, want de opzet slaat precies de vraag over die er voor een consument toe doet. Een stof die op losse keratinocyten wordt gedruppeld, heeft direct contact met die cellen. Diezelfde stof in een toner moet eerst door de hoornlaag, een laag dode, met vet aan elkaar gekitte cellen die er speciaal voor is om te voorkomen dat er dingen naar binnen komen.
 
-Of de flavonoïden uit houttuynia die laag in noemenswaardige hoeveelheid passeren, en of ze dan in de levende opperhuid nog iets doen, is met dit type onderzoek niet te beantwoorden. Het is niet dat het antwoord negatief is — het is dat de vraag niet gesteld is.
+Of de flavonoïden uit houttuynia die laag in noemenswaardige hoeveelheid passeren, en of ze dan in de levende opperhuid nog iets doen, is met dit type onderzoek niet te beantwoorden. Het is niet dat het antwoord negatief is, het is dat de vraag niet gesteld is.
 
 ![Fijngestampte groene blaadjes in een ruwe stenen vijzel met een stamper ernaast.](../../assets/artikelen/houttuynia-cordata-3.jpg)
 
@@ -80,10 +80,10 @@ Bij houttuynia is dat relevant omdat de plant in de kruidengeneeskunde een lange
 
 **Gefermenteerd?** Sommige Koreaanse producten gebruiken een gefermenteerde variant. Dat is een ander stoffenmengsel dan het gewone extract.
 
-**Parfum in de lijst?** Zie hierboven — bij een product voor gevoelige huid is dat een tegenstrijdigheid die het overwegen waard is.
+**Parfum in de lijst?** Zie hierboven, bij een product voor gevoelige huid is dat een tegenstrijdigheid die het overwegen waard is.
 
 **Wat zit eromheen?** Houttuynia wordt vaak gecombineerd met centella of met panthenol. Wat je aan het product toeschrijft, kan net zo goed daarvandaan komen.
 
 ## Samengevat
 
-Houttuynia cordata is een plant met een echte gebruiksgeschiedenis, een herkenbaar stoffenprofiel en een onderzoeksdossier dat vrijwel volledig uit celkweek bestaat. Wat er in een schaaltje met keratinocyten gebeurt, is een eerste stap en geen uitspraak over wat een toner op je gezicht doet. Het prettige gevoel dat zulke producten geven is echt, maar komt grotendeels van de formule eromheen — en de vissige geur van de verse plant verklaart waarom er zo vaak parfum in zit.
+Houttuynia cordata is een plant met een echte gebruiksgeschiedenis, een herkenbaar stoffenprofiel en een onderzoeksdossier dat vrijwel volledig uit celkweek bestaat. Wat er in een schaaltje met keratinocyten gebeurt, is een eerste stap en geen uitspraak over wat een toner op je gezicht doet. Het prettige gevoel dat zulke producten geven is echt, maar komt grotendeels van de formule eromheen, en de vissige geur van de verse plant verklaart waarom er zo vaak parfum in zit.

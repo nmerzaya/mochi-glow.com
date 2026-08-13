@@ -14,13 +14,13 @@ tags:
   - plantaardige olie
   - noten en zaden
 bronnen:
-  - titel: 'Verordening (EU) nr. 432/2012 — lijst van toegestane gezondheidsclaims'
+  - titel: 'Verordening (EU) nr. 432/2012, lijst van toegestane gezondheidsclaims'
     url: 'https://eur-lex.europa.eu/legal-content/NL/ALL/?uri=CELEX%3A32012R0432'
     type: A
   - titel: 'EU-register van voedings- en gezondheidsclaims'
     url: 'https://ec.europa.eu/food/food-feed-portal/screen/health-claims/eu-register'
     type: A
-  - titel: 'Voedingscentrum — Vitamine E'
+  - titel: 'Voedingscentrum, Vitamine E'
     url: 'https://www.voedingscentrum.nl/encyclopedie/vitamine-e.aspx'
     type: B
 ---
@@ -41,7 +41,7 @@ Wat "bescherming van cellen tegen oxidatieve stress" betekent, is bovendien nuch
 
 Ook hier geldt de voorwaarde die bij elke claim hoort: een product mag die zin alleen dragen als er genoeg vitamine E in zit om als bron te gelden.
 
-## Waar het in zit — kort gezegd: in vet
+## Waar het in zit, kort gezegd: in vet
 
 Vitamine E is vetoplosbaar, en dat verklaart de hele lijst in één keer. Waar vet zit, zit vitamine E; waar geen vet zit, zit het niet.
 
@@ -75,9 +75,9 @@ Voor noten geldt iets vergelijkbaars, zij het milder: rauw levert meer op dan ge
 
 Hier wordt het interessant, want de afwezigheid van een zin zegt evenveel als de aanwezigheid ervan.
 
-Voor een aantal andere voedingsstoffen bestaat wél een toegelaten formulering over de huid — zink, biotine, niacine, riboflavine, vitamine A en jodium mogen alle zes de instandhouding van een normale huid noemen. Voor vitamine E is die formulering er niet.
+Voor een aantal andere voedingsstoffen bestaat wél een toegelaten formulering over de huid, zink, biotine, niacine, riboflavine, vitamine A en jodium mogen alle zes de instandhouding van een normale huid noemen. Voor vitamine E is die formulering er niet.
 
-Dat is geen omissie. Elke claim op de lijst is los beoordeeld, en wat het niet haalde, staat er niet op. Wie op een verpakking of in een advertentie tóch vitamine E aan de huid koppelt, gebruikt dus een claim die niet is toegelaten — hoe aannemelijk het verband ook klinkt.
+Dat is geen omissie. Elke claim op de lijst is los beoordeeld, en wat het niet haalde, staat er niet op. Wie op een verpakking of in een advertentie tóch vitamine E aan de huid koppelt, gebruikt dus een claim die niet is toegelaten, hoe aannemelijk het verband ook klinkt.
 
 Het is het soort detail dat je nergens ziet zolang je niet weet waar je naar kijkt, en dat daarna nauwelijks meer te negeren is.
 
@@ -85,13 +85,13 @@ Het is het soort detail dat je nergens ziet zolang je niet weet waar je naar kij
 
 De aanbevolen hoeveelheden per leeftijd en levensfase houdt het Voedingscentrum bij; dat is de aangewezen plek daarvoor.
 
-Twee dingen die wel hier thuishoren. Een tekort is in Nederland ongebruikelijk bij mensen die normaal en gevarieerd eten — deze stof zit in zoveel gewone producten dat je hem moeilijk helemaal misloopt. En omdat vitamine E vetoplosbaar is, slaat het lichaam een overmaat op in plaats van hem uit te plassen. Er geldt dan ook een bovengrens, en die is bij hoog gedoseerde supplementen sneller in beeld dan bij eten.
+Twee dingen die wel hier thuishoren. Een tekort is in Nederland ongebruikelijk bij mensen die normaal en gevarieerd eten, deze stof zit in zoveel gewone producten dat je hem moeilijk helemaal misloopt. En omdat vitamine E vetoplosbaar is, slaat het lichaam een overmaat op in plaats van hem uit te plassen. Er geldt dan ook een bovengrens, en die is bij hoog gedoseerde supplementen sneller in beeld dan bij eten.
 
 Ook hier dus: genoeg is genoeg, en meer is geen verbetering.
 
 ## Samengevat
 
-- Er is precies één toegelaten Europese zin over vitamine E, en die gaat over de bescherming van cellen tegen oxidatieve stress — niet over huid.
+- Er is precies één toegelaten Europese zin over vitamine E, en die gaat over de bescherming van cellen tegen oxidatieve stress, niet over huid.
 - Het zit in plantaardige olie, noten, zaden, avocado, bladgroente en volkoren graan; overal waar vet zit.
 - Hitte, licht en lucht breken het af, dus olie koud gebruiken levert meer op dan olie verhitten.
 - Dat er geen huidclaim bestaat, is een beoordeling geweest en geen vergetelheid.

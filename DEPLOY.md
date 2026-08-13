@@ -1,12 +1,12 @@
 # Van deze map naar mochi-glow.com
 
-Stap voor stap. Alles wat hieronder staat is gratis, op het domein na — dat heb je al.
+Stap voor stap. Alles wat hieronder staat is gratis, op het domein na, dat heb je al.
 
 Er is één ding dat je **vóór de eerste push** moet doen (stap 0). De rest kan in volgorde.
 
 ---
 
-## Stap 0 — Je e-mailadres afschermen
+## Stap 0, Je e-mailadres afschermen
 
 Dit is geen formaliteit. Git zet bij elke commit een naam en een e-mailadres, en die zijn
 voor iedereen zichtbaar in een publieke repo. De hele site is opgezet onder een pseudoniem;
@@ -40,10 +40,9 @@ weigert GitHub een push als er per ongeluk toch een echt adres in zit.
 
 ---
 
-## Stap 1 — De repo op GitHub zetten
+## Stap 1, De repo op GitHub zetten
 
-Maak op GitHub een **lege** repository aan: geen README, geen .gitignore, geen licentie —
-die staan hier al, en anders krijg je een conflict bij de eerste push.
+Maak op GitHub een **lege** repository aan: geen README, geen .gitignore, geen licentie, die staan hier al, en anders krijg je een conflict bij de eerste push.
 
 - Naam: `mochi-glow`
 - Zichtbaarheid: **Public**. Dat is verplicht voor de gratis laag van Cloudflare Pages en
@@ -63,7 +62,7 @@ dan is [GitHub CLI](https://cli.github.com/) of GitHub Desktop een makkelijkere 
 > nieuw geopend venster. Werkt `git` niet, open dan een nieuwe PowerShell, of gebruik het
 > volledige pad: `& "C:\Program Files\Git\cmd\git.exe" push -u origin main`
 
-## Stap 2 — De CMS-instelling invullen
+## Stap 2, De CMS-instelling invullen
 
 In `public/admin/config.yml` staat op regel 12 nog een plaatshouder:
 
@@ -74,7 +73,7 @@ repo: GEBRUIKERSNAAM/mochi-glow # <-- aanpassen
 Zet daar je eigen GitHub-gebruikersnaam neer. Zonder dat kun je niet inloggen op `/admin`.
 Commit en push die wijziging.
 
-## Stap 3 — Cloudflare Pages koppelen
+## Stap 3, Cloudflare Pages koppelen
 
 1. Ga naar het Cloudflare-dashboard → **Workers & Pages** → **Create** → **Pages** →
    **Connect to Git**.
@@ -103,10 +102,10 @@ De eerste build duurt een paar minuten. Daarna krijg je een adres op `*.pages.de
 daar of de site het doet voordat je het domein koppelt.
 
 > Als de build faalt: de compliance-controle draait als eerste stap. Faalt díe, dan staat er in
-> het buildlogboek precies welk artikel welke regel overtreedt. Dat is bedoeld gedrag — het
+> het buildlogboek precies welk artikel welke regel overtreedt. Dat is bedoeld gedrag, het
 > voorkomt dat een artikel met een verboden claim online komt.
 
-## Stap 4 — Het domein koppelen
+## Stap 4, Het domein koppelen
 
 Je hebt `mochi-glow.com` al bij Cloudflare, wat dit eenvoudig maakt: de DNS staat al bij
 dezelfde partij.
@@ -119,7 +118,7 @@ dezelfde partij.
 Het certificaat wordt automatisch aangevraagd. Dat duurt meestal enkele minuten, soms langer.
 Controleer daarna of `https://mochi-glow.com` werkt **zonder** waarschuwing in de browser.
 
-## Stap 5 — Controleren na livegang
+## Stap 5, Controleren na livegang
 
 Loop dit lijstje na zodra de site draait:
 
@@ -128,7 +127,7 @@ Loop dit lijstje na zodra de site draait:
 - [ ] `https://mochi-glow.com/rss.xml` geeft de feed terug.
 - [ ] `/admin` toont het inlogscherm van Sveltia CMS en je kunt inloggen met GitHub.
 - [ ] Een artikelpagina toont het beeld bovenaan, twee beelden in de lopende tekst, de bronnenlijst
-      en — bij een gut-skin-artikel — de medische disclaimer.
+      en, bij een gut-skin-artikel, de medische disclaimer.
 - [ ] Er verschijnt **geen** cookiemelding. Dat hoort zo: zolang `advertentiesActief` in
       `src/config.ts` op `false` staat, laadt de site geen enkel script dat toestemming vereist.
 - [ ] Meld de site aan bij [Google Search Console](https://search.google.com/search-console)
@@ -143,14 +142,14 @@ aanvraag bij Amazon Associates kan niet opnieuw beoordeeld worden.
 
 Wat nog openstaat voordat je iets aanvraagt:
 
-- ~~**`data/toegestane-claims.json`**~~ — **afgerond op 2026-08-12.** Alle bewoordingen zijn
+- ~~**`data/toegestane-claims.json`**~~, **afgerond op 2026-08-12.** Alle bewoordingen zijn
   nageslagen tegen de geconsolideerde tekst van Verordening (EU) nr. 432/2012 en `geverifieerd` staat
   op `true`. Twaalf van de zestien claims en vijf van de zes darmclaims bleken niet letterlijk te
   kloppen en zijn gecorrigeerd; de verantwoording staat in `onderzoek/07`, par. 4.4. Het EU-register
-  zelf is een JavaScript-toepassing die niet automatisch uit te lezen is — de verordening is daarom
+  zelf is een JavaScript-toepassing die niet automatisch uit te lezen is, de verordening is daarom
   via het Publicatiebureau opgehaald, en dat is de vaststellende wetgeving zelf.
-- **`public/ads.txt`** — publisher-ID invullen, maar pas ná goedkeuring van AdSense.
-- **`src/config.ts`** — `advertentiesActief` op `true` zetten op het moment dat er
+- **`public/ads.txt`**, publisher-ID invullen, maar pas ná goedkeuring van AdSense.
+- **`src/config.ts`**, `advertentiesActief` op `true` zetten op het moment dat er
   daadwerkelijk een advertentiescript op de site staat, niet eerder.
 - **De site laten rijpen.** Het onderzoek in `onderzoek/03-tegenspraak.md` gaat ervan uit dat
   Google doorgaans drie tot zes maanden sitegeschiedenis wil zien. Dat is geen bureaucratie maar
@@ -159,7 +158,7 @@ Wat nog openstaat voordat je iets aanvraagt:
 ## Als er iets misgaat
 
 **De build faalt op de compliance-controle.** Lees het logboek: er staat bestand, regelnummer en
-reden. Pas het artikel aan, of — als de term beschrijvend wordt gebruikt — voeg een
+reden. Pas het artikel aan, of, als de term beschrijvend wordt gebruikt, voeg een
 `taalUitzondering` toe met een reden. Gebruik dat laatste niet om een terechte melding weg te
 werken.
 

@@ -14,18 +14,18 @@ tags:
   - vitamine B8
   - ei en peulvruchten
 bronnen:
-  - titel: 'Verordening (EU) nr. 432/2012 — lijst van toegestane gezondheidsclaims'
+  - titel: 'Verordening (EU) nr. 432/2012, lijst van toegestane gezondheidsclaims'
     url: 'https://eur-lex.europa.eu/legal-content/NL/ALL/?uri=CELEX%3A32012R0432'
     type: A
   - titel: 'EU-register van voedings- en gezondheidsclaims'
     url: 'https://ec.europa.eu/food/food-feed-portal/screen/health-claims/eu-register'
     type: A
-  - titel: 'Voedingscentrum — Biotine'
+  - titel: 'Voedingscentrum, Biotine'
     url: 'https://www.voedingscentrum.nl/encyclopedie/biotine.aspx'
     type: B
 ---
 
-Als één voedingsstof het schap "huid, haar en nagels" draagt, is het deze. Biotine — ook bekend als vitamine B8 of vitamine H — staat op vrijwel elk potje in dat rijtje, meestal in hoeveelheden die een veelvoud zijn van wat iemand op een dag nodig heeft.
+Als één voedingsstof het schap "huid, haar en nagels" draagt, is het deze. Biotine, ook bekend als vitamine B8 of vitamine H, staat op vrijwel elk potje in dat rijtje, meestal in hoeveelheden die een veelvoud zijn van wat iemand op een dag nodig heeft.
 
 Dat is opvallend, want een tekort eraan is in Nederland zeldzaam. Dit artikel gaat over wat er precies over gezegd mag worden, waar het in zit, en waarom die hoge doseringen zo gewoon zijn geworden.
 
@@ -37,7 +37,7 @@ Op de Europese lijst uit Verordening (EU) nr. 432/2012 staan voor biotine onder 
 
 > Biotine draagt bij tot de instandhouding van normaal haar
 
-Dat is meer dan de meeste voedingsstoffen krijgen — de meeste hebben er geen enkele over huid. Het verklaart waarom deze stof zo dominant is op dat schap: het is een van de weinige waarbij "huid" en "haar" in dezelfde zin met de stof genoemd mogen worden.
+Dat is meer dan de meeste voedingsstoffen krijgen, de meeste hebben er geen enkele over huid. Het verklaart waarom deze stof zo dominant is op dat schap: het is een van de weinige waarbij "huid" en "haar" in dezelfde zin met de stof genoemd mogen worden.
 
 Let ook hier op wat er staat. Instandhouding van wat normaal is. Er staat niet: dikker haar, sterkere nagels, minder uitval. Wie dat leest op een verpakking, leest een claim die niet is toegelaten.
 
@@ -67,7 +67,7 @@ Het gevolg is dat een tekort in Nederland vrijwel alleen voorkomt in bijzondere 
 
 Hier zit het ene concrete, controleerbare feit dat dit onderwerp interessant maakt.
 
-In rauw eiwit zit avidine, een stof die zich stevig bindt aan biotine en verhindert dat het wordt opgenomen. Wie langdurig grote hoeveelheden rauw eiwit eet — het klassieke voorbeeld is de bodybuilder die rauwe eieren door een shake klopt — kan daardoor daadwerkelijk in de problemen komen.
+In rauw eiwit zit avidine, een stof die zich stevig bindt aan biotine en verhindert dat het wordt opgenomen. Wie langdurig grote hoeveelheden rauw eiwit eet, het klassieke voorbeeld is de bodybuilder die rauwe eieren door een shake klopt, kan daardoor daadwerkelijk in de problemen komen.
 
 De oplossing is de simpelste die er bestaat: verhitten. Bij het koken of bakken verliest avidine zijn grip, en dan is een ei gewoon een bron van biotine in plaats van een rem erop.
 
@@ -83,7 +83,7 @@ Het eerlijke antwoord is dat een hoog getal op een verpakking verkoopt. Biotine 
 
 Er is één praktisch punt dat wel de moeite waard is om te kennen: hoge doseringen biotine kunnen de uitslag van bepaalde bloedbepalingen verstoren, waaronder die van de schildklier en het hart. Die uitslag wordt dan onjuist, terwijl er met de persoon niets aan de hand hoeft te zijn. Wie zulke supplementen gebruikt, doet er verstandig aan dat te melden voordat er bloed wordt geprikt.
 
-Dat is geen reden tot zorg, wel een reden om het te noemen — het is precies het soort informatie dat op de verpakking niet in beeld komt.
+Dat is geen reden tot zorg, wel een reden om het te noemen, het is precies het soort informatie dat op de verpakking niet in beeld komt.
 
 ## Samengevat
 

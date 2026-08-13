@@ -12,10 +12,10 @@ tags:
   - huidflora
   - onderzoek
 bronnen:
-  - titel: "O'Neill e.a. — The gut-skin axis in health and disease (BioEssays, 2016)"
+  - titel: "O'Neill e.a. The gut-skin axis in health and disease (BioEssays, 2016)"
     url: 'https://pubmed.ncbi.nlm.nih.gov/27554239/'
     type: B
-  - titel: 'Widhiati e.a. — The role of gut microbiome in inflammatory skin disorders: a systematic review (Dermatology Reports, 2022)'
+  - titel: 'Widhiati e.a. The role of gut microbiome in inflammatory skin disorders: a systematic review (Dermatology Reports, 2022)'
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8969879/'
     type: B
 ---
@@ -28,7 +28,7 @@ Dat verschil is niet muggenzifterij. Het bepaalt of een bewering die je leest er
 
 Begin bij de omstandigheden. Je dikke darm is donker, warm, vochtig, vrijwel zonder zuurstof en er komt voortdurend voedsel langs. Het is, biologisch gezien, een uitzonderlijk gastvrije plek. De hoeveelheid micro-organismen die daar leeft, is enorm, en de verscheidenheid aan soorten ook.
 
-Je huid is het tegenovergestelde. Die is droog, koel, zout, zuur, blootgesteld aan zuurstof en aan ultraviolet licht, en de bovenste laag schilfert continu af — je leefomgeving loopt letterlijk onder je voeten weg. Er leven daar veel minder organismen, en de soorten die het er goed doen, zijn gespecialiseerd in precies die schrale omstandigheden.
+Je huid is het tegenovergestelde. Die is droog, koel, zout, zuur, blootgesteld aan zuurstof en aan ultraviolet licht, en de bovenste laag schilfert continu af, je leefomgeving loopt letterlijk onder je voeten weg. Er leven daar veel minder organismen, en de soorten die het er goed doen, zijn gespecialiseerd in precies die schrale omstandigheden.
 
 Bovendien is je huid geen enkele leefomgeving maar tientallen. De vettige zone naast je neus lijkt qua bewoners niet op je onderarm, en je oksel weer niet op je hiel. Onderzoek naar "het huidmicrobioom" gaat dus altijd over een specifieke plek, en resultaten van de ene plek zeggen weinig over de andere.
 
@@ -36,7 +36,7 @@ Bovendien is je huid geen enkele leefomgeving maar tientallen. De vettige zone n
 
 De reden dat beide microbiomen samen besproken worden, is het idee van de darm-huid-as: de gedachte dat wat er in de darm gebeurt langs indirecte weg iets kan betekenen voor de huid.
 
-Het overzichtsartikel in *BioEssays* uit 2016 waar dit onderwerp vaak op teruggaat, beschrijft die route zorgvuldig. Darm en huid zijn allebei grensorganen, allebei met veel immuunweefsel vlak onder het oppervlak. De voorgestelde verbinding loopt niet doordat darmbacteriën naar je gezicht verhuizen — dat gebeurt niet — maar doordat stoffen die in de darm ontstaan, bijvoorbeeld uit de vertering van voeding of uit de stofwisseling van bacteriën, in de bloedbaan terechtkomen en zo elders in het lichaam iets kunnen doen.
+Het overzichtsartikel in *BioEssays* uit 2016 waar dit onderwerp vaak op teruggaat, beschrijft die route zorgvuldig. Darm en huid zijn allebei grensorganen, allebei met veel immuunweefsel vlak onder het oppervlak. De voorgestelde verbinding loopt niet doordat darmbacteriën naar je gezicht verhuizen, dat gebeurt niet, maar doordat stoffen die in de darm ontstaan, bijvoorbeeld uit de vertering van voeding of uit de stofwisseling van bacteriën, in de bloedbaan terechtkomen en zo elders in het lichaam iets kunnen doen.
 
 Dat is een indirecte, meerstapsroute. Elke stap daarin is een plek waar het onderzoek nog onvolledig is.
 
@@ -50,7 +50,7 @@ Twee dingen zijn hier van belang.
 
 Ten eerste zeggen die bevindingen niets over het huidmicrobioom van dezelfde mensen. Dat is een aparte vraag, met apart onderzoek, en de uitkomsten van het ene mag je niet op het andere plakken.
 
-Ten tweede noemen de auteurs zelf hun beperkingen. Er waren weinig studies per aandoening — vier over acne, drie over psoriasis. De onderzochte groepen en de gebruikte methodes verschilden onderling sterk. En bij constitutioneel eczeem waren de resultaten tegenstrijdig: verschillende onderzoeken wezen verschillende kanten op.
+Ten tweede noemen de auteurs zelf hun beperkingen. Er waren weinig studies per aandoening, vier over acne, drie over psoriasis. De onderzochte groepen en de gebruikte methodes verschilden onderling sterk. En bij constitutioneel eczeem waren de resultaten tegenstrijdig: verschillende onderzoeken wezen verschillende kanten op.
 
 Als je dat samenvat tot "onderzoek toont aan dat je darmen je huid bepalen", heb je iets anders opgeschreven dan er staat.
 
@@ -70,7 +70,7 @@ Het verwarren van de twee microbiomen leidt tot een paar hardnekkige misverstand
 
 Als je een bewering tegenkomt over microbioom en huid, helpt het om drie vragen te stellen.
 
-*Over welk microbioom gaat dit — darm of huid?* Als dat niet duidelijk wordt gemaakt, is dat op zichzelf al een signaal.
+*Over welk microbioom gaat dit, darm of huid?* Als dat niet duidelijk wordt gemaakt, is dat op zichzelf al een signaal.
 
 *Is er gemeten, of is er beredeneerd?* Er is een groot verschil tussen "bij deze groep zagen we deze samenstelling" en "dus zal dit product helpen".
 

@@ -15,10 +15,10 @@ tags:
   - hydratatie
   - humectant
 bronnen:
-  - titel: 'CosIng — Sodium Hyaluronate, Europese databank van cosmetische ingrediënten'
+  - titel: 'CosIng, Sodium Hyaluronate, Europese databank van cosmetische ingrediënten'
     url: 'https://ec.europa.eu/growth/tools-databases/cosing/'
     type: A
-  - titel: 'Verordening (EU) nr. 655/2013 — gemeenschappelijke criteria voor claims over cosmetische producten'
+  - titel: 'Verordening (EU) nr. 655/2013, gemeenschappelijke criteria voor claims over cosmetische producten'
     url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A32013R0655'
     type: A
 ---
@@ -37,11 +37,11 @@ Stoffen die water aantrekken en vasthouden heten humectanten. Glycerine is er oo
 
 Hyaluronzuur bestaat in verschillende ketenlengtes, aangeduid met het molecuulgewicht. Grote moleculen blijven op het huidoppervlak liggen en vormen daar een vochtvasthoudende laag. Kleinere moleculen kunnen verder in de bovenste huidlagen doordringen.
 
-Merken gebruiken dit graag: "drie molecuulgroottes voor hydratatie op meerdere niveaus". Dat is niet onzin — het verschil in gedrag tussen grote en kleine ketens is reëel en goed beschreven. Maar er zitten twee haken aan.
+Merken gebruiken dit graag: "drie molecuulgroottes voor hydratatie op meerdere niveaus". Dat is niet onzin, het verschil in gedrag tussen grote en kleine ketens is reëel en goed beschreven. Maar er zitten twee haken aan.
 
 De eerste is dat "dieper" niet automatisch "beter" betekent. De bovenste huidlaag is een barrière, en die barrière is er niet voor niets. Hydratatie van het oppervlak is precies wat je wilt als je doel is dat de huid soepel aanvoelt en er egaal uitziet.
 
-De tweede is dat er aanwijzingen zijn dat heel kleine hyaluronzuurfragmenten in het lichaam een andere biologische rol spelen dan de lange ketens — ze worden in onderzoek in verband gebracht met signalen die met weefselschade te maken hebben. Wat dat betekent voor een crème op een gezonde huid, is niet duidelijk, en het is een van de plekken waar de wetenschap eerlijk gezegd nog niet uit is.
+De tweede is dat er aanwijzingen zijn dat heel kleine hyaluronzuurfragmenten in het lichaam een andere biologische rol spelen dan de lange ketens, ze worden in onderzoek in verband gebracht met signalen die met weefselschade te maken hebben. Wat dat betekent voor een crème op een gezonde huid, is niet duidelijk, en het is een van de plekken waar de wetenschap eerlijk gezegd nog niet uit is.
 
 ![Macro-opname van een heldere, stroperige gel die tussen twee vingertoppen tot een dunne draad wordt opgetrokken.](../../assets/artikelen/hyaluronzuur-2.jpg)
 
@@ -51,7 +51,7 @@ Dit is de bekendste waarschuwing, en hij verdient een genuanceerd antwoord.
 
 De redenering: een humectant trekt water aan. Als er in de lucht weinig vocht zit, kan hij dat water niet uit de omgeving halen en trekt hij het dus uit diepere huidlagen, waarna het verdampt. Netto verlies je vocht.
 
-Dat mechanisme is theoretisch mogelijk, en het wordt in de vakliteratuur genoemd. In de praktijk hangt het sterk af van de omstandigheden en van de formulering. De meeste producten bevatten naast humectanten ook occlusieve bestanddelen — vetachtige stoffen die verdamping remmen. Zolang die erin zitten, blijft het aangetrokken water waar het hoort.
+Dat mechanisme is theoretisch mogelijk, en het wordt in de vakliteratuur genoemd. In de praktijk hangt het sterk af van de omstandigheden en van de formulering. De meeste producten bevatten naast humectanten ook occlusieve bestanddelen, vetachtige stoffen die verdamping remmen. Zolang die erin zitten, blijft het aangetrokken water waar het hoort.
 
 De praktische vertaling is niet "vermijd hyaluronzuur", maar: gebruik het niet als enige laag op een droge huid in droge lucht. Een hydraterend serum gevolgd door iets afsluitends is een logischer combinatie dan een serum alleen.
 

@@ -15,7 +15,7 @@ tags:
   - EGCG
   - polyfenolen
 bronnen:
-  - titel: 'Hsu — Green tea and the skin (Journal of the American Academy of Dermatology, 2005)'
+  - titel: 'Hsu, Green tea and the skin (Journal of the American Academy of Dermatology, 2005)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/15928624/'
     type: B
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -33,7 +33,7 @@ Groene en zwarte thee komen van dezelfde plant. Het verschil zit in de bewerking
 
 Dat is geen detail, want juist die stoffen die bij oxidatie verdwijnen, zijn de stoffen waar het hier om gaat. Groene thee bevat een groep polyfenolen die catechinen heten. De bekendste is epigallocatechinegallaat, in vrijwel elke tekst afgekort tot EGCG, en dat is met afstand de meest voorkomende catechine in het blad.
 
-Daarnaast zitten er cafeïne in, en looistoffen, en een aminozuur dat theanine heet. In een cosmetisch extract hangt het sterk van de bereiding af wat daarvan overblijft — een extract op water gemaakt is iets anders dan een extract op alcohol, en beide zijn iets anders dan het blad zelf.
+Daarnaast zitten er cafeïne in, en looistoffen, en een aminozuur dat theanine heet. In een cosmetisch extract hangt het sterk van de bereiding af wat daarvan overblijft, een extract op water gemaakt is iets anders dan een extract op alcohol, en beide zijn iets anders dan het blad zelf.
 
 ## Wat er onderzocht is
 
@@ -47,7 +47,7 @@ Nu de kanttekening, en die is bij dit ingrediënt groter dan bij de meeste.
 
 Veel van dit werk is gedaan op gekweekte cellen of op muizen, vaak met concentraties die ver boven liggen wat een gewoon verzorgingsproduct bevat. Een stof die in een schaaltje op een celkweek wordt gedruppeld, hoeft niet hetzelfde te doen wanneer hij in een crème zit die op een intacte hoornlaag wordt gesmeerd.
 
-Dat is geen kritiek op het onderzoek — zo werkt de opbouw van kennis nu eenmaal — maar het is wel de reden dat "onderzocht" hier iets anders betekent dan "aangetoond bij mensen die het smeren".
+Dat is geen kritiek op het onderzoek, zo werkt de opbouw van kennis nu eenmaal, maar het is wel de reden dat "onderzocht" hier iets anders betekent dan "aangetoond bij mensen die het smeren".
 
 ## Het probleem waar niemand het over heeft: EGCG is instabiel
 
@@ -71,7 +71,7 @@ Formuleerders weten dit en werken eromheen: een lagere zuurgraad, aanvullende an
 
 Verordening (EG) nr. 1223/2009 bepaalt wat een cosmetisch product mag beweren. Reinigen, parfumeren, het uiterlijk veranderen, beschermen, in goede staat houden: dat mag. Een aandoening aanpakken of een medische werking claimen: dat mag niet.
 
-Bij groene thee is dat bijzonder relevant, omdat een deel van het onderzoek in de medische hoek ligt. Zulke bevindingen mogen wel beschreven worden in een artikel als dit — als samenvatting van wat er gepubliceerd is — maar ze mogen niet als belofte op een verpakking staan.
+Bij groene thee is dat bijzonder relevant, omdat een deel van het onderzoek in de medische hoek ligt. Zulke bevindingen mogen wel beschreven worden in een artikel als dit, als samenvatting van wat er gepubliceerd is, maar ze mogen niet als belofte op een verpakking staan.
 
 Het onderscheid zit in de rol. Uitleggen wat er in een laboratorium gemeten is, is iets anders dan beloven wat een crème gaat doen.
 
@@ -85,4 +85,4 @@ Het onderscheid zit in de rol. Uitleggen wat er in een laboratorium gemeten is, 
 
 ## Samengevat
 
-Groene thee is een van de beter onderzochte plantextracten in huidverzorging, met EGCG als best beschreven bestanddeel. Het meeste van dat onderzoek komt uit celkweek en proefdieren, vaak bij concentraties die een gewoon product niet haalt. Daar komt bij dat de stof waar het om draait slecht tegen licht, lucht en warmte kan — waardoor de vraag niet alleen is wat erin zat, maar wat er nog van over is tegen de tijd dat je het opdoet.
+Groene thee is een van de beter onderzochte plantextracten in huidverzorging, met EGCG als best beschreven bestanddeel. Het meeste van dat onderzoek komt uit celkweek en proefdieren, vaak bij concentraties die een gewoon product niet haalt. Daar komt bij dat de stof waar het om draait slecht tegen licht, lucht en warmte kan, waardoor de vraag niet alleen is wat erin zat, maar wat er nog van over is tegen de tijd dat je het opdoet.

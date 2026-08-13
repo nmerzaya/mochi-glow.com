@@ -8,7 +8,7 @@ Statisch gebouwd met Astro, zonder externe verzoeken en zonder tracking.
 > domein `mochi-glow.com` is geregistreerd; de repo staat nog niet op GitHub en er is nog geen hosting
 > gekoppeld.
 >
-> **Om live te gaan: volg `DEPLOY.md`.** Begin bij stap 0 — die schermt je e-mailadres af voordat er
+> **Om live te gaan: volg `DEPLOY.md`.** Begin bij stap 0, die schermt je e-mailadres af voordat er
 > iets publiek wordt.
 
 ## Aan de slag
@@ -27,8 +27,7 @@ Node 20 of nieuwer is vereist.
 
 De site staat in een niche waar de meeste beweringen wettelijk niet gedaan mogen worden. Cosmetica
 mag geen medische werking claimen (Verordening 1223/2009 en 655/2013), en voor voedingsmiddelen geldt
-dat alleen goedgekeurde claims uit het Europese register zijn toegestaan (Verordening 1924/2006) —
-waarbij voor probiotica en darmgezondheid géén enkele goedgekeurde claim bestaat.
+dat alleen goedgekeurde claims uit het Europese register zijn toegestaan (Verordening 1924/2006), waarbij voor probiotica en darmgezondheid géén enkele goedgekeurde claim bestaat.
 
 Die regels zijn daarom niet als richtlijn opgeschreven maar in code gezet:
 
@@ -43,16 +42,16 @@ Die regels zijn daarom niet als richtlijn opgeschreven maar in code gezet:
   beschouwt op een pagina die een levensmiddel aanprijst. Door daar niets te verkopen, mogen die
   artikelen wél gewoon naar onderzoek linken.
 
-Een artikel dat een verboden term beschrijvend gebruikt — bijvoorbeeld om uit te leggen dat een crème
-niets mag genezen — kan dat declareren via `taalUitzonderingen`, mét reden. Zo blijft een uitzondering
+Een artikel dat een verboden term beschrijvend gebruikt, bijvoorbeeld om uit te leggen dat een crème
+niets mag genezen, kan dat declareren via `taalUitzonderingen`, mét reden. Zo blijft een uitzondering
 zichtbaar in plaats van stilzwijgend.
 
 ## Structuur
 
 ```
 src/
-  content/ingredienten/   pijler 1 — K-beauty-ingrediënten
-  content/gut-skin/       pijler 2 — darm-huid, niet commercieel
+  content/ingredienten/   pijler 1, K-beauty-ingrediënten
+  content/gut-skin/       pijler 2, darm-huid, niet commercieel
   content.config.ts       schema en compliance-velden
   components/             disclosure, bronnenlijst, disclaimer, kaarten
   layouts/                BasisLayout en ArtikelLayout
@@ -75,7 +74,7 @@ De volledige route staat in **`DEPLOY.md`**. Kort samengevat blijven deze twee w
 allebei pas ná goedkeuring door AdSense:
 
 - `public/ads.txt`: publisher-ID invullen ná goedkeuring van AdSense.
-- `src/config.ts`: `advertentiesActief` op `true` zetten wanneer advertenties live gaan — pas dan
+- `src/config.ts`: `advertentiesActief` op `true` zetten wanneer advertenties live gaan, pas dan
   verschijnt het toestemmingsvenster.
 
 ## Licentie

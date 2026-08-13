@@ -14,16 +14,16 @@ tags:
   - supplementen
   - eiwit
 bronnen:
-  - titel: 'Verordening (EU) nr. 432/2012 — lijst van toegestane gezondheidsclaims'
+  - titel: 'Verordening (EU) nr. 432/2012, lijst van toegestane gezondheidsclaims'
     url: 'https://eur-lex.europa.eu/legal-content/NL/ALL/?uri=CELEX%3A32012R0432'
     type: A
   - titel: 'EU-register van voedings- en gezondheidsclaims'
     url: 'https://ec.europa.eu/food/food-feed-portal/screen/health-claims/eu-register'
     type: A
-  - titel: 'NVWA — Voedingsclaims en gezondheidsclaims'
+  - titel: 'NVWA, Voedingsclaims en gezondheidsclaims'
     url: 'https://www.nvwa.nl/onderwerpen/voedselveiligheid/voedingsclaims-en-gezondheidsclaims'
     type: A
-  - titel: 'Voedingscentrum — Collageen'
+  - titel: 'Voedingscentrum, Collageen'
     url: 'https://www.voedingscentrum.nl/encyclopedie/collageen.aspx'
     type: B
 ---
@@ -52,17 +52,17 @@ Dat is een merkwaardige situatie voor een product van deze omvang: het best verk
 
 Om te begrijpen waarom dit onderwerp zo lastig ligt, helpt het te weten wat het is.
 
-Collageen is een eiwit — het meest voorkomende eiwit in het lichaam. Het zit in huid, botten, pezen en kraakbeen, en het geeft die weefsels hun stevigheid. Het lichaam maakt het zelf aan uit aminozuren, de bouwstenen waarin al het eiwit uit voeding wordt afgebroken.
+Collageen is een eiwit, het meest voorkomende eiwit in het lichaam. Het zit in huid, botten, pezen en kraakbeen, en het geeft die weefsels hun stevigheid. Het lichaam maakt het zelf aan uit aminozuren, de bouwstenen waarin al het eiwit uit voeding wordt afgebroken.
 
 Dat laatste is meteen het kernpunt. Eiwit dat je eet, komt niet als eiwit in je bloed terecht. De vertering knipt het in stukken, en die stukken worden gebruikt voor wat het lichaam op dat moment nodig heeft. Er zit geen adressticker op.
 
-Wat als collageenpoeder wordt verkocht, is bovendien meestal niet heel collageen maar gehydrolyseerd collageen: al in kleinere stukken geknipt, zodat het oplost in een glas water. Als voedingsmiddel is dat gewoon een eiwitbron, vergelijkbaar met andere eiwitpoeders — met de kanttekening dat het als eiwit onvolledig is, want het bevat niet alle aminozuren die het lichaam niet zelf kan maken.
+Wat als collageenpoeder wordt verkocht, is bovendien meestal niet heel collageen maar gehydrolyseerd collageen: al in kleinere stukken geknipt, zodat het oplost in een glas water. Als voedingsmiddel is dat gewoon een eiwitbron, vergelijkbaar met andere eiwitpoeders, met de kanttekening dat het als eiwit onvolledig is, want het bevat niet alle aminozuren die het lichaam niet zelf kan maken.
 
 ## Waar het van gemaakt wordt
 
 Dit is het deel dat op verpakkingen vaak in kleine letters staat.
 
-Collageen wordt gewonnen uit dierlijk materiaal: huiden, botten en kraakbeen van runderen en varkens, of huid en graten van vis. Er bestaat geen plantaardig collageen — planten maken die stof niet. Een product dat "plantaardig collageen" heet, bevat dus iets anders, meestal een mengsel van vitaminen en aminozuren dat bedoeld is om de eigen aanmaak te ondersteunen.
+Collageen wordt gewonnen uit dierlijk materiaal: huiden, botten en kraakbeen van runderen en varkens, of huid en graten van vis. Er bestaat geen plantaardig collageen, planten maken die stof niet. Een product dat "plantaardig collageen" heet, bevat dus iets anders, meestal een mengsel van vitaminen en aminozuren dat bedoeld is om de eigen aanmaak te ondersteunen.
 
 Voor wie geen varken of rund eet, of vegetarisch is, is dat een relevant detail dat in de marketing zelden vooraan staat.
 
@@ -74,7 +74,7 @@ De keukenversie hiervan bestaat trouwens al eeuwen. Bouillon die lang trekt op b
 
 Als er geen claim bestaat, hoe staat het product dan in de winkel? Op drie manieren, en het is nuttig ze te herkennen.
 
-**Via een andere stof.** Aan het poeder wordt vitamine C toegevoegd, en de toegelaten zin over vitamine C en collageenvorming komt op de verpakking. Dat is volledig legaal — de claim slaat alleen op de vitamine, niet op het collageen ernaast.
+**Via een andere stof.** Aan het poeder wordt vitamine C toegevoegd, en de toegelaten zin over vitamine C en collageenvorming komt op de verpakking. Dat is volledig legaal, de claim slaat alleen op de vitamine, niet op het collageen ernaast.
 
 **Via woorden die geen claim zijn.** "Schoonheid van binnenuit", "voor je glow", "beauty formula". Zulke termen ontlenen hun kracht aan de suggestie en vermijden precies de formulering die getoetst zou worden. De NVWA kijkt daar wel degelijk naar, want ook een suggestieve verwijzing kan een claim zijn.
 

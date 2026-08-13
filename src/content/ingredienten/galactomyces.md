@@ -1,6 +1,6 @@
 ---
 titel: 'Galactomyces: het ferment met een belangenprobleem'
-beschrijving: 'Galactomyces ferment filtrate is goed onderzocht — grotendeels door het bedrijf dat het verkoopt. Wat betekent dat voor de waarde van dat onderzoek?'
+beschrijving: 'Galactomyces ferment filtrate is goed onderzocht, grotendeels door het bedrijf dat het verkoopt. Wat betekent dat voor de waarde van dat onderzoek?'
 publicatiedatum: 2026-07-30
 auteur: Noor
 affiliate: false
@@ -15,7 +15,7 @@ tags:
   - fermentatie
   - onderzoek
 bronnen:
-  - titel: 'Miyamoto e.a. — Significant Reversal of Facial Wrinkle, Pigmented Spot and Roughness by Daily Application of Galactomyces Ferment Filtrate-Containing Skin Products for 12 Months (Journal of Clinical Medicine, 2023)'
+  - titel: 'Miyamoto e.a. Significant Reversal of Facial Wrinkle, Pigmented Spot and Roughness by Daily Application of Galactomyces Ferment Filtrate-Containing Skin Products for 12 Months (Journal of Clinical Medicine, 2023)'
     url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9917576/'
     type: B
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -23,7 +23,7 @@ bronnen:
     type: A
 ---
 
-Galactomyces ferment filtrate is het ingrediënt achter een van de bekendste — en duurste — essences op de Aziatische markt. Het is ook een van de weinige cosmetische ingrediënten waarvan je kunt zeggen dat er echt langdurig klinisch onderzoek naar is gedaan.
+Galactomyces ferment filtrate is het ingrediënt achter een van de bekendste, en duurste, essences op de Aziatische markt. Het is ook een van de weinige cosmetische ingrediënten waarvan je kunt zeggen dat er echt langdurig klinisch onderzoek naar is gedaan.
 
 En het is precies daar dat dit artikel over gaat. Want dat onderzoek is er wel, maar het komt bijna volledig uit één hoek.
 
@@ -33,7 +33,7 @@ Galactomyces is een gistachtige schimmel. Het ingrediënt dat je op etiketten zi
 
 Wat er in dat filtraat zit, is dus geen enkele stof maar een mengsel van wat de gist heeft achtergelaten: aminozuren, organische zuren, vitaminen uit de B-groep, suikers en peptiden. De precieze samenstelling hangt af van de voedingsbodem, de gebruikte stam en de duur van de fermentatie.
 
-Het oorsprongsverhaal is inmiddels folklore: iemand merkte op dat oudere sakebrouwers opvallend gladde handen hadden, ondanks een leven van zwaar werk. Als anekdote is het aantrekkelijk. Als bewijs is het niets — brouwers verschillen op tientallen manieren van willekeurige anderen, en niemand heeft indertijd iets gemeten.
+Het oorsprongsverhaal is inmiddels folklore: iemand merkte op dat oudere sakebrouwers opvallend gladde handen hadden, ondanks een leven van zwaar werk. Als anekdote is het aantrekkelijk. Als bewijs is het niets, brouwers verschillen op tientallen manieren van willekeurige anderen, en niemand heeft indertijd iets gemeten.
 
 ## Het onderzoek dat er is
 
@@ -49,7 +49,7 @@ Kijk je naar wie het onderzoek deed, dan verandert het beeld.
 
 Vijf van de zes auteurs zijn werknemers van Procter & Gamble, bij het Kobe Innovation Center. De zesde is als consultant aan datzelfde bedrijf verbonden. En de producten die in de studie werden gebruikt, zijn producten van een merk van P&G.
 
-De auteurs vermelden dit netjes zelf — die openheid is precies zoals het hoort, en de studie is er niet minder eerlijk om gepubliceerd. Er staat bovendien bij dat er geen externe financiering was, wat klopt: het onderzoek werd intern gedaan.
+De auteurs vermelden dit netjes zelf, die openheid is precies zoals het hoort, en de studie is er niet minder eerlijk om gepubliceerd. Er staat bovendien bij dat er geen externe financiering was, wat klopt: het onderzoek werd intern gedaan.
 
 Maar "geen externe financiering" betekent hier niet onafhankelijk. Het betekent dat het bedrijf dat het product verkoopt, het onderzoek naar dat product zelf heeft uitgevoerd, met eigen medewerkers, en de uitkomst heeft gepubliceerd.
 
@@ -59,7 +59,7 @@ Dat maakt de resultaten niet automatisch onjuist. Wel is het een bekend en goed 
 
 Op deze site worden geen producten getest. Wat hier gebeurt, is lezen wat er gepubliceerd is en dat samenvatten. Juist dan is de vraag wie het onderzoek betaald of uitgevoerd heeft geen bijzaak maar een van de weinige kwaliteitssignalen die je van buitenaf kunt beoordelen.
 
-Bij veel ingrediënten is dat lastig na te gaan. Bij dit ingrediënt staat het gewoon in de publicatie, en dan hoort het ook in een artikel als dit te staan — niet als beschuldiging, maar als context waarmee je de uitkomst kunt wegen.
+Bij veel ingrediënten is dat lastig na te gaan. Bij dit ingrediënt staat het gewoon in de publicatie, en dan hoort het ook in een artikel als dit te staan, niet als beschuldiging, maar als context waarmee je de uitkomst kunt wegen.
 
 Wat je hiermee kunt: als je ergens leest dat Galactomyces "klinisch onderzocht" is, klopt dat. De vervolgvraag is wie het onderzocht heeft. Die vraag hoort standaard te zijn, en is het zelden.
 

@@ -12,7 +12,7 @@ tags:
   - herstel
   - leefstijl
 bronnen:
-  - titel: 'Oyetakin-White e.a. — Does poor sleep quality affect skin ageing? (Clinical and Experimental Dermatology, 2015)'
+  - titel: 'Oyetakin-White e.a. Does poor sleep quality affect skin ageing? (Clinical and Experimental Dermatology, 2015)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/25266053/'
     type: B
   - titel: 'Sleep deprivation and the skin (Clinical and Experimental Dermatology, 2023)'
@@ -22,7 +22,7 @@ bronnen:
 
 "Schoonheidsslaapje" is zo'n woord dat je niet serieus neemt tot je de metingen ziet. Slaap is namelijk een van de weinige onderwerpen in de hoek van huid en leefstijl waar niet alleen naar meningen is gevraagd, maar waar apparatuur aan te pas is gekomen.
 
-Het is ook het enige advies in deze hele rubriek dat niets kost en niets verkoopt. Dat maakt het de moeite waard om er precies naar te kijken — inclusief hoe klein de onderzoeken zijn.
+Het is ook het enige advies in deze hele rubriek dat niets kost en niets verkoopt. Dat maakt het de moeite waard om er precies naar te kijken, inclusief hoe klein de onderzoeken zijn.
 
 ## Wat er gemeten is
 
@@ -44,11 +44,11 @@ Daarnaast scoorden de goede slapers hoger op een beoordelingsschaal voor huidver
 
 Van alles wat hierboven staat, is die plakbandproef het stevigst, en het is de moeite waard om te zien waarom.
 
-Bij een beoordelingsschaal voor veroudering kijkt een mens naar een gezicht en geeft een cijfer. Bij tevredenheid over het eigen uiterlijk vraag je iemand naar een gevoel — en wie weet dat hij slecht slaapt, heeft daar een mening over. Zulke uitkomsten zijn gevoelig voor verwachting, van de beoordelaar én van de deelnemer.
+Bij een beoordelingsschaal voor veroudering kijkt een mens naar een gezicht en geeft een cijfer. Bij tevredenheid over het eigen uiterlijk vraag je iemand naar een gevoel, en wie weet dat hij slecht slaapt, heeft daar een mening over. Zulke uitkomsten zijn gevoelig voor verwachting, van de beoordelaar én van de deelnemer.
 
 De snelheid waarmee een barrière zich na een gestandaardiseerde beschadiging sluit, is dat niet. Dat is een fysiek proces met een apparaat aan het eind. Je kunt het niet beter maken door te denken dat je goed geslapen hebt.
 
-Dat is precies het soort onderscheid dat in de doorvertelling verdwijnt. Een artikel dat dit onderzoek aanhaalt, noemt meestal de verouderingsscore, want die klinkt spannender — terwijl de barrièremeting het onderdeel is waar de conclusie het meest op rust.
+Dat is precies het soort onderscheid dat in de doorvertelling verdwijnt. Een artikel dat dit onderzoek aanhaalt, noemt meestal de verouderingsscore, want die klinkt spannender, terwijl de barrièremeting het onderdeel is waar de conclusie het meest op rust.
 
 ## De beperkingen, zonder omhaal
 
@@ -66,7 +66,7 @@ Er is een reden waarom dit verhaal ondanks die beperkingen serieus genomen wordt
 
 Herstelprocessen in weefsel lopen niet gelijkmatig over het etmaal. De celdeling in de opperhuid piekt in de nacht, en het waterverlies door de huid verloopt volgens een dagritme. Cortisol, dat overdag hoog staat en 's nachts laag hoort te zijn, remt herstelprocessen; slecht slapen houdt het langer hoog.
 
-Dat maakt het aannemelijk dat de nacht voor de huid een ander soort tijd is dan de dag. Het maakt niet meetbaar hoeveel een uur extra slaap voor één persoon oplevert — die vraag is met dit materiaal niet te beantwoorden.
+Dat maakt het aannemelijk dat de nacht voor de huid een ander soort tijd is dan de dag. Het maakt niet meetbaar hoeveel een uur extra slaap voor één persoon oplevert, die vraag is met dit materiaal niet te beantwoorden.
 
 ## Wat overblijft
 

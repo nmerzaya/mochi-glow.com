@@ -18,10 +18,10 @@ taalUitzonderingen:
   - term: genezen
     reden: 'Het artikel legt uit dat een cosmetisch product volgens Verordening 1223/2009 juist niets mag genezen; de term wordt beschrijvend gebruikt, niet als claim.'
 bronnen:
-  - titel: 'PubChem — Niacinamide, stofinformatie en eigenschappen'
+  - titel: 'PubChem, Niacinamide, stofinformatie en eigenschappen'
     url: 'https://pubchem.ncbi.nlm.nih.gov/compound/Nicotinamide'
     type: A
-  - titel: 'CosIng — Europese databank van cosmetische ingrediënten'
+  - titel: 'CosIng, Europese databank van cosmetische ingrediënten'
     url: 'https://ec.europa.eu/growth/tools-databases/cosing/'
     type: A
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -35,7 +35,7 @@ Het eerlijke antwoord is: allebei een beetje. En dat "allebei een beetje" is pre
 
 ## Wat is niacinamide?
 
-Niacinamide is een vorm van vitamine B3, ook wel nicotinamide genoemd. In de INCI-lijst — de gestandaardiseerde ingrediëntenbenaming die in de hele Europese Unie verplicht is — staat het simpelweg als *Niacinamide*. Het is een klein, in water oplosbaar molecuul, en die twee eigenschappen verklaren veel van zijn populariteit bij formuleerders.
+Niacinamide is een vorm van vitamine B3, ook wel nicotinamide genoemd. In de INCI-lijst, de gestandaardiseerde ingrediëntenbenaming die in de hele Europese Unie verplicht is, staat het simpelweg als *Niacinamide*. Het is een klein, in water oplosbaar molecuul, en die twee eigenschappen verklaren veel van zijn populariteit bij formuleerders.
 
 Klein betekent dat het relatief makkelijk door de bovenste huidlagen heen komt. In water oplosbaar betekent dat het in vrijwel elk waterig product verwerkt kan worden zonder ingewikkelde emulgatoren of oplosmiddelen. Daar komt bij dat niacinamide chemisch behoorlijk stabiel is: het valt niet snel uiteen onder invloed van licht of lucht, anders dan bijvoorbeeld pure vitamine C, die berucht is om zijn neiging te oxideren en bruin te verkleuren in het flesje.
 
@@ -45,7 +45,7 @@ Voor een merk is dat een aantrekkelijke combinatie. Je hebt geen ondoorzichtige 
 
 Op etiketten zie je meestal percentages tussen ongeveer 2% en 10%. Producten die het percentage groot op de voorkant zetten, zitten vaak op 5% of 10%.
 
-Belangrijk om te weten: een hoger percentage is niet automatisch een beter product. Bij niacinamide wordt in de vakliteratuur vrij consistent beschreven dat het effect niet lineair meeschaalt met de concentratie — boven een bepaald punt levert méér niet evenredig meer op, terwijl de kans op irritatie wel toeneemt. Een deel van de mensen die melden dat ze "niet tegen niacinamide kunnen", gebruikt een product met een hoge concentratie; bij een lager percentage verdwijnt die klacht vaak.
+Belangrijk om te weten: een hoger percentage is niet automatisch een beter product. Bij niacinamide wordt in de vakliteratuur vrij consistent beschreven dat het effect niet lineair meeschaalt met de concentratie, boven een bepaald punt levert méér niet evenredig meer op, terwijl de kans op irritatie wel toeneemt. Een deel van de mensen die melden dat ze "niet tegen niacinamide kunnen", gebruikt een product met een hoge concentratie; bij een lager percentage verdwijnt die klacht vaak.
 
 Dat is geen advies om iets te kopen of te laten staan, want ik test hier niets. Het is wel een reden om het percentage op de verpakking te lezen als informatie, niet als kwaliteitskeurmerk.
 
@@ -69,13 +69,13 @@ Veel van het onderzoek naar cosmetische ingrediënten is gedaan met kleine deeln
 
 Daarnaast is er een verschil tussen wat een ingrediënt in een reageerbuis of op een gekweekt huidmodel doet, en wat het doet in een afgewerkt product op een echt gezicht. In dat afgewerkte product zitten nog tientallen andere stoffen, de zuurgraad is anders, de hoeveelheid is anders, en de gebruiker smeert het op een andere manier dan een onderzoeksprotocol voorschrijft.
 
-En dan is er nog een juridisch punt dat verrassend verhelderend werkt. In de Europese Unie mag een cosmetisch product volgens Verordening 1223/2009 geen therapeutische werking claimen. Een crème mag niets genezen, behandelen of herstellen — doet hij dat wel, dan is het volgens de wet geen cosmetica meer maar een geneesmiddel, met alle eisen van dien. Merken schrijven daarom "voor een egalere teint" en niet "tegen pigmentvlekken". Die formulering is geen marketingvaagheid uit luiheid; het is de grens van wat er wettelijk beloofd mag worden, en meestal ook een eerlijke weergave van wat er daadwerkelijk bekend is.
+En dan is er nog een juridisch punt dat verrassend verhelderend werkt. In de Europese Unie mag een cosmetisch product volgens Verordening 1223/2009 geen therapeutische werking claimen. Een crème mag niets genezen, behandelen of herstellen, doet hij dat wel, dan is het volgens de wet geen cosmetica meer maar een geneesmiddel, met alle eisen van dien. Merken schrijven daarom "voor een egalere teint" en niet "tegen pigmentvlekken". Die formulering is geen marketingvaagheid uit luiheid; het is de grens van wat er wettelijk beloofd mag worden, en meestal ook een eerlijke weergave van wat er daadwerkelijk bekend is.
 
 ![Een glazen pipet die één heldere druppel loslaat boven een effen glazen vlak.](../../assets/artikelen/niacinamide-3.jpg)
 
 ## Wat je hiermee kunt
 
-Niacinamide is een ingrediënt met een redelijke onderbouwing, een goed veiligheidsprofiel en een lage prijs. Dat is een prettige combinatie, en het verklaart waarom het zo breed wordt toegepast. Het is geen wondermiddel, en de bewering dat het "alles" doet — poriën, pigment, vetproductie, rimpels, roodheid — is een optelsom van losse onderzoeksbevindingen die zelden allemaal tegelijk in één product bij één persoon uitkomen.
+Niacinamide is een ingrediënt met een redelijke onderbouwing, een goed veiligheidsprofiel en een lage prijs. Dat is een prettige combinatie, en het verklaart waarom het zo breed wordt toegepast. Het is geen wondermiddel, en de bewering dat het "alles" doet, poriën, pigment, vetproductie, rimpels, roodheid, is een optelsom van losse onderzoeksbevindingen die zelden allemaal tegelijk in één product bij één persoon uitkomen.
 
 Kom je het tegen in een product dat je toch al wilde hebben, dan is het een prima toevoeging. Ga je specifiek op zoek naar een niacinamideproduct, kijk dan naar het percentage, en weet dat hoger niet vanzelf beter is.
 

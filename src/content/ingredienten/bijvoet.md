@@ -15,10 +15,10 @@ tags:
   - artemisia
   - kalmerende extracten
 bronnen:
-  - titel: 'Han e.a. — Artemisia annua water extract attenuates DNCB-induced atopic dermatitis in BALB/c mice (Journal of Ethnopharmacology, 2022)'
+  - titel: 'Han e.a. Artemisia annua water extract attenuates DNCB-induced atopic dermatitis in BALB/c mice (Journal of Ethnopharmacology, 2022)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/35245629/'
     type: B
-  - titel: 'Ha e.a. — Artemisia capillaris inhibits atopic dermatitis-like skin lesions in sensitized mice (BMC Complementary and Alternative Medicine, 2014)'
+  - titel: 'Ha e.a. Artemisia capillaris inhibits atopic dermatitis-like skin lesions in sensitized mice (BMC Complementary and Alternative Medicine, 2014)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/24624888/'
     type: B
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -26,9 +26,9 @@ bronnen:
     type: A
 ---
 
-Bijvoet — in Koreaanse productteksten meestal *mugwort*, in het Koreaans *ssuk* — is in korte tijd het kalmerende ingrediënt van dienst geworden. Het zit in essences, maskers, reinigingsoliën en badproducten, meestal in donkergroene verpakkingen met veel verwijzingen naar traditie.
+Bijvoet, in Koreaanse productteksten meestal *mugwort*, in het Koreaans *ssuk*, is in korte tijd het kalmerende ingrediënt van dienst geworden. Het zit in essences, maskers, reinigingsoliën en badproducten, meestal in donkergroene verpakkingen met veel verwijzingen naar traditie.
 
-Die traditie is er echt: bijvoet wordt in Korea al lang gebruikt, onder meer in badvorm en in de keuken. Wat er over de huid bekend is, is een ander verhaal — en het is een goed voorbeeld van hoe een onderzoeksdossier eruitziet dat er op afstand steviger uitziet dan van dichtbij.
+Die traditie is er echt: bijvoet wordt in Korea al lang gebruikt, onder meer in badvorm en in de keuken. Wat er over de huid bekend is, is een ander verhaal, en het is een goed voorbeeld van hoe een onderzoeksdossier eruitziet dat er op afstand steviger uitziet dan van dichtbij.
 
 ## Welke plant precies?
 
@@ -36,7 +36,7 @@ Hier begint meteen de verwarring, en die is niet triviaal.
 
 *Artemisia* is een groot geslacht met honderden soorten. De soort die in Koreaanse verzorging het vaakst wordt gebruikt is *Artemisia princeps*, soms *Artemisia argyi*. Op het etiket staat dan *Artemisia Princeps Leaf Extract*.
 
-Maar het onderzoek dat bij dit onderwerp wordt aangehaald, gaat vaak over andere soorten. *Artemisia annua* — zomeralsem — is een veelbestudeerde plant, onder meer omdat er een bekend antimalariamiddel uit voortkomt. *Artemisia capillaris* is weer een andere.
+Maar het onderzoek dat bij dit onderwerp wordt aangehaald, gaat vaak over andere soorten. *Artemisia annua*, zomeralsem, is een veelbestudeerde plant, onder meer omdat er een bekend antimalariamiddel uit voortkomt. *Artemisia capillaris* is weer een andere.
 
 Dat zijn verschillende planten met verschillende stoffenprofielen. Ze delen een geslachtsnaam, en dat is ongeveer hetzelfde als aannemen dat een bramenstruik en een rozenstruik hetzelfde doen omdat ze allebei tot de rozenfamilie horen.
 
@@ -50,7 +50,7 @@ Bijvoet bevat een mengsel dat je bij veel aromatische planten terugziet: vluchti
 
 Twee dingen zijn daarbij het vermelden waard.
 
-Ten eerste bevat de vluchtige olie stoffen die bij sommige mensen irritatie kunnen geven. Een plantextract dat als "kalmerend" op de markt komt, is niet automatisch mild — dat zijn twee verschillende dingen. Bij *Artemisia* speelt bovendien dat de familie waartoe de plant behoort, de composieten, bekend staat om kruisallergieën. Wie gevoelig is voor kamille, arnica of chrysant, kan ook op bijvoet reageren.
+Ten eerste bevat de vluchtige olie stoffen die bij sommige mensen irritatie kunnen geven. Een plantextract dat als "kalmerend" op de markt komt, is niet automatisch mild, dat zijn twee verschillende dingen. Bij *Artemisia* speelt bovendien dat de familie waartoe de plant behoort, de composieten, bekend staat om kruisallergieën. Wie gevoelig is voor kamille, arnica of chrysant, kan ook op bijvoet reageren.
 
 Ten tweede: bijvoetpollen is een bekende veroorzaker van hooikoorts in de nazomer. Dat gaat over inademen en niet over smeren, maar het is een reden waarom sommige mensen dit ingrediënt liever eerst op een klein plekje uitproberen.
 
@@ -70,7 +70,7 @@ Beide beschrijven gunstige uitkomsten in dat model. En beide illustreren precies
 
 ![Een kruidenaftreksel in een ondiepe lichte stenen kom met opstijgende damp.](../../assets/artikelen/bijvoet-3.jpg)
 
-Dit is geen reden om het onderzoek weg te wuiven. Dierproeven met een ziektemodel zijn een normale, nuttige stap in de opbouw van kennis. Het is wel de reden dat zulke uitkomsten geen basis vormen voor een belofte op een verpakking — en dat is niet alleen een kwestie van zorgvuldigheid, maar ook van wat de wet toestaat.
+Dit is geen reden om het onderzoek weg te wuiven. Dierproeven met een ziektemodel zijn een normale, nuttige stap in de opbouw van kennis. Het is wel de reden dat zulke uitkomsten geen basis vormen voor een belofte op een verpakking, en dat is niet alleen een kwestie van zorgvuldigheid, maar ook van wat de wet toestaat.
 
 ## Wat een product hierover mag zeggen
 

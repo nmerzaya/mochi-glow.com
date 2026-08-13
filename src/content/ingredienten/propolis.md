@@ -18,7 +18,7 @@ taalUitzonderingen:
   - term: antibacterieel
     reden: 'Het artikel legt juist uit dat dit soort werkingsclaims niet op cosmetica gemaakt mag worden; de term wordt aangehaald als voorbeeld van wat verboden is.'
 bronnen:
-  - titel: 'Anjum e.a. — Composition and functional properties of propolis (bee glue): A review (Saudi Journal of Biological Sciences, 2019)'
+  - titel: 'Anjum e.a. Composition and functional properties of propolis (bee glue): A review (Saudi Journal of Biological Sciences, 2019)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/31762646/'
     type: B
   - titel: 'Verordening (EG) nr. 1223/2009 betreffende cosmetische producten'
@@ -58,7 +58,7 @@ Voor een fabrikant is dat een uitdaging. Voor jou als lezer betekent het iets ee
 
 De vakliteratuur over propolis staat vol met farmacologische termen. De review uit 2019 noemt een lange reeks onderzochte eigenschappen, van antioxidatief tot antibacterieel en ontstekingsgerelateerd.
 
-Hier is het belangrijk om scherp te zijn, en dit is meteen de reden dat die term in dit artikel überhaupt valt: **zulke werkingen mogen niet als claim op een cosmetisch product staan.** Verordening (EG) nr. 1223/2009 en de bijbehorende criteria trekken een harde grens tussen cosmetica en geneesmiddelen. Een verzorgingsproduct verzorgt, reinigt, parfumeert of verandert het uiterlijk — het mag geen aandoening aanpakken en geen medische werking claimen.
+Hier is het belangrijk om scherp te zijn, en dit is meteen de reden dat die term in dit artikel überhaupt valt: **zulke werkingen mogen niet als claim op een cosmetisch product staan.** Verordening (EG) nr. 1223/2009 en de bijbehorende criteria trekken een harde grens tussen cosmetica en geneesmiddelen. Een verzorgingsproduct verzorgt, reinigt, parfumeert of verandert het uiterlijk, het mag geen aandoening aanpakken en geen medische werking claimen.
 
 Onderzoek naar wat een stof in een laboratorium doet, is dus iets anders dan wat een crème mag beweren. Dat is geen slordigheid in de regelgeving maar de kern ervan: zodra een product een medische werking claimt, valt het onder een heel ander en veel strenger regime, met de bijbehorende bewijslast.
 

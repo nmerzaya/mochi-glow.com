@@ -12,13 +12,13 @@ tags:
   - darm-huid-as
   - onderzoek
 bronnen:
-  - titel: "O'Neill e.a. — The gut-skin axis in health and disease (BioEssays, 2016)"
+  - titel: "O'Neill e.a. The gut-skin axis in health and disease (BioEssays, 2016)"
     url: 'https://pubmed.ncbi.nlm.nih.gov/27554239/'
     type: B
-  - titel: 'Sánchez-Pellicer e.a. — Acne, Microbiome, and Probiotics: The Gut-Skin Axis (Microorganisms, 2022)'
+  - titel: 'Sánchez-Pellicer e.a. Acne, Microbiome, and Probiotics: The Gut-Skin Axis (Microorganisms, 2022)'
     url: 'https://pubmed.ncbi.nlm.nih.gov/35889022/'
     type: B
-  - titel: "EFSA — EFSA finalises the assessment of 'general function' health claims (2011)"
+  - titel: "EFSA, EFSA finalises the assessment of 'general function' health claims (2011)"
     url: 'https://www.efsa.europa.eu/en/press/news/110728'
     type: A
 ---
@@ -41,7 +41,7 @@ Er is een reden dat de voedingswetenschap trager tot zekerheid komt dan bijvoorb
 
 Om te weten of eten X iets doet, zou je twee groepen mensen jarenlang precies hetzelfde moeten laten leven, op dat ene ding na. Dat kan niet. Mensen eten wat ze eten, veranderen dat tijdens een onderzoek, vergeten wat ze gisteren aten en rapporteren het bovendien systematisch te gunstig.
 
-Dus leunt het meeste voedingsonderzoek op waarnemingen: je vraagt grote groepen mensen wat ze eten en kijkt of dat samenhangt met iets anders. Zulk onderzoek is waardevol om sporen te vinden, maar het kan een oorzaak niet aantonen. Mensen die veel van het ene eten, verschillen namelijk ook op tientallen andere manieren — inkomen, slaap, stress, beweging, roken, leeftijd.
+Dus leunt het meeste voedingsonderzoek op waarnemingen: je vraagt grote groepen mensen wat ze eten en kijkt of dat samenhangt met iets anders. Zulk onderzoek is waardevol om sporen te vinden, maar het kan een oorzaak niet aantonen. Mensen die veel van het ene eten, verschillen namelijk ook op tientallen andere manieren, inkomen, slaap, stress, beweging, roken, leeftijd.
 
 Bij huid komt daar iets bovenop: de uitkomst is moeilijk te meten. Hoe scoor je "een betere huid"? Wie beoordeelt dat, met welke maatstaf, en weet die beoordelaar in welke groep iemand zat? Als dat niet stevig is geregeld, meet je vooral verwachting.
 

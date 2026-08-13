@@ -8,7 +8,7 @@
  * staat er geen byte JavaScript op de site tot advertenties daadwerkelijk aan gaan.
  *
  * Waarom niet vanaf een CDN? Dat zou het IP-adres van elke bezoeker naar een derde
- * partij sturen — precies wat een toestemmingsoplossing hoort te voorkomen.
+ * partij sturen, precies wat een toestemmingsoplossing hoort te voorkomen.
  *
  * Draait automatisch via `npm run prebuild` en `npm run predev`.
  */

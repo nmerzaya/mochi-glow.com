@@ -43,7 +43,7 @@ const therapeutischeTaal = [
   { patroon: /\bvoorkomt\s+(acne|eczeem|rosacea|puistjes|rimpels)/giu, uitleg: 'preventieclaim over een aandoening' },
   { patroon: /\bwerkt\s+tegen\s+(acne|eczeem|rosacea)/giu, uitleg: 'claim over een aandoening' },
   { patroon: /\bmedisch bewezen\b|\bklinisch bewezen\b/giu, uitleg: 'onbewijsbare autoriteitsclaim' },
-  { patroon: /\bdetox(t|en|ificatie)?\b/giu, uitleg: 'detoxclaim — geen erkende fysiologische werking' },
+  { patroon: /\bdetox(t|en|ificatie)?\b/giu, uitleg: 'detoxclaim, geen erkende fysiologische werking' },
 ];
 
 /**
@@ -84,7 +84,7 @@ const darmClaimTaal = [
  * Deze lijst geldt uitsluitend bij `productType: 'voeding-supplement'`. In de
  * rest van de site is naar onderzoek verwijzen juist de bedoeling.
  *
- * LET OP — anders dan alle andere regels in dit bestand is deze niet met
+ * LET OP, anders dan alle andere regels in dit bestand is deze niet met
  * `taalUitzonderingen` te overrulen. De overige regels gaan over het beschríjven
  * van verboden taal, en een artikel dat uitlegt wat er niet mag, bevat zulke
  * woorden onvermijdelijk. Deze regel gaat over een structureel verbod: er is
@@ -94,14 +94,14 @@ const darmClaimTaal = [
  * juiste spoor kiezen, niet een uitzondering aanvragen.
  */
 const onderzoeksverwijzing = [
-  /* "uit een studie", "volgens het onderzoek" — het lidwoord is verplicht, zodat
+  /* "uit een studie", "volgens het onderzoek", het lidwoord is verplicht, zodat
      een kale "in onderzoek" hier niet in valt. */
   {
     patroon:
       /\b(?:uit|in|volgens)\s+(?:een|het|de|dit|dat|deze|dezelfde|recent|nieuw)\s+(?:recente\s+|grote\s+|kleine\s+|nieuwe\s+|systematische\s+|Nederlandse\s+|Koreaanse\s+)?(?:onderzoek(?:en)?|studie|studies|review|reviews|meta-?analyses?|overzichtsartikel(?:en)?|publicatie|trial)\b/giu,
     uitleg: 'verwijzing naar een onderzoek',
   },
-  /* "uit onderzoek blijkt" — de vaste Nederlandse constructie, zonder lidwoord. */
+  /* "uit onderzoek blijkt", de vaste Nederlandse constructie, zonder lidwoord. */
   {
     patroon: /\b(?:uit|volgens)\s+onderzoek\s+(?:blijkt|blijken|weten\s+we|is\s+bekend|volgt)\b/giu,
     uitleg: 'onderzoek als bewijsvoering',
@@ -141,7 +141,7 @@ const onderzoeksverwijzing = [
   /* Citatievormen: "e.a.", "et al.", "(2016)", doi, PMID. */
   {
     patroon: /(?:\be\.\s?a\.|\bet\s+al\.|\bdoi:|\bPMID\b|\bPMC\d|\((?:19|20)\d{2}\))/gu,
-    uitleg: 'citatievorm — verwijst naar een publicatie',
+    uitleg: 'citatievorm, verwijst naar een publicatie',
   },
   {
     patroon:
@@ -157,8 +157,8 @@ const onderzoeksverwijzing = [
 
 /**
  * De kale zelfstandige naamwoorden. Die zijn te gewoon om er een fout van te
- * maken — "onderzoeken" is ook een werkwoord, en "bewijs" heeft een dagelijkse
- * betekenis — maar in een artikel dat een levensmiddel aanprijst is elk van deze
+ * maken, "onderzoeken" is ook een werkwoord, en "bewijs" heeft een dagelijkse
+ * betekenis, maar in een artikel dat een levensmiddel aanprijst is elk van deze
  * woorden een reden om de zin nog eens te lezen. Vandaar een waarschuwing.
  */
 const onderzoeksWoordenZacht =
@@ -283,7 +283,7 @@ function controleer(bestandspad, ruweTekst) {
 
   /*
     Uitzonderingen die het artikel zelf declareert. Nodig omdat deze site uitlegt
-    wát er niet geclaimd mag worden — dan komt zo'n term onvermijdelijk in de tekst
+    wát er niet geclaimd mag worden, dan komt zo'n term onvermijdelijk in de tekst
     voor. De reden staat in de frontmatter, dus een uitzondering blijft zichtbaar
     en toetsbaar in plaats van stilzwijgend.
   */
@@ -302,7 +302,7 @@ function controleer(bestandspad, ruweTekst) {
     for (const { patroon, uitleg } of groep) {
       for (const treffer of zoekIn.matchAll(patroon)) {
         if (isUitgezonderd(treffer[0])) continue;
-        meld(fouten, naam, regelInBestand(treffer.index ?? 0), `"${treffer[0].trim()}" — ${uitleg}`);
+        meld(fouten, naam, regelInBestand(treffer.index ?? 0), `"${treffer[0].trim()}", ${uitleg}`);
       }
     }
   }
@@ -343,7 +343,7 @@ function controleer(bestandspad, ruweTekst) {
           fouten,
           naam,
           regelInBestand(treffer.index ?? 0),
-          `"${treffer[0].trim()}" — ${uitleg}. Een pagina die een levensmiddel aanprijst mag niet naar onderzoek verwijzen, ook niet in woorden (NVWA, DV8-03). Herschrijf de zin, of zet productType op "geen" en haal de affiliate-links weg; dan mag de verwijzing wél.`,
+          `"${treffer[0].trim()}", ${uitleg}. Een pagina die een levensmiddel aanprijst mag niet naar onderzoek verwijzen, ook niet in woorden (NVWA, DV8-03). Herschrijf de zin, of zet productType op "geen" en haal de affiliate-links weg; dan mag de verwijzing wél.`,
         );
       }
     }
@@ -352,13 +352,13 @@ function controleer(bestandspad, ruweTekst) {
         waarschuwingen,
         naam,
         regelInBestand(treffer.index ?? 0),
-        `"${treffer[0]}" — dit artikel prijst een levensmiddel aan; elke verwijzing naar onderzoek is hier juridisch riskant. Lees de zin na.`,
+        `"${treffer[0]}", dit artikel prijst een levensmiddel aan; elke verwijzing naar onderzoek is hier juridisch riskant. Lees de zin na.`,
       );
     }
 
     /*
       Ook de titels van de bronnen. `Bronnenlijst.astro` toont die als gewone
-      tekst zodra links niet zijn toegestaan — een bronvermelding met de naam van
+      tekst zodra links niet zijn toegestaan, een bronvermelding met de naam van
       een vakblad erin is dan nog steeds precies de verwijzing die niet mag,
       alleen zonder anker eromheen.
     */
@@ -369,7 +369,7 @@ function controleer(bestandspad, ruweTekst) {
             fouten,
             naam,
             1,
-            `bron "${bron.titel}" bevat "${treffer[0].trim()}" — ${uitleg}; ook de zichtbare titel van een bron mag hier niet naar onderzoek verwijzen`,
+            `bron "${bron.titel}" bevat "${treffer[0].trim()}", ${uitleg}; ook de zichtbare titel van een bron mag hier niet naar onderzoek verwijzen`,
           );
         }
       }
@@ -383,7 +383,7 @@ function controleer(bestandspad, ruweTekst) {
           fouten,
           naam,
           regelInBestand(link.index ?? 0),
-          `link naar ${host.split('/')[0]} — een verwijzing naar medische of wetenschappelijke publicaties geldt bij voeding en supplementen zelf als ontoelaatbare medische claim`,
+          `link naar ${host.split('/')[0]}, een verwijzing naar medische of wetenschappelijke publicaties geldt bij voeding en supplementen zelf als ontoelaatbare medische claim`,
         );
       }
     }
@@ -406,8 +406,8 @@ function controleer(bestandspad, ruweTekst) {
   }
   /*
     De tweede pijler kent twee sporen en niets ertussenin. Zie de toelichting bij
-    de gut-skin-collectie in src/content.config.ts. Dit staat hier dubbel — het
-    schema handhaaft het ook — omdat deze controle als eerste draait en dus als
+    de gut-skin-collectie in src/content.config.ts. Dit staat hier dubbel, het
+    schema handhaaft het ook, omdat deze controle als eerste draait en dus als
     eerste een leesbare fout hoort te geven.
   */
   if (inGutSkin) {
@@ -513,7 +513,7 @@ function controleer(bestandspad, ruweTekst) {
    enige stuk tekst op de site zijn dat ongecontroleerd doorglipt.
 
    Wat hier wél en niet geldt: de taalregels gelden onverkort, de regels over
-   woordaantal, bronnen en frontmatter niet — een vragenlijst is geen artikel.
+   woordaantal, bronnen en frontmatter niet, een vragenlijst is geen artikel.
  * ------------------------------------------------------------------ */
 
 /**
@@ -553,7 +553,7 @@ function controleerModule(bestandspad, bron) {
     for (const groep of [therapeutischeTaal, testervaringTaal, darmClaimTaal]) {
       for (const { patroon, uitleg } of groep) {
         for (const treffer of stuk.tekst.matchAll(patroon)) {
-          meld(fouten, naam, regelVan(bron, stuk.index), `"${treffer[0].trim()}" — ${uitleg}`);
+          meld(fouten, naam, regelVan(bron, stuk.index), `"${treffer[0].trim()}", ${uitleg}`);
         }
       }
     }
@@ -585,7 +585,7 @@ const modules = [
 const bestanden = await vindMarkdownBestanden(contentMap);
 
 if (bestanden.length === 0) {
-  console.log('Geen artikelen gevonden in src/content — niets te controleren.');
+  console.log('Geen artikelen gevonden in src/content, niets te controleren.');
   process.exit(0);
 }
 
@@ -594,13 +594,13 @@ for (const bestand of bestanden) {
 }
 
 /* ------------------------------------------------------------------ *
-   Site-brede toets — DV8-03
+   Site-brede toets, DV8-03
 
    "Een website waarop een levensmiddel wordt verhandeld of aangeprezen, mag
    niet ergens anders op die site medische informatie bevatten over deze waar."
    Dat is een eis aan de site, niet aan de pagina. Een commercieel voedingsartikel
    over een onderwerp waar elders op de site een artikel met onderzoekslinks over
-   staat, brengt de site dus als geheel in overtreding — ook al klopt elke pagina
+   staat, brengt de site dus als geheel in overtreding, ook al klopt elke pagina
    op zichzelf.
  * ------------------------------------------------------------------ */
 
@@ -648,7 +648,7 @@ if (waarschuwingen.length > 0) {
 }
 
 if (fouten.length > 0) {
-  console.error(`\nCompliance-controle afgekeurd — ${fouten.length} probleem(en) in ${groepeer(fouten).size} bestand(en):\n`);
+  console.error(`\nCompliance-controle afgekeurd, ${fouten.length} probleem(en) in ${groepeer(fouten).size} bestand(en):\n`);
   for (const [bestand, items] of groepeer(fouten)) {
     console.error(`  ${bestand}`);
     for (const item of items) console.error(`    regel ${item.regel}: ${item.bericht}`);
@@ -658,5 +658,5 @@ if (fouten.length > 0) {
 }
 
 console.log(
-  `Compliance-controle akkoord — ${bestanden.length} artikel(en) en ${gecontroleerdeModules} tekstmodule(s) gecontroleerd, geen overtredingen.`,
+  `Compliance-controle akkoord, ${bestanden.length} artikel(en) en ${gecontroleerdeModules} tekstmodule(s) gecontroleerd, geen overtredingen.`,
 );

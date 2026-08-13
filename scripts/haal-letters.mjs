@@ -8,7 +8,7 @@
  * ── Waarom dit mag, en waarom het moet ──────────────────────────────────────
  *
  * De invariant in CLAUDE.md luidt: geen externe verzoeken vanaf de site, geen
- * externe lettertypen. Dat is een AVG-keuze — een lettertype van Google Fonts
+ * externe lettertypen. Dat is een AVG-keuze, een lettertype van Google Fonts
  * laat de browser van elke bezoeker een verbinding met Google opzetten en hun
  * IP-adres meesturen.
  *
@@ -18,14 +18,14 @@
  * bouwen, precies zoals scripts/genereer-beeld.mjs dat voor beeld doet.
  *
  * Waarom het moet: onderzoek/09 par. 4.1 stelt vast dat ontwerpkwaliteit het
- * eerste en zwaarste vertrouwensoordeel is dat een bezoeker velt — nog vóór de
+ * eerste en zwaarste vertrouwensoordeel is dat een bezoeker velt, nog vóór de
  * inhoud. Systeemletters lezen als een onopgemaakt document. Voor een site die
  * volledig van geloofwaardigheid leeft, is dat de duurste besparing die er is.
  *
  * ── De keuze ────────────────────────────────────────────────────────────────
  *
  * Drie families, alle drie onder de SIL Open Font License 1.1, dus vrij te
- * gebruiken en te herdistribueren — passend bij het nul-euro-uitgangspunt en bij
+ * gebruiken en te herdistribueren, passend bij het nul-euro-uitgangspunt en bij
  * de open-source-lijn uit ARCHITECTUUR.md.
  *
  *   Fraunces      koppen. Een warme old-style met optische maatvoering en een
@@ -66,25 +66,25 @@ const families = [
     bestand: 'fraunces-variabel.woff2',
     /* opsz laat de letter zich aanpassen aan de graad; SOFT rondt de vormen af. */
     css: 'Fraunces:opsz,wght,SOFT@9..144,300..700,0..100',
-    licentie: 'SIL Open Font License 1.1 — Undercase Type',
+    licentie: 'SIL Open Font License 1.1, Undercase Type',
   },
   {
     naam: 'Newsreader',
     bestand: 'newsreader-variabel.woff2',
     css: 'Newsreader:opsz,wght@6..72,300..600',
-    licentie: 'SIL Open Font License 1.1 — Production Type',
+    licentie: 'SIL Open Font License 1.1, Production Type',
   },
   {
     naam: 'IBM Plex Mono',
     bestand: 'plex-mono-400.woff2',
     css: 'IBM+Plex+Mono:wght@400',
-    licentie: 'SIL Open Font License 1.1 — IBM',
+    licentie: 'SIL Open Font License 1.1, IBM',
   },
   {
     naam: 'IBM Plex Mono',
     bestand: 'plex-mono-500.woff2',
     css: 'IBM+Plex+Mono:wght@500',
-    licentie: 'SIL Open Font License 1.1 — IBM',
+    licentie: 'SIL Open Font License 1.1, IBM',
   },
 ];
 
@@ -128,7 +128,7 @@ const verslag = [];
 for (const familie of families) {
   const doel = join(doelmap, familie.bestand);
   if (await bestaat(doel)) {
-    console.log(`— ${familie.bestand} staat er al, overgeslagen`);
+    console.log(`,  ${familie.bestand} staat er al, overgeslagen`);
     verslag.push({ ...familie, overgeslagen: true });
     continue;
   }
@@ -142,10 +142,10 @@ for (const familie of families) {
     if (inhoud.length < 2000) throw new Error(`verdacht klein bestand (${inhoud.length} bytes)`);
 
     await writeFile(doel, inhoud);
-    console.log(`✓ ${familie.bestand} — ${Math.round(inhoud.length / 1024)} kB`);
+    console.log(`✓ ${familie.bestand}, ${Math.round(inhoud.length / 1024)} kB`);
     verslag.push({ ...familie, bytes: inhoud.length });
   } catch (fout) {
-    console.log(`✗ ${familie.bestand} — ${fout.message}`);
+    console.log(`✗ ${familie.bestand}, ${fout.message}`);
     verslag.push({ ...familie, fout: fout.message });
   }
 }
