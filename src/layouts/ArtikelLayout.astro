@@ -5,7 +5,8 @@ import MedischeDisclaimer from '../components/MedischeDisclaimer.astro';
 import Bronnenlijst from '../components/Bronnenlijst.astro';
 import Bronnenmeter from '../components/Bronnenmeter.astro';
 import Beeld from '../components/Beeld.astro';
-import { site, datumOpmaak, pijlers, type PijlerSleutel } from '../config';
+import Aanmelding from '../components/Aanmelding.astro';
+import { site, datumOpmaak, pijlers, mailActief, type PijlerSleutel } from '../config';
 
 interface Bron {
   titel: string;
@@ -169,4 +170,14 @@ const gestructureerdeData = {
       <a class="knop knop--stil" href={pijlerPad}>Meer uit {pijlerNaam}</a>
     </p>
   </article>
+
+  {/*
+    Staat na het artikel in de leesvolgorde, en verschijnt pas na tien seconden
+    lezen. Alleen hier: op een overzichtspagina of een juridische pagina is er
+    niets gelezen om op voort te bouwen.
+
+    Achter `mailActief`, want zonder ingerichte maildienst zou het venster een
+    adres vragen dat nergens aankomt.
+  */}
+  {mailActief && <Aanmelding />}
 </BasisLayout>

@@ -24,8 +24,14 @@
  * 4. Waar een voedingsstof genoemd wordt, uitsluitend in de letterlijke
  *    bewoording uit `data/toegestane-claims.json`. Een eigen formulering van
  *    dezelfde claim is een niet-toegestane claim.
- * 5. Er wordt niets opgeslagen: geen cookie, geen localStorage, geen
- *    netwerkverzoek. Dat staat zo in het privacybeleid, dus het moet zo blijven.
+ * 5. De lijst zelf slaat niets op en stuurt niets weg: geen cookie, geen
+ *    localStorage, geen netwerkverzoek. Je antwoorden blijven in het geheugen
+ *    van de pagina en zijn weg zodra je hem sluit. Er is precies één
+ *    uitzondering, en die begint altijd bij de lezer: onder de uitkomst staat de
+ *    mogelijkheid hem naar je eigen adres te laten sturen. Drukt niemand op die
+ *    knop, dan gaat er niets weg. Gaat er wel iets weg, dan zijn dat het adres
+ *    en de id van de uitkomst, nooit de antwoorden. Zo staat het in het
+ *    privacybeleid, dus zo moet het blijven.
  */
 
 export type Accent = 'roze' | 'paars' | 'perzik' | 'mint';

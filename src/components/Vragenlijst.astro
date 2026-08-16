@@ -1,5 +1,6 @@
 ---
 import Beeld from './Beeld.astro';
+import { mailActief } from '../config';
 import type { Vragenlijst } from '../lib/vragenlijst';
 
 /**
@@ -39,7 +40,7 @@ const beelden = import.meta.glob<{ default: ImageMetadata }>('../assets/artikele
 const beeldVan = (slug: string) => beelden[`../assets/artikelen/${slug}.jpg`]?.default;
 ---
 
-<div class="met-js test" data-test data-slotknop={slotknop}>
+<div class="met-js test" data-test data-slotknop={slotknop} data-sleutel={sleutel}>
   <ol class="trap" aria-hidden="true">
     {vragen.map((_, i) => <li class="trap__streep" data-streep={i} data-staat={i === 0 ? 'nu' : ''} />)}
   </ol>
@@ -89,6 +90,59 @@ const beeldVan = (slug: string) => beelden[`../assets/artikelen/${slug}.jpg`]?.d
     <h2 class="uitslag__titel" tabindex="-1" data-uitslag-kop></h2>
     <p class="uitslag__waarom" data-waarom></p>
   </div>
+
+  {/*
+    De uitslag staat hieronder gewoon op het scherm; dit is er alleen voor wie
+    hem wil bewaren. Bewust géén poort: acht vragen beantwoorden en dan een
+    adres moeten geven voordat je iets ziet, is precies het soort ruil dat deze
+    lezersgroep wegjaagt (onderzoek/09, par. 4.6).
+
+    Het vinkje voor de nieuwsbrief staat er los onder en staat níét voorgevinkt.
+    Een adres dat iemand geeft om zijn uitslag te ontvangen mag niet stilzwijgend
+    op een verzendlijst belanden: dat koppelt toestemming aan een andere dienst,
+    en dat verbiedt de AVG (art. 7 lid 4).
+
+    Achter `mailActief`: zolang de maildienst niet is ingericht, staat er geen
+    formulier. Het script hieronder gebruikt `mailFormulier?.` en doet vanzelf
+    niets als dit blok ontbreekt.
+  */}
+  {
+    mailActief && (
+      <div class="uitslag__mail">
+        <p class="uitslag__mail-kop">Wil je dit bewaren?</p>
+        <p class="uitslag__mail-intro">
+          Dan stuur ik het naar je toe, netjes op een rij. Je adres wordt alleen daarvoor gebruikt.
+        </p>
+
+        <form class="uitslag__formulier" data-uitslagformulier>
+          <label class="veld">
+            <span class="veld__naam">E-mailadres</span>
+            <input class="veld__invoer" type="email" name="email" required autocomplete="email" />
+          </label>
+
+          <input
+            class="honingpot"
+            type="text"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+
+          <label class="vinkje">
+            <input type="checkbox" name="nieuwsbrief" />
+            <span>Hou me ook op de hoogte van nieuwe artikelen.</span>
+          </label>
+
+          <button class="knop" type="submit" data-uitslag-verstuur>
+            Stuur het me toe
+          </button>
+
+          <p class="uitslag__melding" data-uitslag-melding role="status" aria-live="polite" hidden />
+        </form>
+      </div>
+    )
+  }
 </div>
 
 <section class="routines">
@@ -261,6 +315,19 @@ const beeldVan = (slug: string) => beelden[`../assets/artikelen/${slug}.jpg`]?.d
       routines.forEach((r) => r.classList.toggle('routine--getoond', r.dataset.profiel === profiel));
       history.replaceState(null, '', `#${profiel}`);
       if (verplaatsFocus) uitslagKop.focus();
+
+      /*
+        Wélke uitkomst het is, komt op het element te staan en niet in een
+        variabele hier. Zo kan het mailscript hieronder een los blok blijven dat
+        alleen meegaat als er ook werkelijk een mailformulier staat, in plaats
+        van dood gewicht op elke vragenlijstpagina.
+
+        Alleen de id gaat straks mee, nooit de tekst: de server haalt de inhoud
+        uit `src/data/`, waar de compliance-controle overheen gaat. Zou de pagina
+        de tekst meesturen, dan kon iemand willekeurige inhoud onder de naam van
+        deze site laten versturen.
+      */
+      uitslag.dataset.profiel = profiel;
     };
 
     knopVerder.addEventListener('click', () => {
@@ -310,5 +377,81 @@ const beeldVan = (slug: string) => beelden[`../assets/artikelen/${slug}.jpg`]?.d
         toon(1);
       }
     }
+
   }
 </script>
+
+{/*
+  De uitslag naar je eigen mail. Een los blok, zodat het alleen meegaat als er
+  ook werkelijk een formulier staat; de rest van de vragenlijst werkt hier niet
+  van af.
+
+  `is:inline` is hier geen stijlkeuze maar noodzaak, om dezelfde reden als in
+  `CookieToestemming.astro`: een verwerkt script bundelt Astro óók wanneer het
+  niet gerenderd wordt, en dan zou elke vragenlijstpagina dit meesturen terwijl
+  er niets te versturen valt. De prijs is dat hier geen TypeScript in kan.
+
+  De koppeling met het script hierboven loopt via twee data-attributen op de
+  HTML: welke lijst dit is (`data-sleutel`) en welke uitkomst er staat
+  (`data-profiel`). Alleen die twee gaan mee naar de server, samen met het adres.
+  De teksten komen daar uit `src/data/`, dezelfde bron als de pagina, en dus
+  dezelfde bron waar `npm run check` overheen gaat.
+*/}
+{
+  mailActief && (
+    <script is:inline set:html={`
+      (function () {
+        var test = document.querySelector('[data-test]');
+        var uitslag = document.querySelector('[data-uitslag]');
+        var formulier = document.querySelector('[data-uitslagformulier]');
+        var melding = document.querySelector('[data-uitslag-melding]');
+        var knop = document.querySelector('[data-uitslag-verstuur]');
+        if (!formulier || !melding || !knop) return;
+
+        formulier.addEventListener('submit', async function (e) {
+          e.preventDefault();
+
+          var profiel = uitslag && uitslag.dataset.profiel;
+          if (!profiel) {
+            melding.hidden = false;
+            melding.textContent = 'Doe eerst de vragen, dan weet ik wat ik moet sturen.';
+            return;
+          }
+
+          var gegevens = new FormData(formulier);
+          knop.disabled = true;
+          melding.hidden = false;
+          melding.textContent = 'Bezig…';
+
+          try {
+            var reactie = await fetch('/api/uitslag', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                email: gegevens.get('email'),
+                website: gegevens.get('website'),
+                nieuwsbrief: gegevens.get('nieuwsbrief') === 'on',
+                lijst: test && test.dataset.sleutel,
+                profiel: profiel,
+              }),
+            });
+            var antwoord = await reactie.json();
+            melding.textContent = antwoord.bericht || 'Er ging iets mis.';
+            if (reactie.ok) {
+              var veld = formulier.querySelector('.veld');
+              var vinkje = formulier.querySelector('.vinkje');
+              if (veld) veld.setAttribute('hidden', '');
+              if (vinkje) vinkje.setAttribute('hidden', '');
+              knop.hidden = true;
+            } else {
+              knop.disabled = false;
+            }
+          } catch (fout) {
+            melding.textContent = 'Geen verbinding. Probeer het later nog eens.';
+            knop.disabled = false;
+          }
+        });
+      })();
+    `} />
+  )
+}

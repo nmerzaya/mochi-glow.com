@@ -1,0 +1,226 @@
+---
+import { ga4MeetID, advertentiesActief } from '../config';
+
+/**
+ * Het venster dat vraagt of je bericht wilt bij een nieuw artikel.
+ *
+ * Verschijnt alleen op artikelpagina's, pas na tien seconden lézen, en daarna
+ * nooit meer. Vier keuzes die bij elkaar horen:
+ *
+ * 1. **Tien seconden léés-tijd, geen kloktijd.** De teller staat stil zodra het
+ *    tabblad naar de achtergrond gaat. Iemand die drie artikelen in tabbladen
+ *    opent en er één leest, krijgt het venster één keer, en op het artikel dat
+ *    hij ook werkelijk voor zich had.
+ * 2. **Nooit bovenop het cookievenster.** Zolang de bezoeker zijn cookiekeuze
+ *    nog niet gemaakt heeft, telt de teller niet. Een tweede venster over het
+ *    eerste heen zou de toestemmingsvraag afdekken, en juist die moet vrij en
+ *    zonder druk te beantwoorden zijn.
+ * 3. **Eén keer, en dat wordt onthouden.** Dat gebeurt in `localStorage`, en dus
+ *    zonder cookie en zonder dat er iets naar een server gaat. Het is opslag met
+ *    één doel: je niet nog eens lastigvallen. Dat staat beschreven in het
+ *    cookiebeleid.
+ * 4. **Geen tweede kans.** Wie wegklikt, krijgt hem niet later alsnog. Precies
+ *    daarom staat de aanmelding óók onderaan elk artikel, waar hij rustig blijft
+ *    staan voor wie er wél iets mee wil.
+ *
+ * Wat hier bewust niet in zit: geen aftelklok, geen "nog maar even", geen
+ * verstopte sluitknop, en geen tweede scherm dat vraagt of je het écht zeker
+ * weet. Dat zijn de patronen uit `onderzoek/09` par. 4.6, sinds de DSA verboden
+ * en bij deze lezersgroep averechts.
+ *
+ * ── Waarom een echte `<dialog>` ─────────────────────────────────────────────
+ *
+ * Een `div` met `role="dialog"` en `aria-modal="true"` belóóft dat de rest van
+ * de pagina onbereikbaar is, maar maakt dat niet waar: met Tab loop je er zo
+ * achterlangs, en dan klopt wat een schermlezer aankondigt niet meer met wat er
+ * gebeurt. `showModal()` regelt focusopsluiting, de top-layer, Escape en het
+ * teruggeven van de focus in de browser zelf, en scheelt hier een stuk of
+ * vijftien regels script die precies dat probeerden na te bouwen.
+ */
+
+/*
+  Staat er überhaupt een toestemmingsvenster op de site? Zelfde uitdrukking als
+  in `CookieToestemming.astro`: staan analytics én advertenties uit, dan is er
+  geen keuze te maken, komt er nooit een toestemmingscookie, en zou wachten op
+  die keuze betekenen dat dit venster nooit verschijnt.
+*/
+const erIsEenCookievenster = Boolean(ga4MeetID || advertentiesActief);
+---
+
+<dialog
+  class="aanmeldvenster"
+  data-aanmeldvenster
+  data-wacht-op-toestemming={String(erIsEenCookievenster)}
+  aria-labelledby="aanmeldkop"
+>
+  {/* `autofocus` zet de focus op de kaart in plaats van op de sluitknop, zodat
+      een schermlezer eerst de kop en de uitleg voorleest. */}
+  <div class="aanmeldvenster__kaart" tabindex="-1" autofocus>
+    <button class="aanmeldvenster__kruis" type="button" data-sluiten aria-label="Venster sluiten">
+      &times;
+    </button>
+
+    <p class="rubriek">Even iets anders</p>
+    <h2 id="aanmeldkop">Zin in het volgende artikel?</h2>
+    <p class="aanmeldvenster__intro">
+      Er komt elke week iets bij: een ingrediënt uitgezocht, of een stuk over voeding en huid. Laat
+      je adres achter en je hoort het als er iets nieuws staat. Geen reclame, en je kunt er onderaan
+      elke mail met één klik weer af.
+    </p>
+
+    <form class="aanmeldvenster__formulier" data-aanmeldformulier>
+      <label class="veld">
+        <span class="veld__naam">E-mailadres</span>
+        <input class="veld__invoer" type="email" name="email" required autocomplete="email" />
+      </label>
+
+      {/* Onzichtbaar voor mensen, ingevuld door bots. */}
+      <input class="honingpot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="aanmeldvenster__knoppen">
+        <button class="knop" type="submit" data-verstuur>Hou me op de hoogte</button>
+        <button class="knop knop--stil" type="button" data-sluiten>Nu even niet</button>
+      </div>
+
+      <p class="aanmeldvenster__melding" data-melding role="status" aria-live="polite" hidden></p>
+
+      <p class="formulier__klein">
+        Je adres gaat naar Brevo, de dienst die de verzending doet, en wordt nergens anders voor
+        gebruikt. Meer daarover in het <a href="/privacybeleid">privacybeleid</a>.
+      </p>
+    </form>
+  </div>
+</dialog>
+
+<script>
+  /*
+    Alles in dit script is voorwaardelijk: staat het venster niet in de HTML, dan
+    gebeurt er niets. Zo blijft dit bestand bruikbaar op pagina's zonder venster.
+  */
+  const venster = document.querySelector<HTMLDialogElement>('[data-aanmeldvenster]');
+
+  if (venster) {
+    const SLEUTEL = 'mochiglow-aanmelding-getoond';
+    const TOESTEMMINGSCOOKIE = 'mochiglow-toestemming';
+    const WACHT_MS = 10_000;
+
+    const formulier = venster.querySelector<HTMLFormElement>('[data-aanmeldformulier]');
+    const melding = venster.querySelector<HTMLElement>('[data-melding]');
+    const knop = venster.querySelector<HTMLButtonElement>('[data-verstuur]');
+
+    let gelezenMs = 0;
+    let sinds = document.visibilityState === 'visible' ? performance.now() : null;
+    let teller: number | undefined;
+
+    const alGezien = () => {
+      try {
+        return localStorage.getItem(SLEUTEL) === 'ja';
+      } catch {
+        /* Privémodus of opslag uit: dan liever niets tonen dan elke keer tonen. */
+        return true;
+      }
+    };
+
+    const onthoud = () => {
+      try {
+        localStorage.setItem(SLEUTEL, 'ja');
+      } catch {
+        /* Niet kunnen onthouden is geen reden om de bezoeker iets te weigeren. */
+      }
+    };
+
+    /*
+      Mag de leestijd meetellen? Alleen als de cookievraag beantwoord is. De
+      cookie zelf wordt hier niet gelezen, alleen het bestaan ervan telt, net als
+      in `CookieToestemming.astro` is dat de enige afspraak die tussen
+      Klaro-versies stabiel blijft.
+    */
+    const keuzeGemaakt = () =>
+      venster.dataset.wachtOpToestemming !== 'true' ||
+      document.cookie.split('; ').some((c) => c.startsWith(`${TOESTEMMINGSCOOKIE}=`));
+
+    const toon = () => {
+      if (alGezien() || venster.open) return;
+      venster.showModal();
+      window.clearInterval(teller);
+    };
+
+    /*
+      Eén afsluitpunt voor alle manieren waarop het venster dichtgaat: de
+      kruisknop, "nu even niet", Escape en een klik naast de kaart. De browser
+      geeft de focus zelf terug aan waar hij vandaan kwam.
+    */
+    venster.addEventListener('close', onthoud);
+
+    for (const knopje of venster.querySelectorAll('[data-sluiten]')) {
+      knopje.addEventListener('click', () => venster.close());
+    }
+
+    /* Het dialoogelement vult het scherm; de kaart zit erin. Raak je het
+       element zelf, dan klikte je ernaast. */
+    venster.addEventListener('click', (e) => {
+      if (e.target === venster) venster.close();
+    });
+
+    /*
+      De teller loopt alleen als de pagina echt zichtbaar is. `performance.now()`
+      in plaats van een simpele setInterval-optelling, zodat een tabblad dat door
+      de browser is teruggeschroefd geen tijd wegsnoept.
+    */
+    const tik = () => {
+      if (sinds !== null) {
+        if (keuzeGemaakt()) gelezenMs += performance.now() - sinds;
+        sinds = performance.now();
+      }
+      if (gelezenMs >= WACHT_MS) toon();
+    };
+
+    if (!alGezien()) {
+      teller = window.setInterval(tik, 500);
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          sinds = performance.now();
+        } else if (sinds !== null) {
+          if (keuzeGemaakt()) gelezenMs += performance.now() - sinds;
+          sinds = null;
+        }
+      });
+    }
+
+    formulier?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!melding || !knop) return;
+
+      const gegevens = new FormData(formulier);
+      knop.disabled = true;
+      melding.hidden = false;
+      melding.textContent = 'Bezig…';
+
+      try {
+        const reactie = await fetch('/api/aanmelden', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            email: gegevens.get('email'),
+            website: gegevens.get('website'),
+          }),
+        });
+        const uitslag = await reactie.json();
+        melding.textContent = uitslag.bericht ?? 'Er ging iets mis.';
+        if (reactie.ok) {
+          /* Ook los van het sluiten onthouden: wie hierna wegklikt of gewoon
+             doorleest, hoeft het venster nooit meer te zien. */
+          onthoud();
+          formulier.querySelector<HTMLElement>('.veld')?.setAttribute('hidden', '');
+          venster.querySelector<HTMLElement>('.aanmeldvenster__knoppen')?.setAttribute('hidden', '');
+        } else {
+          knop.disabled = false;
+        }
+      } catch {
+        melding.textContent = 'Geen verbinding. Probeer het later nog eens.';
+        knop.disabled = false;
+      }
+    });
+  }
+</script>

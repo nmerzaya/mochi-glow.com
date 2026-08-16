@@ -1,8 +1,8 @@
 ---
 import BasisLayout from '../layouts/BasisLayout.astro';
-import { advertentiesActief, ga4MeetID } from '../config';
+import { advertentiesActief, ga4MeetID, mailActief } from '../config';
 
-const bijgewerkt = '12 augustus 2026';
+const bijgewerkt = '16 augustus 2026';
 ---
 
 <BasisLayout
@@ -28,6 +28,15 @@ const bijgewerkt = '12 augustus 2026';
           geen advertentienetwerk en geen trackingscript actief. Daarom zie je ook geen
           toestemmingsvenster: een cookiemelding tonen voor cookies die niet geplaatst worden, wekt
           ten onrechte de indruk dat er iets gevolgd wordt.
+        </p>
+      )
+    }
+    {
+      mailActief && (
+        <p>
+          Er staat wél één ding in de opslag van je browser dat geen cookie is. Dat wordt hieronder
+          apart beschreven, want het valt niet onder deze regels maar het is opslag, en dan hoor je
+          te weten dat het er is.
         </p>
       )
     }
@@ -85,6 +94,50 @@ const bijgewerkt = '12 augustus 2026';
           doel en de bewaartermijn, en verschijnt er een toestemmingsvenster dat standaard alles
           weigert tot je zelf iets anders kiest.
         </p>
+      )
+    }
+
+    {
+      mailActief && (
+        <>
+          <h2>Wat er verder in je browser wordt onthouden</h2>
+          <p>
+            Op een artikelpagina kan, nadat je een tijdje aan het lezen bent, één keer een venster
+            verschijnen met de vraag of je bericht wilt bij een nieuw artikel. Dat het venster
+            langsgekomen is, wordt onthouden, anders zou het bij elk volgend artikel opnieuw
+            verschijnen.
+          </p>
+          <div class="tabel-omhulsel">
+            <table>
+              <thead>
+                <tr>
+                  <th>Naam</th>
+                  <th>Soort</th>
+                  <th>Waarvoor</th>
+                  <th>Bewaartermijn</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>mochiglow-aanmelding-getoond</td>
+                  <td>localStorage, geen cookie</td>
+                  <td>
+                    Onthoudt dat het aanmeldvenster al een keer getoond is, zodat je het niet nog
+                    eens krijgt. Er staat alleen "ja" in: geen adres, geen kenmerk, niets waaraan je
+                    te herkennen bent.
+                  </td>
+                  <td>Tot je de opslag van je browser wist</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Hier wordt geen toestemming voor gevraagd, en dat mag: anders dan een cookie gaat dit
+            nooit mee naar een server, en het dient uitsluitend het doel je niet nog eens lastig te
+            vallen. Toestemming vragen om iemand met rust te kunnen laten zou de zaak omdraaien.
+            Weiger je het venster of wis je je opslag, dan verandert er verder niets aan de site.
+          </p>
+        </>
       )
     }
 

@@ -34,6 +34,8 @@ Het domein is `mochi-glow.com`, geregistreerd via Cloudflare. De site heette in 
 
 Nog open vóór livegang: de publisher-ID in `public/ads.txt` en `advertentiesActief` in `src/config.ts`. Allebei hangen ze af van goedkeuring door AdSense en staan ze met uitleg in `DEPLOY.md`. De andere twee punten zijn afgerond: `repo:` in `public/admin/config.yml` wijst naar `nmerzaya/mochi-glow.com`, en `data/toegestane-claims.json` is op 2026-08-12 geverifieerd (zie `onderzoek/07`, par. 4.4).
 
+Daar is sinds augustus 2026 de maildienst bij gekomen: de drie Brevo-secrets in Cloudflare en `mailActief` in `src/config.ts`. Zie de aparte paragraaf verderop en `DEPLOY.md`.
+
 ## Commando's
 
 ```
@@ -80,7 +82,7 @@ Motivatie per keuze staat in `ARCHITECTUUR.md`; hieronder alleen wát er gekozen
 - **Astro** (v7), content collections + `astro:assets` beeldoptimalisatie, standaard geen JavaScript. Plus `@astrojs/sitemap` en `@astrojs/rss`.
 - **Cloudflare Pages**, hosting, auto-deploy bij push (gratis laag: 1 gelijktijdige build). Nog niet ingericht.
 - **Sveltia CMS** op `/admin`, git-based; bewust *niet* Decap CMS (CVE-2025-57520). `public/admin/config.yml` moet exact overeenkomen met `src/content.config.ts`; wijk je in het één af, dan faalt de build op het ander, dat is de bedoeling.
-- **Klaro**, zelfgehoste cookie consent, laadt vóór alle andere scripts. Staat pas aan als `advertentiesActief` in `src/config.ts` op `true` gaat; zolang er geen advertentiescript is, verschijnt er ook geen toestemmingsvenster (een banner tonen voor cookies die niet geplaatst worden is misleidend) en staat er nul byte JavaScript op de site.
+- **Klaro**, zelfgehoste cookie consent, laadt vóór alle andere scripts. Het venster verschijnt zodra er werkelijk iets te kiezen valt, dat wil zeggen zodra `ga4MeetID` gevuld is óf `advertentiesActief` aanstaat; staan die allebei uit, dan is er geen toestemmingsvenster, want een banner tonen voor cookies die niet geplaatst worden is misleidend. `ga4MeetID` stáát gevuld sinds commit `a3e5bc9`, dus het venster is er; de zin "nul byte JavaScript op de site" die hier eerder stond, gold alleen daarvóór.
 - **GitHub** (publieke repo), vereist voor zowel Cloudflare Pages als Sveltia CMS. Nog aan te maken.
 
 Wijk hier niet van af zonder `ARCHITECTUUR.md` → "Waarom geen andere opties" te lezen.
@@ -133,7 +135,16 @@ De deelkaart `public/og-standaard.jpg` wordt door `scripts/maak-merkbeeld.mjs` o
 - **Geen enkele animatie start vanzelf.** De lopende band is bij de herziening van augustus 2026 verdwenen; wat overblijft is één scroll-gestuurde onthulling (`@keyframes onthullen` in `globaal.css`), die door de lezer wordt aangedreven en achter `prefers-reduced-motion: no-preference` staat. Komt er ooit weer beweging die vanzelf begint en langer dan vijf seconden duurt, dan valt die onder WCAG 2.2 SC 2.2.2 en heeft hij een echte pauzeknop nodig, `prefers-reduced-motion` alléén is daarvoor niet genoeg, want de W3C-toelichting noemt die mediaquery niet als manier om aan het criterium te voldoen.
 - **De vragenlijsten (`/routine` en `/eetritme`) mogen geen diagnose stellen en niets verkopen.** Vragen gaan over hoe de huid aanvoelt, wat iemand prettig vindt en hoe een dag eruitziet, nooit over een aandoening; uitkomsten beloven geen effect en noemen geen merken of producten. Zodra er wél een product in komt, geldt de disclosureplicht ook op die pagina.
 - **Alle tekst van de vragenlijsten staat in `src/data/routinetest.ts` en `src/data/eetritme.ts`, en nergens anders.** `scripts/check-compliance.mjs` leest beide bestanden en haalt elke tekenreeks erin langs dezelfde verboden-taalpatronen als de artikelen, inclusief de claimcontrole. Zet je die teksten rechtstreeks in een `.astro`-bestand, dan ontsnappen ze aan die controle. Beide pagina's delen één component, `Vragenlijst.astro`.
-- De vragenlijsten slaan niets op: geen cookie, geen localStorage, geen netwerkverzoek. Dat staat zo in het privacybeleid, dus het moet zo blijven.
+- **De vragenlijsten slaan uit zichzelf niets op en sturen uit zichzelf niets weg**: geen cookie, geen localStorage, geen netwerkverzoek. Sinds augustus 2026 is er precies één uitzondering, en die begint altijd bij de lezer: onder de uitkomst staat de mogelijkheid hem naar je eigen adres te laten sturen. Drukt niemand op die knop, dan gaat er niets weg. Gaat er wel iets weg, dan zijn dat het adres en de id van de uitkomst, nooit de antwoorden. Zo staat het in het privacybeleid, dus zo moet het blijven.
+
+## De maildienst: `functions/` en de vlag `mailActief`
+
+Sinds augustus 2026 kan een bezoeker zich aanmelden voor bericht bij een nieuw artikel, en de uitkomst van een vragenlijst naar zichzelf laten mailen. Dat is de eerste code op deze site die niet statisch is. Vier dingen om te weten:
+
+1. **`functions/api/*.ts` zijn Cloudflare Pages Functions**, geen onderdeel van de Astro-build. Elk bestand wordt vanzelf een eindpunt (`aanmelden.ts` → `/api/aanmelden`). Ze bestaan alleen op Cloudflare **Pages**; op Workers doet die map niets, en dat is de reden dat `wrangler.jsonc` op `pages_build_output_dir` staat en niet op `assets`. `astro dev` serveert ze niet, gebruik `npx wrangler pages dev dist` met een `.dev.vars` (zie `DEPLOY.md`).
+2. **De browser stuurt nooit tekst mee, alleen een id.** `/api/uitslag` haalt de inhoud van de mail uit `src/data/`, precies dezelfde bron als de pagina, en dus dezelfde bron waar `npm run check` overheen gaat. Zou de pagina de tekst meesturen, dan kon iemand willekeurige inhoud onder de naam van deze site laten versturen én zou die inhoud buiten de compliance-controle vallen. Draai dat niet om.
+3. **`mailActief` in `src/config.ts` zet beide formulieren aan en uit.** Staat hij `false`, dan staat er geen formulier op de site en vertellen `/privacybeleid` en `/cookiebeleid` er ook niet over; die teksten hangen op dezelfde vlag. Zet je hem aan zonder dat de Brevo-secrets in Cloudflare staan, dan vraagt de site een adres en antwoordt daarna dat het niet kan, precies wat `/contact` al eerder heeft afgewezen.
+4. **`BREVO_SLEUTEL` hoort nooit in deze repo.** Anders dan de Web3Forms-sleutel, die sowieso in de HTML van elk formulier staat, kan met deze sleutel mail namens dit domein verstuurd worden. Hij hoort in Cloudflare Pages als secret.
 
 ## Openstaande placeholders vóór livegang
 
@@ -142,6 +153,7 @@ Deze staan bewust op een tijdelijke waarde en moeten ingevuld worden; ze zijn oo
 - `public/admin/config.yml` → `repo: GEBRUIKERSNAAM/mochi-glow` invullen zodra de GitHub-repo bestaat.
 - `public/ads.txt` → publisher-ID invullen ná goedkeuring van AdSense.
 - `src/config.ts` → `advertentiesActief` op `true` bij livegang van advertenties.
+- Cloudflare Pages → de secrets `BREVO_SLEUTEL`, `BREVO_LIJST_ID` en `BREVO_DOI_SJABLOON`, en daarna `mailActief` in `src/config.ts` op `true`. In die volgorde: de vlag aanzetten zonder de secrets levert een formulier op dat een adres vraagt en daarna zegt dat het niet kan.
 
 ## Omgeving
 

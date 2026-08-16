@@ -1,7 +1,16 @@
 {
+  // Configuratie voor Cloudflare Pages.
+  //
+  // Deze site draait op Pages, niet op Workers, en dat verschil zit precies in
+  // dit bestand. Er stond eerder `assets.directory`, de Workers-vorm. Pages
+  // leest een wrangler-configuratie alleen als `pages_build_output_dir` erin
+  // staat en struikelt anders over de rest, en de map `functions/` bestaat
+  // alleen op Pages: daar wordt `functions/api/aanmelden.ts` vanzelf het
+  // eindpunt `/api/aanmelden`. Op Workers gebeurt dat niet.
+  //
+  // `compatibility_date` bepaalt de runtime van die functies en blijft daarom
+  // staan; verzet hem niet zonder de eindpunten daarna te proberen.
   "name": "mochi-glow-com",
   "compatibility_date": "2026-08-01",
-  "assets": {
-    "directory": "./dist"
-  }
+  "pages_build_output_dir": "dist"
 }

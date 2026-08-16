@@ -76,6 +76,31 @@ export const ga4MeetID: string | null = 'G-NEXD4R5HL2';
 export const web3formsSleutel: string | null = 'c5d671ae-7229-48b8-98e4-4d25db8256cd';
 
 /**
+ * Staat de maildienst achter de site klaar?
+ *
+ * Zet twee dingen tegelijk aan of uit, omdat ze allebei op Brevo leunen: het
+ * aanmeldvenster onder een artikel (`Aanmelding.astro`) en het blok waarmee je
+ * de uitkomst van een vragenlijst naar jezelf mailt (`Vragenlijst.astro`).
+ *
+ * ── Waarom een vlag en niet gewoon de sleutel, zoals bij Web3Forms ──────────
+ *
+ * De Brevo-sleutel staat, anders dan die van Web3Forms, níét in deze code. Met
+ * de Web3Forms-sleutel kan iemand hooguit een bericht naar het contactadres
+ * sturen, en hij staat sowieso in de HTML van elk formulier. Met de
+ * Brevo-sleutel kan iemand mail versturen namens dit domein. Die hoort dus in
+ * Cloudflare Pages als secret (`BREVO_SLEUTEL`, zie `DEPLOY.md`), en de pagina
+ * kan er niet aan zien of hij bestaat. Vandaar deze losse vlag.
+ *
+ * Zolang hij `false` is, staat er geen formulier op de site. Dat is dezelfde
+ * afweging als bij `/contact`: een formulier dat bij verzenden in het niets
+ * verdwijnt is erger dan geen formulier, want de bezoeker heeft dan zijn adres
+ * afgestaan en denkt dat het gelukt is. `/privacybeleid` en `/cookiebeleid`
+ * hangen op dezelfde vlag: staat er geen nieuwsbrief, dan vertellen ze er ook
+ * niet over.
+ */
+export const mailActief = false;
+
+/**
  * De twee pijlers, op één plek.
  *
  * Hiervoor stonden deze namen als losse tekenreeksen door de hele site heen, * in een ternary in `ArtikelLayout.astro`, twee keer in `index.astro`, in beide
