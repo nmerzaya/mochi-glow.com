@@ -1,0 +1,42 @@
+---
+import BasisLayout from '../layouts/BasisLayout.astro';
+import { pijlers } from '../config';
+
+/*
+  Waar de bevestigingslink uit de aanmeldmail op uitkomt.
+
+  Deze pagina staat nergens in het menu en is alleen te bereiken via die link;
+  daarom `verbergVoorZoekmachines`. Ze bestaat apart van `/bedankt`, want die is
+  van het contactformulier en zegt "je bericht is onderweg, ik antwoord binnen
+  een paar dagen". Dat is niet wat er gebeurd is en het belooft een antwoord dat
+  niet komt.
+
+  De aanmelding is op dít moment pas rond: Brevo zet het adres op de lijst zodra
+  er op de link geklikt is, niet eerder. Vandaar de stellige toon.
+*/
+---
+
+<BasisLayout
+  titel="Aanmelding bevestigd"
+  beschrijving="Je staat op de lijst."
+  verbergVoorZoekmachines={true}
+>
+  <div class="prozapagina">
+    <p class="rubriek">Gelukt</p>
+    <h1>Je staat op de lijst</h1>
+    <p>
+      Dank je wel. Vanaf nu krijg je bericht zodra er een nieuw artikel staat: een ingrediënt dat
+      is uitgezocht, of een stuk over voeding en huid. Geen reclame, en niet vaker dan er iets te
+      melden valt.
+    </p>
+    <p>
+      Wil je er weer af, dan kan dat met één klik onderaan elke mail. Je adres wordt dan
+      verwijderd en nergens anders voor gebruikt. Wat er precies mee gebeurt, staat in het
+      <a href="/privacybeleid">privacybeleid</a>.
+    </p>
+    <p>
+      Ondertussen: <a href={pijlers.ingredienten.pad}>{pijlers.ingredienten.naam}</a> of
+      <a href={pijlers['gut-skin'].pad}>{pijlers['gut-skin'].naam}</a>.
+    </p>
+  </div>
+</BasisLayout>

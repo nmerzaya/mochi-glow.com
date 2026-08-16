@@ -70,12 +70,21 @@ Elke keuze in dit project komt voort uit het onderzoek in `onderzoek/`. Lees `CL
 
 ## Nog te doen voor livegang
 
-De volledige route staat in **`DEPLOY.md`**. Kort samengevat blijven deze twee waarden nog open, en
-allebei pas ná goedkeuring door AdSense:
+De volledige route staat in **`DEPLOY.md`**. Kort samengevat staan deze waarden nog open.
+
+Pas ná goedkeuring door AdSense:
 
 - `public/ads.txt`: publisher-ID invullen ná goedkeuring van AdSense.
 - `src/config.ts`: `advertentiesActief` op `true` zetten wanneer advertenties live gaan, pas dan
   verschijnt het toestemmingsvenster.
+
+Voor de aanmelding per mail, in deze volgorde:
+
+- Cloudflare Pages → Settings → Environment variables: `BREVO_SLEUTEL`, `BREVO_LIJST_ID` en
+  `BREVO_DOI_SJABLOON`, alle drie als **secret**. De sleutel hoort niet in deze repo; daarmee kan
+  mail namens dit domein verstuurd worden.
+- `src/config.ts`: `mailActief` op `true`. Doe dit pas als die drie er staan, anders vraagt de site
+  een e-mailadres en antwoordt daarna dat het niet kan.
 
 ## Licentie
 

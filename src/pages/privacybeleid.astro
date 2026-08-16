@@ -1,8 +1,8 @@
 ---
 import BasisLayout from '../layouts/BasisLayout.astro';
-import { site, advertentiesActief, ga4MeetID } from '../config';
+import { site, advertentiesActief, ga4MeetID, mailActief } from '../config';
 
-const bijgewerkt = '12 augustus 2026';
+const bijgewerkt = '16 augustus 2026';
 ---
 
 <BasisLayout
@@ -33,9 +33,13 @@ const bijgewerkt = '12 augustus 2026';
 
     <h3>Bij het lezen van de site</h3>
     <p>
-      Mochi Glow is een statische website. Er is geen gebruikersaccount, geen inlog, geen
-      reactiemogelijkheid en geen nieuwsbrief. Er worden bij het lezen geen gegevens door mij
-      opgeslagen.
+      Mochi Glow is een statische website. Er is geen gebruikersaccount, geen inlog en geen
+      reactiemogelijkheid. Er worden bij het lezen geen gegevens door mij opgeslagen.
+      {
+        mailActief
+          ? ' Je kunt je wel zelf aanmelden voor bericht bij een nieuw artikel; dat staat hieronder apart beschreven, en zonder die aanmelding gebeurt er niets.'
+          : ' Er is ook geen nieuwsbrief.'
+      }
     </p>
     <p>
       De hostingpartij die de site uitlevert, verwerkt wel technische gegevens die nodig zijn om een
@@ -45,14 +49,26 @@ const bijgewerkt = '12 augustus 2026';
       profielen op te bouwen.
     </p>
 
-    <h3>Bij de routinetest</h3>
+    <h3>Bij de vragenlijsten</h3>
     <p>
-      De <a href="/routine">routinetest</a> draait volledig in je eigen browser. Je antwoorden worden
-      nergens naartoe gestuurd en nergens bewaard: niet op een server, niet in een cookie en niet in
-      de opslag van je browser. Sluit je de pagina, dan is de uitkomst weg. Het enige wat achterblijft
-      is het stukje achter het hekje in de adresbalk, zodat je een uitkomst kunt delen of terugvinden
-      en dat staat alleen in je eigen adresbalk.
+      De <a href="/routine">routinetest</a> en het <a href="/eetritme">eetritme</a> draaien volledig
+      in je eigen browser. Je antwoorden worden nergens naartoe gestuurd en nergens bewaard: niet op
+      een server, niet in een cookie en niet in de opslag van je browser. Sluit je de pagina, dan is
+      de uitkomst weg. Het enige wat achterblijft is het stukje achter het hekje in de adresbalk,
+      zodat je een uitkomst kunt delen of terugvinden en dat staat alleen in je eigen adresbalk.
     </p>
+    {
+      mailActief && (
+        <p>
+          Onder je uitkomst staat één uitzondering: je kunt hem naar jezelf laten mailen. Doe je dat,
+          dan gaan je e-mailadres en de naam van je uitkomst naar deze site en van daar naar Brevo,
+          die de mail verstuurt. Je antwoorden zelf gaan nooit mee, en er wordt niets van bewaard
+          buiten wat Brevo nodig heeft om de mail te bezorgen. Daaronder staat een los vinkje voor de
+          nieuwsbrief. Dat staat niet voorgevinkt en je uitkomst krijg je ook zonder: toestemming
+          voor het één mag niet aan het ander gekoppeld worden.
+        </p>
+      )
+    }
 
     <h3>Statistieken</h3>
     {
@@ -147,6 +163,38 @@ const bijgewerkt = '12 augustus 2026';
       dat liever niet, mail dan rechtstreeks, dat komt op hetzelfde adres uit.
     </p>
 
+    {
+      mailActief && (
+        <>
+          <h3>De nieuwsbrief</h3>
+          <p>
+            Je kunt je aanmelden voor bericht bij een nieuw artikel. Het enige wat daarvoor wordt
+            opgeslagen is je e-mailadres, plus het moment waarop je je aanmeldde en bevestigde. Geen
+            naam, en niets over wat je op deze site gelezen hebt.
+          </p>
+          <p>
+            De verzending loopt via <strong>Brevo</strong>, een Europese partij die de lijst beheert
+            en de mail verstuurt. Aanmelden gaat in twee stappen: je vult je adres in en krijgt
+            daarna een mail met een link. Pas als je op die link klikt, sta je op de lijst. Dat is
+            geen drempel om de drempel: het is de enige manier om te weten dat het adres werkelijk
+            van jou is, en het voorkomt dat iemand jou aanmeldt.
+          </p>
+          <p>
+            De grondslag is toestemming, en die kun je op elk moment intrekken: onderaan elke mail
+            staat een afmeldlink die het met één klik doet. Je adres wordt dan uit de lijst
+            verwijderd. Zolang je aangemeld blijft, wordt het bewaard. Het wordt niet verkocht, niet
+            verhuurd en nergens anders voor gebruikt.
+          </p>
+          <p>
+            Op artikelpagina's kan een venster verschijnen dat naar die aanmelding vraagt, nadat je
+            een tijdje aan het lezen bent. Dat gebeurt één keer; dát je het gezien hebt, wordt in de
+            opslag van je eigen browser onthouden en gaat nergens naartoe. Zie het
+            <a href="/cookiebeleid">cookiebeleid</a>.
+          </p>
+        </>
+      )
+    }
+
     <h2>Grondslag</h2>
     <p>
       Voor het technisch uitleveren van de site en het afhandelen van e-mail is de grondslag
@@ -155,20 +203,31 @@ const bijgewerkt = '12 augustus 2026';
       je kunt geven en weer intrekken. Die toestemming wordt vooraf gevraagd: de bijbehorende
       scripts staan in een vorm die de browser niet uitvoert en worden pas geladen nadat je gekozen
       hebt.
+      {
+        mailActief &&
+          ' Ook voor de nieuwsbrief en voor het toesturen van een uitkomst is de grondslag toestemming: er gebeurt niets tot je zelf een adres invult en op verzenden drukt.'
+      }
     </p>
 
     <h2>Bewaartermijnen</h2>
     <p>
       Serverlogs worden door de hostingpartij kortdurend bewaard voor beveiliging en foutopsporing.
       E-mails worden bewaard zolang dat voor de afhandeling nodig is en daarna verwijderd.
+      {
+        mailActief &&
+          ' Een adres op de nieuwsbrieflijst blijft staan tot je je afmeldt; daarna wordt het verwijderd. Vraag je alleen een uitkomst per mail aan, dan blijft er niets achter zodra die mail bezorgd is.'
+      }
     </p>
 
     <h2>Je rechten</h2>
     <p>
       Je hebt onder de AVG het recht om je gegevens in te zien, te laten corrigeren of te laten
-      verwijderen, om bezwaar te maken tegen verwerking, en om je toestemming in te trekken. Omdat
-      deze site geen accounts kent en niets over lezers opslaat, is er in de praktijk zelden iets in
-      te zien, maar je verzoek wordt hoe dan ook behandeld. Mail naar
+      verwijderen, om bezwaar te maken tegen verwerking, en om je toestemming in te trekken.
+      {
+        mailActief
+          ? ' Omdat deze site geen accounts kent, is het enige dat er over je bewaard kan zijn je e-mailadres op de nieuwsbrieflijst.'
+          : ' Omdat deze site geen accounts kent en niets over lezers opslaat, is er in de praktijk zelden iets in te zien, maar je verzoek wordt hoe dan ook behandeld.'
+      } Mail naar
       <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
     </p>
     <p>

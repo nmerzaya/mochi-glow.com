@@ -13,6 +13,10 @@ public/klaro/
 .env
 .env.production
 
+# De geheimen voor `wrangler pages dev`, waaronder de Brevo-sleutel. Die staat
+# online in Cloudflare als secret en hoort nergens in deze repo.
+.dev.vars
+
 # Lokale werkinstellingen van Claude Code — persoonlijk, hoort niet in een publieke repo.
 .claude/settings.local.json
 

@@ -2767,3 +2767,195 @@ main {
     transform: scaleX(1);
   }
 }
+
+/* ══ Aanmeldvenster en de uitslag per mail ══════════════════════════════════
+
+   Het venster verschijnt op een artikelpagina na tien seconden lezen, en daarna
+   nooit meer. De vormtaal is die van het cookievenster: gecentreerd, zachte
+   hoek, warme rand bovenlangs. Twee vensters die op elkaar lijken lezen als één
+   site; twee die van elkaar verschillen lezen als een plug-in.
+
+   Wat hier bewust ontbreekt: geen aftelklok, geen verstopte sluitknop, geen
+   tweede scherm dat vraagt of je het zeker weet. Zie onderzoek/09, par. 4.6.
+
+   Het is een `<dialog>` die met `showModal()` opengaat. Twee dingen die daarbij
+   horen en anders stil misgaan:
+
+   - De browser verbergt een gesloten dialoog zelf, maar dat staat in de
+     stijlbladen van de browser en verliest het van elke eigen `display`. Vandaar
+     `display: none` als grondstand en `grid` pas bij `[open]`.
+   - De standaardopmaak van een dialoog (eigen breedte, rand, marges) moet weg,
+     want dit element is niet de kaart maar het vlak eromheen.
+*/
+
+.aanmeldvenster {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: none;
+  background: transparent;
+  padding: var(--ruimte-5);
+}
+
+.aanmeldvenster[open] {
+  display: grid;
+  place-items: center;
+}
+
+.aanmeldvenster::backdrop {
+  background: rgba(23, 18, 38, 0.45);
+  backdrop-filter: blur(3px);
+}
+
+.aanmeldvenster__kaart {
+  position: relative;
+  width: min(100%, 32rem);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--kleur-papier);
+  border: 1px solid var(--kleur-accent-warm);
+  border-radius: var(--rond-speels);
+  box-shadow: var(--schaduw-hoog);
+  padding: var(--ruimte-7) var(--ruimte-6) var(--ruimte-6);
+}
+
+.aanmeldvenster__kaart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-radius: var(--rond-speels) var(--rond-speels) 0 0;
+  background: linear-gradient(
+    90deg,
+    var(--kleur-accent-warm),
+    var(--kleur-orchidee-vlak),
+    var(--kleur-accent-warm)
+  );
+}
+
+.aanmeldvenster__kaart:focus-visible {
+  outline: 2px solid var(--kleur-orchidee);
+  outline-offset: 3px;
+}
+
+.aanmeldvenster__kruis {
+  position: absolute;
+  top: var(--ruimte-4);
+  right: var(--ruimte-4);
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--kleur-rand);
+  border-radius: 50%;
+  background: var(--kleur-vlies);
+  color: var(--kleur-inkt-half);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--overgang-snel) var(--soepel),
+    color var(--overgang-snel) var(--soepel);
+}
+
+.aanmeldvenster__kruis:hover {
+  border-color: var(--kleur-orchidee);
+  color: var(--kleur-inkt);
+}
+
+.aanmeldvenster h2 {
+  font-size: var(--tekst-2xl);
+  margin: var(--ruimte-2) 0 var(--ruimte-3);
+}
+
+.aanmeldvenster__intro {
+  color: var(--kleur-inkt-half);
+  margin-bottom: var(--ruimte-5);
+}
+
+.aanmeldvenster__formulier {
+  display: grid;
+  gap: var(--ruimte-4);
+}
+
+.aanmeldvenster__knoppen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ruimte-3);
+  align-items: center;
+}
+
+.aanmeldvenster__melding,
+.uitslag__melding {
+  margin: 0;
+  font-size: var(--tekst-s);
+  color: var(--kleur-inkt);
+  background: var(--kleur-orchidee-vlak);
+  border-radius: var(--rond-m);
+  padding: var(--ruimte-3) var(--ruimte-4);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aanmeldvenster__kaart {
+    animation: venster-omhoog 320ms var(--soepel) both;
+  }
+}
+
+/* ── De uitslag naar je eigen mail ──────────────────────────────────────── */
+
+.uitslag__mail {
+  margin-top: var(--ruimte-6);
+  padding: var(--ruimte-5) var(--ruimte-6) var(--ruimte-6);
+  background: var(--kleur-vlies);
+  border: 1px solid var(--kleur-rand);
+  border-radius: var(--rond-l);
+  max-width: 34rem;
+}
+
+.uitslag__mail-kop {
+  font-family: var(--font-kop);
+  font-size: var(--tekst-l);
+  font-weight: 600;
+  margin: 0 0 var(--ruimte-2);
+}
+
+.uitslag__mail-intro {
+  color: var(--kleur-inkt-half);
+  font-size: var(--tekst-m);
+  margin: 0 0 var(--ruimte-4);
+}
+
+.uitslag__formulier {
+  display: grid;
+  gap: var(--ruimte-4);
+  justify-items: start;
+}
+
+.uitslag__formulier .veld {
+  width: 100%;
+}
+
+/* Het vinkje voor de nieuwsbrief. Staat los, en nooit voorgevinkt. */
+.vinkje {
+  display: flex;
+  gap: var(--ruimte-3);
+  align-items: flex-start;
+  font-size: var(--tekst-s);
+  color: var(--kleur-inkt-half);
+  cursor: pointer;
+}
+
+.vinkje input {
+  accent-color: var(--kleur-orchidee);
+  width: 1rem;
+  height: 1rem;
+  margin: 0.15rem 0 0;
+  flex-shrink: 0;
+}
