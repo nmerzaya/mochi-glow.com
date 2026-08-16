@@ -121,6 +121,13 @@ node scripts/maak-contactblad.mjs                       # de hele reeks op één
 
 De deelkaart `public/og-standaard.jpg` wordt door `scripts/maak-merkbeeld.mjs` opgebouwd uit `rijstextract.jpg`; draai dat script opnieuw zodra dat beeld verandert.
 
+**Pins voor Pinterest** komen uit `node scripts/maak-pins.mjs`: één staand beeld van 1000×1500 per artikel, in `pins/`, die map staat in `.gitignore` en komt niet op de site. Twee dingen om niet omver te gooien:
+
+1. **De teksten komen letterlijk uit `titel` en `beschrijving` in de frontmatter.** `check-compliance.mjs` haalt juist die twee velden door dezelfde verboden-taal- en claimpatronen als de body (zie `zoekIn` daar). Een pintekst is een reclame-uiting over cosmetica of voeding en valt onder dezelfde verordeningen als de site; een ter plekke bedachte, pakkendere zin ontsnapt aan de controle. Wil je andere pintekst, wijzig dan het artikel.
+2. **Nooit het kale beeld uit `src/assets/artikelen/` plaatsen.** De Pexels-licentie staat commercieel gebruik toe maar niet het doorgeven van een ongewijzigde foto als losse foto. Een pin is bijgesneden, kleurgecorrigeerd en voorzien van een tekstvlak, en dus geen ongewijzigde foto.
+
+Rich Pins vragen niets extra's: `og:type="article"`, `og:title`, `og:description` en `article:published_time` staan al in `BasisLayout.astro`. Het domein claimen kan met `pinterestVerificatie` in `src/config.ts`.
+
 ## Invarianten bij het bouwen
 
 - De affiliate-disclosure wordt niet handmatig getypt: `affiliate: true` in de frontmatter laat `ArtikelLayout.astro` de tekst uit `disclosureTekst` (`src/config.ts`) automatisch als eerste blok plaatsen. Het moet onmogelijk blijven dit te vergeten.

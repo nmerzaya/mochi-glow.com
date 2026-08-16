@@ -101,6 +101,28 @@ export const web3formsSleutel: string | null = 'c5d671ae-7229-48b8-98e4-4d25db82
 export const mailActief = false;
 
 /**
+ * Controlecode waarmee Pinterest ziet dat dit domein van jou is, of `null`.
+ *
+ * Pinterest laat je een domein op drie manieren claimen: een bestand uploaden,
+ * een DNS-record, of deze metatag. De tag is hier het handigst, want de site
+ * wordt bij elke push opnieuw uitgerold en een los bestand in `public/` raakt
+ * makkelijker uit beeld dan een regel in de configuratie.
+ *
+ * Claimen is nodig om te zien welke pins naar de site verwijzen en om Rich Pins
+ * aan te kunnen zetten. Die laatste hoeven verder niets: `og:type`, `og:title`,
+ * `og:description` en `article:published_time` staan al in `BasisLayout.astro`.
+ *
+ * Dit is géén tracker en laadt niets: het is een tekenreeks in de `<head>`, er
+ * gaat geen verzoek naartoe en er komt geen cookie bij. De invariant "geen
+ * externe verzoeken" blijft dus heel, en het cookiebeleid hoeft er niet voor
+ * aangepast te worden.
+ *
+ * De code krijg je in het Pinterest-dashboard onder Instellingen → Geclaimde
+ * accounts → Claim website → HTML-tag; het is de waarde van `content`.
+ */
+export const pinterestVerificatie: string | null = null;
+
+/**
  * De twee pijlers, op één plek.
  *
  * Hiervoor stonden deze namen als losse tekenreeksen door de hele site heen, * in een ternary in `ArtikelLayout.astro`, twee keer in `index.astro`, in beide

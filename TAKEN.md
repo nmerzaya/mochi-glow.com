@@ -55,9 +55,29 @@ Stand: **28 artikelen**, vijftien in de ingrediënten-pijler en dertien in de gu
 
 ## Fase 5, Distributie (naast, niet in plaats van, organisch zoekverkeer)
 
-- [ ] Overwegen: Pinterest-account opzetten als één van meerdere kanalen, niet als hoofdstrategie (zie `PLAN.md`, non-goals, over de volatiliteit van Pinterest in 2026).
-- [ ] Overwegen: nieuwsbrief als kanaal dat onafhankelijk is van zoekmachines/platformen.
 - [ ] Geen actieve, brede social-mediastrategie in v1 (zie `PLAN.md`).
+
+### Nieuwsbrief
+
+Gekozen en gebouwd op 16 augustus 2026, en het kanaal dat `onderzoek/08` par. 4.3 als enige onbemiddelde route naar de lezer aanwijst.
+
+- [x] Aanmelding, dubbele opt-in en uitslag-per-mail bouwen. → `functions/api/`, achter `mailActief` in `src/config.ts`.
+- [ ] Brevo-account aanmaken en het afzenderdomein verifiëren (DNS bij Cloudflare). → `DEPLOY.md`, stap 5a.
+- [ ] De drie secrets in Cloudflare Pages zetten en daarna `mailActief` op `true`. → `DEPLOY.md`, stap 5b.
+
+### Pinterest
+
+Begonnen op 16 augustus 2026, op verzoek van de eigenaar. Blijft één van meerdere kanalen en geen hoofdstrategie: `onderzoek/03` TS-DV5-01/02 logt makers die vanaf mei 2026 dalingen van 70-90% melden op Pinterests eigen forum. Het risico wordt verplaatst, niet weggenomen.
+
+- [x] Pin-beeld per artikel kunnen maken. → `node scripts/maak-pins.mjs`, 31 stuks van 1000×1500 in `pins/`, met teksten en links in `pins/PINTEREST.md`.
+- [x] Rich Pins mogelijk maken. → Vroeg niets: `og:type="article"`, `og:title`, `og:description` en `article:published_time` stonden al in `BasisLayout.astro`.
+- [x] Haakje om het domein te claimen. → `pinterestVerificatie` in `src/config.ts`, rendert `<meta name="p:domain_verify">`.
+- [ ] Zakelijk Pinterest-account aanmaken, op de sitenaam en niet op een persoon (`PLAN.md`, non-goals: geen profielen die naar een echte persoon herleidbaar zijn).
+- [ ] Domein claimen: code uit Instellingen → Geclaimde accounts in `pinterestVerificatie` zetten, pushen, en in Pinterest op verifiëren drukken.
+- [ ] Rich Pins aanzetten via de Pinterest Rich Pin Validator, met een artikel-URL.
+- [ ] Borden aanmaken die de pijlers volgen: "Wat zit erin?", "Huid van binnenuit", "Tips & routines".
+- [ ] De eerste pins plaatsen vanuit `pins/PINTEREST.md`, met titel en beschrijving **letterlijk** overgenomen (zie `CLAUDE.md`, waarom dat geen netheidskwestie is).
+- [ ] Na een maand of twee terugkijken of het iets oplevert, voordat er meer tijd in gaat.
 
 ## Doorlopend, niet fase-gebonden
 

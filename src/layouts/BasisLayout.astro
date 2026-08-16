@@ -1,6 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
-import { site, ga4MeetID } from '../config';
+import { site, ga4MeetID, pinterestVerificatie } from '../config';
 import Kop from '../components/Kop.astro';
 import Voet from '../components/Voet.astro';
 import CookieToestemming from '../components/CookieToestemming.astro';
@@ -97,6 +97,13 @@ const gestructureerdeData = {
     {/* `summary_large_image` en niet `summary`: anders krijgt een kaart van 1200×630 een postzegel. */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={deelkaart} />
+
+    {/*
+      Waarmee Pinterest ziet dat dit domein van deze site is. Alleen een
+      tekenreeks: er wordt niets geladen en er gaat geen verzoek uit, dus dit
+      raakt de invariant "geen externe verzoeken" niet. Zie `src/config.ts`.
+    */}
+    {pinterestVerificatie && <meta name="p:domain_verify" content={pinterestVerificatie} />}
 
     <link rel="alternate" type="application/rss+xml" title={site.naam} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />

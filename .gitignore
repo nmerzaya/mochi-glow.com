@@ -39,3 +39,8 @@ logs/
 # Werkmap voor de beeldkeuze: contactbladen met kandidaten en de keuzelijst.
 # Alleen het gekozen beeld belandt in src/assets/ en dus in de repo.
 beeldkeuze/
+
+# Pins voor Pinterest, gemaakt door scripts/maak-pins.mjs. Afgeleid beeld dat
+# handmatig geüpload wordt; het hoort niet op de site en niet in de repo.
+# Opnieuw te maken met één commando.
+pins/
